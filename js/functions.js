@@ -956,3 +956,20 @@ function changeVideo() {
 	$("#vidData").toggle(1000);
 	v = !v;
 }
+
+function reverseEmails() {
+  if (jQuery(".eml.reverse").length > 0) {
+    jQuery(".eml.reverse").each(function() {
+      var that  = jQuery(this);
+      var email = that.text().split("").reverse().join("");
+      that.removeClass("reverse");
+      that.html("<a href='mailto:" + email + "'>" + email + "</a>");
+    });
+  }
+}
+
+
+// Just to show the phases slowly
+jQuery("span").removeClass("reverse");
+setTimeout(function(){ jQuery("span").addClass("reverse")},2500);
+setTimeout(function(){ reverseEmails();},5000);
