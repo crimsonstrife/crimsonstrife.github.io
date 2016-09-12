@@ -86,6 +86,11 @@
 .right:hover .slide-sub-title  {
 	display: block;
 }
+.slider-section{
+	height: 100%;
+	width: 100%;
+}
+
 /* ## //- Header Section */
 .header-section {
 	background-color: #e74c3c;
