@@ -948,7 +948,8 @@ jQuery(function () {
 	/* DEBUG END ******************************************************************************************/
 
 });
-
+//The following is the hacky code used to un-reversify emails and phone numbers as a spam-bot protection
+//works, technically.   Is probably a shitty defense in reality.
 var v = false;
 function changeVideo() {
 	var vID = v ? "7SnmCUwOsts" : "BsekcY04xvQ";
