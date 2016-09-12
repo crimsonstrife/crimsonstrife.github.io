@@ -8,6 +8,8 @@
 // 
 // total_hours_wasted_here = 42
 // 
+//This code sucks, you know it and I know it.  
+//Move on and call me an idiot later.
 
 (function($)
 {
