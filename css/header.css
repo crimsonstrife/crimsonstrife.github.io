@@ -68,6 +68,7 @@
 	width: 50%;
 	left: 0; 
 	right: auto;
+	font-size: 100%;
 }
 .right .slide-sub-title {
 	text-align: right;
