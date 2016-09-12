@@ -6,32 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Portfolio and Resume">
     <meta name="author" content="Patrick Barnhardt">
-	<title>The Work of Patrick Barnhardt</title>
-	<link href="images/favicon.png" rel="icon"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <linK href="libraries/owl-carousel/owl.carousel.css" rel="stylesheet"/> <!-- Core Owl Carousel CSS File  *	v1.3.3 -->
-    <linK href="libraries/owl-carousel/owl.theme.css" rel="stylesheet"/> <!-- Core Owl Carousel CSS Theme  File  *	v1.3.3 -->
-    <script src="https://use.fontawesome.com/b235dceba9.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<link href="libraries/fonts/elegant/elegant-icon.css" rel="stylesheet"/>
-	<link href="libraries/animate/animate.min.css" rel="stylesheet"/>
-	<link href="libraries/lightbox2/css/lightbox.css" rel="stylesheet"/>
-
-	<link href="libraries/video/YTPlayer.css" rel="stylesheet"/>
-
+    <title>The Work of Patrick Barnhardt</title>
+    <link href="images/favicon.png" rel="icon"/>
+    <!-- Let's load Bootstrap from a CDN, just to make it easier to update -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Now pull in libraries, may replace these with CDN or Async options later -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css" integrity="sha256-fDncdclXlALqR3HOO34OGHxek91q8ApmD3gGldM+Rng=" crossorigin="anonymous" /> <!-- Core Owl Carousel CSS File  *	v1.3.3 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css" integrity="sha256-2DoaRRHfHWna6mpfGImxAx/cu0vFGpqEkcf/YXf+yk4=" crossorigin="anonymous" /> <!-- Core Owl Carousel CSS Theme  File  *	v1.3.3 -->
+    <link href="libraries/fonts/elegant/elegant-icon.css" rel="stylesheet"/>
+    <link href="libraries/animate/animate.min.css" rel="stylesheet"/>
+    <link href="libraries/lightbox2/css/lightbox.css" rel="stylesheet"/>
+    <link href="libraries/video/YTPlayer.css" rel="stylesheet"/>
     <link href="css/components.css" rel="stylesheet"/>
-	<link href="css/header.css" rel="stylesheet"/>
-	<link href="style.css" rel="stylesheet"/>
-	<!--link id="color" href="css/color-schemes/default.css" rel="stylesheet"/-->
+    <link href="css/header.css" rel="stylesheet"/>
+    <link href="style.css" rel="stylesheet"/>
+    <!--link id="color" href="css/color-schemes/default.css" rel="stylesheet"/-->
     <link href="css/media.css" rel="stylesheet"/>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="js/html5/html5shiv.min.js"></script>
-      <script src="js/html5/respond.min.js"></script>
-    <![endif]-->
-
+	<!-- Let's load up some fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300italic,300,100italic,100,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
@@ -1178,18 +1169,24 @@
     <!-- Light Box -->
     <!-- Hidden iframe for submitting forms -->
     <iframe src="about:blank" name="hidden" class="hide"></iframe>
-
+	<!-- Javascript time! -->
+    <!-- Let's load the CDN/Asyncrous version of Bootstrap JS, and Jquery and we'll use a js-based CDN to keep FontAwesome up to date -->
+    <script src="https://use.fontawesome.com/b235dceba9.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="js/html5/html5shiv.min.js"></script>
+      <script src="js/html5/respond.min.js"></script>
+    <![endif]-->
     <!-- jQuery Include -->
-    <script src="libraries/jquery.min.js"></script>
-    <script src="libraries/modernizr/modernizr.custom.13711.js"></script>
-    <script src="libraries/jquery.easing.min.js"></script><!-- Easing Animation Effect -->
-
-    <script src="libraries/bootstrap/bootstrap.min.js"></script> <!-- Core Bootstrap v3.2.0 -->
-    <script src="libraries/bootstrap/ie-emulation-modes-warning.js"></script> <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha256-0rguYS0qgS6L4qVzANq4kjxPLtvnp5nn2nB5G1lWRv4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
+    <script src="libraries/bootstrap/ie-emulation-modes-warning.js"></script> <!-- Just for debugging purposes. -->
     <script src="libraries/bootstrap/ie10-viewport-bug-workaround.js"></script> <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <!-- Font Elegant -->
     <!--[if lte IE 7]><script src="libraries/fonts/elegant/lte-ie7.js"></script><![endif]-->
-
     <script src="libraries/portfolio-filter/jquery.quicksand.js"></script> <!-- Quicksand v1.4 -->
     <script src="libraries/jquery.superslides.min.js"></script> <!-- Superslides - v0.6.3-wip -->
 
@@ -1202,7 +1199,7 @@
 
     <script src="libraries/wow.min.js"></script>
 
-    <script src="libraries/owl-carousel/owl.carousel.min.js"></script> <!-- Core Owl Carousel CSS File  *	v1.3.3 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js" integrity="sha256-4OK8Th0+5QJMThqlimytmqQvxjqMic4YATocjyuUh1w=" crossorigin="anonymous"></script> <!-- Core Owl Carousel CSS File  *	v1.3.3 -->
     <script src="libraries/video/jquery.mb.YTPlayer.js"></script>
 
     <script src="libraries/lightbox2/js/lightbox.min.js"></script>
