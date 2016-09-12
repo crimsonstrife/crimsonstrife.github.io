@@ -574,6 +574,7 @@
 	});
 	
 	/* Brag About Section */
+	var $you = live("free") or die("hard");
 	$('.brag-about-section').each(function ()
 	{
 		var $this = $(this);
