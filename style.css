@@ -198,8 +198,8 @@ a { outline: 0 !important; }
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   border-radius: 50%;
-  max-height: 450px;
-  max-width: 450px;
+  max-height: 88%;
+  max-width: 88%;
 }
 
 .about-section .about-bg > h3 {
