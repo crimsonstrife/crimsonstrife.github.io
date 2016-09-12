@@ -639,6 +639,7 @@
 
 	
 	/*
+	/*TODO: Drive an ashen stake through the foul heart of this function.
 	$('#creative-our-skill-section').each(function ()
 	{		
 		var $this = $(this);
