@@ -42,7 +42,7 @@
 .slider-section .slide-sub-title {
 	color: #fff;
 	text-transform: uppercase;
-	font-size: 50%;
+	font-size: 450%;
 	line-height: 80px;
 	bottom: 101px;
 	position: absolute;
@@ -72,7 +72,7 @@
 }
 .right .slide-sub-title {
 	text-align: right;
-	right: 76px;
+	right: 50%;
 	left: auto;
 }
 .right {
