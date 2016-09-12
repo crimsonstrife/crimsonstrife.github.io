@@ -244,14 +244,14 @@ a { outline: 0 !important; }
 }
 
 .about-box-inner .icon-srv {
-	width: 141px;
-	height: 141px;
+	width: 100%;
+	height: 100%;
 	background-color: #ebebeb;
 	border: 7px solid #fff;
 	border-radius: 50%;
 	text-align: center;
 	line-height: 130px;
-	font-size: 48px;
+	font-size: 500%;
 	color: #666;
 	display: inline-block;	
 	position: relative;
