@@ -252,7 +252,7 @@ a { outline: 0 !important; }
 	text-align: center;
 	line-height: 130px;
 	font-size: 500%;
-	color: #666;
+	color: rgba(225, 225, 225, 0.78);
 	display: inline-block;	
 	position: relative;
 	-webkit-transition: color 0.3s;
