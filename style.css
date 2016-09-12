@@ -2128,7 +2128,14 @@ a { outline: 0 !important; }
 	color: #E74C3C;
 }
 
+.reverse {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
 
+.eml {
+  display: inline;
+}
 
 /* Light Box */
 
