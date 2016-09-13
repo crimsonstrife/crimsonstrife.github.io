@@ -2805,10 +2805,20 @@ a { outline: 0 !important; }
     color: #ffffff;
     font-size: 18px; }
 .sketchfab-embed-wrapper {
-	height: 100%;
-	width: 100%;
+	position: relative;
+    width: 50%;
+    overflow: hidden;
+}
+.sketchfab-embed-wrapper:before{
+    content: "";
+    display: block;
+    padding-top: 100%;
 }
 .sketchfab-iframe {
-	height: 100%;
-	width: 100%;
+	position:  absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
 }
