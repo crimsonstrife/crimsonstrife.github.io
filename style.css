@@ -2655,7 +2655,7 @@ a { outline: 0 !important; }
   position: absolute;
   height: 90%;
   width: 2px;
-  background: #4caf50;
+  background: #a80000;
   left: 0px; }
 
 .timeline ul {
@@ -2672,7 +2672,7 @@ a { outline: 0 !important; }
   margin-bottom: 20px; }
   .timeline li i {
     font-size: 25px;
-    color: #4caf50;
+    color: #a80000;
     position: absolute;
     top: -11px;
     left: -46px; }
@@ -2681,7 +2681,7 @@ a { outline: 0 !important; }
   content: '';
   width: 0;
   height: 0;
-  border-top: 1em solid #455A64;
+  border-top: 1em solid #a80000;
   border-left: 1em solid transparent;
   position: absolute;
   left: -1em;
@@ -2709,7 +2709,7 @@ a { outline: 0 !important; }
     margin-top: 70px; }
 
   .timeline li:nth-child(even):before {
-    border-top: 2em solid #455A64;
+    border-top: 2em solid #a80000;
     border-left: 2em solid transparent;
     position: absolute;
     left: -2em;
@@ -2724,7 +2724,7 @@ a { outline: 0 !important; }
     float: left; }
 
   .timeline li:nth-child(odd):before {
-    border-top: 2em solid #455A64;
+    border-top: 2em solid #a80000;
     border-right: 2em solid transparent;
     right: -2em;
     left: auto; }
@@ -2746,7 +2746,7 @@ a { outline: 0 !important; }
 .timeline-content .timeline-header {
   width: 100%;
   height: auto;
-  background-color: #455A64;
+  background-color: #a80000;
   float: left;
   margin-bottom: 20px; }
 .timeline-content h3 {
@@ -2755,7 +2755,7 @@ a { outline: 0 !important; }
   color: #fff;
   font-size: 1.2em;
   font-weight: 400;
-  background-color: #455A64; }
+  background-color: #a80000; }
 .timeline-content .sub-heading {
   text-decoration: none;
   color: #455A64;
@@ -2776,7 +2776,7 @@ a { outline: 0 !important; }
   margin-bottom: 40px; }
 
 .skill-wrapper {
-  background-color: #455A64;
+  background-color: #a80000;
   color: #ffffff; }
 
 .skill-progress-div {
