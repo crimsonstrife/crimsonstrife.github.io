@@ -176,6 +176,23 @@ a { outline: 0 !important; }
 	color: #000;
 }
 /* ## About Me Section ## */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+/* IE10+ CSS styles go here because IE is a little bitch and was breaking things*/
+/* Credit to Philip Newcomer for helping me with this */
+.about-bg {
+	text-align: center;
+	margin: 0 auto;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin-top: 34px;
+    overflow: hidden;
+    max-width: 450px;
+    max-height: 450px;
+    margin-left: 38.4%;
+    margin-top: 3%;
+}
+}
 .about-section {
 	padding: 110px 0;
 	position: relative;
