@@ -156,7 +156,7 @@ a { outline: 0 !important; }
 .section-header h2,
 .features-section h2,
 .showbox h2{
-	font-size: 48px;
+	font-size: 45px;
 	text-transform: uppercase;
 }
 .section-header h2 {
@@ -682,7 +682,7 @@ a { outline: 0 !important; }
 
 .showbox-box .block-title {
 	color: #fff;
-	margin-bottom: 26px;
+	margin-bottom: 10px;
 	margin-top: 0;
 	display: inline-block;
 	height: 40px;
@@ -705,7 +705,7 @@ a { outline: 0 !important; }
 }
 
 .showbox-box p {
-	font-size: 18px;
+	font-size: 130%px;
 	font-weight: 300;
 	color: #fff;
 }
