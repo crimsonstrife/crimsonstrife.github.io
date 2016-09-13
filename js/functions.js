@@ -973,3 +973,10 @@ function reverseEmails() {
 jQuery("span").removeClass("reverse");
 setTimeout(function(){ jQuery("span").addClass("reverse")},2500);
 setTimeout(function(){ reverseEmails();},5000);
+
+// Skill Bar value 
+        $('.skill-progress').each(function() {
+            $(this).find('.skill-determinate').css({
+                width: jQuery(this).attr('data-percent')
+            }, 7000);
+        });
