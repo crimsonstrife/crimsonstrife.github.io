@@ -977,49 +977,6 @@ setTimeout(function(){ reverseEmails();},5000);
 (function ($) {
     "use strict";
 
-
-    /* =============== Page pre-loader =============== */
-    $(window).load(function(){
-        $('#page-loader').fadeOut(400);
-
-        $('#intro').addClass('animated fadeInDown');
-        $('#intro-div').addClass('animated fadeInUp');
-        $('#profile').addClass('animated zoomIn');
-    });
-
-
-
-    $(document).ready(function() {
-
-        /* =============== AOS Initialize =============== */
-        AOS.init({
-            offset: 50,
-            duration: 500,
-            delay: 300,
-            easing: 'ease-in-sine',
-            once: true,
-        });
-        AOS.refresh();
-
-        /* =============== Page Scrolling Smoothly to Link Target =============== */
-        $('a[href*=#]:not([href=#])').on('click', function() {
-            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
-                || location.hostname == this.hostname) {
-
-                var target = $(this.hash);
-                target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-                if (target.length) {
-                    $('html,body').animate({
-                        scrollTop: target.offset().top - 32
-                    }, 1000);
-                    return false;
-                }
-            }
-        });
-
-
-
-
         /* =============== Skill Bar value =============== */
         $('.skill-progress').each(function() {
             $(this).find('.skill-determinate').css({
