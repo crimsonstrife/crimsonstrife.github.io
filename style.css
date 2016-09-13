@@ -2957,15 +2957,6 @@ a { outline: 0 !important; }
       .info ul li i {
         color: #ffffff;
         font-size: 30px; }
-#skills span {
-    top: -30px;
-    left: 2%;
-    position: relative;
-    font-size: 1.4em;
-    font-weight: bolder;
-    font-family: monospace;
-    color: #fff;
-}
 
 progress {
     background-color: #f3f3f3;
