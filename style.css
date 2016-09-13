@@ -2855,7 +2855,7 @@ a { outline: 0 !important; }
     position: relative;
     width: 100%;
     height: auto;
-    background-color: #455A64;
+    background-color: #a80000;
     padding: 6px 6px; }
     .achievement .achievement-top-bar h5 {
       position: relative;
@@ -2905,14 +2905,14 @@ a { outline: 0 !important; }
         position: absolute;
         top: 170px;
         left: 70%;
-        background-color: #4caf50; }
+        background-color: #a80000; }
     .achievement .achievement-inner .achievement-content {
       position: relative;
       top: 0;
       display: none;
       width: 100%;
       height: auto;
-      background-color: #455A64; }
+      background-color: #a80000; }
       .achievement .achievement-inner .achievement-content p {
         padding: 30px 30px;
         color: #fff; }
@@ -2934,13 +2934,13 @@ a { outline: 0 !important; }
       display: block;
       font-size: 35px;
       padding: 0;
-      color: #455A64; }
+      color: #a80000; }
     .interest .interest-topic span {
       display: block; }
 /*---------------INFORMATION-------------------*/
 .info {
   width: 100%;
-  background-color: #455A64;
+  background-color: #a80000;
   min-height: 480px;
   height: auto; }
   .info ul {
