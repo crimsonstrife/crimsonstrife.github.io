@@ -2804,7 +2804,11 @@ a { outline: 0 !important; }
     top: -7px;
     color: #ffffff;
     font-size: 18px; }
-.sketchfab-embed-wrapper{
+.sketchfab-embed-wrapper {
+	height: 100%;
+	width: 100%;
+}
+.sketchfab-iframe {
 	height: 100%;
 	width: 100%;
 }
