@@ -2804,15 +2804,38 @@ a { outline: 0 !important; }
     top: -7px;
     color: #ffffff;
     font-size: 18px; }
-.sketchfab-embed-wrapper {
-	position: relative;
-    width: 50%;
-    overflow: hidden;
-}
-.sketchfab-embed-wrapper:before{
-    content: "";
+.ratio-16-9,
+.ratio-16-10,
+.ratio-square {
     display: block;
-    padding-top: 100%;
+    position: relative;
+    width: 100%;
+    height: 0;
+}
+
+.ratio-16-9 {
+    padding-top: 56.25%; /* This is your aspect-ratio */
+}
+
+.ratio-16-10 {
+    padding-top: 62.5%; /* This is your aspect-ratio */
+}
+
+.ratio-square {
+    padding-top: 100%; /* This is your aspect-ratio */
+}
+
+.ratio-inner {
+    display: block;
+    position: absolute;
+
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 100%;
 }
 .sketchfab-iframe {
 	position:  absolute;
