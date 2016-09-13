@@ -973,3 +973,10 @@ function reverseEmails() {
 jQuery("span").removeClass("reverse");
 setTimeout(function(){ jQuery("span").addClass("reverse")},2500);
 setTimeout(function(){ reverseEmails();},5000);
+
+$(function() {
+  $('progress').each(function() {
+    var max = $(this).val();
+    $(this).val(0).animate({ value: max }, { duration: 2000, easing: 'easeOutCirc' });
+			});
+});
