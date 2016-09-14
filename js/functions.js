@@ -983,10 +983,10 @@ $(function() {
 
 // RSS Reader
 function load_rss(){
- $("#rss-container").html("");
+ $("#rss-container").html("http://blog.patrickbarnhardt.info");
  $("#rss-container").rss("http://blog.patrickbarnhardt.info/rss", {
     limit: 40,
-    ssl: false,
+    ssl: true,
     effect: 'show',
     dateFormat: 'MMMM DD, YYYY',
     entryTemplate: 
@@ -1008,9 +1008,6 @@ function load_rss(){
     </a>",
     error: function(error){
       console.log(error);
-    },
-    onData: function(data){
-      $("#current-feed").text("Current feed: "+"Reddit frontpage"); // Change this later
     }
   },function(){
     $(".entry").each(function(index){
