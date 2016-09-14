@@ -191,6 +191,7 @@ a { outline: 0 !important; }
     margin-left: 38.4% !important;
     margin-top: 3% !important;
 }
+/* Hide all the things so IE can suck it */
 .about-section {
 	padding: 110px 0;
 	position: relative;
@@ -2961,7 +2962,7 @@ a { outline: 0 !important; }
       color: #a80000; }
     .interest .interest-topic span {
       display: block; }
-/*---------------INFORMATION-------------------*/
+/* INFORMATION */
 .info {
   width: 100%;
   background-color: #a80000;
