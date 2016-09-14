@@ -1,0 +1,140 @@
+#rss-wrap{
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 60vw;
+  margin: 0 auto;
+}
+
+.entry_link{
+  text-decoration: none;
+  color: #FFFFCC;
+  text-shadow: 1px 1px 2px #000000;
+}
+
+.entry_date{
+  font-size: 0.85em;
+  margin-bottom: 5px;
+}
+
+.entry_img > img{
+  display: inline-block;
+  width: 100px;
+  float:left;
+  margin: 0 15px 0 0;
+  border-radius: 3px;
+  box-shadow: 0px 0px 1px #000000;
+}
+
+.entry_title{
+  display: inline;
+  float: none;
+}
+
+.entry_by{
+  display:none;
+}
+
+.entry_details{
+  margin-top: 10px;
+  font-size: 0.85em;
+}
+
+.entry_index{
+  font-size: 0.75em;
+  float:right;
+  margin: 0 5px 0 0;
+}
+
+#rss-header{
+  font-family: Open Sans, sans-seriff;
+  border-top-style: solid;
+  border-left-style: solid;
+  border-right-style: solid;
+  border-width:1px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-color: black;
+  padding: 0 0 0 10px;
+  background-color: #333333;
+  color: white;
+}
+
+#rss-title{
+  display: inline-block;
+  font-size: 30px;
+}
+
+#current-feed{
+  display: inline-block;
+  float: right;
+  font-size: 12px;
+  margin: 1em;
+}
+
+#rss-container{
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-right-style: solid;
+  
+  border-width: 1px;
+  font-size: 16px;
+}
+
+#rss-container > ul{
+  list-style-type: none;
+  margin:  0;
+  padding: 0;
+  display: inline-block;
+  width: 100%;
+}
+
+.entry, .entry2{
+  background-color: #669966;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.8em;
+  border-top-style:solid;
+  border-width: 1px;
+  border-color: #4B6E4B;
+  left: 0;
+  padding: 5px 0 35px 5px;
+  cursor: pointer;
+  overflow:hidden;
+}
+
+.entry2{
+  background-color: #5E915E;
+}
+
+.entry:hover,entry2:hover{
+  background-color: #7BB87B;
+}
+
+.entry:active{
+  background-color:#97CF97;
+}
+
+/* CSS QUERIES*/
+@media (max-width: 750px){
+  #current-feed{
+    display:none;
+  }
+}
+
+@media (max-width:500px){
+  #rss-title{
+    font-size: 0.95em;
+  }
+  .entry_img > img {
+    width: 40px;
+  }
+}
+
+@media (max-width:400px){
+  #rss-container{
+    font-size: 12px;
+  }
+}
