@@ -980,3 +980,45 @@ $(function() {
     $(this).val(0).animate({ value: max }, { duration: 2000, easing: 'easeOutCirc' });
 			});
 });
+
+// RSS Reader
+function load_rss(){
+ $("#rss-container").html("");
+ $("#rss-container").rss("http://blog.patrickbarnhardt.info/rss", {
+    limit: 40,
+    ssl: false,
+    effect: 'show',
+    dateFormat: 'MMMM DD, YYYY',
+    entryTemplate: 
+    "<a class='entry_link' href='{url}'>\
+      <div class='entry'>\
+        <div class='entry_date'>\
+          Submitted: {date}\
+          <span class='entry_by'>by: {author}</span>\
+          <span class='entry_index'>#{index}</span>\
+        </div>\
+        <div class='entry_img'>\
+          {teaserImage}\
+        </div>\
+        <div class='entry_title'>\
+          {title}\
+        </div>\
+        <div class='entry_details'>{shortBody}</div>\
+      </div>\
+    </a>",
+    error: function(error){
+      console.log(error);
+    },
+    onData: function(data){
+      $("#current-feed").text("Current feed: "+"Reddit frontpage"); // Change this later
+    }
+  },function(){
+    $(".entry").each(function(index){
+      if(index%2!=0) $(this).addClass("entry2"); // Fix this later with css
+    });
+  });
+}
+
+$(function(){
+  load_rss();
+});
