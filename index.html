@@ -12,40 +12,54 @@ behind the curtain
 -->
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Portfolio and Resume">
     <meta name="author" content="Patrick Barnhardt">
     <title>The Work of Patrick Barnhardt</title>
-    <link href="" rel="icon"/>
+    <link href="" rel="icon" />
     <!-- Let's load Bootstrap from a CDN, just to make it easier to update
     Github hates async <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     Now pull in libraries, may replace these with CDN or Async options later
     Bring back for live site <script src="https://use.fontawesome.com/b235dceba9.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css" integrity="sha256-fDncdclXlALqR3HOO34OGHxek91q8ApmD3gGldM+Rng=" crossorigin="anonymous" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css" integrity="sha256-2DoaRRHfHWna6mpfGImxAx/cu0vFGpqEkcf/YXf+yk4=" crossorigin="anonymous" /> --> 
-    <link href="libraries/materialize.css" rel="stylesheet"/>
-    <link href="libraries/bootstrap/bootstrap.min.css" rel="stylesheet"/>
-	<link href="libraries/owl-carousel/owl.carousel.css" rel="stylesheet"/> <!-- Core Owl Carousel CSS File  *	v1.3.3 -->
-	<link href="libraries/owl-carousel/owl.theme.css" rel="stylesheet"/> <!-- Core Owl Carousel CSS Theme  File  *	v1.3.3 -->
-	<link href="libraries/fonts/font-awesome.min.css" rel="stylesheet"/>
-    <link href="libraries/fonts/elegant/elegant-icon.css" rel="stylesheet"/>
-    <link href="libraries/animate/animate.min.css" rel="stylesheet"/>
-    <link href="libraries/lightbox2/css/lightbox.css" rel="stylesheet"/>
-    <link href="libraries/video/YTPlayer.css" rel="stylesheet"/>
-    <link href="css/components.css" rel="stylesheet"/>
-    <link href="css/header.css" rel="stylesheet"/>
-    <link href="style.css" rel="stylesheet"/>
-    <link href="css/rss.css" rel="stylesheet"/>
-    <link href="css/mobile-scaling.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css" integrity="sha256-2DoaRRHfHWna6mpfGImxAx/cu0vFGpqEkcf/YXf+yk4=" crossorigin="anonymous" /> -->
+    <link href="libraries/materialize.css" rel="stylesheet" />
+    <link href="libraries/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="libraries/owl-carousel/owl.carousel.css" rel="stylesheet" /> <!-- Core Owl Carousel CSS File  *	v1.3.3 -->
+    <link href="libraries/owl-carousel/owl.theme.css" rel="stylesheet" /> <!-- Core Owl Carousel CSS Theme  File  *	v1.3.3 -->
+    <link href="libraries/fonts/font-awesome.min.css" rel="stylesheet" />
+    <link href="libraries/fonts/elegant/elegant-icon.css" rel="stylesheet" />
+    <link href="libraries/animate/animate.min.css" rel="stylesheet" />
+    <link href="libraries/lightbox2/css/lightbox.css" rel="stylesheet" />
+    <link href="libraries/video/YTPlayer.css" rel="stylesheet" />
+    <link href="css/components.css" rel="stylesheet" />
+    <link href="css/header.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+    <link href="css/mobile-scaling.css" rel="stylesheet" />
+    <link href="css/rss.css" rel="stylesheet" />
     <!--link id="color" href="css/color-schemes/default.css" rel="stylesheet"/-->
-    <link href="css/media.css" rel="stylesheet"/>
-	<!-- Let's load up some fonts -->
-	<link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300italic,300,100italic,100,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-    
+    <link href="css/media.css" rel="stylesheet" />
+    <!-- Let's load up some fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300italic,300,100italic,100,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <script src="libraries/jquery.min.js"></script>
+    <script src="libraries/feedek/js/moment.min.js"></script>
+    <script src="libraries/feedek/js/FeedEk.js"></script>
+    <script type="text/javascript">
+    // RSS Reader
+    $(document).ready(function () {
+    $('#divRss').FeedEk({
+    FeedUrl: 'https://blog.patrickbarnhardt.info/rss',
+    MaxCount: 3,
+    ShowDesc: true,
+    ShowPubDate: true,
+    DateFormat: 'DD MM',
+    });
+    });
+    </script>
 </head>
 <body data-offset="200" data-spy="scroll" data-target=".primary-navigation">
     <a id="top"></a>
@@ -63,15 +77,15 @@ behind the curtain
         </div>
     </div> -->
     <div id="navbar" class="navbar-collapse collapse" style="background-color: #333;">
-                    <ul class="nav navbar-nav pull-right">
-                        <li id="aboutmemenuitem"><a href="#about-section">Who Am I?</a></li>
-                        <li><a href="#work">Work</a></li>
-                        <li><a href="#resume">Resume</a></li>
-                        <li><a href="blog.patrickbarnhardt.info">Blog</a></li>
-                        <li><a href="resume.patrickbarnhardt.info">Resume (Static)</a></li>
-                        <li><a href="#project-section">Contact</a></li>
-                    </ul>
-		</div><!--/.nav-collapse -->
+        <ul class="nav navbar-nav pull-right">
+            <li id="aboutmemenuitem"><a href="#about-section">Who Am I?</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#resume">Resume</a></li>
+            <li><a href="blog.patrickbarnhardt.info">Blog</a></li>
+            <li><a href="resume.patrickbarnhardt.info">Resume (Static)</a></li>
+            <li><a href="#project-section">Contact</a></li>
+        </ul>
+    </div><!--/.nav-collapse -->
     <div id="photos-slider" class="slider-section">
         <div class="slides-container">
             <!-- slide item 1 -->
@@ -89,9 +103,9 @@ behind the curtain
                     <div class="col-md-6 left">
                         <div class="slide-sub-title wow fadeInDown" data-wow-duration="1s" data-wow-delay="0s">
                             <a href="#showbox-helicalgamesnet">
-                            <span>Web</span>
-                            <span>Design &amp;</span>
-                            <span>Development</span>
+                                <span>Web</span>
+                                <span>Design &amp;</span>
+                                <span>Development</span>
                             </a>
                         </div>
                     </div>
@@ -117,7 +131,7 @@ behind the curtain
     <!-- Header Section -->
     <header id="header-section" class="header-section">
         <div class="col-md-2 col-sm-2 col-xs-6 logo-block">
-            
+
         </div>
         <div class="col-md-10 col-sm-12 col-xs-12 menu-block">
             <nav class="navbar navbar-default primary-navigation" role="navigation">
@@ -178,7 +192,7 @@ behind the curtain
                 <div class="about-box-inner">
                     <div class="col-md-4 col-sm-5">
                         <a href="https://facebook.com/patrickbarnhardt"><i class="icon-srv fa fa-facebook" aria-hidden="true" style="background-color: #3b5998;"></i></a>
-</div>
+                    </div>
                     <div class="col-md-8 content-box col-sm-7">
                         <h3 class="block-title">Facebook</h3>
                         <p>My personal social page.  Ocassionally I upload works in progress.</p>
@@ -189,7 +203,7 @@ behind the curtain
                 <div class="about-box-inner">
                     <div class="col-md-4 pull-right col-sm-5">
                         <a href="https://github.com/crimsonstrife"><i class="icon-srv fa fa-github" aria-hidden="true" style="background-color: #6e5494;"></i></a>
-</div>
+                    </div>
                     <div class="col-md-8 content-box col-sm-7">
                         <h3 class="block-title">GitHub (Public)</h3>
                         <p>My collection of repos for public projects (limited).  Including the source code for this site!</p>
@@ -200,7 +214,7 @@ behind the curtain
                 <div class="about-box-inner">
                     <div class="col-md-4 col-sm-5">
                         <a href="https://linkedin.com/in/patrickbarnhardt"><i class="icon-srv fa fa-linkedin" aria-hidden="true" style="background-color: #007bb6;"></i></a>
-</div>
+                    </div>
                     <div class="col-md-8 content-box col-sm-7">
                         <h3 class="block-title">LinkedIn</h3>
                         <p>Connect with me professionally.  A consistent source for up-to-date work information on me.</p>
@@ -212,7 +226,7 @@ behind the curtain
                 <div class="about-box-inner">
                     <div class="col-md-4 pull-right col-sm-5">
                         <a href="http://git.helicaldev.net/u/pbarnhardt"><i class="icon-srv fa fa-gitlab" aria-hidden="true" style="background-color: #FC6D26;"></i></a>
-</div>
+                    </div>
                     <div class="col-md-8 content-box col-sm-7">
                         <h3 class="block-title">GitLab (Private)</h3>
                         <p>My profile on the private GitLab instance for Helical Games.  Commits will not be visible to the public.</p>
@@ -223,7 +237,7 @@ behind the curtain
                 <div class="about-box-inner">
                     <div class="col-md-4 col-sm-5">
                         <a href="https://plus.google.com/u/1/105663846354654409732"><i class="icon-srv fa fa-google-plus" aria-hidden="true" style="background-color: #d34836;"></i></a>
-</div>
+                    </div>
                     <div class="col-md-8 content-box col-sm-7">
                         <h3 class="block-title">Google Plus</h3>
                         <p>My Helical Games associated Google+ profile.  Become part of our developer/fan community.</p>
@@ -256,7 +270,7 @@ behind the curtain
             </ul><!--/.container -->
             <!-- RIP mobile users -->
             <ul class="portfolio-list no-space">
-            	<li class="col-md-3 col-sm-6" data-type="web" data-id="web-1">
+                <li class="col-md-3 col-sm-6" data-type="web" data-id="web-1">
                     <div class="portfolio-image-block ratio-square">
                         <a href=".#"><img src="images/portfolio/HelicalGamesNET.png" class="ratio-inner" alt="portfolio image 1"></a>
                         <div class="portfolio-block-hover">
@@ -633,8 +647,10 @@ behind the curtain
                 <p>With this new version, the focus has been on responsive design.  While a mobile application is in the planning stages, it is important that the site be able to scale to tablets and mobile screens.</p>
                 <div class="col-md-9 app-updates">
                     <h4><i class="fa fa-mobile-phone"></i>Responsive Navigation</h4>
-                    <p>The driving idea behind the navigation sidebar, and it's expanding design, was aimed at small screens from the start.  
-                    And with it's accordian drop-down support, nearly an unlimited number of links could be supported.</p>
+                    <p>
+                        The driving idea behind the navigation sidebar, and it's expanding design, was aimed at small screens from the start.
+                        And with it's accordian drop-down support, nearly an unlimited number of links could be supported.
+                    </p>
                 </div>
                 <div class="col-md-9 app-updates">
                     <h4><i class="fa fa-tachometer"></i>Keeping things light</h4>
@@ -650,15 +666,15 @@ behind the curtain
         <div class="section-header">
             <h2>Resume</h2>
         </div>
-            <!-- Name and Status -->
-            <div id="about intro" class="container" style="margin-bottom: 12%;">
-                <h1 class="text-center text-capitalize">Patrick Owen Barnhardt</h1>
-                <h4 class="text-center text-capitalize">Web Designer, Game Developer, Animator</h4>
-            </div>
+        <!-- Name and Status -->
+        <div id="about intro" class="container" style="margin-bottom: 12%;">
+            <h1 class="text-center text-capitalize">Patrick Owen Barnhardt</h1>
+            <h4 class="text-center text-capitalize">Web Designer, Game Developer, Animator</h4>
+        </div>
 
         <!--==========================================
-                       ABOUT
-    ===========================================-->
+                           ABOUT
+        ===========================================-->
         <section id="about" class="section">
             <div class="container">
                 <div class="row">
@@ -703,8 +719,8 @@ behind the curtain
         </section>
 
         <!--==========================================
-                       EXPERIENCE
-    ===========================================-->
+                           EXPERIENCE
+        ===========================================-->
         <section id="experience" class="section">
             <h4 class="text-uppercase text-center">Experience</h4>
             <div class="container">
@@ -789,10 +805,10 @@ behind the curtain
 
                                         <!-- Job Summary -->
                                         <p class="content-p">
-    										Film crew, Post crew.
-    										Created visual/post effects for production.
-    										Sound/Grip on set.
-	 										Worked on the Noir short “One Man’s Poison (2015)".
+                                            Film crew, Post crew.
+                                            Created visual/post effects for production.
+                                            Sound/Grip on set.
+                                            Worked on the Noir short “One Man’s Poison (2015)".
                                         </p>
                                     </div>
                                 </li>
@@ -806,8 +822,8 @@ behind the curtain
         </section>
 
         <!--==========================================
-                       SKILLS
-    ===========================================-->
+                           SKILLS
+        ===========================================-->
         <section id="skills" class="section">
             <h4 class="text-uppercase text-center">Skills</h4>
             <div class="container">
@@ -976,8 +992,8 @@ behind the curtain
         </section>
 
         <!--==========================================
-                       EDUCATION
-    ===========================================-->
+                           EDUCATION
+        ===========================================-->
         <section id="education" class="section">
             <h4 class="text-uppercase text-center">Education</h4>
             <div class="container">
@@ -1002,7 +1018,7 @@ behind the curtain
 
                                         <!-- Education Summary -->
                                         <p class="content-p">
-                                            
+
                                         </p>
                                     </div>
                                 </li>
@@ -1013,8 +1029,10 @@ behind the curtain
 
                                         <!-- Heading -->
                                         <div class="timeline-header">
-                                            <h3 class="text-capitalize">Associate of Applied Sciences
-Simulation and Game Design</h3>
+                                            <h3 class="text-capitalize">
+                                                Associate of Applied Sciences
+                                                Simulation and Game Design
+                                            </h3>
                                         </div>
 
                                         <!-- Institution, Period & result -->
@@ -1023,7 +1041,7 @@ Simulation and Game Design</h3>
 
                                         <!-- Education Summary -->
                                         <p class="content-p">
-                                            
+
                                         </p>
                                     </div>
                                 </li>
@@ -1043,7 +1061,7 @@ Simulation and Game Design</h3>
 
                                         <!-- Education Summary -->
                                         <p class="content-p">
-                                            
+
                                         </p>
                                     </div>
                                 </li>
@@ -1055,185 +1073,175 @@ Simulation and Game Design</h3>
             </div>
         </section>
         <!--==========================================
-               Certifications
-===========================================-->
-<section id="achievement" class="section">
-    <h4 class="text-uppercase text-center">Certifications</h4>
-    <div class="container">
-        <div class="row">
+                       Certifications
+        ===========================================-->
+        <section id="achievement" class="section">
+            <h4 class="text-uppercase text-center">Certifications</h4>
+            <div class="container">
+                <div class="row">
 
-            <!-- 1st Cert -->
-            <div class="col col-md-4 col-sm-6 col-xs-12">
-                <div class="achievement">
-                    <div class="achievement-top-bar">
-                        <!-- Cert Title Here -->
-                        <h5 class="text-center text-capitalize">CompTIA A+ ce</h5>
-                    </div>
-                    <div class="achievement-inner">
-                        <div class="achievement-header">
-                            <div class="achievement-heading">
-                                <!-- Icon and Date -->
-                                <img src="images/Aplus Logo Certified CE.png" style="height: 50%; width: 50%; position: relative; margin-top: 3%; padding-right: 10%; margin-left: 31%;">
-                                <h6 class="text-center">June 2016 - June 2019</h6>
+                    <!-- 1st Cert -->
+                    <div class="col col-md-4 col-sm-6 col-xs-12">
+                        <div class="achievement">
+                            <div class="achievement-top-bar">
+                                <!-- Cert Title Here -->
+                                <h5 class="text-center text-capitalize">CompTIA A+ ce</h5>
                             </div>
+                            <div class="achievement-inner">
+                                <div class="achievement-header">
+                                    <div class="achievement-heading">
+                                        <!-- Icon and Date -->
+                                        <img src="images/Aplus Logo Certified CE.png" style="height: 50%; width: 50%; position: relative; margin-top: 3%; padding-right: 10%; margin-left: 31%;">
+                                        <h6 class="text-center">June 2016 - June 2019</h6>
+                                    </div>
 
-                            <!-- Button ID For Content ID -->
-                            <a id="btn-1" class="btn-floating waves-effect waves-light btn-large achievement-more-btn custom-btn"
-                               data-aos="zoom-in" data-aos-delay="300">
-                                <i class="fa fa-external-link"></i>
-                            </a>
-                        </div>
+                                    <!-- Button ID For Content ID -->
+                                    <a id="btn-1" class="btn-floating waves-effect waves-light btn-large achievement-more-btn custom-btn"
+                                       data-aos="zoom-in" data-aos-delay="300">
+                                        <i class="fa fa-external-link"></i>
+                                    </a>
+                                </div>
 
-                        <!-- Content ID -->
-                        <div id="content-1" class="achievement-content">
-                            <!-- Description -->
-                            <p class="text-center">
-                                
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ./1st Cert -->
-            <!-- 2nd Cert -->
-            <div class="col col-md-4 col-sm-6 col-xs-12">
-                <div class="achievement">
-                    <div class="achievement-top-bar">
-                        <!-- Cert Title Here -->
-                        <h5 class="text-center text-capitalize">Creating UI Elements in Unreal Engine</h5>
-                    </div>
-                    <div class="achievement-inner">
-                        <div class="achievement-header">
-                            <div class="achievement-heading">
-                                <!-- Icon and Date -->
-                                <h6 class="text-center">Digital Tutors - May, 2015</h6>
+                                <!-- Content ID -->
+                                <div id="content-1" class="achievement-content">
+                                    <!-- Description -->
+                                    <p class="text-center">
+
+                                    </p>
+                                </div>
                             </div>
-
-                            <!-- Button ID For Content ID -->
-                            <a id="btn-1" class="btn-floating waves-effect waves-light btn-large achievement-more-btn custom-btn"
-                               data-aos="zoom-in" data-aos-delay="300">
-                                <i class="fa fa-external-link"></i>
-                            </a>
-                        </div>
-
-                        <!-- Content ID -->
-                        <div id="content-1" class="achievement-content">
-                            <!-- Description -->
-                            <p class="text-center">
-                                
-                            </p>
                         </div>
                     </div>
-                </div>
-            </div>
-            <!-- ./2nd Cert -->
-            <!-- 3rd Cert -->
-            <div class="col col-md-4 col-sm-6 col-xs-12">
-                <div class="achievement">
-                    <div class="achievement-top-bar">
-                        <!-- Cert Title Here -->
-                        <h5 class="text-center text-capitalize">Game Asset Production Pipeline in Unreal Engine</h5>
-                    </div>
-                    <div class="achievement-inner">
-                        <div class="achievement-header">
-                            <div class="achievement-heading">
-                                <!-- Icon and Date -->
-                                <h6 class="text-center">Digital Tutors - May, 2015</h6>
+                    <!-- ./1st Cert -->
+                    <!-- 2nd Cert -->
+                    <div class="col col-md-4 col-sm-6 col-xs-12">
+                        <div class="achievement">
+                            <div class="achievement-top-bar">
+                                <!-- Cert Title Here -->
+                                <h5 class="text-center text-capitalize">Creating UI Elements in Unreal Engine</h5>
                             </div>
+                            <div class="achievement-inner">
+                                <div class="achievement-header">
+                                    <div class="achievement-heading">
+                                        <!-- Icon and Date -->
+                                        <h6 class="text-center">Digital Tutors - May, 2015</h6>
+                                    </div>
 
-                            <!-- Button ID For Content ID -->
-                            <a id="btn-1" class="btn-floating waves-effect waves-light btn-large achievement-more-btn custom-btn"
-                               data-aos="zoom-in" data-aos-delay="300">
-                                <i class="fa fa-external-link"></i>
-                            </a>
+                                    <!-- Button ID For Content ID -->
+                                    <a id="btn-1" class="btn-floating waves-effect waves-light btn-large achievement-more-btn custom-btn"
+                                       data-aos="zoom-in" data-aos-delay="300">
+                                        <i class="fa fa-external-link"></i>
+                                    </a>
+                                </div>
+
+                                <!-- Content ID -->
+                                <div id="content-1" class="achievement-content">
+                                    <!-- Description -->
+                                    <p class="text-center">
+
+                                    </p>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                    <!-- ./2nd Cert -->
+                    <!-- 3rd Cert -->
+                    <div class="col col-md-4 col-sm-6 col-xs-12">
+                        <div class="achievement">
+                            <div class="achievement-top-bar">
+                                <!-- Cert Title Here -->
+                                <h5 class="text-center text-capitalize">Game Asset Production Pipeline in Unreal Engine</h5>
+                            </div>
+                            <div class="achievement-inner">
+                                <div class="achievement-header">
+                                    <div class="achievement-heading">
+                                        <!-- Icon and Date -->
+                                        <h6 class="text-center">Digital Tutors - May, 2015</h6>
+                                    </div>
 
-                        <!-- Content ID -->
-                        <div id="content-1" class="achievement-content">
-                            <!-- Description -->
-                            <p class="text-center">
-                                
-                            </p>
+                                    <!-- Button ID For Content ID -->
+                                    <a id="btn-1" class="btn-floating waves-effect waves-light btn-large achievement-more-btn custom-btn"
+                                       data-aos="zoom-in" data-aos-delay="300">
+                                        <i class="fa fa-external-link"></i>
+                                    </a>
+                                </div>
+
+                                <!-- Content ID -->
+                                <div id="content-1" class="achievement-content">
+                                    <!-- Description -->
+                                    <p class="text-center">
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ./3rd Cert -->
+
+                </div>
+            </div>
+        </section>
+        <!--==========================================
+                           INTEREST
+        ===========================================-->
+        <section id="interest" class="section">
+            <h4 class="text-uppercase text-center">Interests</h4>
+            <div class="container">
+                <div class="row">
+                    <div class="col col-md-12 col-sm-12 col-xs-12">
+                        <div class="card interest">
+                            <div class="row">
+                                <div class="col col-md-12 col-sm-12 col-xs-12">
+
+                                    <!-- Some brief about your interest -->
+                                    <p class="text-center">
+
+                                    </p>
+                                </div>
+
+                                <!-- Interest Topic Icon and Name -->
+                                <ul class="col-md-12 col-sm-12 col-xs-12 text-center list-inline">
+                                    <li class="interest-topic">
+                                        <i class="fa fa-film"></i>
+                                        <span>Videography</span>
+                                    </li>
+                                    <li class="interest-topic">
+                                        <i class="fa fa-code"></i>
+                                        <span>Development</span>
+                                    </li>
+                                    <li class="interest-topic">
+                                        <i class="fa fa-pencil"></i>
+                                        <span>Writing</span>
+                                    </li>
+                                    <li class="interest-topic">
+                                        <i class="fa fa-headphones"></i>
+                                        <span>Music</span>
+                                    </li>
+
+                                    <li class="interest-topic">
+                                        <i class="fa fa-globe"></i>
+                                        <span>Traveling</span>
+                                    </li>
+
+                                    <li class="interest-topic">
+                                        <i class="fa fa-gamepad"></i>
+                                        <span>Gaming</span>
+                                    </li>
+                                    <li class="interest-topic">
+                                        <i class="fa fa-camera"></i>
+                                        <span>Photography</span>
+                                    </li>
+                                </ul>
+                                <!-- ./Interest Topic Icon and Name -->
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- ./3rd Cert -->
-
-        </div>
-    </div>
-</section>
-<!--==========================================
-                   INTEREST
-===========================================-->
-<section id="interest" class="section">
-    <h4 class="text-uppercase text-center">Interests</h4>
-    <div class="container">
-        <div class="row">
-            <div class="col col-md-12 col-sm-12 col-xs-12">
-                <div class="card interest">
-                    <div class="row">
-                        <div class="col col-md-12 col-sm-12 col-xs-12">
-
-                            <!-- Some brief about your interest -->
-                            <p class="text-center">
-                                
-                            </p>
-                        </div>
-
-                        <!-- Interest Topic Icon and Name -->
-                        <ul class="col-md-12 col-sm-12 col-xs-12 text-center list-inline">
-                            <li class="interest-topic">
-                                <i class="fa fa-film"></i>
-                                <span>Videography</span>
-                            </li>
-                            <li class="interest-topic">
-                                <i class="fa fa-code"></i>
-                                <span>Development</span>
-                            </li>
-                            <li class="interest-topic">
-                                <i class="fa fa-pencil"></i>
-                                <span>Writing</span>
-                            </li>
-                            <li class="interest-topic">
-                                <i class="fa fa-headphones"></i>
-                                <span>Music</span>
-                            </li>
-
-                            <li class="interest-topic">
-                                <i class="fa fa-globe"></i>
-                                <span>Traveling</span>
-                            </li>
-
-                            <li class="interest-topic">
-                                <i class="fa fa-gamepad"></i>
-                                <span>Gaming</span>
-                            </li>
-                            <li class="interest-topic">
-                                <i class="fa fa-camera"></i>
-                                <span>Photography</span>
-                            </li>
-                        </ul>
-                        <!-- ./Interest Topic Icon and Name -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
         </div>
     </section>
     <!-- Resume Over -->
-    <div id='rss-wrap'>
-  <div id='rss-header'>
-    <div id='rss-title'>
-      Live RSS-Reader Test
-    </div>
-    <div id='current-feed'></div>
-  </div>
-
-<div id='rss-container'></div>
-</div>
     <!-- Blog Post -->
     <section id="blog-section" class="blog-section">
         <!-- Section Header -->
@@ -1242,85 +1250,7 @@ Simulation and Game Design</h3>
         </div>
         <!-- Section Header Over-->
         <div class="container no-padding">
-            <div class="blog-inner">
-                <div class="col-md-4 col-sm-6 post">
-                    <div class="entry-date">
-                        <div class="date">
-                            <h2>07</h2>
-                            <h4>MAY</h4>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-heart"></i>
-                            <i class="fa fa-comments"></i>
-                        </div>
-                    </div>
-                    <div class="entry-cover">
-                        <img src="images/blog/section/image1.jpg" alt="cover image" />
-                        <div class="entry-header">
-                            <a href="blog-post.html" class="entry-title">A BEAUTIFUL VIEW</a>
-                        </div>
-                        <div class="post-date">
-                            <span class="entry-date">November 21, 2013</span>
-                            <span class="comments-link"><a href="#">5 COMMENTS</a></span>
-                            <span class="post-views"><i class="fa fa-heart"></i> 23</span>
-                        </div>
-                        <p class="post-item">Vestibulum ac diam sit amet quam vehicu la elementum sed sit amet dui. Praesent sap ien massa, convallis a pellentesque nec, egestas non nisvamus.</p>
-                        <a href="blog-post.html" class="read-more">read more</a>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-sm-6 post">
-                    <div class="entry-date">
-                        <div class="date">
-                            <h2>07</h2>
-                            <h4>MAY</h4>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-heart"></i>
-                            <i class="fa fa-comments"></i>
-                        </div>
-                    </div>
-                    <div class="entry-cover">
-                        <img src="images/blog/section/image2.jpg" alt="cover image" />
-                        <div class="entry-header">
-                            <a href="blog-post.html" class="entry-title">A BEAUTIFUL VIEW</a>
-                        </div>
-                        <div class="post-date">
-                            <span class="entry-date">November 21, 2013</span>
-                            <span class="comments-link"><a href="#">5 COMMENTS</a></span>
-                            <span class="post-views"><i class="fa fa-heart"></i> 23</span>
-                        </div>
-                        <p class="post-item">Vestibulum ac diam sit amet quam vehicu la elementum sed sit amet dui. Praesent sap ien massa, convallis a pellentesque nec, egestas non nisvamus.</p>
-                        <a href="blog-post.html" class="read-more">read more</a>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-sm-6 post">
-                    <div class="entry-date">
-                        <div class="date">
-                            <h2>07</h2>
-                            <h4>MAY</h4>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-heart"></i>
-                            <i class="fa fa-comments"></i>
-                        </div>
-                    </div>
-                    <div class="entry-cover">
-                        <img src="images/blog/section/image3.jpg" alt="cover image" />
-                        <div class="entry-header">
-                            <a href="blog-post.html" class="entry-title">A BEAUTIFUL VIEW</a>
-                        </div>
-                        <div class="post-date">
-                            <span class="entry-date">November 21, 2013</span>
-                            <span class="comments-link"><a href="#">5 COMMENTS</a></span>
-                            <span class="post-views"><i class="fa fa-heart"></i> 23</span>
-                        </div>
-                        <p class="post-item">Vestibulum ac diam sit amet quam vehicu la elementum sed sit amet dui. Praesent sap ien massa, convallis a pellentesque nec, egestas non nisvamus.</p>
-                        <a href="blog-post.html" class="read-more">read more</a>
-                    </div>
-                </div>
-            </div>
+        <div id="divRss"></div>
         </div>
     </section>
     <!-- Blog Post Over -->
@@ -1437,9 +1367,6 @@ Simulation and Game Design</h3>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha256-0rguYS0qgS6L4qVzANq4kjxPLtvnp5nn2nB5G1lWRv4=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
     -->
-    <script src="libraries/jquery.min.js"></script>
-    <script srt="libraries/jquery.rss.js"></script>
-    <script src="libararies/moment.min.js"></script>
     <script src="libraries/jquery.easing.min.js"></script><!-- Easing Animation Effect -->
     <script src="libraries/bootstrap/bootstrap.min.js"></script> <!-- Core Bootstrap v3.2.0 -->
     <script src="libraries/bootstrap/ie-emulation-modes-warning.js"></script> <!-- Just for debugging purposes. -->
