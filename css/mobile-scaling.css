@@ -52,6 +52,11 @@
   #aboutmemenuitem {
     display: none;
   }
+.showbox-box {
+    margin-top: 5%;
+    margin-left: 100px;
+    padding-left: 35px;
+}
 .showbox-inner {
     transform: skew(0deg);
     -webkit-transform: skew(0deg);
