@@ -37,9 +37,10 @@ label {
       color: #4183C4; }
   .gh-profile-card .name {
     display: block;
-    font-size: 1.2em;
+    font-size: 200%;
     font-weight: bold;
-    color: #222; }
+    color: #FFF;
+    margin-top: 4%; }
   .gh-profile-card .error {
     font-size: 0.8em;
     color: #444;
@@ -53,7 +54,7 @@ label {
       text-align: center;
       font-weight: bold; }
   .gh-profile-card .profile {
-    background: #FFF;
+    background: #a80000;
     overflow: hidden;
     padding: 15px 10px;
     padding-bottom: 0;
@@ -65,25 +66,24 @@ label {
     clear: both;
     margin: 0 -10px;
     padding: 10px;
-    border-top: 1px solid #DEDEDE;
     font-size: 0.8em; }
   .gh-profile-card .languages::before {
     position: absolute;
     top: -0.7em;
-    background: #FFF;
     padding-right: 5px;
     content: 'Top languages';
     font-style: italic;
-    color: #555; }
+    color: #FFF;
+    font-size: 150%; }
   .gh-profile-card .languages li {
     display: inline-block;
-    color: #444;
+    color: #FFF;
     font-weight: bold;
     margin-left: 10px; }
     .gh-profile-card .languages li::after {
       content: '\2022';
       margin-left: 10px;
-      color: #999; }
+      color: #FFF; }
     .gh-profile-card .languages li:last-child::after {
       content: ''; }
   .gh-profile-card .followMe {
@@ -131,26 +131,23 @@ label {
     border-color: inherit;
     transform: rotate(-45deg); }
   .gh-profile-card .avatar {
-    width: 64px;
-    height: 64px;
+    width: 10%;
+    height: 10%;
     float: left;
-    margin: 0 10px 15px 0;
-    margin-left: 0;
-    border-radius: 5px;
-    box-shadow: 0 0 2px 0 #DDD; }
+    margin: 2% 2% 2.5% 0;
+    margin-left: 2%;
+    border-radius: 50%;
+     }
   .gh-profile-card .repos {
     clear: both; }
   .gh-profile-card .repos .header {
     display: block;
     width: 100%;
     font-weight: bold;
-    background: #EAEAEA;
-    background-image: linear-gradient(#FAFAFA, #EAEAEA);
-    border: solid #D5D5D5;
-    border-width: 1px 0;
-    color: #555;
-    font-size: 0.8em;
-    padding: 5px 10px; }
+    background: #a80000;
+    color: #FFF;
+    padding: 5px 10px;
+     }
   .gh-profile-card .repos a {
     position: relative;
     display: block;
