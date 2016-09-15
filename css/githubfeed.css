@@ -28,14 +28,7 @@ label {
   /* followers number */
   /* List of repositories */ }
   .gh-profile-card {
-    width: 280px;
-    border-radius: 5px;
     font-size: 16px;
-    font-family: Helvetica;
-    background: #FAFAFA;
-    border-width: 1px 1px 2px;
-    border-style: solid;
-    border-color: #DDD;
     overflow: hidden; }
   .gh-profile-card a {
     text-decoration: none;
