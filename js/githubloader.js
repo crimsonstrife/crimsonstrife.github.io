@@ -296,7 +296,7 @@ var GitHubCard = (function() {
 			template: '#github-card',
 			sortBy: 'updateTime', // possible: 'stars', 'updateTime'
 			reposHeaderText: 'Last Updated',
-			maxRepos: 8,
+			maxRepos: 6,
 			githubIcon: true
 		};
 		if (!options) {
@@ -429,7 +429,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	var options = {
 		sortBy: 'updateTime', // possible: 'stars', 'updateTime'
 		reposHeaderText: 'Last updated',
-		maxRepos: 8
+		maxRepos: 6
 	};
 	var widget = new GitHubCard(options);
 
