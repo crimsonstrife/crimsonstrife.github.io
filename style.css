@@ -604,7 +604,7 @@ a { outline: 0 !important; }
 }
 
 .portfolio-block-hover { 
-	background-color: rgba(231, 76, 60, 0.90); 
+	background-color: #a80000; 
 	display: none; 
 	position: absolute; 
 	height: 100%; 
@@ -1186,7 +1186,7 @@ a { outline: 0 !important; }
 	position: absolute;
 	height: 100%;
 	width: 100%;
-	background-color: rgba(231,76,49,0.9);
+	background-color: #a80000;
 	display: none;
 	top: 0;
 	color: #fff;
