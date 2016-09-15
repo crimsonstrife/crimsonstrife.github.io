@@ -14,7 +14,7 @@
 		- Navigation Menu
 	3. About
 	4. Features
-	5. Our Works
+	5. My Works
 	6. Why Choose
 	7. How I Work
 	8. Application Section
@@ -550,7 +550,7 @@ a { outline: 0 !important; }
 }
 
 /* ## Our Work ## */
-.our-work {
+.my-work {
 	width: 100%;
 	display: inline-block;
 }
@@ -1175,7 +1175,7 @@ a { outline: 0 !important; }
 }
 
 /* ## Our Genius ## */
-.our-genius {
+.my-genius {
 	display: inline-block;
 	width: 100%;
 }
@@ -1197,21 +1197,21 @@ a { outline: 0 !important; }
 	font-size: 24px;
 }
 
-.our-genius .style1:hover .hover,
-.our-genius .style3:hover .hover, 
-.our-genius .style4:hover .hover,
-.our-genius .style5:hover .hover, 
-.our-genius .style6:hover .hover,
-.our-genius .style7:hover .hover {
+.my-genius .style1:hover .hover,
+.my-genius .style3:hover .hover, 
+.my-genius .style4:hover .hover,
+.my-genius .style5:hover .hover, 
+.my-genius .style6:hover .hover,
+.my-genius .style7:hover .hover {
 	display: block;
 }
-.our-genius .style1 svg,
-.our-genius .style2 svg,
-.our-genius .style3 svg,
-.our-genius .style4 svg,
-.our-genius .style5 svg,
-.our-genius .style6 svg,
-.our-genius .style7 svg {
+.my-genius .style1 svg,
+.my-genius .style2 svg,
+.my-genius .style3 svg,
+.my-genius .style4 svg,
+.my-genius .style5 svg,
+.my-genius .style6 svg,
+.my-genius .style7 svg {
 	width: 100%;
 	height: auto;
 	float: left;
@@ -1219,38 +1219,38 @@ a { outline: 0 !important; }
 	left: 0;
 }
 /*
-.our-genius .style2 {
+.my-genius .style2 {
 	width: 50%;
 	height: 364px;
 }*/
 
-.our-genius .style1,
-.our-genius .style2,
-.our-genius .style3, 
-.our-genius .style4, 
-.our-genius .style5, 
-.our-genius .style6, 
-.our-genius .style7 {
+.my-genius .style1,
+.my-genius .style2,
+.my-genius .style3, 
+.my-genius .style4, 
+.my-genius .style5, 
+.my-genius .style6, 
+.my-genius .style7 {
 	position: relative;
 	float: left;
 }
 /*
-.our-genius .col-md-6 img {
+.my-genius .col-md-6 img {
 	max-width: auto;
 }
 */
-.our-genius .style1 img,
-.our-genius .style2 img,
-.our-genius .style3 img,
-.our-genius .style4 img,
-.our-genius .style5 img,
-.our-genius .style6 img,
-.our-genius .style7 img{
+.my-genius .style1 img,
+.my-genius .style2 img,
+.my-genius .style3 img,
+.my-genius .style4 img,
+.my-genius .style5 img,
+.my-genius .style6 img,
+.my-genius .style7 img{
 	float: left;
 	width: auto !important;
 }
 
-.our-genius .style1 {	
+.my-genius .style1 {	
 	float:left;
 	position: relative;
 	/*Chrome,Safari*/
@@ -1262,7 +1262,7 @@ a { outline: 0 !important; }
 	-moz-clip-path: polygon(0px 424px,491px 500px,415px 0px,0px 0px);	
 }
 
-.our-genius .style2 {
+.my-genius .style2 {
 	overflow:visible;
 	float: left;
 	position: relative;
@@ -1274,7 +1274,7 @@ a { outline: 0 !important; }
 	-moz-clip-path: polygon(80px 532px,1005px 417px,1061px -3px,0px 0px);
 }
 
-.our-genius .style3 {
+.my-genius .style3 {
 	float: left;
 	margin-left: -54px;
 	position: relative;
@@ -1286,7 +1286,7 @@ a { outline: 0 !important; }
 	z-index: 1;
 }
 
-.our-genius .style4 {
+.my-genius .style4 {
 	float: left;
 	margin-left: 0px;
 	position: relative;
@@ -1297,7 +1297,7 @@ a { outline: 0 !important; }
 	-moz-clip-path: polygon(0px 405px,526px 400px,476px 18px,0px 0px);
 }
 
-.our-genius .style5 {
+.my-genius .style5 {
 	float: left;
 	margin-left: -60px;
 	position: relative;
@@ -1309,7 +1309,7 @@ a { outline: 0 !important; }
 	-moz-clip-path: polygon(50px 400px,480px 400px,480px 0px,5px 0px);
 }
 
-.our-genius .style6 {
+.my-genius .style6 {
 	float: left;
 	margin-left: 0px;
 	position: relative;
@@ -1321,7 +1321,7 @@ a { outline: 0 !important; }
 	-moz-clip-path: polygon(0px 400px,430px 400px,473px 0px,0px 0px);
 }
 
-.our-genius .style7 {
+.my-genius .style7 {
 	float: left;
 	margin-left: -58px;
 	position: relative;
@@ -1340,7 +1340,7 @@ a { outline: 0 !important; }
 #style7-hover {
 	display: none;
 }
-.our-genius  #style1-hover.style2 {
+.my-genius  #style1-hover.style2 {
 	overflow:visible;
 	float: left;
 	position: relative;
@@ -1352,7 +1352,7 @@ a { outline: 0 !important; }
 	/*Firefox*/
 	-moz-clip-path: polygon(80px 532px,1005px 417px,1061px -3px,0px 0px);
 }
-.our-genius  #style3-hover.style2 {
+.my-genius  #style3-hover.style2 {
 	overflow:visible;
 	float: left;
 	position: relative;
@@ -1364,7 +1364,7 @@ a { outline: 0 !important; }
 	/*Firefox*/
 	-moz-clip-path: polygon(80px 532px,1005px 417px,1061px -3px,0px 0px);
 }
-.our-genius  #style4-hover.style2 {
+.my-genius  #style4-hover.style2 {
 	overflow:visible;
 	float: left;
 	position: relative;
@@ -1376,7 +1376,7 @@ a { outline: 0 !important; }
 	/*Firefox*/
 	-moz-clip-path: polygon(80px 532px,1005px 417px,1061px -3px,0px 0px);
 }
-.our-genius  #style5-hover.style2 {
+.my-genius  #style5-hover.style2 {
 	overflow:visible;
 	float: left;
 	position: relative;
@@ -1387,7 +1387,7 @@ a { outline: 0 !important; }
 	/*Firefox*/
 	-moz-clip-path: polygon(80px 532px,1005px 417px,1061px -3px,0px 0px);
 }
-.our-genius  #style6-hover.style2 {
+.my-genius  #style6-hover.style2 {
 	overflow:visible;
 	float: left;
 	position: relative;
@@ -1398,7 +1398,7 @@ a { outline: 0 !important; }
 	/*Firefox*/
 	-moz-clip-path: polygon(80px 532px,1005px 417px,1061px -3px,0px 0px);
 }
-.our-genius  #style7-hover.style2 {
+.my-genius  #style7-hover.style2 {
 	overflow:visible;
 	float: left;
 	position: relative;
