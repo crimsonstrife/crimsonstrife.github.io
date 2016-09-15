@@ -87,7 +87,9 @@ label {
     .gh-profile-card .languages li:last-child::after {
       content: ''; }
   .gh-profile-card .followMe {
-    margin-top: 3px; }
+    margin-top: 3px;
+    float: right;
+  }
   .gh-profile-card .follow-button {
     font-size: 0.8em;
     color: #333;
