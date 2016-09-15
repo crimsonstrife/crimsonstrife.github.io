@@ -293,7 +293,7 @@
 	.we-perfection-slope:before
 	{
 		border: none;
-		background-color: rgba(231, 76, 68, 0.9);
+		background-color: rgba(168, 0, 0, 0.9);
 		content: "";
 		height: 110%;
 		top: -79px;
@@ -305,7 +305,7 @@
 	}
 	.clean-code:before {
 		border: none;
-		background-color: rgba(231, 76, 68, 0.9);
+		background-color: rgba(168, 0, 0, 0.9);
 		content: "";
 		height: 120%;
 		top: -25px;
@@ -401,7 +401,7 @@
 		width: 52.2%;
 		height: 120%;
 		border: none;
-		background-color: rgba(231,76,68,0.9);
+		background-color: rgba(168,0,0,0.9);
 		top: -83px;
 		transform: rotate(-15deg);
 		-webkit-transform: rotate(-15deg);
@@ -416,11 +416,11 @@
 		-webkit-transform: rotate(15deg);
 		-moz-transform: rotate(15deg);
 		-o-transform: rotate(15deg);
-		background-color: rgba(231,76,68,0.9);
+		background-color: rgba(168,0,0,0.9);
 		top: 0px;
 	}
 	.we-launch-slope:before {
-		border-color: rgba(231, 76, 68, 0.9) transparent;
+		border-color: rgba(168, 0, 0, 0.9) transparent;
 		border-style: solid;
 		border-width: 0px 200px 800px 0;
 		height: 100%;
@@ -494,7 +494,7 @@
 		width: 52.8%;
 		height: 130%;
 		border: none;
-		background-color: rgba(231,76,68,0.9);
+		background-color: rgba(168,0,0,0.9);
 		top: -83px;
 		transform: rotate(-15deg);
 		-webkit-transform: rotate(-15deg);
@@ -509,12 +509,12 @@
 		-webkit-transform: rotate(15deg);
 		-moz-transform: rotate(15deg);
 		-o-transform: rotate(15deg);
-		background-color: rgba(231,76,68,0.9);
+		background-color: rgba(168,0,0,0.9);
 		top: 0px;
 		right: -30px;
 	}
 	.we-launch-slope:before {
-		border-color: rgba(231, 76, 68, 0.9) transparent;
+		border-color: rgba(168, 0, 0, 0.9) transparent;
 		border-style: solid;
 		border-width: 0px 200px 800px 0;
 		height: 100%;
@@ -1089,8 +1089,8 @@
 	.research-slope:before {
 		width: 100%; 
 		height: 100%; 
-		border-top: 0px solid rgba(231,76,68,0.9); 
-		border-bottom: 340px solid rgba(231,76,68,0.9); 
+		border-top: 0px solid rgba(168,0,0,0.9); 
+		border-bottom: 340px solid rgba(168,0,0,0.9); 
 		border-left: 0px solid transparent; 
 		border-right: 0px solid transparent; 
 		top: auto;
@@ -1146,8 +1146,8 @@
 	.we-perfection-slope:before {
 		width: 100%; 
 		height: 100%; 
-		border-top: 0px solid rgba(231,76,68,0.9); 
-		border-bottom: 340px solid rgba(231,76,68,0.9); 
+		border-top: 0px solid rgba(168,0,0,0.9); 
+		border-bottom: 340px solid rgba(168,0,0,0.9); 
 		border-left: 0px solid transparent; 
 		border-right: 0px solid transparent; 
 		content: "";
@@ -1179,8 +1179,8 @@
 	.clean-code:before {
 		width: 100%; 
 		height: 100%; 
-		border-top: 0px solid rgba(231,76,68,0.9); 
-		border-bottom: 340px solid rgba(231,76,68,0.9); 
+		border-top: 0px solid rgba(168,0,0,0.9); 
+		border-bottom: 340px solid rgba(168,0,0,0.9); 
 		border-left: 0px solid transparent; 
 		border-right: 0px solid transparent; 
 		content: "";
@@ -1204,8 +1204,8 @@
 	.we-launch-slope:before {
 		width: 100%; 
 		height: 100%; 
-		border-top: 0px solid rgba(231,76,68,0.9); 
-		border-bottom: 340px solid rgba(231,76,68,0.9); 
+		border-top: 0px solid rgba(168,0,0,0.9); 
+		border-bottom: 340px solid rgba(168,0,0,0.9); 
 		border-left: 0px solid transparent; 
 		border-right: 0px solid transparent; 
 		content: "";
@@ -1395,7 +1395,7 @@
 		height: auto;
 	}
 	.features-section:before {
-		background-color: rgba(231,76,60,0.90);
+		background-color: rgba(168,0,0,0.90);
 		border: none;
 		width: 100%;
 	}	
@@ -1422,7 +1422,7 @@
 	/* ## Why Choose ## */
 	.why-choose:before {
 		position: absolute;
-		background-color: rgba(231,76,60,0.90);
+		background-color: rgba(168,0,0,0.90);
 		border: none;
 		width: 100%;
 	}
@@ -1476,8 +1476,8 @@
 	.research-slope:before {
 		width: 100%; 
 		height: 100%; 
-		border-top: 0px solid rgba(231,76,68,0.9); 
-		border-bottom: 440px solid rgba(231,76,68,0.9); 
+		border-top: 0px solid rgba(168,0,0,0.9); 
+		border-bottom: 440px solid rgba(168,0,0,0.9); 
 		border-left: 0px solid transparent; 
 		border-right: 0px solid transparent; 
 		content: "";
@@ -1535,8 +1535,8 @@
 	.we-perfection-slope:before {
 		width: 100%; 
 		height: 100%; 
-		border-top: 0px solid rgba(231,76,68,0.9); 
-		border-bottom: 440px solid rgba(231,76,68,0.9); 
+		border-top: 0px solid rgba(168,0,0,0.9); 
+		border-bottom: 440px solid rgba(168,0,0,0.9); 
 		border-left: 0px solid transparent; 
 		border-right: 0px solid transparent; 
 		content: "";
@@ -1564,8 +1564,8 @@
 	.clean-code:before {
 		width: 100%; 
 		height: 100%; 
-		border-top: 0px solid rgba(231,76,68,0.9); 
-		border-bottom: 350px solid rgba(231,76,68,0.9); 
+		border-top: 0px solid rgba(168,0,0,0.9); 
+		border-bottom: 350px solid rgba(168,0,0,0.9); 
 		border-left: 0px solid transparent; 
 		border-right: 0px solid transparent; 
 		content: "";
@@ -1591,8 +1591,8 @@
 	.we-launch-slope:before {
 		width: 100%; 
 		height: 100%; 
-		border-top: 0px solid rgba(231,76,68,0.9); 
-		border-bottom: 300px solid rgba(231,76,68,0.9); 
+		border-top: 0px solid rgba(168,0,0,0.9); 
+		border-bottom: 300px solid rgba(168,0,0,0.9); 
 		border-left: 0px solid transparent; 
 		border-right: 0px solid transparent; 
 		content: "";
@@ -1835,7 +1835,7 @@
 	
 	/* ## Features Section ## */
 	.features-section:before {
-		background-color: rgba(231,76,60,0.90);
+		background-color: rgba(168,0,0,0.90);
 		border: none;
 		width: 100%;
 	}	
@@ -1919,8 +1919,8 @@
 		padding: 63px 0;
 	}
 	.project-section:before {
-		border-bottom: 0 solid #e74c3c; 
-		border-top: 550px solid #e74c3c; 
+		border-bottom: 0 solid #a80000; 
+		border-top: 550px solid #a80000; 
 		border-left: 0 solid transparent; 
 		border-right: 120px solid transparent; 
 		width: 60%;
