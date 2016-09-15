@@ -12,3 +12,31 @@
     display: none;
   }
 }
+@media screen and (max-width: 720px) {
+  .about-section {
+    visibility: hidden;
+    clear: both;
+    float: left;
+    margin: 10px auto 5px 20px;
+    width: 28%;
+    display: none;
+  }
+  #aboutmemenuitem {
+    display: none;
+  }
+.showbox-inner {
+    transform: skew(0deg);
+    -webkit-transform: skew(0deg);
+    -moz-transform: skew(0deg);
+    -o-transform: skew(0deg);
+    -ms-transform: skew(0deg);
+    margin-left: 8%;
+}
+.showbox-box .block-title, .showbox-box p, .showbox h2 {
+    transform: skew(0deg);
+    -webkit-transform: skew(0deg);
+    -moz-transform: skew(0deg);
+    -o-transform: skew(0deg);
+    -ms-transform: skew(0deg);
+}
+}
