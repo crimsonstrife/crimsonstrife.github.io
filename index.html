@@ -19,12 +19,6 @@ behind the curtain
     <meta name="author" content="Patrick Barnhardt">
     <title>The Work of Patrick Barnhardt</title>
     <link href="" rel="icon" />
-    <!-- Let's load Bootstrap from a CDN, just to make it easier to update
-    Github hates async <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    Now pull in libraries, may replace these with CDN or Async options later
-    Bring back for live site <script src="https://use.fontawesome.com/b235dceba9.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css" integrity="sha256-fDncdclXlALqR3HOO34OGHxek91q8ApmD3gGldM+Rng=" crossorigin="anonymous" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css" integrity="sha256-2DoaRRHfHWna6mpfGImxAx/cu0vFGpqEkcf/YXf+yk4=" crossorigin="anonymous" /> -->
     <link href="libraries/materialize.css" rel="stylesheet" />
     <link href="libraries/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="libraries/owl-carousel/owl.carousel.css" rel="stylesheet" /> <!-- Core Owl Carousel CSS File  *	v1.3.3 -->
@@ -40,7 +34,6 @@ behind the curtain
     <link href="css/mobile-scaling.css" rel="stylesheet" />
     <link href="css/rss.css" rel="stylesheet" />
     <link href="css/githubfeed.css" rel="stylesheet" />
-    <!--link id="color" href="css/color-schemes/default.css" rel="stylesheet"/-->
     <link href="css/media.css" rel="stylesheet" />
     <!-- Let's load up some fonts -->
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
@@ -90,7 +83,7 @@ behind the curtain
     <div id="photos-slider" class="slider-section">
         <div class="slides-container">
             <!-- slide item 1 -->
-            <div class="slide-item">
+            <div class="slide-item" style="overflow: hidden;">
                 <img src="images/slider/headerimage.png" alt="Header Image" />
                 <div class="slide-title">
                     <span class="inner-circle">
@@ -1385,10 +1378,6 @@ behind the curtain
         * never gonna say goodbye. Never gonna tell a lie and hurt you. -->
     <!-- Hidden iframe for submitting forms -->
     <iframe src="about:blank" name="hidden" class="hide"></iframe> <!-- I hate it, iframes are hacky hacky hacky, but I need it -->
-    <!-- Javascript time! -->
-    <!-- Let's load the CDN/Asyncrous version of Bootstrap JS, and Jquery and we'll use a js-based CDN to keep FontAwesome up to date -->
-    <!-- <script src="https://use.fontawesome.com/b235dceba9.js"></script> --> <!-- Moved back to top because things got breaky -->
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
     <!-- And now, getting all of this to work half decent in the retarded step brother of the browser family, Internet Fucking Explorer -->
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// so please just don't -->
@@ -1397,11 +1386,6 @@ behind the curtain
     /* [then] Burn in a fire */
       <script src="js/html5/respond.min.js"></script>
     <![endif]-->
-    <!-- jQuery Include -->
-    <!-- <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha256-0rguYS0qgS6L4qVzANq4kjxPLtvnp5nn2nB5G1lWRv4=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
-    -->
     <script src="libraries/jquery.easing.min.js"></script><!-- Easing Animation Effect -->
     <script src="libraries/bootstrap/bootstrap.min.js"></script> <!-- Core Bootstrap v3.2.0 -->
     <script src="libraries/bootstrap/ie-emulation-modes-warning.js"></script> <!-- Just for debugging purposes. -->
@@ -1416,7 +1400,6 @@ behind the curtain
     <script src="libraries/jquery.appear.js"></script> <!-- It Loads jQuery when element is appears -->
     <script src="libraries/jquery.knob.js"></script> <!-- Used for Loading Circle -->
     <script src="libraries/wow.min.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js" integrity="sha256-4OK8Th0+5QJMThqlimytmqQvxjqMic4YATocjyuUh1w=" crossorigin="anonymous"></script>  -->
     <script src="libraries/owl-carousel/owl.carousel.min.js"></script>
     <script src="libraries/video/jquery.mb.YTPlayer.js"></script>
     <script src="libraries/lightbox2/js/lightbox.min.js"></script>
