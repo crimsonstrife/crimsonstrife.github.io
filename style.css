@@ -2999,3 +2999,7 @@ progress::-webkit-progress-value {
 progress::-moz-progress-bar {
     background-color: #329ad1;
 }
+/* hide some sketchfab nonsense */
+.viewer .titlebar {
+    display: none !important;
+}
