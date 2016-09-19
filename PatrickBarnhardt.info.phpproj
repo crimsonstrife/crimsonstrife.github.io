@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -196,5 +197,11 @@
     <Folder Include="libraries\portfolio-filter" />
     <Folder Include="libraries\video" />
     <Folder Include="libraries" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\githubfeed.css" />
+    <Content Include="css\mobile-scaling.css" />
+    <Content Include="css\rss.css" />
+    <Content Include="css\syntaxhighlight.css" />
   </ItemGroup>
 </Project>
