@@ -11,6 +11,7 @@ to take a peek
 behind the curtain
 -->
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,8 +22,10 @@ behind the curtain
     <link href="" rel="icon" />
     <link href="libraries/materialize.css" rel="stylesheet" />
     <link href="libraries/bootstrap/bootstrap.min.css" rel="stylesheet" />
-    <link href="libraries/owl-carousel/owl.carousel.css" rel="stylesheet" /> <!-- Core Owl Carousel CSS File  *	v1.3.3 -->
-    <link href="libraries/owl-carousel/owl.theme.css" rel="stylesheet" /> <!-- Core Owl Carousel CSS Theme  File  *	v1.3.3 -->
+    <link href="libraries/owl-carousel/owl.carousel.css" rel="stylesheet" />
+    <!-- Core Owl Carousel CSS File  *	v1.3.3 -->
+    <link href="libraries/owl-carousel/owl.theme.css" rel="stylesheet" />
+    <!-- Core Owl Carousel CSS Theme  File  *	v1.3.3 -->
     <link href="libraries/fonts/font-awesome.min.css" rel="stylesheet" />
     <link href="libraries/fonts/elegant/elegant-icon.css" rel="stylesheet" />
     <link href="libraries/animate/animate.min.css" rel="stylesheet" />
@@ -43,18 +46,19 @@ behind the curtain
     <script src="libraries/feedek/js/moment.min.js"></script>
     <script src="libraries/feedek/js/FeedEk.js"></script>
     <script type="text/javascript">
-    // RSS Reader
-    $(document).ready(function () {
-    $('#divRss').FeedEk({
-    FeedUrl: 'https://blog.patrickbarnhardt.info/rss',
-    MaxCount: 3,
-    ShowDesc: true,
-    ShowPubDate: true,
-    DateFormat: 'DD MM',
-    });
-    });
+        // RSS Reader
+        $(document).ready(function() {
+            $('#divRss').FeedEk({
+                FeedUrl: 'https://blog.patrickbarnhardt.info/rss',
+                MaxCount: 3,
+                ShowDesc: true,
+                ShowPubDate: true,
+                DateFormat: 'DD MM',
+            });
+        });
     </script>
 </head>
+
 <body data-offset="200" data-spy="scroll" data-target=".primary-navigation">
     <a id="top"></a>
     <!-- Let's hide this loader for now -->
@@ -79,7 +83,8 @@ behind the curtain
             <li><a href="http://resume.patrickbarnhardt.info">Resume (Static)</a></li>
             <li><a href="#project-section">Contact</a></li>
         </ul>
-    </div><!--/.nav-collapse -->
+    </div>
+    <!--/.nav-collapse -->
     <div id="photos-slider" class="slider-section">
         <div class="slides-container">
             <!-- slide item 1 -->
@@ -88,9 +93,9 @@ behind the curtain
                 <div class="slide-title">
                     <span class="inner-circle">
                         <span>Heidy Ho!</span>
-                        <span>I'm</span>
-                        <span>Patrick</span>
-                        <span>Barnhardt</span>
+                    <span>I'm</span>
+                    <span>Patrick</span>
+                    <span>Barnhardt</span>
                     </span>
                 </div>
                 <div class="slider-content">
@@ -111,7 +116,8 @@ behind the curtain
                         </div>
                     </div>
                 </div>
-            </div><!-- slide item 1 over -->
+            </div>
+            <!-- slide item 1 over -->
         </div>
         <!-- Changed my mind about having the top be a slider, but leaving it in here because lazy -->
         <!-- <nav class="slides-navigation">
@@ -147,7 +153,8 @@ behind the curtain
                         <li><a href="http://resume.patrickbarnhardt.info">Resume (Static)</a></li>
                         <li><a href="#project-section">Contact</a></li>
                     </ul>
-                </div><!--/.nav-collapse -->
+                </div>
+                <!--/.nav-collapse -->
             </nav>
         </div>
     </header>
@@ -157,7 +164,8 @@ behind the curtain
         <div class="container">
             <div class="about-bg">
                 <div class="about-bg-cropper">
-                    <img src="images/CSlogo2.png" alt="about-bg" /><!-- This shit is so broken by IE -->
+                    <img src="images/CSlogo2.png" alt="about-bg" />
+                    <!-- This shit is so broken by IE -->
                     <!-- (╯°□°)╯︵ ┻━┻ -->
                 </div>
                 <h3>Stay In Touch</h3>
@@ -189,7 +197,7 @@ behind the curtain
                     </div>
                     <div class="col-md-8 content-box col-sm-7">
                         <h3 class="block-title">Facebook</h3>
-                        <p>My personal social page.  Ocassionally I upload works in progress.</p>
+                        <p>My personal social page. Ocassionally I upload works in progress.</p>
                     </div>
                 </div>
             </div>
@@ -200,7 +208,7 @@ behind the curtain
                     </div>
                     <div class="col-md-8 content-box col-sm-7">
                         <h3 class="block-title">GitHub (Public)</h3>
-                        <p>My collection of repos for public projects (limited).  Including the source code for this site!</p>
+                        <p>My collection of repos for public projects (limited). Including the source code for this site!</p>
                     </div>
                 </div>
             </div>
@@ -211,7 +219,7 @@ behind the curtain
                     </div>
                     <div class="col-md-8 content-box col-sm-7">
                         <h3 class="block-title">LinkedIn</h3>
-                        <p>Connect with me professionally.  A consistent source for up-to-date work information on me.</p>
+                        <p>Connect with me professionally. A consistent source for up-to-date work information on me.</p>
                     </div>
                 </div>
             </div>
@@ -223,7 +231,7 @@ behind the curtain
                     </div>
                     <div class="col-md-8 content-box col-sm-7">
                         <h3 class="block-title">GitLab (Private)</h3>
-                        <p>My profile on the private GitLab instance for Helical Games.  Commits will not be visible to the public.</p>
+                        <p>My profile on the private GitLab instance for Helical Games. Commits will not be visible to the public.</p>
                     </div>
                 </div>
             </div>
@@ -234,7 +242,7 @@ behind the curtain
                     </div>
                     <div class="col-md-8 content-box col-sm-7">
                         <h3 class="block-title">Google Plus</h3>
-                        <p>My Helical Games associated Google+ profile.  Become part of our developer/fan community.</p>
+                        <p>My Helical Games associated Google+ profile. Become part of our developer/fan community.</p>
                     </div>
                 </div>
             </div>
@@ -252,6 +260,12 @@ behind the curtain
         <!-- GitHub Feed -->
         <div id="github-card" data-username="crimsonstrife"></div>
         <!-- GitHub Feed Over -->
+        <!-- GitHub Calendar -->
+        <div class="calendar">
+            <!-- Loading stuff -->
+            Loading the data just for you.
+        </div>
+        <!-- GitHub Calendar Over -->
         <!-- Portfolio Gallery -->
         <div id="portfolio-gallery-no-space" class="portfolio-gallery">
             <ul class="portfolio-categories sorting-menu">
@@ -264,24 +278,45 @@ behind the curtain
                 <li data-value="tools"><a href="#">Tools</a></li>
                 <li data-value="uxui"><a href="#">UX/UI</a></li>
                 <li data-value="cad"><a href="#">AutoCAD</a></li>
-            </ul><!--/.container -->
+                <li data-value="video"><a href="#">Video</a></li>
+            </ul>
+            <!--/.container -->
             <!-- RIP mobile users -->
             <ul class="portfolio-list no-space">
                 <li class="col-md-3 col-sm-6" data-type="web" data-id="web-1">
                     <div class="portfolio-image-block ratio-square">
-                        <a href=".#"><img src="images/portfolio/HelicalGamesNET.png" class="ratio-inner" alt="portfolio image 1"></a>
+                        <a href=".#"><img src="images/portfolio/HelicalGamesNET-thumb.png" class="ratio-inner" alt="portfolio image 1"></a>
                         <div class="portfolio-block-hover">
                             <a href="images/portfolio/HelicalGamesNET.png" class="portfolio-title" data-lightbox="portfolio" data-title="Image Title 1">Helical Games.net Network</a>
-                            <h4>An ongoing project to design a functioning and efficient network for a development studio and it's fanbase.  I usually avoid CMS systems in favor of coding from scratch, but as this site is to be maintained by other users, I needed to eliminate HTML, PHP, and CSS knowledge as a requirement.</h4>
+                            <h4>An ongoing project to design a functioning and efficient network for a development studio and it's fanbase. I usually avoid CMS systems in favor of coding from scratch, but as this site is to be maintained by other users, I
+                                needed to eliminate HTML, PHP, and CSS knowledge as a requirement.</h4>
                         </div>
                     </div>
                 </li>
                 <li class="col-md-3 col-sm-6" data-type="web" data-id="web-2">
                     <div class="portfolio-image-block ratio-square">
-                        <a href=".#"><img src="images/portfolio/helicalgamescom.png" class="ratio-inner" alt="portfolio image 2"></a>
+                        <a href=".#"><img src="images/portfolio/helicalgamescom-thumb.png" class="ratio-inner" alt="portfolio image 2"></a>
                         <div class="portfolio-block-hover">
                             <a href="images/portfolio/helicalgamescom.png" class="portfolio-title" data-lightbox="portfolio" data-title="Image Title 1">Helical Games.com</a>
-                            <h4>The original design for the Helical Games website, made in 2012.  This design was scraped as of early 2016 as it wasn't very responsive or engaging, and didn't display well on mobile.</h4>
+                            <h4>The original design for the Helical Games website, made in 2012. This design was scraped as of early 2016 as it wasn't very responsive or engaging, and didn't display well on mobile.</h4>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-md-3 col-sm-6" data-type="web" data-id="web-3">
+                    <div class="portfolio-image-block ratio-square">
+                        <a href=".#"><img src="images/portfolio/pbarnhardtinfo-thumb.png" class="ratio-inner" alt="portfolio image 2"></a>
+                        <div class="portfolio-block-hover">
+                            <a href="images/portfolio/pbarnhardtinfo.png" class="portfolio-title" data-lightbox="portfolio" data-title="Image Title 1">This website: patrickbarnhardt.info</a>
+                            <h4>One of my most responsive designs yet, aimed to support my new portfolio.</h4>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-md-3 col-sm-6" data-type="branding" data-id="branding-0">
+                    <div class="portfolio-image-block ratio-square">
+                        <a href=".#"><img src="images/portfolio/sh-banner.png" class="ratio-inner" alt="portfolio image 2"></a>
+                        <div class="portfolio-block-hover">
+                            <a href="images/portfolio/sh-banner.png" class="portfolio-title" data-lightbox="portfolio" data-title="Image Title 1">STREAMHA&Uuml;S Banner</a>
+                            <h4>This was a design intended to be used as a splash screen/promotional wallpaper for the game streaming group STREAMHA&Uuml;S</h4>
                         </div>
                     </div>
                 </li>
@@ -292,9 +327,8 @@ behind the curtain
                             <iframe class="ratio-inner" src="https://sketchfab.com/models/dD1GPieprzx2S041KBQUT7KYpvr/embed" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
 
                             <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
-                                <a href="https://sketchfab.com/models/dD1GPieprzx2S041KBQUT7KYpvr?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Liara T&#39;Soni</a>
-                                by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a>
-                                on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                                <a href="https://sketchfab.com/models/dD1GPieprzx2S041KBQUT7KYpvr?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Liara T&#39;Soni</a> by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup"
+                                    target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
                             </p>
                         </div>
                     </div>
@@ -305,9 +339,8 @@ behind the curtain
                             <iframe class="ratio-inner" src="https://sketchfab.com/models/sYos15jXKtwbexZENXUCZWMGrOg/embed" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
 
                             <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
-                                <a href="https://sketchfab.com/models/sYos15jXKtwbexZENXUCZWMGrOg?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Mass Effect M-8 Avenger Rifle</a>
-                                by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a>
-                                on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                                <a href="https://sketchfab.com/models/sYos15jXKtwbexZENXUCZWMGrOg?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Mass Effect M-8 Avenger Rifle</a>                                by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup"
+                                    target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
                             </p>
                         </div>
                     </div>
@@ -318,9 +351,8 @@ behind the curtain
                             <iframe class="ratio-inner" src="https://sketchfab.com/models/3dkuGVmKZdnC0RzsNKp2bfv0JI0/embed" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
 
                             <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
-                                <a href="https://sketchfab.com/models/3dkuGVmKZdnC0RzsNKp2bfv0JI0?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">ClapTrap</a>
-                                by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a>
-                                on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                                <a href="https://sketchfab.com/models/3dkuGVmKZdnC0RzsNKp2bfv0JI0?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">ClapTrap</a> by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup"
+                                    target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
                             </p>
                         </div>
                     </div>
@@ -331,9 +363,8 @@ behind the curtain
                             <iframe class="ratio-inner" src="https://sketchfab.com/models/dbbfe84ee023481685d3e9d0bd8a3461/embed" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
 
                             <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
-                                <a href="https://sketchfab.com/models/dbbfe84ee023481685d3e9d0bd8a3461?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Helical Games: Aidan Orbit Head Texture WIP</a>
-                                by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a>
-                                on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                                <a href="https://sketchfab.com/models/dbbfe84ee023481685d3e9d0bd8a3461?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Helical Games: Aidan Orbit Head Texture WIP</a>                                by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup"
+                                    target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
                             </p>
                         </div>
                     </div>
@@ -344,9 +375,8 @@ behind the curtain
                             <iframe class="ratio-inner" src="https://sketchfab.com/models/3e6ab0aea66b49199a79aa5c39bb3d70/embed" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
 
                             <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
-                                <a href="https://sketchfab.com/models/3e6ab0aea66b49199a79aa5c39bb3d70?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">DIVERSE - Zero Torso/Head Test</a>
-                                by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a>
-                                on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                                <a href="https://sketchfab.com/models/3e6ab0aea66b49199a79aa5c39bb3d70?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">DIVERSE - Zero Torso/Head Test</a>                                by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup"
+                                    target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
                             </p>
                         </div>
                     </div>
@@ -357,9 +387,8 @@ behind the curtain
                             <iframe class="ratio-inner" src="https://sketchfab.com/models/5611902e14cf46b289c8c1546da519d7/embed" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
 
                             <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
-                                <a href="https://sketchfab.com/models/5611902e14cf46b289c8c1546da519d7?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Helical Games: Aidan Orbit Base Model</a>
-                                by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a>
-                                on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                                <a href="https://sketchfab.com/models/5611902e14cf46b289c8c1546da519d7?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Helical Games: Aidan Orbit Base Model</a>                                by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup"
+                                    target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
                             </p>
                         </div>
                     </div>
@@ -370,9 +399,8 @@ behind the curtain
                             <iframe class="ratio-inner" src="https://sketchfab.com/models/Fm7leJ26YIk1CVJqcuxRW2zTgD/embed" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
 
                             <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
-                                <a href="https://sketchfab.com/models/Fm7leJ26YIk1CVJqcuxRW2zTgD?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">WIP - Forest Guardian</a>
-                                by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a>
-                                on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                                <a href="https://sketchfab.com/models/Fm7leJ26YIk1CVJqcuxRW2zTgD?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">WIP - Forest Guardian</a> by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup"
+                                    target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
                             </p>
                         </div>
                     </div>
@@ -383,9 +411,8 @@ behind the curtain
                             <iframe class="ratio-inner" src="https://sketchfab.com/models/bd91254f02e14089a7202551ba7109de/embed" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
 
                             <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
-                                <a href="https://sketchfab.com/models/bd91254f02e14089a7202551ba7109de?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Cmdr. Ace Roche</a>
-                                by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a>
-                                on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                                <a href="https://sketchfab.com/models/bd91254f02e14089a7202551ba7109de?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Cmdr. Ace Roche</a> by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup"
+                                    target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
                             </p>
                         </div>
                     </div>
@@ -396,9 +423,8 @@ behind the curtain
                             <iframe class="ratio-inner" src="https://sketchfab.com/models/AcQ3DEbmLiurZpBuL2yQ946s907/embed" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
 
                             <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
-                                <a href="https://sketchfab.com/models/AcQ3DEbmLiurZpBuL2yQ946s907?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Blackhawk</a>
-                                by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a>
-                                on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                                <a href="https://sketchfab.com/models/AcQ3DEbmLiurZpBuL2yQ946s907?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Blackhawk</a> by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup"
+                                    target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
                             </p>
                         </div>
                     </div>
@@ -409,9 +435,8 @@ behind the curtain
                             <iframe class="ratio-inner" src="https://sketchfab.com/models/50fd65e695ce4034b728ced9fc924c54/embed" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
 
                             <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
-                                <a href="https://sketchfab.com/models/50fd65e695ce4034b728ced9fc924c54?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">dallara</a>
-                                by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a>
-                                on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                                <a href="https://sketchfab.com/models/50fd65e695ce4034b728ced9fc924c54?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">dallara</a> by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup"
+                                    target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
                             </p>
                         </div>
                     </div>
@@ -422,9 +447,8 @@ behind the curtain
                             <iframe class="ratio-inner" src="https://sketchfab.com/models/c06a388657cb48ab8ba7c63ac5ce4065/embed" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
 
                             <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
-                                <a href="https://sketchfab.com/models/c06a388657cb48ab8ba7c63ac5ce4065?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">The RedQueen</a>
-                                by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a>
-                                on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                                <a href="https://sketchfab.com/models/c06a388657cb48ab8ba7c63ac5ce4065?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">The RedQueen</a> by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup"
+                                    target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
                             </p>
                         </div>
                     </div>
@@ -435,9 +459,8 @@ behind the curtain
                             <iframe class="ratio-inner" src="https://sketchfab.com/models/0fd0ecd809964811984f67d5b04ba0d5/embed" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
 
                             <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
-                                <a href="https://sketchfab.com/models/0fd0ecd809964811984f67d5b04ba0d5?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">emptyskies</a>
-                                by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a>
-                                on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                                <a href="https://sketchfab.com/models/0fd0ecd809964811984f67d5b04ba0d5?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">emptyskies</a> by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup"
+                                    target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
                             </p>
                         </div>
                     </div>
@@ -447,7 +470,7 @@ behind the curtain
                         <a href=".#"><img src="images/portfolio/395009_10151253127173948_1579451966_n.jpg" class="ratio-inner" alt="portfolio image 3"></a>
                         <div class="portfolio-block-hover">
                             <a href="images/portfolio/395009_10151253127173948_1579451966_n.jpg" class="portfolio-title" data-lightbox="portfolio" data-title="Image Title 2">The Legacy Store</a>
-                            <h4>HTML for a simple storefront which was a class assignment.  No transaction system was ever actually implemented.  The ASCII art was a test to see if my instructor was actually bothering to read our code.  She was not.</h4>
+                            <h4>HTML for a simple storefront which was a class assignment. No transaction system was ever actually implemented. The ASCII art was a test to see if my instructor was actually bothering to read our code. She was not.</h4>
                         </div>
                     </div>
                 </li>
@@ -465,7 +488,7 @@ behind the curtain
                         <a href=".#"><img src="images/portfolio/d4ew62s.png" class="ratio-inner" alt="portfolio image 5"></a>
                         <div class="portfolio-block-hover">
                             <a href="images/portfolio/d4ew62s.png" class="portfolio-title" data-lightbox="portfolio" data-title="Image Title 3">Branding: DeviantArt branded Dallara Indy Car</a>
-                            <h4>As an additional exercise to the Dallara Indycar Model, I gave it a branding/painjob.  The QR code is real and actually leads to the site where the work was originally posted.</h4>
+                            <h4>As an additional exercise to the Dallara Indycar Model, I gave it a branding/painjob. The QR code is real and actually leads to the site where the work was originally posted.</h4>
                         </div>
                     </div>
                 </li>
@@ -474,7 +497,7 @@ behind the curtain
                         <a href=".#"><img src="images/portfolio/d5onpc7.jpg" class="ratio-inner" alt="portfolio image 6"></a>
                         <div class="portfolio-block-hover">
                             <a href="images/portfolio/d5onpc7.jpg" class="portfolio-title" data-lightbox="portfolio" data-title="Image Title 3">Texture Maps: Liara T'Soni</a>
-                            <h4>All textures were hand painted from scratch.  Either created in Photoshop or painted directly on the mesh in Mudbox.</h4>
+                            <h4>All textures were hand painted from scratch. Either created in Photoshop or painted directly on the mesh in Mudbox.</h4>
                         </div>
                     </div>
                 </li>
@@ -501,7 +524,8 @@ behind the curtain
                         <a href=".#"><img src="images/portfolio/sRc5KKQ.png" class="ratio-inner" alt="portfolio image 9"></a>
                         <div class="portfolio-block-hover">
                             <a href="images/portfolio/sRc5KKQ.png" class="portfolio-title" data-lightbox="portfolio" data-title="Image Title 3">Blueprint: Checking Local OS for Loggedin User</a>
-                            <h4>A companion script to my Steam ID reader, in the event no Steam user is found, this script will check the local machine (in this case windows), and read out the currently loggedin user.  This is then fed in as the ingame user ID in Unreal Engine 4.</h4>
+                            <h4>A companion script to my Steam ID reader, in the event no Steam user is found, this script will check the local machine (in this case windows), and read out the currently loggedin user. This is then fed in as the ingame user
+                                ID in Unreal Engine 4.</h4>
                         </div>
                     </div>
                 </li>
@@ -510,7 +534,7 @@ behind the curtain
                         <a href=".#"><img src="images/portfolio/zHN9lPg.png" class="ratio-inner" alt="portfolio image 10"></a>
                         <div class="portfolio-block-hover">
                             <a href="images/portfolio/zHN9lPg.png" class="portfolio-title" data-lightbox="portfolio" data-title="Image Title 3">Pseudo Localization Tool</a>
-                            <h4>An automated table for "pseudo" translation for UI features or any short strings.  Contains very rough translations, not reliable for production.</h4>
+                            <h4>An automated table for "pseudo" translation for UI features or any short strings. Contains very rough translations, not reliable for production.</h4>
                         </div>
                     </div>
                 </li>
@@ -563,7 +587,7 @@ behind the curtain
                     <div class="portfolio-image-block ratio-square">
                         <a href=".#"><img src="images/portfolio/W0IzVkG.png" class="ratio-inner" alt="portfolio image 16"></a>
                         <div class="portfolio-block-hover">
-                            <a href="images/portfolio/MYdRSFZ.png" class="portfolio-title" data-lightbox="portfolio" data-title="Image Title 3">Design: Overlay for Charity Stream</a>
+                            <a href="images/portfolio/W0IzVkG.png" class="portfolio-title" data-lightbox="portfolio" data-title="Image Title 3">Design: Overlay for Charity Stream</a>
                             <h4>An overlay created for a special gaming stream event.</h4>
                         </div>
                     </div>
@@ -595,16 +619,72 @@ behind the curtain
                         </div>
                     </div>
                 </li>
+                <li class="col-md-3 col-sm-6" data-type="video" data-id="video-0">
+                    <div class="portfolio-image-block">
+                        <div class="ratio-square">
+                            <iframe class="ratio-inner"src="https://www.youtube.com/embed/xdpIi999DmU" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-md-3 col-sm-6" data-type="video" data-id="video-1">
+                    <div class="portfolio-image-block">
+                        <div class="ratio-square">
+                            <iframe class="ratio-inner"src="https://www.youtube.com/embed/IMwydO05Qk8" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-md-3 col-sm-6" data-type="video" data-id="video-2">
+                    <div class="portfolio-image-block">
+                        <div class="ratio-square">
+                            <iframe class="ratio-inner"src="https://www.youtube.com/embed/EPFFcSpHRr8" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-md-3 col-sm-6" data-type="video" data-id="video-3">
+                    <div class="portfolio-image-block">
+                        <div class="ratio-square">
+                            <iframe class="ratio-inner"src="https://www.youtube.com/embed/3oBxlSLbX84" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-md-3 col-sm-6" data-type="video" data-id="video-4">
+                    <div class="portfolio-image-block">
+                        <div class="ratio-square">
+                            <iframe class="ratio-inner"src="https://www.youtube.com/embed/VnrZJmhuTeM" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-md-3 col-sm-6" data-type="video" data-id="video-5">
+                    <div class="portfolio-image-block">
+                        <div class="ratio-square">
+                            <iframe class="ratio-inner"src="https://www.youtube.com/embed/YC3viBtYeKs" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-md-3 col-sm-6" data-type="video" data-id="video-6">
+                    <div class="portfolio-image-block">
+                        <div class="ratio-square">
+                            <iframe class="ratio-inner"src="https://www.youtube.com/embed/mJb6OnCSt-0" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-md-3 col-sm-6" data-type="video" data-id="video-7">
+                    <div class="portfolio-image-block">
+                        <div class="ratio-square">
+                            <iframe class="ratio-inner"src="https://www.youtube.com/embed/n27kS9RdQyU" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
+                        </div>
+                    </div>
+                </li>
             </ul>
         </div>
     </section>
     <!-- Our Work Section Over -->
     <!-- Video Section -->
-    <!-- He's dead Jim.  Seriously, this works on the test page, but not here, and I can't determine why. I quit  -->
+    <!-- He's dead Jim.  Seriously, this works on the test page, but not here, and I can't determine why. I quit
     <div id="video-section" class="video-section">
         <a id="bgndVideo" class="player" data-property="{videoURL:'https://youtu.be/xdpIi999DmU',containment:'.video-section', showControls:true, autoPlay:true, loop:true, vol:50, mute:true, startAt:10, opacity:1, addRaster:true, quality:'default', optimizeDisplay:true}">My video</a>
     </div>
-    <!-- Video Section Over -->
+     Video Section Over -->
     <!-- Helical Games.net Project Showbox -->
     <section id="showbox-helicalgamesnet" class="showbox">
         <div class="container">
@@ -642,12 +722,11 @@ behind the curtain
             </div>
             <div class="col-md-6 app-content-box">
                 <h2>Designing to scale to Mobile</h2>
-                <p>With this new version, the focus has been on responsive design.  While a mobile application is in the planning stages, it is important that the site be able to scale to tablets and mobile screens.</p>
+                <p>With this new version, the focus has been on responsive design. While a mobile application is in the planning stages, it is important that the site be able to scale to tablets and mobile screens.</p>
                 <div class="col-md-9 app-updates">
                     <h4><i class="fa fa-mobile-phone"></i>Responsive Navigation</h4>
                     <p>
-                        The driving idea behind the navigation sidebar, and it's expanding design, was aimed at small screens from the start.
-                        And with it's accordian drop-down support, nearly an unlimited number of links could be supported.
+                        The driving idea behind the navigation sidebar, and it's expanding design, was aimed at small screens from the start. And with it's accordian drop-down support, nearly an unlimited number of links could be supported.
                     </p>
                 </div>
                 <div class="col-md-9 app-updates">
@@ -701,36 +780,34 @@ behind the curtain
 
                             <!-- Some Intro About You -->
                             <p class="text-center">
-                                I am a Front-End Web Designer, occasional developer, Videogame Developer, and 3D Modeler/Animator from Charlotte, NC.  Through my indie game studio Helical Games I have gained experience in brand strategy, creative direction and project management.
-                                I have been working on web since 2005 and on 3D modeling since 2008, I have an AAS in Simulation and Game Design and an A+ Certification.
-                                I have acted as a speaker for the Game Developers Alliance at UNCC teaching aspiring developers to use Unreal Engine, and serve annually on the SCC Advisary Board to help them shape their Game Design courses.
-                                I am a flexible learner, and have self-taught in numerous software packages.
-                                <br/>
-                                My current goal is to become a full-stack web developer and my skill-set constantly changes. Currently my strongest point is in the front-end department and design.
+                                I am a Front-End Web Designer, occasional developer, Videogame Developer, and 3D Modeler/Animator from Charlotte, NC. Through my indie game studio Helical Games I have gained experience in brand strategy, creative direction and project management. I have
+                                been working on web since 2005 and on 3D modeling since 2008, I have an AAS in Simulation and Game Design and an A+ Certification. I have acted as a speaker for the Game Developers Alliance at UNCC teaching aspiring developers
+                                to use Unreal Engine, and serve annually on the SCC Advisary Board to help them shape their Game Design courses. I am a flexible learner, and have self-taught in numerous software packages.
+                                <br/> My current goal is to become a full-stack web developer and my skill-set constantly changes. Currently my strongest point is in the front-end department and design.
                             </p>
-                                <ul class="col-md-12 col-sm-12 col-xs-12 text-center list-inline" style="font-size: 350%; margin-top: 0%; color: rgb(168, 0, 0);">
-                                    <li class="interest-topic">
-                                        <i class="fa fa-html5"></i>
-                                    </li>
-                                    <li class="interest-topic">
-                                        <i class="fa fa-css3"></i>
-                                    </li>
-                                    <li class="interest-topic">
-                                        <i class="fa fa-wordpress"></i>
-                                    </li>
-                                    <li class="interest-topic">
-                                        <i class="fa fa-drupal"></i>
-                                    </li>
-                                    <li class="interest-topic">
-                                        <i class="fa fa-linux"></i>
-                                    </li>
-                                    <li class="interest-topic">
-                                        <i class="fa fa-font-awesome"></i>
-                                    </li>
-                                    <li class="interest-topic">
-                                        <i class="fa fa-font-git"></i>
-                                    </li>
-                                </ul>
+                            <ul class="col-md-12 col-sm-12 col-xs-12 text-center list-inline" style="font-size: 350%; margin-top: 0%; color: rgb(168, 0, 0);">
+                                <li class="interest-topic">
+                                    <i class="fa fa-html5"></i>
+                                </li>
+                                <li class="interest-topic">
+                                    <i class="fa fa-css3"></i>
+                                </li>
+                                <li class="interest-topic">
+                                    <i class="fa fa-wordpress"></i>
+                                </li>
+                                <li class="interest-topic">
+                                    <i class="fa fa-drupal"></i>
+                                </li>
+                                <li class="interest-topic">
+                                    <i class="fa fa-linux"></i>
+                                </li>
+                                <li class="interest-topic">
+                                    <i class="fa fa-font-awesome"></i>
+                                </li>
+                                <li class="interest-topic">
+                                    <i class="fa fa-font-git"></i>
+                                </li>
+                            </ul>
                             <div class="row">
                                 <!-- Download & Contact Button -->
                                 <div class="col col-xs-12 col-sm-12 col-md-12 text-center">
@@ -793,7 +870,7 @@ behind the curtain
 
                                         <!-- Job Summary -->
                                         <p class="content-p">
-                                            Writing/Publishing online articles on video games from a design and development viewpoint.  Performing “post-mortem” analysis on released games.
+                                            Writing/Publishing online articles on video games from a design and development viewpoint. Performing “post-mortem” analysis on released games.
                                         </p>
                                     </div>
                                 </li>
@@ -833,10 +910,7 @@ behind the curtain
 
                                         <!-- Job Summary -->
                                         <p class="content-p">
-                                            Film crew, Post crew.
-                                            Created visual/post effects for production.
-                                            Sound/Grip on set.
-                                            Worked on the Noir short “One Man’s Poison (2015)".
+                                            Film crew, Post crew. Created visual/post effects for production. Sound/Grip on set. Worked on the Noir short “One Man’s Poison (2015)".
                                         </p>
                                     </div>
                                 </li>
@@ -1058,8 +1132,7 @@ behind the curtain
                                         <!-- Heading -->
                                         <div class="timeline-header">
                                             <h3 class="text-capitalize">
-                                                Associate of Applied Sciences
-                                                Simulation and Game Design
+                                                Associate of Applied Sciences Simulation and Game Design
                                             </h3>
                                         </div>
 
@@ -1124,8 +1197,7 @@ behind the curtain
                                     </div>
 
                                     <!-- Button ID For Content ID -->
-                                    <a id="btn-1" class="btn-floating waves-effect waves-light btn-large achievement-more-btn custom-btn"
-                                       data-aos="zoom-in" data-aos-delay="300">
+                                    <a id="btn-1" class="btn-floating waves-effect waves-light btn-large achievement-more-btn custom-btn" data-aos="zoom-in" data-aos-delay="300">
                                         <i class="fa fa-external-link"></i>
                                     </a>
                                 </div>
@@ -1156,8 +1228,7 @@ behind the curtain
                                     </div>
 
                                     <!-- Button ID For Content ID -->
-                                    <a id="btn-1" class="btn-floating waves-effect waves-light btn-large achievement-more-btn custom-btn"
-                                       data-aos="zoom-in" data-aos-delay="300">
+                                    <a id="btn-1" class="btn-floating waves-effect waves-light btn-large achievement-more-btn custom-btn" data-aos="zoom-in" data-aos-delay="300">
                                         <i class="fa fa-external-link"></i>
                                     </a>
                                 </div>
@@ -1188,8 +1259,7 @@ behind the curtain
                                     </div>
 
                                     <!-- Button ID For Content ID -->
-                                    <a id="btn-1" class="btn-floating waves-effect waves-light btn-large achievement-more-btn custom-btn"
-                                       data-aos="zoom-in" data-aos-delay="300">
+                                    <a id="btn-1" class="btn-floating waves-effect waves-light btn-large achievement-more-btn custom-btn" data-aos="zoom-in" data-aos-delay="300">
                                         <i class="fa fa-external-link"></i>
                                     </a>
                                 </div>
@@ -1278,7 +1348,7 @@ behind the curtain
         </div>
         <!-- Section Header Over-->
         <div class="container no-padding">
-        <div id="divRss"></div>
+            <div id="divRss"></div>
         </div>
     </section>
     <!-- Blog Post Over -->
@@ -1313,7 +1383,9 @@ behind the curtain
             <i class="icon_mobile"></i>
             <div class="footer-inner">
                 <p class="footer-item-title">phone</p>
-                <p class="footer-item-desc"><span class="reverse eml">0952-697-407</span><!-- Typing this stuff backwards was a nightmare --></p>
+                <p class="footer-item-desc"><span class="reverse eml">0952-697-407</span>
+                    <!-- Typing this stuff backwards was a nightmare -->
+                </p>
             </div>
         </div>
         <a id="back-to-top" class="back-top pull-right"><i class="arrow_up"></i> Go on top</a>
@@ -1377,7 +1449,8 @@ behind the curtain
         * never gonna run around and desert you. Never gonna make you cry,
         * never gonna say goodbye. Never gonna tell a lie and hurt you. -->
     <!-- Hidden iframe for submitting forms -->
-    <iframe src="about:blank" name="hidden" class="hide"></iframe> <!-- I hate it, iframes are hacky hacky hacky, but I need it -->
+    <iframe src="about:blank" name="hidden" class="hide"></iframe>
+    <!-- I hate it, iframes are hacky hacky hacky, but I need it -->
     <!-- And now, getting all of this to work half decent in the retarded step brother of the browser family, Internet Fucking Explorer -->
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// so please just don't -->
@@ -1386,19 +1459,30 @@ behind the curtain
     /* [then] Burn in a fire */
       <script src="js/html5/respond.min.js"></script>
     <![endif]-->
-    <script src="libraries/jquery.easing.min.js"></script><!-- Easing Animation Effect -->
-    <script src="libraries/bootstrap/bootstrap.min.js"></script> <!-- Core Bootstrap v3.2.0 -->
-    <script src="libraries/bootstrap/ie-emulation-modes-warning.js"></script> <!-- Just for debugging purposes. -->
-    <script src="libraries/bootstrap/ie10-viewport-bug-workaround.js"></script> <!-- Hack for IE browser (Assuming that IE is a browser) -->
+    <script src="libraries/jquery.easing.min.js"></script>
+    <!-- Easing Animation Effect -->
+    <script src="libraries/bootstrap/bootstrap.min.js"></script>
+    <!-- Core Bootstrap v3.2.0 -->
+    <script src="libraries/bootstrap/ie-emulation-modes-warning.js"></script>
+    <!-- Just for debugging purposes. -->
+    <script src="libraries/bootstrap/ie10-viewport-bug-workaround.js"></script>
+    <!-- Hack for IE browser (Assuming that IE is a browser) -->
     <!-- Font Elegant -->
     <!--[if lte IE 7]><script src="libraries/fonts/elegant/lte-ie7.js"></script><![endif]-->
-    <script src="libraries/portfolio-filter/jquery.quicksand.js"></script> <!-- Quicksand v1.4 -->
-    <script src="libraries/jquery.superslides.min.js"></script> <!-- Superslides - v0.6.3-wip -->
-    <script src="libraries/roundabout.js"></script> <!-- service Rounded slider -->
-    <script src="libraries/roundabout_shapes.js"></script> <!-- service Rounded slider -->
-    <script src="libraries/jquery.animateNumber.min.js"></script> <!-- Used for Animated Numbers -->
-    <script src="libraries/jquery.appear.js"></script> <!-- It Loads jQuery when element is appears -->
-    <script src="libraries/jquery.knob.js"></script> <!-- Used for Loading Circle -->
+    <script src="libraries/portfolio-filter/jquery.quicksand.js"></script>
+    <!-- Quicksand v1.4 -->
+    <script src="libraries/jquery.superslides.min.js"></script>
+    <!-- Superslides - v0.6.3-wip -->
+    <script src="libraries/roundabout.js"></script>
+    <!-- service Rounded slider -->
+    <script src="libraries/roundabout_shapes.js"></script>
+    <!-- service Rounded slider -->
+    <script src="libraries/jquery.animateNumber.min.js"></script>
+    <!-- Used for Animated Numbers -->
+    <script src="libraries/jquery.appear.js"></script>
+    <!-- It Loads jQuery when element is appears -->
+    <script src="libraries/jquery.knob.js"></script>
+    <!-- Used for Loading Circle -->
     <script src="libraries/wow.min.js"></script>
     <script src="libraries/owl-carousel/owl.carousel.min.js"></script>
     <script src="libraries/video/jquery.mb.YTPlayer.js"></script>
@@ -1406,5 +1490,10 @@ behind the curtain
     <!-- Customized Scripts -->
     <script src="js/functions.js"></script>
     <script src="js/githubloader.js"></script>
+    <script src="js/github-calendar.js"></script>
+    <script>
+        GitHubCalendar(".calendar", "crimsonstrife");
+    </script>
 </body>
+
 </html>

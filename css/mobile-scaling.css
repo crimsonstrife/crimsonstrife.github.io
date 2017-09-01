@@ -184,3 +184,7 @@
     font-size: 250% !important;
 }
 }
+
+.flag-staffpicked {
+    background-image: url(/http://patrickbarnhardt.info/images/staffpick-small-1cd51a0cf88582872bc101b447e28bf9.png) !important;
+}
