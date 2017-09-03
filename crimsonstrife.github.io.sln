@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "crimsonstrife.github.io", ".", "{40DC2BB8-BC13-4E04-8E3B-69E104C880B1}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_58293"
+		Debug.AspNetCompiler.PhysicalPath = "..\crimsonstrife.github.io\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58293\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_58293"
+		Release.AspNetCompiler.PhysicalPath = "..\crimsonstrife.github.io\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58293\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "58293"
+		SlnRelativePath = "..\crimsonstrife.github.io\"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{40DC2BB8-BC13-4E04-8E3B-69E104C880B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40DC2BB8-BC13-4E04-8E3B-69E104C880B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
