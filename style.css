@@ -2082,7 +2082,7 @@ a { outline: 0 !important; }
 	height: 160px;
 }
 .footer-item {
-	width: 300px;
+	width: 16%;
 	display:inline-block;
 	margin: 50px 0 50px 40px;
 }
@@ -2105,7 +2105,6 @@ a { outline: 0 !important; }
 }
 .footer-section a{
 	color: #fff;
-	cursor: pointer;
 }
 .footer-item-title {
 	text-transform: uppercase;
