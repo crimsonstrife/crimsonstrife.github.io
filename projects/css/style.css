@@ -1,2 +1,166 @@
-﻿body {
+﻿* {
+  box-sizing: border-box;
+  font-family: "Open Sans";
+  -webkit-backface-visibility: hidden;
+}
+
+body {
+  margin: 0;
+  background: grey;
+}
+
+// Variables
+$height: 17em;
+$width: 90%;
+$transition: ease; //cubic-bezier(0.250, 0.250, 0.660, 1.650);
+
+// Wrapper
+.showcase {
+  position: relative;
+  width: $width;
+  height: $height;
+  margin: 1em auto;
+  overflow: hidden;
+  
+  background: transparent;
+}
+
+// Thumbnails
+.thumbnail {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 300px;
+  z-index: 1;
+  
+  background: #293853;
+  background-position: 50% 50%;
+  background-size: cover;
+  
+  transition: right 250ms $transition, left 250ms $transition;
+}
+
+.thumbnail--awesome {
+  background-image: url("http://fc05.deviantart.net/fs70/f/2010/102/9/0/Google_Chrome_Wallpaper_by_dreski1992.jpg");
+}
+
+.thumbnail__overlay {
+  position: relative;
+  padding-top: $height / 2 - 0.5em;
+  height: 100%;
+  
+  background: rgba(0,0,0,0.4);
+  
+  text-align: center;
+  
+  opacity: 0;
+  
+  transition: opacity 250ms $transition;
+}
+
+// Description
+.desc {
+  position: absolute;
+  width: 300px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  padding: 20px;
+  z-index: 2;
+  
+  background: white;
+  
+  text-align: center;
+  
+  transition: background 250ms $transition, color 250ms, width 250ms $transition, padding 250ms $transition;
+  
+  &:after {
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    margin-top: -10px;
+    border-style: solid;
+    border-width: 10px;
+    border-color: transparent #fff transparent transparent;
+    content: "";
+    transition: border-color 250ms;
+  }
+}
+
+.showcase:hover {
+  
+  .thumbnail {
+    right: 325px;
+    left: -25px;
+  }
+  .thumbnail__overlay {
+    opacity: 1;
+  }
+  .desc {
+    width: 350px;
+    padding-left: 45px;
+    padding-right: 45px;
+    
+    background: #202426;
+    
+    color: #fff;
+    
+    &:after {
+      border-color: transparent #202426 transparent transparent;
+    }
+  }
+}
+
+
+// Inverted Project
+.showcase--inverted .thumbnail {
+  right: 0;
+  left: 300px;
+}
+
+.showcase--inverted .desc {
+  left: 0;
+  right: auto;
+  
+  &:after {
+    left: auto;
+    right: -20px;
+    border-color: transparent transparent transparent #fff;
+  }
+}
+
+.showcase--inverted:hover {
+  
+  .thumbnail {
+    left: 325px;
+    right: -25px;
+  }
+
+  .desc {
+    
+    &:after {
+      border-color: transparent transparent transparent #202426;
+    }
+  }
+}
+
+// Button styling
+.btn {
+  padding: 1em 2em;
+  
+  border: 0.15em solid #fff;
+  
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  
+  transition: background 250ms;
+  
+  &:hover {
+    background: rgba(0,0,0,0.6);
+  }
 }
