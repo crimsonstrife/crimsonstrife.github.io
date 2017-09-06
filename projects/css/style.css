@@ -17,8 +17,8 @@ $transition: ease; //cubic-bezier(0.250, 0.250, 0.660, 1.650);
 // Wrapper
 .showcase {
   position: relative;
-  width: $width;
-  height: $height;
+  width: 90%;
+  height: 17em;
   margin: 1em auto;
   overflow: hidden;
   
@@ -38,7 +38,7 @@ $transition: ease; //cubic-bezier(0.250, 0.250, 0.660, 1.650);
   background-position: 50% 50%;
   background-size: cover;
   
-  transition: right 250ms $transition, left 250ms $transition;
+  transition: right 250ms ease; //cubic-bezier(0.250, 0.250, 0.660, 1.650), left 250ms $transition;
 }
 
 .thumbnail--awesome {
@@ -47,7 +47,7 @@ $transition: ease; //cubic-bezier(0.250, 0.250, 0.660, 1.650);
 
 .thumbnail__overlay {
   position: relative;
-  padding-top: $height / 2 - 0.5em;
+  padding-top: 17em / 2 - 0.5em;
   height: 100%;
   
   background: rgba(0,0,0,0.4);
@@ -56,7 +56,7 @@ $transition: ease; //cubic-bezier(0.250, 0.250, 0.660, 1.650);
   
   opacity: 0;
   
-  transition: opacity 250ms $transition;
+  transition: opacity 250ms ease; //cubic-bezier(0.250, 0.250, 0.660, 1.650);
 }
 
 // Description
@@ -73,7 +73,7 @@ $transition: ease; //cubic-bezier(0.250, 0.250, 0.660, 1.650);
   
   text-align: center;
   
-  transition: background 250ms $transition, color 250ms, width 250ms $transition, padding 250ms $transition;
+  transition: background 250ms ease; //cubic-bezier(0.250, 0.250, 0.660, 1.650), color 250ms, width 250ms ease; //cubic-bezier(0.250, 0.250, 0.660, 1.650), padding 250ms $transition;
   
   &:after {
     display: block;
