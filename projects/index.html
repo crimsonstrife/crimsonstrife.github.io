@@ -30,7 +30,63 @@
     <script src="../libraries/jquery/jquery.min.js"></script>
     <script src="../libraries/feedek/js/moment.js"></script>
 </head>
-<body>
+<body data-offset="200" data-spy="scroll" data-target=".primary-navigation">
+    <a id="top"></a>
+    <!-- Let's hide this loader for now -->
+    <!-- LOADER
+    <div id="site-loader" class="load-complete">
+        <div class="load-position">
+            <h6>Please wait, loading...</h6>
+            <div class="loading">
+                <div class="loading-line"></div>
+                <div class="loading-break loading-dot-1"></div>
+                <div class="loading-break loading-dot-2"></div>
+                <div class="loading-break loading-dot-3"></div>
+            </div>
+        </div>
+    </div> -->
+    <div id="navbar" class="navbar-collapse collapse" style="background-color: #333;">
+        <ul class="nav navbar-nav pull-right">
+            <li id="aboutmemenuitem"><a href="#about-section">Who Am I?</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#resume">Resume</a></li>
+            <li><a href="http://blog.patrickbarnhardt.info">Blog</a></li>
+            <li><a href="http://resume.patrickbarnhardt.info">Resume (Static)</a></li>
+            <li><a href="#project-section">Contact</a></li>
+        </ul>
+    </div>
+    <!--/.nav-collapse -->
+    <!-- Header Section -->
+    <header id="header-section" class="header-section">
+        <div class="col-md-2 col-sm-2 col-xs-6 logo-block">
+
+        </div>
+        <div class="col-md-10 col-sm-12 col-xs-12 menu-block">
+            <nav class="navbar navbar-default primary-navigation" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav pull-right">
+                        <li><a href="#top">Back To Top</a></li>
+                        <li id="aboutmemenuitem"><a href="#about-section">Who Am I?</a></li>
+                        <li><a href="#work">Work</a></li>
+                        <li><a href="#resume">Resume</a></li>
+                        <li><a href="http://blog.patrickbarnhardt.info">Blog</a></li>
+                        <li><a href="http://resume.patrickbarnhardt.info">Resume (Static)</a></li>
+                        <li><a href="#project-section">Contact</a></li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </nav>
+        </div>
+    </header>
+    <!-- Header Section Over -->
     <div class="showcase">
         <div class="thumbnail thumbnail--awesome">
             <div class="thumbnail__overlay">
@@ -38,11 +94,25 @@
             </div>
         </div>
         <div class="desc">
-            <p>Case Study</p>
-            <h2>Project</h2>
+            <p>Website/Community</p>
+            <h2>HelicalGames.NET</h2>
             <p>
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut l
             </p>
+        </div>
+    </div>
+    <div class="showcase showcase--inverted">
+        <div class="desc">
+            <p>Film/SpFX</p>
+            <h2>One Man's Poison</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut l
+            </p>
+        </div>
+        <div class="thumbnail">
+            <div class="thumbnail__overlay">
+                <a class="btn" href="#0">DETAILS</a>
+            </div>
         </div>
     </div>
     <div class="showcase">
@@ -52,8 +122,8 @@
             </div>
         </div>
         <div class="desc">
-            <p>Case Study</p>
-            <h2>Project 2</h2>
+            <p>Video Game</p>
+            <h2>OMP Game</h2>
             <p>
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut l
             </p>
@@ -62,7 +132,7 @@
     <div class="showcase showcase--inverted">
         <div class="desc">
             <p>Case Study</p>
-            <h2>Inverted Project</h2>
+            <h2>OMP Game Analytics</h2>
             <p>
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut l
             </p>
@@ -73,8 +143,6 @@
             </div>
         </div>
     </div>
-<footer>
-
-</footer>
+    <footer></footer>
 </body>
 </html>
