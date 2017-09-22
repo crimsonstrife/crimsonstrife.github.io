@@ -43,7 +43,7 @@ body { font-size: 14px; font-family: 'Raleway', sans-serif; }
 	width: 100%;
 	left: 0px;
 	overflow: hidden;
-	z-index:0;
+	z-index:100;
 }
 
 #content-wrapper
@@ -96,7 +96,7 @@ body { font-size: 14px; font-family: 'Raleway', sans-serif; }
 	position: absolute;
 	left: 0px;
 	top: 0px;
-	z-index: -1;
+	z-index: 99;
 	height: 100%;
 	width: 250px;
 	background: #3c3d42;
@@ -114,7 +114,7 @@ body { font-size: 14px; font-family: 'Raleway', sans-serif; }
 	background-position: center;
 	background-repeat: no-repeat;
 	background-color: #303135;
-	background-image: url(../img/icons/search.png);
+	background-image: url(images/search.png);
 	width: 50px;
 	height: 48px;
 	display: block;
@@ -140,7 +140,7 @@ body { font-size: 14px; font-family: 'Raleway', sans-serif; }
 	{
 		height: 43px;
 		width: 28px;
-		background: url(../img/icons/search-submit.png);	
+		background: url(images/search-submit.png);	
 		background-size: 17px;
 		background-position: right;
 		background-repeat: no-repeat;
@@ -185,18 +185,18 @@ body { font-size: 14px; font-family: 'Raleway', sans-serif; }
 				content: '';
 			}
 			
-			.menu > li ul li:before { background-image: url(../img/icons/dot.png); background-color: #e86358; }
-			.menu > li.info:before { background-image: url(../img/icons/info.png); }
-			.menu > li.blog:before { background-image: url(../img/icons/blog.png); }
-			.menu > li.mail:before { background-image: url(../img/icons/mail.png); }
-			.menu > li.box:before { background-image: url(../img/icons/box.png); }
-			.menu > li.gallery:before { background-image: url(../img/icons/gallery.png); }
-			.menu > li.star:before { background-image: url(../img/icons/star.png); }
-			.menu > li.book:before { background-image: url(../img/icons/book.png); }
-			.menu > li.box:before { background-image: url(../img/icons/box.png); }
-			.menu > li.home:before { background-image: url(../img/icons/home.png); }
-			.menu > li.plus:before { background-image: url(../img/icons/plus.png); }
-			.menu > li.dot:before { background-image: url(../img/icons/dot.png); }
+			.menu > li ul li:before { background-image: url(images/dot.png); background-color: #e86358; }
+			.menu > li.info:before { background-image: url(images/info.png); }
+			.menu > li.blog:before { background-image: url(images/blog.png); }
+			.menu > li.mail:before { background-image: url(images/mail.png); }
+			.menu > li.box:before { background-image: url(images/box.png); }
+			.menu > li.gallery:before { background-image: url(images/gallery.png); }
+			.menu > li.star:before { background-image: url(images/star.png); }
+			.menu > li.book:before { background-image: url(images/book.png); }
+			.menu > li.box:before { background-image: url(images/box.png); }
+			.menu > li.home:before { background-image: url(.images/home.png); }
+			.menu > li.plus:before { background-image: url(images/plus.png); }
+			.menu > li.dot:before { background-image: url(images/dot.png); }
 			
 			.menu-li-title
 			{
@@ -254,6 +254,18 @@ a { outline: 0 !important; }
 
 .post-date{
 	font-family: 'Roboto', sans-serif;
+}
+
+.scroller {
+	position: absolute;
+	left: 50%;
+	margin-left: -12px;
+	bottom: 40px;
+	background: url(images/scroller.png) no-repeat center center;
+	width: 25px;
+	height: 51px;
+	display: block;
+    z-index: 2;
 }
 
 .section-header h2,
