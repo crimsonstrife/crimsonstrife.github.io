@@ -18,7 +18,7 @@ documentReady(function() {
 
 	// Toggle script
 
-	$(".container").hide();
+	$(".nav-container").hide();
 
 	$(".toggle").click(function(){
 		$(this).toggleClass("active").next().slideToggle(350);
