@@ -42,15 +42,15 @@ behind the curtain
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,300italic,300,100italic,100,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-    <script src="libraries/jquery/jquery.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="libraries/jquery/jquery.min.js"></script>
     <script src="libraries/feedek/js/moment.js"></script>
     <script src="libraries/feedek/js/FeedEk.js"></script>
     <script type="text/javascript">
-        // RSS Reader
+            // RSS Reader
         $(document).ready(function() {
             $('#divRss').FeedEk({
-                FeedUrl: 'https://blog.patrickbarnhardt.info/wordpress/feed/',
+                FeedUrl: 'https://blog.patrickbarnhardt.info/wordpress/feed/rss',
                 MaxCount: 3,
                 ShowDesc: true,
                 ShowPubDate: true,
@@ -1622,6 +1622,7 @@ behind the curtain
             * never gonna say goodbye. Never gonna tell a lie and hurt you. -->
         <!-- Hidden iframe for submitting forms -->
         <iframe src="about:blank" name="hidden" class="hide"></iframe>
+       
         <!-- I hate it, iframes are hacky hacky hacky, but I need it -->
         <!-- And now, getting all of this to work half decent in the retarded step brother of the browser family, Internet Fucking Explorer -->
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

@@ -6,7 +6,7 @@
 // please increment the following counter as a warning
 // to the next guy:
 // 
-// total_hours_wasted_here = 42
+// total_hours_wasted_here = 68
 // 
 //This code sucks, you know it and I know it.  
 //Move on and call me an idiot later.
@@ -873,7 +873,7 @@
 	wow.init();
 
 /* Event - Window Load */
-$(window).load(function()
+	$(window).on('load', function ()
 {		
 	/* Loader */
 	$("#site-loader").delay(2000).fadeOut("slow");
@@ -947,8 +947,7 @@ jQuery(function () {
 	/* DEBUG END ******************************************************************************************/
 
 });
-//The following is the hacky code used to un-reversify emails and phone numbers as a spam-bot protection
-//works, technically.   Is probably a shitty defense in reality.
+
 var v = false;
 function changeVideo() {
 	var vID = v ? "7SnmCUwOsts" : "BsekcY04xvQ";
@@ -956,7 +955,9 @@ function changeVideo() {
 	$("#vidData").toggle(1000);
 	v = !v;
 }
-
+//The following is the hacky code used to un-reversify emails and phone numbers as a spam-bot protection
+//works, technically.   Is probably a shitty defense in reality.
+/*
 function reverseEmails() {
   if (jQuery(".eml.reverse").length > 0) {
     jQuery(".eml.reverse").each(function() {
@@ -980,3 +981,4 @@ $(function() {
     $(this).val(0).animate({ value: max }, { duration: 2000, easing: 'easeOutCirc' });
 			});
 });
+*/
