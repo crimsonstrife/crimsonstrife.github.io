@@ -43,6 +43,7 @@ behind the curtain
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,300italic,300,100italic,100,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
     <script src="libraries/jquery/jquery.min.js"></script>
+    <script src="js/main.js"></script>
     <script src="libraries/feedek/js/moment.js"></script>
     <script src="libraries/feedek/js/FeedEk.js"></script>
     <script type="text/javascript">
@@ -87,106 +88,98 @@ behind the curtain
                 <li class="icon home">
                     <a href="index.html">
                         <span class="menu-li-title">Home</span>
-                        <img class="menu-li-arrow" src="img/icons/arrow-forward.png" alt="" />
+                        <img class="menu-li-arrow" src="images/arrow-forward.png" alt="" />
                     </a>
                 </li>
 
                 <li class="icon box">
-                    <a href="portfolio.html">
+                    <a href="index.html#work">
                         <span class="menu-li-title">Portfolio</span>
-                        <img class="menu-li-arrow" src="img/icons/arrow-forward.png" alt="" />
+                        <img class="menu-li-arrow" src="images/arrow-forward.png" alt="" />
                     </a>
                 </li>
 
-                <li class="icon info">
-                    <a href="aboutus.html">
-                        <span class="menu-li-title">About us</span>
-                        <img class="menu-li-arrow" src="img/icons/arrow-forward.png" alt="" />
+                <li class="icon information">
+                    <a href="index.html#about-section">
+                        <span class="menu-li-title">About Me</span>
+                        <img class="menu-li-arrow" src="images/arrow-forward.png" alt="" />
                     </a>
                 </li>
 
                 <li id="a-submenu-1" class="icon plus">
 
                     <a href="#">
-                        <span class="menu-li-title">Features</span>
-                        <img class="menu-li-arrow-submenu" src="img/icons/submenu.png" alt="" />
+                        <span class="menu-li-title">Projects</span>
+                        <img class="menu-li-arrow-submenu" src="images/submenu.png" alt="" />
                     </a>
 
                     <ul id="submenu-1">
                         <li>
-                            <a href="index.html">
-                                <span class="menu-li-title">Slider</span>
-                                <img class="menu-li-arrow" src="img/icons/arrow-forward.png" alt="" />
+                            <a href="projects/helicalgames.net/index.html">
+                                <span class="menu-li-title">HelicalGames.net</span>
+                                <img class="menu-li-arrow" src="images/arrow-forward.png" alt="" />
                             </a>
                         </li>
 
-                        <li>
-                            <a href="index.html">
-                                <span class="menu-li-title">Sidebar Menu</span>
-                                <img class="menu-li-arrow" src="img/icons/arrow-forward.png" alt="" />
+                        <li id="a-submenu-2" class="icon plus">
+                            <a href="#">
+                                <span class="menu-li-title">OMP Game</span>
+                                <img class="menu-li-arrow" src="images/submenu.png" alt="" />
                             </a>
+
+                            <ul id="submenu-2">
+                                <a href="projects/ompgame/index.html">
+                                    <span class="menu-li-title">Game</span>
+                                    <img class="menu-li-arrow" src="images/arrow-forward.png" alt="" />
+                                </a>
+                                <a href="projects/ompgame/analytics.html">
+                                    <span class="menu-li-title">Game Analytics Study</span>
+                                    <img class="menu-li-arrow" src="images/arrow-forward.png" alt="" />
+                                </a>
+                            </ul>
+
                         </li>
                     </ul>
 
                 </li> <!-- #submenu-1 -->
 
                 <li class="icon blog">
-                    <a href="blog.html">
+                    <a href="blog.patrickbarnhardt.info">
                         <span class="menu-li-title">Blog</span>
-                        <img class="menu-li-arrow" src="img/icons/arrow-forward.png" alt="" />
-                    </a>
-                </li>
-
-                <li class="icon book">
-                    <a href="typography.html">
-                        <span class="menu-li-title">Typography</span>
-                        <img class="menu-li-arrow" src="img/icons/arrow-forward.png" alt="" />
+                        <img class="menu-li-arrow" src="images/arrow-forward.png" alt="" />
                     </a>
                 </li>
 
                 <li class="icon mail">
                     <a href="contact.php">
                         <span class="menu-li-title">Contact</span>
-                        <img class="menu-li-arrow" src="img/icons/arrow-forward.png" alt="" />
+                        <img class="menu-li-arrow" src="images/arrow-forward.png" alt="" />
                     </a>
                 </li>
-
-                <li class="icon star">
-                    <a href="#">
-                        <span class="menu-li-title">Buy</span>
-                        <img class="menu-li-arrow" src="img/icons/arrow-forward.png" alt="" />
-                    </a>
-                </li>
-
             </ul> <!-- .menu -->
 
         </section> <!-- #menu-wrapper -->
 
         <section id="sidebar-wrapper">
 
-            <h4 id="sidebar-title">Second sidebar</h4>
+            <h4 id="sidebar-title">Sidebar</h4>
 
             <div class="widget">
                 <h4>Text widget support</h4>
-                <p>This sidebar is widget ready. You can place here anything you want to - contact form, latest posts, newsletter subscribtion, categories, featured authors, best products for this month - it's completly up to you!</p>
+                <p></p>
             </div>
 
             <div class="widget">
                 <h4>Latest posts widget</h4>
                 <ul>
-                    <li class="item"><a href="#">Let's talk about design</a></li>
                     <li class="item"><a href="#">Random blog title which is quite long so it makes three lines</a></li>
-                    <li class="item"><a href="#">Follow me on ThemeForest</a></li>
-                    <li class="item"><a href="#">Use colors! Everywhere!</a></li>
                 </ul>
             </div>
 
             <div class="widget">
                 <h4>Contact widget</h4>
                 <ul>
-                    <li class="item"><a href="tel:45132141567">Call us</a></li>
-                    <li class="item"><a href="mailto:yourmail@company.cc">Mail to us</a></li>
-                    <li class="item"><a href="http://maps.google.ca/maps?f=q&source=s_q&hl=en&geocode=&q=New+York&sll=49.891235,-97.15369&sspn=47.259509,86.923828&ie=UTF8&hq=&hnear=New+York,+United+States&ll=40.714867,-74.005537&spn=0.019517,0.018797&z=14&iwloc=near&output=embed">Visit us</a></li>
+                    <li class="item"><a href="mailto:contact@patrickbarnhardt.info">Email Me</a></li>
                 </ul>
             </div>
 
@@ -198,8 +191,6 @@ behind the curtain
                     <li class="wordpress"><a href="#"><img src="http://placehold.it/64x64" alt="" /></a></li>
                     <li class="thumblr"><a href="#"><img src="http://placehold.it/64x64" alt="" /></a></li>
                     <li class="html"><a href="#"><img src="http://placehold.it/64x64" alt="" /></a></li>
-
-                    <!-- find the right icons at https://github.com/joshuasortino/Publicons -->
 
                 </ul>
             </div>
@@ -1670,7 +1661,6 @@ behind the curtain
         <script src="libraries/video/jquery.mb.YTPlayer.js"></script>
         <script src="libraries/lightbox2/js/lightbox.js"></script>
         <!-- Customized Scripts -->
-        <script src="js/main.js"></script>
         <script src="js/functions.js"></script>
         <script src="js/githubloader.js"></script>
         <script src="js/github-calendar.js"></script>

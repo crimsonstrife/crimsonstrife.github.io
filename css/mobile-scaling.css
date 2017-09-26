@@ -9,7 +9,8 @@
     display: none;
   }
   #aboutmemenuitem {
-    display: none;
+    display: none !important;
+    visibility: hidden !important;
   }
 }
 @media screen and (max-width: 880px) {
@@ -187,4 +188,18 @@
 
 .flag-staffpicked {
     background-image: url(/http://patrickbarnhardt.info/images/staffpick-small-1cd51a0cf88582872bc101b447e28bf9.png) !important;
+}
+@media screen and (min-width: 1000px){
+      #menu-wrapper{
+      display: none !important;
+      visibility: hidden !important;
+  }
+  #sidebar-wrapper{
+      display: none !important;
+      visibility: hidden !important;
+  }
+  #header{
+      display: none !important;
+      visibility: hidden !important;
+  }
 }

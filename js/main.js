@@ -33,6 +33,12 @@ documentReady(function() {
 		jQuery('#submenu-1').toggle(250);
 	});
 
+	$("#submenu-2").hide();
+
+	jQuery('#a-submenu-2').click(function () {
+	    jQuery('#submenu-2').toggle(250);
+	});
+
 	var events = ("ontouchstart" in document.documentElement) ? 'touchstart touchon' : 'click';
 
 	jQuery('#a-menu').bind(events, {direction:'right'},evthandler);
