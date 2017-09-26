@@ -94,14 +94,14 @@ behind the curtain
                     </li>
 
                     <li class="icon box">
-                        <a href="index.html#work">
+                        <a href="#work">
                             <span class="menu-li-title">Portfolio</span>
                             <img class="menu-li-arrow" src="images/arrow-forward.png" alt="" />
                         </a>
                     </li>
 
                     <li class="icon information">
-                        <a href="index.html#about-section">
+                        <a href="#about-section">
                             <span class="menu-li-title">About Me</span>
                             <img class="menu-li-arrow" src="images/arrow-forward.png" alt="" />
                         </a>
@@ -213,18 +213,38 @@ behind the curtain
 
         </section> <!-- #header -->
         <div class="push"></div>
-        <section id="content-wrapper">
-            <div id="navbar" class="navbar-collapse collapse" style="background-color: #333;">
-                <ul class="nav navbar-nav pull-right">
-                    <li id="aboutmemenuitem"><a href="#about-section">Who Am I?</a></li>
-                    <li><a href="#work">Work</a></li>
-                    <li><a href="#resume">Resume</a></li>
-                    <li><a href="http://blog.patrickbarnhardt.info">Blog</a></li>
-                    <li><a href="http://resume.patrickbarnhardt.info">Resume (Static)</a></li>
-                    <li><a href="#project-section">Contact</a></li>
-                </ul>
+        <!-- Header Section -->
+        <header id="header-section" class="header-section">
+            <div class="col-md-2 col-sm-2 col-xs-6 logo-block">
+
             </div>
-            <!--/.nav-collapse -->
+            <div class="col-md-10 col-sm-12 col-xs-12 menu-block">
+                <nav class="navbar navbar-default primary-navigation" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav pull-right">
+                            <li><a href="#top">Back To Top</a></li>
+                            <li id="aboutmemenuitem"><a href="#about-section">Who Am I?</a></li>
+                            <li><a href="#work">Work</a></li>
+                            <li><a href="#resume">Resume</a></li>
+                            <li><a href="http://blog.patrickbarnhardt.info">Blog</a></li>
+                            <li><a href="http://resume.patrickbarnhardt.info">Resume (Static)</a></li>
+                            <li><a href="#project-section">Contact</a></li>
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </nav>
+            </div>
+        </header>
+        <!-- Header Section Over -->
+        <section id="content-wrapper">
             <div id="photos-slider" class="slider-section">
                 <div class="slides-container">
                     <!-- slide item 1 -->
@@ -268,37 +288,7 @@ behind the curtain
                 <p class="goto-next">Scroll Down or Click Me<a class="arrow animated ci bounce" href="#about-section"><div class="scroller"></div></a></p>
             </div>
             <!-- Slider Section Over-->
-            <!-- Header Section -->
-            <header id="header-section" class="header-section">
-                <div class="col-md-2 col-sm-2 col-xs-6 logo-block">
-
-                </div>
-                <div class="col-md-10 col-sm-12 col-xs-12 menu-block">
-                    <nav class="navbar navbar-default primary-navigation" role="navigation">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-                        <div id="navbar" class="navbar-collapse collapse">
-                            <ul class="nav navbar-nav pull-right">
-                                <li><a href="#top">Back To Top</a></li>
-                                <li id="aboutmemenuitem"><a href="#about-section">Who Am I?</a></li>
-                                <li><a href="#work">Work</a></li>
-                                <li><a href="#resume">Resume</a></li>
-                                <li><a href="http://blog.patrickbarnhardt.info">Blog</a></li>
-                                <li><a href="http://resume.patrickbarnhardt.info">Resume (Static)</a></li>
-                                <li><a href="#project-section">Contact</a></li>
-                            </ul>
-                        </div>
-                        <!--/.nav-collapse -->
-                    </nav>
-                </div>
-            </header>
-            <!-- Header Section Over -->
+            
             <!-- About Me Section -->
             <div id="about-section" class="about-section">
                 <div class="container">
