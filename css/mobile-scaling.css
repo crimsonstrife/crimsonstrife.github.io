@@ -203,10 +203,16 @@
       visibility: hidden !important;
   }
   .push{margin-bottom: 0px}
+  .scroller{
+      background: url(../images/scroller.png) no-repeat center center;
+  }
 }
 @media screen and (max-width: 1000px){
   .header-section{
       display: none !important;
       visibility: hidden !important;
+  }
+  .scroller{
+      background: url(../images/scrollermobile.png) no-repeat center center;
   }
 }

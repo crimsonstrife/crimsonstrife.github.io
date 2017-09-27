@@ -600,7 +600,7 @@ a { outline: 0 !important; }
 	left: 50%;
 	margin-left: -12px;
 	bottom: 40px;
-	background: url(images/scroller.png) no-repeat center center;
+	/* background: url(images/scroller.png) no-repeat center center; */
 	width: 25px;
 	height: 51px;
 	display: block;
@@ -3108,7 +3108,7 @@ a { outline: 0 !important; }
     -o-animation: loading 2s 1s infinite;
     animation: loading 2s 1s infinite;
 }
-@keyframes "loading" {
+@keyframes loading {
     from {
         left: 0;
     }
@@ -3124,7 +3124,7 @@ a { outline: 0 !important; }
         left: 100%;
     }
 }
-@-webkit-keyframes "loading" {
+@-webkit-keyframes loading {
     from {
         left: 0;
     }
@@ -3132,7 +3132,7 @@ a { outline: 0 !important; }
         left: 100%;
     }
 }
-@-ms-keyframes "loading" {
+@-ms-keyframes loading {
     from {
         left: 0;
     }
@@ -3140,7 +3140,7 @@ a { outline: 0 !important; }
         left: 100%;
     }
 }
-@-o-keyframes "loading" {
+@-o-keyframes loading {
     from {
         left: 0;
     }
