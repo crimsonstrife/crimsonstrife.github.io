@@ -202,5 +202,11 @@
       display: none !important;
       visibility: hidden !important;
   }
-  .push{margin-bottom: 48px}
+  .push{margin-bottom: 0px}
+}
+@media screen and (max-width: 1000px){
+  .header-section{
+      display: none !important;
+      visibility: hidden !important;
+  }
 }
