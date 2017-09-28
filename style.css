@@ -2623,13 +2623,14 @@ a { outline: 0 !important; }
 	height: 160px;
 }
 .footer-item {
-	width: 16%;
+	width: 25%;
 	display:inline-block;
 	margin: 50px 0 50px 40px;
+    vertical-align: top;
 }
 .footer-section .footer-item i {
-	width: 67px;
-	height: 67px;
+	width: 20%;
+	height: 20%;
 	text-align: center;
 	line-height: 63px;
 	font-size: 18px;
