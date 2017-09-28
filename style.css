@@ -3182,13 +3182,17 @@ a { outline: 0 !important; }
     border-radius: 50%;
     background-color: #fff;
     padding: 5px;
+    margin-top: 5% !important;
+    margin-bottom: 5% !important;
     }
     #about #profile img {
       width: 170px;
       height: 170px;
       border-radius: 50%; }
   #about #intro-div {
-    padding: 30px 0; }
+    padding: 30px 0;
+    margin-top: 10% !important;
+  }
     #about #intro-div ul {
       padding: 0 5px;
       margin-top: 85px; }
