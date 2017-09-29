@@ -104,21 +104,21 @@
 		});
 	});
 	
-	/* Our Work */
-	$('.our-work').each(function ()
+	/* My Work */
+	$('.my-work').each(function ()
 	{
 		var $this = $(this);
 		var myVal = $(this).data("value");
 
 		$this.appear(function()
 		{
-			$('.our-work .section-header').addClass('animated fadeInDown');
-			$('.our-work .portfolio-categories').addClass('animated fadeInUp');
-			$('.our-work .portfolio-list li').addClass('animated rollIn');
+			$('.my-work .section-header').addClass('animated fadeInDown');
+			$('.my-work .portfolio-categories').addClass('animated fadeInUp');
+			$('.my-work .portfolio-list li').addClass('animated rollIn');
 		});
 	});
 	
-	/* WHy Choose US */
+	/* Why Choose Me */
 	$('.why-choose').each(function ()
 	{
 		var $this = $(this);
@@ -130,7 +130,7 @@
 		});
 	});
 	
-	/* How We Work */
+	/* How I Work */
 	$('.research-slope').each(function ()
 	{
 		var $this = $(this);
@@ -143,15 +143,15 @@
 		});
 	});
 	
-	$('.we-perfection-slope').each(function ()
+	$('.my-perfection-slope').each(function ()
 	{
 		var $this = $(this);
 		var myVal = $(this).data("value");
 
 		$this.appear(function()
 		{
-			$('.we-perfection-slope h3').addClass('animated fadeInLeft');
-			$('.we-perfection-slope p').addClass('animated fadeInLeft');
+			$('.my-perfection-slope h3').addClass('animated fadeInLeft');
+			$('.my-perfection-slope p').addClass('animated fadeInLeft');
 		});
 	});
 	$('.clean-code').each(function ()
@@ -166,15 +166,15 @@
 		});
 	});
 	
-	$('.we-launch-slope').each(function ()
+	$('.my-launch-slope').each(function ()
 	{
 		var $this = $(this);
 		var myVal = $(this).data("value");
 
 		$this.appear(function()
 		{
-			$('.we-launch-slope h3').addClass('animated fadeInLeft');
-			$('.we-launch-slope p').addClass('animated fadeInLeft');
+			$('.my-launch-slope h3').addClass('animated fadeInLeft');
+			$('.my-launch-slope p').addClass('animated fadeInLeft');
 		});
 	});
 	
@@ -191,9 +191,9 @@
 		});
 	});
 	
-	/* Our Genius */
+	/* My Genius */
 		/* Style 1 */
-	$('.our-genius .style1').each(function ()
+	$('.my-genius .style1').each(function ()
 	{
 		var $this = $(this);
 		var myVal = $(this).data("value");
@@ -271,7 +271,7 @@
 		});
 	});
 		/* Style 3 */
-	$('.our-genius .style3').each(function ()
+	$('.my-genius .style3').each(function ()
 	{
 		var $this = $(this);
 		var myVal = $(this).data("value");
@@ -321,7 +321,7 @@
 		$('.style3').css('clip-path','url("#clipPolygon3")');		
 	});
 		/* Style 4 */
-	$('.our-genius .style4').each(function ()
+	$('.my-genius .style4').each(function ()
 	{
 		var $this = $(this);
 		var myVal = $(this).data("value");
@@ -370,7 +370,7 @@
 		$('.style4').css('clip-path','url("#clipPolygon4")');
 	});
 		/* Style 5 */
-	$('.our-genius .style5').each(function ()
+	$('.my-genius .style5').each(function ()
 	{
 		var $this = $(this);
 		var myVal = $(this).data("value");
@@ -418,7 +418,7 @@
 		$('.style5').css('clip-path','url("#clipPolygon5")');
 	});
 		/* Style 6 */
-	$('.our-genius .style6').each(function () 
+	$('.my-genius .style6').each(function () 
 	{
 		var $this = $(this);
 		var myVal = $(this).data("value");
@@ -468,7 +468,7 @@
 	});
 	
 		/* Style 7 */
-	$('.our-genius .style7').each(function ()
+	$('.my-genius .style7').each(function ()
 	{
 		var $this = $(this);
 		var myVal = $(this).data("value");
@@ -517,25 +517,23 @@
 		$('.style7').css('clip-path','url("#clipPolygon7")');
 	});
 	
-	$('.our-genius .style2').each(function ()
+	$('.my-genius .style2').each(function ()
 	{		
 		$('.style2').css('clip-path','url("#clipPolygon2")');	
 	});	
 	
-	$('.our-genius').each(function ()
+	$('.my-genius').each(function ()
 	{
 		var $this = $(this);
 		var myVal = $(this).data("value");
 
 		$this.appear(function()
 		{
-			$('.our-genius .genius-gallery .style1').addClass('animated fadeInLeft');
+			$('.my-genius .genius-gallery .style1').addClass('animated fadeInLeft');
 			/*$('.our-genius .genius-gallery .style2').addClass('animated fadeInDown');*/
-			$('.our-genius .genius-gallery .style3').addClass('animated fadeInRight');
-			$('.our-genius .genius-gallery .style4').addClass('animated fadeInLeft');
-			$('.our-genius .genius-gallery .style5').addClass('animated fadeInRight');
-			$('.our-genius .genius-gallery .style6').addClass('animated fadeInLeft');
-			$('.our-genius .genius-gallery .style7').addClass('animated fadeInRight');
+			$('.my-genius .genius-gallery .style3').addClass('animated fadeInRight');
+			$('.my-genius .genius-gallery .style6').addClass('animated fadeInLeft');
+			$('.my-genius .genius-gallery .style7').addClass('animated fadeInRight');
 		});
 	});
 	
@@ -763,9 +761,9 @@
 			}
 		});
 		
-		$('.our-work .portfolio-categories li > a').on('click', function(event)
+		$('.my-work .portfolio-categories li > a').on('click', function(event)
 		{
-			$('.our-work .portfolio-categories li > a').removeClass('active');
+			$('.my-work .portfolio-categories li > a').removeClass('active');
 			$(this).addClass('active');
 		});
 		
@@ -802,26 +800,7 @@
 		{
 			$("#choose_color").toggleClass("position");
 		});
-		
-		/* Lightbox for Highlights Gallery	*/
-		/*$('#our-team-section .team-inner .team-member-image').magnificPopup({
-			delegate: 'a',
-			type: 'image',
-			tLoading: 'Loading image #%curr%...',
-			mainClass: 'mfp-img-mobile',
-			gallery: {
-				enabled: true,
-				navigateByImgClick: true,
-				preload: [0,1] // Will preload 0 - before current, and 1 after the current image
-			},
-			image: {
-				tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
-				/*titleSrc: function(item) {
-					return item.el.attr('title') + '<small>by Marsel Van Oosten</small>';
-				}*/
-			//}
-		//});
-		
+			
 	});
 	/* document.ready /- */
 
