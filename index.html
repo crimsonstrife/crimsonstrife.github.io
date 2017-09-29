@@ -56,6 +56,13 @@ behind the curtain
                 ShowPubDate: true,
                 DateFormat: 'DD MM',
             });
+            $('#sidebarRss').FeedEk({
+                FeedUrl: 'https://blog.patrickbarnhardt.info/wordpress/feed/rss',
+                MaxCount: 5,
+                ShowDesc: false,
+                ShowPubDate: true,
+                DateFormat: 'DD MM',
+            });
         });
     </script>
 </head>
@@ -175,26 +182,24 @@ behind the curtain
                     <h4 id="sidebar-title">Sidebar</h4>
 
                     <div class="widget">
-                        <h4>Text widget support</h4>
+                        <h4> </h4>
                         <p></p>
                     </div>
 
                     <div class="widget">
-                        <h4>Latest posts widget</h4>
-                        <ul>
-                            <li class="item"><a href="#">Random blog title which is quite long so it makes three lines</a></li>
-                        </ul>
+                        <h4>Blog Posts</h4>
+                        <div id="sidebarRss"></div>
                     </div>
 
                     <div class="widget">
-                        <h4>Contact widget</h4>
+                        <h4>Contact</h4>
                         <ul>
                             <li class="item"><a href="mailto:contact@patrickbarnhardt.info">Email Me</a></li>
                         </ul>
                     </div>
 
                     <div class="widget">
-                        <h4>Share widget</h4>
+                        <h4>Share on Social Media</h4>
                         <ul class="social">
 
                             <li class="blogger"><a href="#"><img src="http://placehold.it/64x64" alt="" /></a></li>
