@@ -4,11 +4,11 @@
 #
 # PHP Markdown  
 # Copyright (c) 2004-2013 Michel Fortin  
-# <http://michelf.com/projects/php-markdown/>
+# <https://michelf.com/projects/php-markdown/>
 #
 # Original Markdown  
 # Copyright (c) 2004-2006 John Gruber  
-# <http://daringfireball.net/projects/markdown/>
+# <https://daringfireball.net/projects/markdown/>
 #
 namespace Michelf;
 
@@ -475,7 +475,7 @@ class Markdown {
 		"doImages"            =>  10,
 		"doAnchors"           =>  20,
 		
-		# Make links out of things like `<http://example.com/>`
+		# Make links out of things like `<https://example.com/>`
 		# Must come after doAnchors, because you can use < and >
 		# delimiters in inline links like [this](<url>).
 		"doAutoLinks"         =>  30,
@@ -1267,7 +1267,7 @@ class Markdown {
 			$text = str_replace('&', '&amp;', $text);
 		} else {
 			# Ampersand-encoding based entirely on Nat Irons's Amputator
-			# MT plugin: <http://bumppo.net/projects/amputator/>
+			# MT plugin: <https://bumppo.net/projects/amputator/>
 			$text = preg_replace('/&(?!#?[xX]?(?:[0-9a-fA-F]+|\w+);)/', 
 								'&amp;', $text);;
 		}

@@ -15,7 +15,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Traq. If not, see <http://www.gnu.org/licenses/>.
+ * along with Traq. If not, see <https://www.gnu.org/licenses/>.
  */
 
 // MySQL connection
@@ -40,7 +40,7 @@ $db = array(
 */
 
 // Other database
-// See: http://php.net/manual/en/pdo.drivers.php
+// See: https://php.net/manual/en/pdo.drivers.php
 /*
 $db = array(
     'driver' => 'PDO',

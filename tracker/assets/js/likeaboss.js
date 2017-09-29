@@ -96,7 +96,7 @@ var likeABoss = {
 					return;
 				}
 				
-				var url = prompt(likeABoss.locale('url'), selection ? selection : 'http://');
+				var url = prompt(likeABoss.locale('url'), selection ? selection : 'https://');
 				if (!url || url == null) {
 					return;
 				}

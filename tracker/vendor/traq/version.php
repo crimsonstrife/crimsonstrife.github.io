@@ -4,7 +4,7 @@
  * Copyright (C) 2009-2016 Jack P.
  * Copyright (C) 2012-2016 Traq.io
  * https://github.com/nirix
- * http://traq.io
+ * https://traq.io
  *
  * This file is part of Traq.
  *
@@ -18,7 +18,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Traq. If not, see <http://www.gnu.org/licenses/>.
+ * along with Traq. If not, see <https://www.gnu.org/licenses/>.
  */
 
 // Version

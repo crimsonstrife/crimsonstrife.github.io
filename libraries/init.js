@@ -142,7 +142,7 @@
 				});
 
 			/* Create gallery from jQuery object collection */
-			$("a.fancybox").attr('rel', 'gallery').fancybox(); // http://fancybox.net/blog
+			$("a.fancybox").attr('rel', 'gallery').fancybox(); // https://fancybox.net/blog
 			
 			$("a[rel=example]").fancybox({
 			overlayOpacity: 0.01, overlayColor: '#F2EFEB', overlayShow: true, 

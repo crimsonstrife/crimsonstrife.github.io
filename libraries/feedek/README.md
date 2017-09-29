@@ -5,9 +5,9 @@ FeedEk jQuery RSS/ATOM Feed Plugin
 
 You can obtain feeds easily from any domain. No need for server-side scripts.
 
-[Plugin Homepage](http://jquery-plugins.net/FeedEk/FeedEk.html)
+[Plugin Homepage](https://jquery-plugins.net/FeedEk/FeedEk.html)
 
-[Demo](http://jquery-plugins.net/FeedEk/FeedEk_demo.html)
+[Demo](https://jquery-plugins.net/FeedEk/FeedEk_demo.html)
 
  
 ## Usage
@@ -25,13 +25,13 @@ You can obtain feeds easily from any domain. No need for server-side scripts.
 **- Basic**
 
     $('#divRss').FeedEk({
-        FeedUrl : 'http://jquery-plugins.net/rss',
+        FeedUrl : 'https://jquery-plugins.net/rss',
       });
 
 **- With Options**
 
     $('#divRss').FeedEk({
-        FeedUrl : 'http://jquery-plugins.net/rss',
+        FeedUrl : 'https://jquery-plugins.net/rss',
         MaxCount : 5,
         ShowDesc : true,
         ShowPubDate:true,
@@ -42,7 +42,7 @@ You can obtain feeds easily from any domain. No need for server-side scripts.
 **- With Date Format Options**
 
     ('#divRss').FeedEk({
-        FeedUrl : 'http://jquery-plugins.net/rss',
+        FeedUrl : 'https://jquery-plugins.net/rss',
         MaxCount : 5,
         ShowDesc : true,
         ShowPubDate:true,
@@ -52,12 +52,12 @@ You can obtain feeds easily from any domain. No need for server-side scripts.
 		DateFormatLang:'en'
       });
 
-**IMPORTANT :** [Moment.js](http://momentjs.com) is used for DateFormat options. You must include [Moment.js](http://momentjs.com/downloads/moment.min.js) for date format.
-If you want to localize date format (day name, month name) you must include [Moment.js with langs](http://momentjs.com/downloads/moment-with-langs.min.js) instead.
+**IMPORTANT :** [Moment.js](https://momentjs.com) is used for DateFormat options. You must include [Moment.js](https://momentjs.com/downloads/moment.min.js) for date format.
+If you want to localize date format (day name, month name) you must include [Moment.js with langs](https://momentjs.com/downloads/moment-with-langs.min.js) instead.
 
-Please visit [format examples](http://momentjs.com/docs/#/displaying/format/) and [languages](http://momentjs.com). for more information.
+Please visit [format examples](https://momentjs.com/docs/#/displaying/format/) and [languages](https://momentjs.com). for more information.
 
-Check out [FeedEk examples](http://jquery-plugins.net/FeedEk/FeedEk-examples.html) page for date format usage.
+Check out [FeedEk examples](https://jquery-plugins.net/FeedEk/FeedEk-examples.html) page for date format usage.
 
 
 ## Options
@@ -81,7 +81,7 @@ Check out [FeedEk examples](http://jquery-plugins.net/FeedEk/FeedEk-examples.htm
 
 ## Demo
 
-[Plugin Homepage](http://jquery-plugins.net/FeedEk/FeedEk.html)
+[Plugin Homepage](https://jquery-plugins.net/FeedEk/FeedEk.html)
 
-[Demo](http://jquery-plugins.net/FeedEk/FeedEk_demo.html)
+[Demo](https://jquery-plugins.net/FeedEk/FeedEk_demo.html)
 

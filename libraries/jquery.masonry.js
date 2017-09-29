@@ -2,7 +2,7 @@
  * jQuery Masonry v2.0.110517 beta
  * The flip-side of CSS Floats.
  * jQuery plugin that rearranges item elements to a grid.
- * http://masonry.desandro.com
+ * https://masonry.desandro.com
  *
  * Licensed under the MIT license.
  * Copyright 2011 David DeSandro
@@ -383,7 +383,7 @@
   
   
   // ======================= imagesLoaded Plugin  ===============================
-  // A fork of http://gist.github.com/268257 by Paul Irish
+  // A fork of https://gist.github.com/268257 by Paul Irish
 
   // mit license. paul irish. 2010.
   // webkit fix from Oren Solomianik. thx!
@@ -408,7 +408,7 @@
       // cached images don't fire load sometimes, so we reset src.
       if (this.complete || this.complete === undefined){
         var src = this.src;
-        // webkit hack from http://groups.google.com/group/jquery-dev/browse_thread/thread/eee6ab7b2da50e1f
+        // webkit hack from https://groups.google.com/group/jquery-dev/browse_thread/thread/eee6ab7b2da50e1f
         // data uri bypasses webkit log warning (thx doug jones)
         this.src = blank;
         this.src = src;

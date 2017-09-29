@@ -15,7 +15,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Traq. If not, see <http://www.gnu.org/licenses/>.
+ * along with Traq. If not, see <https://www.gnu.org/licenses/>.
  */
 
 namespace traq\helpers;
@@ -52,7 +52,7 @@ class Atom
         $feed = array();
 
         $feed[] = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
-        $feed[] = "<feed xmlns=\"http://www.w3.org/2005/Atom\">";
+        $feed[] = "<feed xmlns=\"https://www.w3.org/2005/Atom\">";
         $feed[] = "  <title>{$this->title}</title>";
         $feed[] = "  <link href=\"{$this->link}\" />";
         $feed[] = "  <link href=\"{$this->feed_link}\" rel=\"self\" />";

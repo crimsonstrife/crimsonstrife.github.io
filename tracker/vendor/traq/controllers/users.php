@@ -4,7 +4,7 @@
  * Copyright (C) 2009-2014 Jack Polgar
  * Copyright (C) 2012-2014 Traq.io
  * https://github.com/nirix
- * http://traq.io
+ * https://traq.io
  *
  * This file is part of Traq.
  *
@@ -18,7 +18,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Traq. If not, see <http://www.gnu.org/licenses/>.
+ * along with Traq. If not, see <https://www.gnu.org/licenses/>.
  */
 
 namespace traq\controllers;
@@ -150,7 +150,7 @@ class Users extends AppController
                         $user,
                         'email_validation',
                         array(
-                            'link' => "http://" . $_SERVER['HTTP_HOST'] . Request::base("users/validate/" . $user->option('validation_key'))
+                            'link' => "https://" . $_SERVER['HTTP_HOST'] . Request::base("users/validate/" . $user->option('validation_key'))
                         )
                     );
 
@@ -222,7 +222,7 @@ class Users extends AppController
                             settings('title'), // Installation title
                             $user->name,       // Users name
                             $user->username,   // Users username
-                            "http://" . $_SERVER['HTTP_HOST'] . Request::base("/login/resetpassword/{$key}"), // Reset password URL
+                            "https://" . $_SERVER['HTTP_HOST'] . Request::base("/login/resetpassword/{$key}"), // Reset password URL
                             $_SERVER['REMOTE_ADDR'] // IP of reset request
                         )
                     );

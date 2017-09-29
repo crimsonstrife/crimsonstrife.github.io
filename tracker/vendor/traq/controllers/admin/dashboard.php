@@ -15,7 +15,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Traq. If not, see <http://www.gnu.org/licenses/>.
+ * along with Traq. If not, see <https://www.gnu.org/licenses/>.
  */
 
 namespace traq\controllers\admin;
@@ -64,7 +64,7 @@ class Dashboard extends AppController
      */
     private function check_for_update()
     {
-        if ($update = @file_get_contents("http://traq.io/version_check.php?version=" . urlencode(TRAQ_VER) . "&code=" . TRAQ_VER_CODE)) {
+        if ($update = @file_get_contents("https://traq.io/version_check.php?version=" . urlencode(TRAQ_VER) . "&code=" . TRAQ_VER_CODE)) {
             $update = json_decode($update, true);
             View::set(compact('update'));
         }

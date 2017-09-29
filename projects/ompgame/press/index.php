@@ -30,7 +30,7 @@ if( !file_exists('data.xml') )
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
 		<title>Instructions</title>
-		<link href="http://cdnjs.cloudflare.com/ajax/libs/uikit/1.2.0/css/uikit.gradient.min.css" rel="stylesheet" type="text/css">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/uikit/1.2.0/css/uikit.gradient.min.css" rel="stylesheet" type="text/css">
 		<link href="style.css" rel="stylesheet" type="text/css">
 	</head>
 
@@ -39,7 +39,7 @@ if( !file_exists('data.xml') )
 			<div class="uk-grid">
 			</div>
 		</div>
-		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script type="text/javascript">
 			$(function() {
 				$(".uk-grid").load("create.php?s=installation");
@@ -190,7 +190,7 @@ foreach( $xml->children() as $child )
 function parseLink($uri)
 {
     $parsed = trim($uri);
-    if( strpos($parsed, "http://") === 0 )
+    if( strpos($parsed, "https://") === 0 )
         $parsed = substr($parsed, 7);
     if (strpos($parsed, "https://") === 0 )
         $parsed = substr($parsed, 8);
@@ -211,7 +211,7 @@ echo '<!DOCTYPE html>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
 		<title>'. COMPANY_TITLE .'</title>
-		<link href="http://cdnjs.cloudflare.com/ajax/libs/uikit/1.2.0/css/uikit.gradient.min.css" rel="stylesheet" type="text/css">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/uikit/1.2.0/css/uikit.gradient.min.css" rel="stylesheet" type="text/css">
 		<link href="style.css" rel="stylesheet" type="text/css">
 	</head>
 
@@ -220,7 +220,7 @@ echo '<!DOCTYPE html>
 			<div class="uk-grid">
 				<div id="navigation" class="uk-width-medium-1-4">
 					<h1 class="nav-header">'. COMPANY_TITLE .'</h1>
-					<a class="nav-header" href="http://'. parseLink(COMPANY_WEBSITE) .'">'. trim( parseLink(COMPANY_WEBSITE), "/") .'</a>
+					<a class="nav-header" href="https://'. parseLink(COMPANY_WEBSITE) .'">'. trim( parseLink(COMPANY_WEBSITE), "/") .'</a>
 					<ul class="uk-nav uk-nav-side">';
 
 if (count(TranslateTool::getLanguages()) > 1) {
@@ -271,7 +271,7 @@ echo '					<div class="uk-grid">
 							</p>
 							<p>
 								<strong>'. tl('Website:') .'</strong><br/>
-								<a href="http://'. parseLink(COMPANY_WEBSITE) .'">'. parseLink(COMPANY_WEBSITE) .'</a>
+								<a href="https://'. parseLink(COMPANY_WEBSITE) .'">'. parseLink(COMPANY_WEBSITE) .'</a>
 							</p>
 							<p>
 								<strong>'. tl('Press / Business Contact:') .'</strong><br/>
@@ -289,7 +289,7 @@ for( $i = 0; $i < count($socials); $i++ )
 		if( $child->getName() == "name" ) $name = $child;
 		else if( $child->getName() == "link" ) $link = $child;
 	}
-	echo( '<a href="http://'.parseLink($link).'">'.$name.'</a><br/>' );
+	echo( '<a href="https://'.parseLink($link).'">'.$name.'</a><br/>' );
 }
 
 echo '							</p>
@@ -399,10 +399,10 @@ else
 			$result = "";
 
 			if( strlen( $youtube ) > 0 ) {
-				$result .= '<a href="http://www.youtube.com/watch?v='.$youtube.'">YouTube</a>, ';
+				$result .= '<a href="https://www.youtube.com/watch?v='.$youtube.'">YouTube</a>, ';
 			}
 			if( strlen( $vimeo ) > 0 ) {
-				$result .= '<a href="http://www.vimeo.com/'.$vimeo.'">Vimeo</a>, ';
+				$result .= '<a href="https://www.vimeo.com/'.$vimeo.'">Vimeo</a>, ';
 			}
 			if( strlen( $mov ) > 0 ) {
 				$result .= '<a href="trailers/'.$mov.'">.mov</a>, ';
@@ -416,11 +416,11 @@ else
 			if( $ytfirst == 1 ) 
 			{
 				echo '<div class="uk-responsive-width iframe-container">
-		<iframe src="http://www.youtube.com/embed/'. $youtube .'" frameborder="0" allowfullscreen></iframe>
+		<iframe src="https://www.youtube.com/embed/'. $youtube .'" frameborder="0" allowfullscreen></iframe>
 </div>';
 			} elseif ( $ytfirst == 0 ) {
 				echo '<div class="uk-responsive-width iframe-container">
-		<iframe src="http://player.vimeo.com/video/'.$vimeo.'" frameborder="0" allowfullscreen></iframe>
+		<iframe src="https://player.vimeo.com/video/'.$vimeo.'" frameborder="0" allowfullscreen></iframe>
 </div>';
 			}
 			echo '</p>';
@@ -547,7 +547,7 @@ if( count($quotes) > 0 )
 			}
 		}
 	
-		echo '<li>"'.$description.'"<br/><cite>- '.$name.', <a href="http://'.parseLink($link).'/">'.$website.'</a></cite></li></li>';
+		echo '<li>"'.$description.'"<br/><cite>- '.$name.', <a href="https://'.parseLink($link).'/">'.$website.'</a></cite></li></li>';
 	}
 	
 	echo '</ul><hr>';
@@ -577,7 +577,7 @@ if( count($additionals) > 0 ) {
 		
 		echo '<p>
 		<strong>'.$title.'</strong><br/>
-		'.$description.' <a href="http://'.parseLink($link).'" alt="'.parseLink($link).'">'.$linkTitle.'</a>.
+		'.$description.' <a href="https://'.parseLink($link).'" alt="'.parseLink($link).'">'.$linkTitle.'</a>.
 	</p>';
 
 	}
@@ -613,7 +613,7 @@ for( $i = 0; $i < count($credits); $i++ )
 	}
 	else
 	{
-		echo '<strong>'.$person.'</strong><br/><a href="http://'.parseLink($website).'/">'.$role.'</a>';
+		echo '<strong>'.$person.'</strong><br/><a href="https://'.parseLink($website).'/">'.$role.'</a>';
 	}
 
 	echo '</p>';
@@ -643,7 +643,7 @@ for( $i = 0; $i < count($contacts); $i++ )
 		echo '<strong>'.$name.'</strong><br/><a href="mailto:'.$mail.'">'.$mail.'</a>';
 	}
 	if( strlen($link) > 0 && strlen($mail) == 0 ) {
-		echo '<strong>'.$name.'</strong><br/><a href="http://'.parseLink($link).'">'.parseLink($link).'</a>';
+		echo '<strong>'.$name.'</strong><br/><a href="https://'.parseLink($link).'">'.parseLink($link).'</a>';
 	}
 
 	echo '</p>';
@@ -654,14 +654,14 @@ echo '						</div>
 
 					<hr>
 
-					<p><a href="http://dopresskit.com/">presskit()</a> by Rami Ismail (<a href="http://www.vlambeer.com/">Vlambeer</a>) - also thanks to <a href="sheet.php?p=credits">these fine folks</a></p>
+					<p><a href="https://dopresskit.com/">presskit()</a> by Rami Ismail (<a href="https://www.vlambeer.com/">Vlambeer</a>) - also thanks to <a href="sheet.php?p=credits">these fine folks</a></p>
 				</div>
 			</div>
 		</div>
 
-		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.js"></script>		
-		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/masonry/3.1.2/masonry.pkgd.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.js"></script>		
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.1.2/masonry.pkgd.min.js"></script>
 		<script type="text/javascript">
 			$( document ).ready(function() {
 				var container = $(\'.images\');
@@ -682,7 +682,7 @@ if ( defined("ANALYTICS") && strlen(ANALYTICS) > 10 )
 
 	(function() {
 		var ga = document.createElement(\'script\'); ga.type = \'text/javascript\'; ga.async = true;
-		ga.src = (\'https:\' == document.location.protocol ? \'https://ssl\' : \'http://www\') + \'.google-analytics.com/ga.js\';
+		ga.src = (\'https:\' == document.location.protocol ? \'https://ssl\' : \'https://www\') + \'.google-analytics.com/ga.js\';
 		var s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(ga, s);
 	})();
 </script>';

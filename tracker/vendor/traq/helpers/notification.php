@@ -15,7 +15,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Traq. If not, see <http://www.gnu.org/licenses/>.
+ * along with Traq. If not, see <https://www.gnu.org/licenses/>.
  */
 
 namespace traq\helpers;
@@ -149,7 +149,7 @@ class Notification
                     format_text($options['ticket']->body),
                     $options['ticket']->project->name,
                     $options['ticket']->project->slug,
-                    "http://" . $_SERVER['HTTP_HOST'] . Request::base($options['ticket']->href())
+                    "https://" . $_SERVER['HTTP_HOST'] . Request::base($options['ticket']->href())
                 );
                 break;
 

@@ -15,7 +15,7 @@
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
- * along with Avalon. If not, see <http://www.gnu.org/licenses/>.
+ * along with Avalon. If not, see <https://www.gnu.org/licenses/>.
  */
 
 namespace avalon\database;
@@ -187,7 +187,7 @@ class Model
             // Loop over the properties
             $data = array();
             foreach (static::$_properties as $column) {
-                // Hack to fix http://bugs.traq.io/traq/tickets/358
+                // Hack to fix https://bugs.traq.io/traq/tickets/358
                 if (!is_array($column) and !is_object($column) and isset($this->_data[$column])) {
                     $data[$column] = $this->_data[$column];
                 }

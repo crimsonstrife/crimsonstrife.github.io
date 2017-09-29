@@ -46,5 +46,5 @@ A list of people who contribute or have contributed to Traq can be found on [Git
 Credits
 -------
 
-- Most icons by [famfamfam.com](http://famfamfam.com). All rights reserved.
-- Some icons by [Yusuke Kamiyamane](http://p.yusukekamiyamane.com). All rights reserved.
+- Most icons by [famfamfam.com](https://famfamfam.com). All rights reserved.
+- Some icons by [Yusuke Kamiyamane](https://p.yusukekamiyamane.com). All rights reserved.
