@@ -58,10 +58,9 @@ behind the curtain
             });
             $('#sidebarRss').FeedEk({
                 FeedUrl: 'https://blog.patrickbarnhardt.info/wordpress/feed/rss',
-                MaxCount: 5,
+                MaxCount: 1,
                 ShowDesc: false,
-                ShowPubDate: true,
-                DateFormat: 'DD MM',
+                ShowPubDate: false,
             });
         });
     </script>
@@ -71,7 +70,7 @@ behind the curtain
     <section id="page-wrapper">
         <a id="top"></a>
         <!-- Let's hide this loader for now -->
-        <!-- LOADER
+        
         <div id="site-loader" class="load-complete">
             <div class="load-position">
                 <h6>Please wait, loading...</h6>
@@ -82,7 +81,7 @@ behind the curtain
                     <div class="loading-break loading-dot-3"></div>
                 </div>
             </div>
-        </div> -->
+        </div>
             <section id="menu-wrapper">
                 <div id="lock">
                     <div id="menu-search">

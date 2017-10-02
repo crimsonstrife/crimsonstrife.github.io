@@ -216,3 +216,8 @@
       background: url(../images/scrollermobile.png) no-repeat center center;
   }
 }
+@media screen and (max-width: 890px){
+.calendar{
+    display: none;
+}
+}
