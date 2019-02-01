@@ -1,6 +1,6 @@
 /**
  * jQuery Roundabout - v1.1
- * https://fredhq.com/projects/roundabout/
+ * http://fredhq.com/projects/roundabout/
  *
  * Moves list-items of enabled ordered and unordered lists long
  * a chosen path. Includes the default "lazySusan" path, that

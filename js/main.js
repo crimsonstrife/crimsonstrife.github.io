@@ -1,7 +1,7 @@
 /*!
 Intelligent auto-scrolling to hide the mobile device address bar
 Optic Swerve, opticswerve.com
-Documented at https://menacingcloud.com/?c=iPhoneAddressBar
+Documented at http://menacingcloud.com/?c=iPhoneAddressBar
 */
 
 var bodyTag;

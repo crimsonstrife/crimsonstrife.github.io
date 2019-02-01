@@ -39,15 +39,15 @@ behind the curtain
     <link href="css/githubfeed.css" rel="stylesheet" />
     <link href="css/media.css" rel="stylesheet" />
     <!-- Let's load up some fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300italic,300,100italic,100,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300italic,300,100italic,100,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
     <script src="js/main.js"></script>
     <script src="libraries/jquery/jquery.min.js"></script>
     <script src="libraries/feedek/js/moment.js"></script>
     <script src="libraries/feedek/js/FeedEk.js"></script>
     <script type="text/javascript">
-            // RSS Reader
+        // RSS Reader
         $(document).ready(function() {
             $('#divRss').FeedEk({
                 FeedUrl: 'https://blog.patrickbarnhardt.info/wordpress/feed/rss',
@@ -55,12 +55,6 @@ behind the curtain
                 ShowDesc: true,
                 ShowPubDate: true,
                 DateFormat: 'DD MM',
-            });
-            $('#sidebarRss').FeedEk({
-                FeedUrl: 'https://blog.patrickbarnhardt.info/wordpress/feed/rss',
-                MaxCount: 1,
-                ShowDesc: false,
-                ShowPubDate: false,
             });
         });
     </script>
@@ -70,7 +64,7 @@ behind the curtain
     <section id="page-wrapper">
         <a id="top"></a>
         <!-- Let's hide this loader for now -->
-        
+        <!-- LOADER
         <div id="site-loader" class="load-complete">
             <div class="load-position">
                 <h6>Please wait, loading...</h6>
@@ -81,76 +75,77 @@ behind the curtain
                     <div class="loading-break loading-dot-3"></div>
                 </div>
             </div>
-        </div>
-            <section id="menu-wrapper">
-                <div id="lock">
-                    <div id="menu-search">
-                        <input id="menu-search-input-text" type="text" placeholder="Search..." />
-                        <input id="menu-search-input-submit" type="submit" value="" />
-                    </div>
+        </div> -->
+        <section id="menu-wrapper">
+            <div id="lock">
+                <div id="menu-search">
+                    <input id="menu-search-input-text" type="text" placeholder="Search..." />
+                    <input id="menu-search-input-submit" type="submit" value="" />
+                </div>
 
-                    <ul class="menu">
+                <ul class="menu">
 
-                        <li class="icon home">
-                            <a href="index.html">
-                                <span class="menu-li-title">Home</span>
-                                <img class="menu-li-arrow" src="images/arrow-forward.png" alt="" />
-                            </a>
-                        </li>
+                    <li class="icon home">
+                        <a href="index.html">
+                            <span class="menu-li-title">Home</span>
+                            <img class="menu-li-arrow" src="images/arrow-forward.png" alt="" />
+                        </a>
+                    </li>
 
-                        <li class="icon box">
-                            <a href="#work">
-                                <span class="menu-li-title">Portfolio</span>
-                                <img class="menu-li-arrow" src="images/arrow-forward.png" alt="" />
-                            </a>
-                        </li>
+                    <li class="icon box">
+                        <a href="#work">
+                            <span class="menu-li-title">Portfolio</span>
+                            <img class="menu-li-arrow" src="images/arrow-forward.png" alt="" />
+                        </a>
+                    </li>
 
-                        <li class="icon information">
-                            <a href="#about-section">
-                                <span class="menu-li-title">Who Am I?</span>
-                                <img class="menu-li-arrow" src="images/arrow-forward.png" alt="" />
-                            </a>
-                        </li>
+                    <li class="icon information">
+                        <a href="#about-section">
+                            <span class="menu-li-title">Who Am I?</span>
+                            <img class="menu-li-arrow" src="images/arrow-forward.png" alt="" />
+                        </a>
+                    </li>
 
-                        <li id="a-submenu-1" class="icon plus">
+                    <li id="a-submenu-1" class="icon plus">
 
-                            <a href="#">
-                                <span class="menu-li-title">Projects</span>
-                                <img class="menu-li-arrow-submenu" src="images/submenu.png" alt="" />
-                            </a>
+                        <a href="#">
+                            <span class="menu-li-title">Projects</span>
+                            <img class="menu-li-arrow-submenu" src="images/submenu.png" alt="" />
+                        </a>
 
-                            <ul id="submenu-1">
-                                <li>
-                                    <a href="projects/helicalgames.net/index.html">
-                                        <span class="menu-li-title">HelicalGames.net</span>
-                                        <img class="menu-li-arrow" src="images/arrow-forward.png" alt="" />
-                                    </a>
+                        <ul id="submenu-1">
+                            <li>
+                                <a href="projects/helicalgames.net/index.html">
+                                    <span class="menu-li-title">HelicalGames.net</span>
+                                    <img class="menu-li-arrow" src="images/arrow-forward.png" alt="" />
+                                </a>
+                            </li>
+
+                            <li id="a-submenu-2" class="icon plus">
+                                <a href="#">
+                                    <span class="menu-li-title">OMP Game</span>
+                                    <img class="menu-li-arrow" src="images/submenu.png" alt="" />
+                                </a>
+
+                                <ul id="submenu-2">
+                                    <li>
+                                        <a href="projects/ompgame/index.html">
+                                            <span class="menu-li-title">Game</span>
+                                            <img class="menu-li-arrow" src="images/arrow-forward.png" alt="" />
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="projects/ompgame/analytics.html">
+                                            <span class="menu-li-title">Game Analytics Study</span>
+                                            <img class="menu-li-arrow" src="images/arrow-forward.png" alt="" />
+                                        </a>
+                                        <li>
+                                </ul>
                                 </li>
+                        </ul>
 
-                                <li id="a-submenu-2" class="icon plus">
-                                    <a href="#">
-                                        <span class="menu-li-title">OMP Game</span>
-                                        <img class="menu-li-arrow" src="images/submenu.png" alt="" />
-                                    </a>
-
-                                    <ul id="submenu-2">
-                                        <li>
-                                            <a href="projects/ompgame/index.html">
-                                                <span class="menu-li-title">Game</span>
-                                                <img class="menu-li-arrow" src="images/arrow-forward.png" alt="" />
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="projects/ompgame/analytics.html">
-                                                <span class="menu-li-title">Game Analytics Study</span>
-                                                <img class="menu-li-arrow" src="images/arrow-forward.png" alt="" />
-                                            </a>
-                                        <li>
-                                    </ul>
-                                </li>
-                            </ul>
-
-                        </li> <!-- #submenu-1 -->
+                        </li>
+                        <!-- #submenu-1 -->
 
                         <li class="icon resume">
                             <a href="#resume">
@@ -172,88 +167,102 @@ behind the curtain
                                 <img class="menu-li-arrow" src="images/arrow-forward.png" alt="" />
                             </a>
                         </li>
-                    </ul> <!-- .menu -->
-                </div>
-            </section> <!-- #menu-wrapper -->
+                </ul>
+                <!-- .menu -->
+            </div>
+        </section>
+        <!-- #menu-wrapper -->
 
-            <section id="sidebar-wrapper">
-                <div id="lock">
-                    <h4 id="sidebar-title">Sidebar</h4>
+        <section id="sidebar-wrapper">
+            <div id="lock">
+                <h4 id="sidebar-title">Sidebar</h4>
 
-                    <div class="widget">
-                        <h4> </h4>
-                        <p></p>
-                    </div>
-
-                    <div class="widget">
-                        <h4>Blog Posts</h4>
-                        <div id="sidebarRss"></div>
-                    </div>
-
-                    <div class="widget">
-                        <h4>Contact</h4>
-                        <ul>
-                            <li class="item"><a href="mailto:contact@patrickbarnhardt.info">Email Me</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="widget">
-                        <h4>Share on Social Media</h4>
-                        <ul class="social">
-
-                            <li class="blogger"><a href="#"><img src="https://placehold.it/64x64" alt="" /></a></li>
-                            <li class="wordpress"><a href="#"><img src="https://placehold.it/64x64" alt="" /></a></li>
-                            <li class="thumblr"><a href="#"><img src="https://placehold.it/64x64" alt="" /></a></li>
-                            <li class="html"><a href="#"><img src="https://placehold.it/64x64" alt="" /></a></li>
-
-                        </ul>
-                    </div>
-                </div>
-            </section> <!-- #sidebar-wrapper -->
-            <section id="header">
-
-                <div id="header-left">
-                    <a href="#" id="a-menu"><img src="images/menu.png" alt="Menu" /></a>
+                <div class="widget">
+                    <h4>Text widget support</h4>
+                    <p></p>
                 </div>
 
-                <div id="header-title">
-                    <h1>I'm Patrick Barnhardt</h1>
+                <div class="widget">
+                    <h4>Latest posts widget</h4>
+                    <ul>
+                        <li class="item"><a href="#">Random blog title which is quite long so it makes three lines</a></li>
+                    </ul>
                 </div>
 
-                <div id="header-right">
-                    <a href="#" id="a-sidebar"><img src="images/menu.png" alt="Sidebar" /></a>
+                <div class="widget">
+                    <h4>Contact widget</h4>
+                    <ul>
+                        <li class="item"><a href="mailto:contact@patrickbarnhardt.info">Email Me</a></li>
+                    </ul>
                 </div>
 
-            </section> <!-- #header -->
-            <!-- Header Section -->
-            <header id="header-section" class="header-section">
-                <div class="col-md-10 col-sm-12 col-xs-12 menu-block">
-                    <nav class="navbar navbar-default primary-navigation" role="navigation">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <div class="widget">
+                    <h4>Share widget</h4>
+                    <ul class="social">
+
+                        <li class="blogger">
+                            <a href="#"><img src="http://placehold.it/64x64" alt="" /></a>
+                        </li>
+                        <li class="wordpress">
+                            <a href="#"><img src="http://placehold.it/64x64" alt="" /></a>
+                        </li>
+                        <li class="thumblr">
+                            <a href="#"><img src="http://placehold.it/64x64" alt="" /></a>
+                        </li>
+                        <li class="html">
+                            <a href="#"><img src="http://placehold.it/64x64" alt="" /></a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- #sidebar-wrapper -->
+        <section id="header">
+
+            <div id="header-left">
+                <a href="#" id="a-menu"><img src="images/menu.png" alt="Menu" /></a>
+            </div>
+
+            <div id="header-title">
+                <h1>I'm Patrick Barnhardt</h1>
+            </div>
+
+            <div id="header-right">
+                <a href="#" id="a-sidebar"><img src="images/menu.png" alt="Sidebar" /></a>
+            </div>
+
+        </section>
+        <!-- #header -->
+        <!-- Header Section -->
+        <header id="header-section" class="header-section">
+            <div class="col-md-10 col-sm-12 col-xs-12 menu-block">
+                <nav class="navbar navbar-default primary-navigation" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                                 <span class="sr-only">Toggle navigation</span>
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                        </div>
-                        <div id="navbar" class="navbar-collapse collapse">
-                            <ul class="nav navbar-nav pull-right">
-                                <li><a href="#top">Back To Top</a></li>
-                                <li id="aboutmemenuitem"><a href="#about-section">Who Am I?</a></li>
-                                <li><a href="#work">Work</a></li>
-                                <li><a href="#resume">Resume</a></li>
-                                <li><a href="https://blog.patrickbarnhardt.info">Blog</a></li>
-                                <li><a href="https://resume.patrickbarnhardt.info">Resume (Static)</a></li>
-                                <li><a href="#project-section">Contact</a></li>
-                            </ul>
-                        </div>
-                        <!--/.nav-collapse -->
-                    </nav>
-                </div>
-            </header>
-            <!-- Header Section Over -->
-    <section id="content-wrapper">
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav pull-right">
+                            <li><a href="#top">Back To Top</a></li>
+                            <li id="aboutmemenuitem"><a href="#about-section">Who Am I?</a></li>
+                            <li><a href="#work">Work</a></li>
+                            <li><a href="#resume">Resume</a></li>
+                            <li><a href="http://blog.patrickbarnhardt.info">Blog</a></li>
+                            <li><a href="http://resume.patrickbarnhardt.info">Resume (Static)</a></li>
+                            <li><a href="#project-section">Contact</a></li>
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </nav>
+            </div>
+        </header>
+        <!-- Header Section Over -->
+        <section id="content-wrapper">
             <section id="content-wrapper">
                 <div id="photos-slider" class="slider-section">
                     <div class="slides-container">
@@ -263,9 +272,9 @@ behind the curtain
                             <div class="slide-title">
                                 <span class="inner-circle">
                                     <span>Heidy Ho!</span>
-                                    <span>I'm</span>
-                                    <span>Patrick</span>
-                                    <span>Barnhardt</span>
+                                <span>I'm</span>
+                                <span>Patrick</span>
+                                <span>Barnhardt</span>
                                 </span>
                             </div>
                             <div class="slider-content">
@@ -295,7 +304,11 @@ behind the curtain
                 <a href="#" class="prev"><i class="arrow_carrot-left"></i></a>
             </nav> -->
                     <!-- Never know, may get a while hair and decide to bring it back -->
-                    <p class="goto-next">Scroll Down or Click Me<a class="arrow animated ci bounce" href="#about-section"><div class="scroller"></div></a></p>
+                    <p class="goto-next">Scroll Down or Click Me
+                        <a class="arrow animated ci bounce" href="#about-section">
+                            <div class="scroller"></div>
+                        </a>
+                    </p>
                 </div>
             </section>
             <!-- Slider Section Over-->
@@ -368,7 +381,7 @@ behind the curtain
                         <div class="col-md-6">
                             <div class="about-box-inner">
                                 <div class="col-md-4 pull-right col-sm-5">
-                                    <a href="https://git.helicaldev.net/u/pbarnhardt"><i class="icon-srv fa fa-gitlab" aria-hidden="true" style="background-color: #FC6D26;"></i></a>
+                                    <a href="http://git.helicaldev.net/u/pbarnhardt"><i class="icon-srv fa fa-gitlab" aria-hidden="true" style="background-color: #FC6D26;"></i></a>
                                 </div>
                                 <div class="col-md-8 content-box col-sm-7">
                                     <h3 class="block-title">GitLab (Private)</h3>
@@ -389,10 +402,10 @@ behind the curtain
                         </div>
                     </div>
                 </div>
-            </section>    
-                <!-- About Me Section Over -->
-                <!-- "And now, for something completely different": -->
-                <!-- Work -->
+            </section>
+            <!-- About Me Section Over -->
+            <!-- "And now, for something completely different": -->
+            <!-- Work -->
             <section id="content-wrapper">
                 <section id="work" class="my-work">
                     <!-- Section Header -->
@@ -426,14 +439,25 @@ behind the curtain
                         <!--/.container -->
                         <!-- RIP mobile users -->
                         <ul class="portfolio-list no-space">
+                            <li class="col-md-3 col-sm-6" data-type="web" data-id="web-4">
+                                <div class="portfolio-image-block ratio-square">
+                                    <a href="https://github.com/crimsonstrife/developer-coding-evaluation"><img src="images/portfolio/spu-ea68c8-ogi2-3cwn3bmfojjlb56e-thumb.jpg" class="ratio-inner" alt="portfolio image 1"></a>
+                                    <div class="portfolio-block-hover">
+                                        <a href="images/portfolio/spu-ea68c8-ogi2-3cwn3bmfojjlb56e.jpg" class="portfolio-title" data-lightbox="portfolio" data-title="Cardinal Solutions Developer Evaluation">Cardinal Solutions Developer Evaluation</a>
+                                        <h4>
+                                            This project was a coding evaluation, with the objective of converting a still image mockup into a responsive site with HTML/CSS3 and support for older IE browsers. Code is available at: https://github.com/crimsonstrife/developer-coding-evaluation.
+                                        </h4>
+                                    </div>
+                                </div>
+                            </li>
                             <li class="col-md-3 col-sm-6" data-type="web" data-id="web-1">
                                 <div class="portfolio-image-block ratio-square">
                                     <a href=".#"><img src="images/portfolio/HelicalGamesNET-thumb.png" class="ratio-inner" alt="portfolio image 1"></a>
                                     <div class="portfolio-block-hover">
-                                        <a href="images/portfolio/HelicalGamesNET.png" class="portfolio-title" data-lightbox="portfolio" data-title="Image Title 1">Helical Games.net Network</a>
+                                        <a href="images/portfolio/HelicalGamesNET.png" class="portfolio-title" data-lightbox="portfolio" data-title="Helical Games.net Network">Helical Games.net Network</a>
                                         <h4>
-                                            An ongoing project to design a functioning and efficient network for a development studio and it's fanbase. I usually avoid CMS systems in favor of coding from scratch, but as this site is to be maintained by other users, I
-                                            needed to eliminate HTML, PHP, and CSS knowledge as a requirement.
+                                            An ongoing project to design a functioning and efficient network for a development studio and it's fanbase. I usually avoid CMS systems in favor of coding from scratch, but as this site is to be maintained by other users, I needed to eliminate HTML, PHP,
+                                            and CSS knowledge as a requirement.
                                         </h4>
                                     </div>
                                 </div>
@@ -442,7 +466,7 @@ behind the curtain
                                 <div class="portfolio-image-block ratio-square">
                                     <a href=".#"><img src="images/portfolio/helicalgamescom-thumb.png" class="ratio-inner" alt="portfolio image 2"></a>
                                     <div class="portfolio-block-hover">
-                                        <a href="images/portfolio/helicalgamescom.png" class="portfolio-title" data-lightbox="portfolio" data-title="Image Title 1">Helical Games.com</a>
+                                        <a href="images/portfolio/helicalgamescom.png" class="portfolio-title" data-lightbox="portfolio" data-title="Helical Games.com">Helical Games.com</a>
                                         <h4>The original design for the Helical Games website, made in 2012. This design was scraped as of early 2016 as it wasn't very responsive or engaging, and didn't display well on mobile.</h4>
                                     </div>
                                 </div>
@@ -451,7 +475,7 @@ behind the curtain
                                 <div class="portfolio-image-block ratio-square">
                                     <a href=".#"><img src="images/portfolio/pbarnhardtinfo-thumb.png" class="ratio-inner" alt="portfolio image 2"></a>
                                     <div class="portfolio-block-hover">
-                                        <a href="images/portfolio/pbarnhardtinfo.png" class="portfolio-title" data-lightbox="portfolio" data-title="Image Title 1">This website: patrickbarnhardt.info</a>
+                                        <a href="images/portfolio/pbarnhardtinfo.png" class="portfolio-title" data-lightbox="portfolio" data-title="This website: patrickbarnhardt.info">This website: patrickbarnhardt.info</a>
                                         <h4>One of my most responsive designs yet, aimed to support my new portfolio.</h4>
                                     </div>
                                 </div>
@@ -460,7 +484,7 @@ behind the curtain
                                 <div class="portfolio-image-block ratio-square">
                                     <a href=".#"><img src="images/portfolio/sh-banner.png" class="ratio-inner" alt="portfolio image 2"></a>
                                     <div class="portfolio-block-hover">
-                                        <a href="images/portfolio/sh-banner.png" class="portfolio-title" data-lightbox="portfolio" data-title="Image Title 1">STREAMHA&Uuml;S Banner</a>
+                                        <a href="images/portfolio/sh-banner.png" class="portfolio-title" data-lightbox="portfolio" data-title="STREAMHA&Uuml;S Banner">STREAMHA&Uuml;S Banner</a>
                                         <h4>This was a design intended to be used as a splash screen/promotional wallpaper for the game streaming group STREAMHA&Uuml;S</h4>
                                     </div>
                                 </div>
@@ -472,8 +496,8 @@ behind the curtain
                                         <iframe class="ratio-inner" src="https://sketchfab.com/models/dD1GPieprzx2S041KBQUT7KYpvr/embed" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
 
                                         <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
-                                            <a href="https://sketchfab.com/models/dD1GPieprzx2S041KBQUT7KYpvr?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Liara T&#39;Soni</a> by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup"
-                                                                                                                                                                                                                                                                 target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                                            <a href="https://sketchfab.com/models/dD1GPieprzx2S041KBQUT7KYpvr?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Liara T&#39;Soni</a>                                            by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup"
+                                                target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
                                         </p>
                                     </div>
                                 </div>
@@ -484,8 +508,8 @@ behind the curtain
                                         <iframe class="ratio-inner" src="https://sketchfab.com/models/sYos15jXKtwbexZENXUCZWMGrOg/embed" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
 
                                         <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
-                                            <a href="https://sketchfab.com/models/sYos15jXKtwbexZENXUCZWMGrOg?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Mass Effect M-8 Avenger Rifle</a>                                by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                                            <a href="https://sketchfab.com/models/sYos15jXKtwbexZENXUCZWMGrOg?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Mass Effect M-8 Avenger Rifle</a>                                            by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup"
+                                                target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
                                         </p>
                                     </div>
                                 </div>
@@ -497,7 +521,7 @@ behind the curtain
 
                                         <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
                                             <a href="https://sketchfab.com/models/3dkuGVmKZdnC0RzsNKp2bfv0JI0?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">ClapTrap</a> by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup"
-                                                                                                                                                                                                                                                         target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                                                target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
                                         </p>
                                     </div>
                                 </div>
@@ -508,8 +532,8 @@ behind the curtain
                                         <iframe class="ratio-inner" src="https://sketchfab.com/models/dbbfe84ee023481685d3e9d0bd8a3461/embed" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
 
                                         <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
-                                            <a href="https://sketchfab.com/models/dbbfe84ee023481685d3e9d0bd8a3461?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Helical Games: Aidan Orbit Head Texture WIP</a>                                by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                                            <a href="https://sketchfab.com/models/dbbfe84ee023481685d3e9d0bd8a3461?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Helical Games: Aidan Orbit Head Texture WIP</a>                                            by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup"
+                                                target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
                                         </p>
                                     </div>
                                 </div>
@@ -520,8 +544,8 @@ behind the curtain
                                         <iframe class="ratio-inner" src="https://sketchfab.com/models/3e6ab0aea66b49199a79aa5c39bb3d70/embed" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
 
                                         <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
-                                            <a href="https://sketchfab.com/models/3e6ab0aea66b49199a79aa5c39bb3d70?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">DIVERSE - Zero Torso/Head Test</a>                                by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                                            <a href="https://sketchfab.com/models/3e6ab0aea66b49199a79aa5c39bb3d70?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">DIVERSE - Zero Torso/Head Test</a>                                            by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup"
+                                                target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
                                         </p>
                                     </div>
                                 </div>
@@ -532,8 +556,8 @@ behind the curtain
                                         <iframe class="ratio-inner" src="https://sketchfab.com/models/5611902e14cf46b289c8c1546da519d7/embed" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
 
                                         <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
-                                            <a href="https://sketchfab.com/models/5611902e14cf46b289c8c1546da519d7?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Helical Games: Aidan Orbit Base Model</a>                                by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                                            <a href="https://sketchfab.com/models/5611902e14cf46b289c8c1546da519d7?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Helical Games: Aidan Orbit Base Model</a>                                            by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup"
+                                                target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
                                         </p>
                                     </div>
                                 </div>
@@ -544,8 +568,8 @@ behind the curtain
                                         <iframe class="ratio-inner" src="https://sketchfab.com/models/Fm7leJ26YIk1CVJqcuxRW2zTgD/embed" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
 
                                         <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
-                                            <a href="https://sketchfab.com/models/Fm7leJ26YIk1CVJqcuxRW2zTgD?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">WIP - Forest Guardian</a> by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup"
-                                                                                                                                                                                                                                                                     target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                                            <a href="https://sketchfab.com/models/Fm7leJ26YIk1CVJqcuxRW2zTgD?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">WIP - Forest Guardian</a>                                            by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup"
+                                                target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
                                         </p>
                                     </div>
                                 </div>
@@ -556,8 +580,8 @@ behind the curtain
                                         <iframe class="ratio-inner" src="https://sketchfab.com/models/bd91254f02e14089a7202551ba7109de/embed" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
 
                                         <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
-                                            <a href="https://sketchfab.com/models/bd91254f02e14089a7202551ba7109de?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Cmdr. Ace Roche</a> by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup"
-                                                                                                                                                                                                                                                                     target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                                            <a href="https://sketchfab.com/models/bd91254f02e14089a7202551ba7109de?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Cmdr. Ace Roche</a>                                            by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup"
+                                                target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
                                         </p>
                                     </div>
                                 </div>
@@ -569,7 +593,7 @@ behind the curtain
 
                                         <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
                                             <a href="https://sketchfab.com/models/AcQ3DEbmLiurZpBuL2yQ946s907?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Blackhawk</a> by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup"
-                                                                                                                                                                                                                                                          target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                                                target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
                                         </p>
                                     </div>
                                 </div>
@@ -580,8 +604,9 @@ behind the curtain
                                         <iframe class="ratio-inner" src="https://sketchfab.com/models/50fd65e695ce4034b728ced9fc924c54/embed" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
 
                                         <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
-                                            <a href="https://sketchfab.com/models/50fd65e695ce4034b728ced9fc924c54?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">dallara</a> by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup"
-                                                                                                                                                                                                                                                             target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                                            <a href="https://sketchfab.com/models/50fd65e695ce4034b728ced9fc924c54?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">dallara</a> by
+                                            <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup"
+                                                target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
                                         </p>
                                     </div>
                                 </div>
@@ -592,8 +617,8 @@ behind the curtain
                                         <iframe class="ratio-inner" src="https://sketchfab.com/models/c06a388657cb48ab8ba7c63ac5ce4065/embed" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
 
                                         <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
-                                            <a href="https://sketchfab.com/models/c06a388657cb48ab8ba7c63ac5ce4065?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">The RedQueen</a> by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup"
-                                                                                                                                                                                                                                                                  target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                                            <a href="https://sketchfab.com/models/c06a388657cb48ab8ba7c63ac5ce4065?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">The RedQueen</a>                                            by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup"
+                                                target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
                                         </p>
                                     </div>
                                 </div>
@@ -604,8 +629,9 @@ behind the curtain
                                         <iframe class="ratio-inner" src="https://sketchfab.com/models/0fd0ecd809964811984f67d5b04ba0d5/embed" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
 
                                         <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
-                                            <a href="https://sketchfab.com/models/0fd0ecd809964811984f67d5b04ba0d5?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">emptyskies</a> by <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup"
-                                                                                                                                                                                                                                                                target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                                            <a href="https://sketchfab.com/models/0fd0ecd809964811984f67d5b04ba0d5?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">emptyskies</a> by
+                                            <a href="https://sketchfab.com/crimsonstrife?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Patrick Barnhardt</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup"
+                                                target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
                                         </p>
                                     </div>
                                 </div>
@@ -670,8 +696,7 @@ behind the curtain
                                     <div class="portfolio-block-hover">
                                         <a href="images/portfolio/sRc5KKQ.png" class="portfolio-title" data-lightbox="portfolio" data-title="Image Title 3">Blueprint: Checking Local OS for Loggedin User</a>
                                         <h4>
-                                            A companion script to my Steam ID reader, in the event no Steam user is found, this script will check the local machine (in this case windows), and read out the currently loggedin user. This is then fed in as the ingame user
-                                            ID in Unreal Engine 4.
+                                            A companion script to my Steam ID reader, in the event no Steam user is found, this script will check the local machine (in this case windows), and read out the currently loggedin user. This is then fed in as the ingame user ID in Unreal Engine 4.
                                         </h4>
                                     </div>
                                 </div>
@@ -846,10 +871,10 @@ behind the curtain
                         </ul>
                     </div>
                 </section>
-            </section>    
-                <!-- Our Work Section Over -->
-                <!-- Video Section -->
-                <!-- He's dead Jim.  Seriously, this works on the test page, but not here, and I can't determine why. I quit
+            </section>
+            <!-- Our Work Section Over -->
+            <!-- Video Section -->
+            <!-- He's dead Jim.  Seriously, this works on the test page, but not here, and I can't determine why. I quit
         <div id="video-section" class="video-section">
             <a id="bgndVideo" class="player" data-property="{videoURL:'https://youtu.be/xdpIi999DmU',containment:'.video-section', showControls:true, autoPlay:true, loop:true, vol:50, mute:true, startAt:10, opacity:1, addRaster:true, quality:'default', optimizeDisplay:true}">My video</a>
         </div>
@@ -883,7 +908,7 @@ behind the curtain
                 </section>
                 <!-- Helical Games.net Project Showbox Over -->
             </section>
-                <!-- Apllication Section -->
+            <!-- Apllication Section -->
             <section id="content-wrapper">
                 <section id="application-section" class="application-section">
                     <div class="container">
@@ -910,7 +935,7 @@ behind the curtain
                 </section>
                 <!-- Apllication Section Over -->
             </section>
-                <!-- Resume -->
+            <!-- Resume -->
             <section id="content-wrapper">
                 <section id="resume" class="my-genius">
                     <!-- Section Header -->
@@ -949,9 +974,9 @@ behind the curtain
                                             <li><a href="https://twitch.tv/crimsonstrife" target="_blank"><i class="fa fa-twitch"></i></a></li>
                                             <li><a href="https://vine.co/u/972591895111163904" target="_blank"><i class="fa fa-vine"></i></a></li>
                                             <li><a href="https://reddit.com/user/crimsonstrife/" target="_blank"><i class="fa fa-reddit"></i></a></li>
-                                            <li><a href="https://steamcommunity.com/id/crimsonstrife" target="_blank"><i class="fa fa-steam"></i></a></li>
-                                            <li><a href="https://snapchat.com/add/poly_counter" target="_blank"><i class="fa fa-snapchat-ghost"></i></a></li>
-                                            <li><a href="https://soundcloud.com/crimsonstrife" target="_blank"><i class="fa fa-soundcloud"></i></a></li>
+                                            <li><a href="http://steamcommunity.com/id/crimsonstrife" target="_blank"><i class="fa fa-steam"></i></a></li>
+                                            <li><a href="http://snapchat.com/add/poly_counter" target="_blank"><i class="fa fa-snapchat-ghost"></i></a></li>
+                                            <li><a href="http://soundcloud.com/crimsonstrife" target="_blank"><i class="fa fa-soundcloud"></i></a></li>
                                             <li><a href="https://crimsonstrife.deviantart.com/" target="_blank"><i class="fa fa-deviantart"></i></a></li>
                                             <li><a href="https://codepen.io/crimsonstrife/" target="_blank"><i class="fa fa-codepen"></i></a></li>
                                         </ul>
@@ -959,8 +984,8 @@ behind the curtain
                                         <!-- Some Intro About You -->
                                         <p class="text-center">
                                             I am a Front-End Web Designer, occasional developer, Videogame Developer, and 3D Modeler/Animator from Charlotte, NC. Through my indie game studio Helical Games I have gained experience in brand strategy, creative direction and project management. I have
-                                            been working on web since 2005 and on 3D modeling since 2008, I have an AAS in Simulation and Game Design and an A+ Certification. I have acted as a speaker for the Game Developers Alliance at UNCC teaching aspiring developers
-                                            to use Unreal Engine, and serve annually on the SCC Advisary Board to help them shape their Game Design courses. I am a flexible learner, and have self-taught in numerous software packages.
+                                            been working on web since 2005 and on 3D modeling since 2008, I have an AAS in Simulation and Game Design and an A+ Certification. I have acted as a speaker for the Game Developers Alliance at UNCC teaching
+                                            aspiring developers to use Unreal Engine, and serve annually on the SCC Advisary Board to help them shape their Game Design courses. I am a flexible learner, and have self-taught in numerous software packages.
                                             <br /> My current goal is to become a full-stack web developer and my skill-set constantly changes. Currently my strongest point is in the front-end department and design.
                                         </p>
                                         <ul class="col-md-12 col-sm-12 col-xs-12 text-center list-inline" style="font-size: 350%; margin-top: 0%; color: rgb(168, 0, 0);">
@@ -1128,7 +1153,8 @@ behind the curtain
 
                                                     <!-- Job Summary -->
                                                     <p class="content-p">
-                                                        Thousands of gamers have join together annually to play for 24 hours for Extra Life – a gaming marathon in support of Children’s Miracle Network Hospitals®.  Gamers rally friends and family members to sponsor their play. The funds they raise go to help save and improve the lives of kids at the CMN Hospital in their community.
+                                                        Thousands of gamers have join together annually to play for 24 hours for Extra Life – a gaming marathon in support of Children’s Miracle Network Hospitals®. Gamers rally friends and family members to sponsor their play. The funds they raise go to help
+                                                        save and improve the lives of kids at the CMN Hospital in their community.
                                                     </p>
                                                 </div>
                                             </li>
@@ -1392,8 +1418,8 @@ behind the curtain
                         </div>
                     </section>
                 </section>
-            </section> 
-                   <!--==========================================
+            </section>
+            <!--==========================================
                        Certifications
         ===========================================-->
             <section id="content-wrapper">
@@ -1462,7 +1488,7 @@ behind the curtain
                     </div>
                 </section>
             </section>
-                    <!--==========================================
+            <!--==========================================
                            INTEREST
         ===========================================-->
             <section id="content-wrapper">
@@ -1522,171 +1548,172 @@ behind the curtain
                     </div>
                 </section>
             </section>
-        <!-- Resume Over -->
-        <!-- Blog Post -->
-        <section id="content-wrapper">
-            <section id="blog-section" class="blog-section">
-                <!-- Section Header -->
-                <div class="section-header">
-                    <h2>latest posts</h2>
-                </div>
-                <!-- Section Header Over-->
-                <div class="container no-padding">
-                    <div id="divRss"></div>
-                </div>
+            <!-- Resume Over -->
+            <!-- Blog Post -->
+            <section id="content-wrapper">
+                <section id="blog-section" class="blog-section">
+                    <!-- Section Header -->
+                    <div class="section-header">
+                        <h2>latest posts</h2>
+                    </div>
+                    <!-- Section Header Over-->
+                    <div class="container no-padding">
+                        <div id="divRss"></div>
+                    </div>
+                </section>
+                <!-- Blog Post Over -->
             </section>
-            <!-- Blog Post Over -->
-        </section>
             <!-- Project Section -->
-        <section id="content-wrapper">
-            <div id="project-section" class="project-section">
-                <div class="container">
-                    <div class="col-md-6 col-sm-6 col-xs-6 start-project">
-                        <p>Like what you see?</p>
-                        <h2>Start a project</h2>
-                        <a href="https://workwith.patrickbarnhardt.info"><span>Let's Go</span></a>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-xs-6 send-msg">
-                        <p>Want to tell me something?</p>
-                        <h2>Send a message</h2>
-                        <a href="#" data-toggle="modal" data-target="#myModal"><span>Tell Me</span></a>
+            <section id="content-wrapper">
+                <div id="project-section" class="project-section">
+                    <div class="container">
+                        <div class="col-md-6 col-sm-6 col-xs-6 start-project">
+                            <p>Like what you see?</p>
+                            <h2>Start a project</h2>
+                            <a href="https://workwith.patrickbarnhardt.info"><span>Let's Go</span></a>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-6 send-msg">
+                            <p>Want to tell me something?</p>
+                            <h2>Send a message</h2>
+                            <a href="#" data-toggle="modal" data-target="#myModal"><span>Tell Me</span></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- Project Section Over -->
-        </section>
+                <!-- Project Section Over -->
+            </section>
             <!-- Footer Section -->
-        <section id="content-wrapper">
-            <footer id="footer-section" class="footer-section">
-                <div class="footer-item">
-                    <i class="icon_mail_alt"></i>
-                    <div class="footer-inner">
-                        <p class="footer-item-title">email</p>
-                        <!-- Hacky little defense against simple scraper bots -->
-                        <!-- if javascript is disabled, won't work :( -->
-                        <a class="footer-item-desc"><span class="reverse eml">ofni.tdrahnrabkcirtap@tcatnoc</span></a>
+            <section id="content-wrapper">
+                <footer id="footer-section" class="footer-section">
+                    <div class="footer-item">
+                        <i class="icon_mail_alt"></i>
+                        <div class="footer-inner">
+                            <p class="footer-item-title">email</p>
+                            <!-- Hacky little defense against simple scraper bots -->
+                            <!-- if javascript is disabled, won't work :( -->
+                            <a class="footer-item-desc"><span class="reverse eml">ofni.tdrahnrabkcirtap@tcatnoc</span></a>
+                        </div>
                     </div>
-                </div>
-                <div class="footer-item">
-                    <i class="icon_mobile"></i>
-                    <div class="footer-inner">
-                        <p class="footer-item-title">phone</p>
-                        <p class="footer-item-desc">
-                            <span class="reverse eml">0952-697-407</span>
-                            <!-- Typing this stuff backwards was a nightmare -->
-                        </p>
+                    <div class="footer-item">
+                        <i class="icon_mobile"></i>
+                        <div class="footer-inner">
+                            <p class="footer-item-title">phone</p>
+                            <p class="footer-item-desc">
+                                <span class="reverse eml">0952-697-407</span>
+                                <!-- Typing this stuff backwards was a nightmare -->
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <a id="back-to-top" class="back-top pull-right"><i class="arrow_up"></i> Go on top</a>
-            </footer>
-            <!-- Footer Section -->
+                    <a id="back-to-top" class="back-top pull-right"><i class="arrow_up"></i> Go on top</a>
+                </footer>
+                <!-- Footer Section -->
+            </section>
         </section>
-    </section>
-            <!-- Light Box -->
-            <div class="modal light-box fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="false">
-                <!-- Modal -->
-                <div class="container">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-10">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close icon_close" data-dismiss="modal" aria-label="Close"></button>
-                                    <div class="popup-heading">
-                                        <p>Let’s take the next step together</p>
-                                        <h1>start your project</h1>
-                                    </div>
+        <!-- Light Box -->
+        <div class="modal light-box fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="false">
+            <!-- Modal -->
+            <div class="container">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close icon_close" data-dismiss="modal" aria-label="Close"></button>
+                                <div class="popup-heading">
+                                    <p>Let’s take the next step together</p>
+                                    <h1>start your project</h1>
                                 </div>
-                                <div id="contact" class="modal-body">
-                                    <div class="popup-form">
-                                        <form action="contact.php" target="hidden" method="post">
-                                            <div id="alert-msg" class="alert-msg"></div>
-                                            <div class="form-group col-md-6 col-sm-6">
-                                                <input type="text" class="form-control" id="input_name" name="contact-name" placeholder="Name*" required="required" />
-                                            </div>
-                                            <div class="form-group col-md-6 col-sm-6">
-                                                <input type="text" class="form-control" id="input_compnay_name" name="contact-company-name" placeholder="Company" />
-                                            </div>
-                                            <div class="form-group col-md-6 col-sm-6">
-                                                <input type="email" class="form-control" id="input_email" name="contact-email" placeholder="Email*" required="required" />
-                                            </div>
-                                            <div class="form-group col-md-6 col-sm-6">
-                                                <input type="text" class="form-control" id="input_phone" name="contact-phone" placeholder="Telephone" />
-                                            </div>
-                                            <div class="form-group col-md-6 col-sm-6">
-                                                <input type="text" class="form-control" id="input_budget" name="contact-budget" placeholder="Budget*" required="required" />
-                                            </div>
-                                            <div class="form-group col-md-6 col-sm-6">
-                                                <input type="text" class="form-control" id="input_type" name="contact-type" placeholder="Type*" required="required" />
-                                            </div>
-                                            <div class="form-group col-md-12 col-sm-12">
-                                                <input type="text" class="form-control" id="textarea_message" name="contact-message" placeholder="Objectives" />
-                                            </div>
-                                            <input type="submit" value="SEND" class="send" />
-                                        </form>
-                                    </div>
+                            </div>
+                            <div id="contact" class="modal-body">
+                                <div class="popup-form">
+                                    <form action="contact.php" target="hidden" method="post">
+                                        <div id="alert-msg" class="alert-msg"></div>
+                                        <div class="form-group col-md-6 col-sm-6">
+                                            <input type="text" class="form-control" id="input_name" name="contact-name" placeholder="Name*" required="required" />
+                                        </div>
+                                        <div class="form-group col-md-6 col-sm-6">
+                                            <input type="text" class="form-control" id="input_compnay_name" name="contact-company-name" placeholder="Company" />
+                                        </div>
+                                        <div class="form-group col-md-6 col-sm-6">
+                                            <input type="email" class="form-control" id="input_email" name="contact-email" placeholder="Email*" required="required" />
+                                        </div>
+                                        <div class="form-group col-md-6 col-sm-6">
+                                            <input type="text" class="form-control" id="input_phone" name="contact-phone" placeholder="Telephone" />
+                                        </div>
+                                        <div class="form-group col-md-6 col-sm-6">
+                                            <input type="text" class="form-control" id="input_budget" name="contact-budget" placeholder="Budget*" required="required" />
+                                        </div>
+                                        <div class="form-group col-md-6 col-sm-6">
+                                            <input type="text" class="form-control" id="input_type" name="contact-type" placeholder="Type*" required="required" />
+                                        </div>
+                                        <div class="form-group col-md-12 col-sm-12">
+                                            <input type="text" class="form-control" id="textarea_message" name="contact-message" placeholder="Objectives" />
+                                        </div>
+                                        <input type="submit" value="SEND" class="send" />
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-1"></div>
                 </div>
+                <div class="col-md-1"></div>
             </div>
-            <!-- Light Box -->
-            <!--* For the brave souls who get this far: You are the chosen ones,
+        </div>
+        <!-- Light Box -->
+        <!--* For the brave souls who get this far: You are the chosen ones,
         * the valiant knights of programming who toil away, without rest,
         * fixing the most awful code. To you, true saviors, kings of men,
         * I say this: never gonna give you up, never gonna let you down,
         * never gonna run around and desert you. Never gonna make you cry,
         * never gonna say goodbye. Never gonna tell a lie and hurt you. -->
-            <!-- Hidden iframe for submitting forms -->
-            <iframe src="about:blank" name="hidden" class="hide"></iframe>
-        </section> <!-- #page-wrapper -->       
-        <!-- I hate it, iframes are hacky hacky hacky, but I need it -->
-        <!-- And now, getting all of this to work half decent in the retarded step brother of the browser family, Internet Fucking Explorer -->
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// so please just don't -->
-        <!--[if lt IE 9]>
+        <!-- Hidden iframe for submitting forms -->
+        <iframe src="about:blank" name="hidden" class="hide"></iframe>
+    </section>
+    <!-- #page-wrapper -->
+    <!-- I hate it, iframes are hacky hacky hacky, but I need it -->
+    <!-- And now, getting all of this to work half decent in the retarded step brother of the browser family, Internet Fucking Explorer -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// so please just don't -->
+    <!--[if lt IE 9]>
           <script src="js/html5/html5shiv.min.js"></script>
         /* [then] Burn in a fire */
           <script src="js/html5/respond.min.js"></script>
         <![endif]-->
-        <script src="libraries/jquery/jquery.easing.min.js"></script>
-        <!-- Easing Animation Effect -->
-        <script src="libraries/popper/popper.js"></script>
-        <script src="libraries/bootstrap/bootstrap.js"></script>
-        <!-- Core Bootstrap v3.2.0 -->
-        <script src="libraries/bootstrap/ie-emulation-modes-warning.js"></script>
-        <!-- Just for debugging purposes. -->
-        <script src="libraries/bootstrap/ie10-viewport-bug-workaround.js"></script>
-        <!-- Hack for IE browser (Assuming that IE is a browser) -->
-        <!-- Font Elegant -->
-        <!--[if lte IE 7]><script src="libraries/fonts/elegant/lte-ie7.js"></script><![endif]-->
-        <script src="libraries/portfolio-filter/jquery.quicksand.js"></script>
-        <!-- Quicksand v1.4 -->
-        <script src="libraries/jquery/jquery.superslides.min.js"></script>
-        <!-- Superslides - v0.6.3-wip -->
-        <script src="libraries/jquery/roundabout.js"></script>
-        <!-- service Rounded slider -->
-        <script src="libraries/jquery/roundabout_shapes.js"></script>
-        <!-- service Rounded slider -->
-        <script src="libraries/jquery/jquery.animateNumber.min.js"></script>
-        <!-- Used for Animated Numbers -->
-        <script src="libraries/jquery/jquery.appear.js"></script>
-        <!-- It Loads jQuery when element is appears -->
-        <script src="libraries/jquery/jquery.knob.js"></script>
-        <!-- Used for Loading Circle -->
-        <script src="libraries/wow.min.js"></script>
-        <script src="libraries/owl-carousel/owl.carousel.min.js"></script>
-        <script src="libraries/video/jquery.mb.YTPlayer.js"></script>
-        <script src="libraries/lightbox2/js/lightbox.js"></script>
-        <!-- Customized Scripts -->
-        <script src="js/functions.js"></script>
-        <script src="js/githubloader.js"></script>
-        <script src="js/github-calendar.js"></script>
-        <script>
-            GitHubCalendar(".calendar", "crimsonstrife");
-        </script>
+    <script src="libraries/jquery/jquery.easing.min.js"></script>
+    <!-- Easing Animation Effect -->
+    <script src="libraries/popper/popper.js"></script>
+    <script src="libraries/bootstrap/bootstrap.js"></script>
+    <!-- Core Bootstrap v3.2.0 -->
+    <script src="libraries/bootstrap/ie-emulation-modes-warning.js"></script>
+    <!-- Just for debugging purposes. -->
+    <script src="libraries/bootstrap/ie10-viewport-bug-workaround.js"></script>
+    <!-- Hack for IE browser (Assuming that IE is a browser) -->
+    <!-- Font Elegant -->
+    <!--[if lte IE 7]><script src="libraries/fonts/elegant/lte-ie7.js"></script><![endif]-->
+    <script src="libraries/portfolio-filter/jquery.quicksand.js"></script>
+    <!-- Quicksand v1.4 -->
+    <script src="libraries/jquery/jquery.superslides.min.js"></script>
+    <!-- Superslides - v0.6.3-wip -->
+    <script src="libraries/jquery/roundabout.js"></script>
+    <!-- service Rounded slider -->
+    <script src="libraries/jquery/roundabout_shapes.js"></script>
+    <!-- service Rounded slider -->
+    <script src="libraries/jquery/jquery.animateNumber.min.js"></script>
+    <!-- Used for Animated Numbers -->
+    <script src="libraries/jquery/jquery.appear.js"></script>
+    <!-- It Loads jQuery when element is appears -->
+    <script src="libraries/jquery/jquery.knob.js"></script>
+    <!-- Used for Loading Circle -->
+    <script src="libraries/wow.min.js"></script>
+    <script src="libraries/owl-carousel/owl.carousel.min.js"></script>
+    <script src="libraries/video/jquery.mb.YTPlayer.js"></script>
+    <script src="libraries/lightbox2/js/lightbox.js"></script>
+    <!-- Customized Scripts -->
+    <script src="js/functions.js"></script>
+    <script src="js/githubloader.js"></script>
+    <script src="js/github-calendar.js"></script>
+    <script>
+        GitHubCalendar(".calendar", "crimsonstrife");
+    </script>
 </body>
 
 </html>

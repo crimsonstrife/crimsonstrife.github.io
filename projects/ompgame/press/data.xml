@@ -3,21 +3,21 @@
 <game>
 	<title>Game Name</title>
 	<release-date>1 May, 2012</release-date>
-	<website>https://www.gamesite.com/</website>
+	<website>http://www.gamesite.com/</website>
 	<press-can-request-copy>TRUE</press-can-request-copy>
 
 	<platforms>
 		<platform>
 			<name>PC / Mac</name>
-			<link>https://www.gamesite.com/</link>
+			<link>http://www.gamesite.com/</link>
 		</platform>
 		<platform>
 			<name>Steam</name>
-			<link>https://www.steampowered.com/</link>
+			<link>http://www.steampowered.com/</link>
 		</platform>
 		<platform>
 			<name>Apple App Store</name>
-			<link>https://www.itunes.com/</link>
+			<link>http://www.itunes.com/</link>
 		</platform>
 	</platforms>
 	
@@ -93,25 +93,25 @@
 			<description>This is a rather insignificant quote by a highly important person.</description>
 			<name>Person Name</name>
 			<website>Website</website>
-			<link>https://</link>
+			<link>http://</link>
 		</quote>
 		<quote>
 			<description>An extremely positive quote from a rather insignificant person. Also great.</description>
 			<name>Some Guy</name>
 			<website>This Page Is Visited By 12 Visitors A Month</website>
-			<link>https://</link>
+			<link>http://</link>
 		</quote>
 		<quote>
 			<description>I pretend to love this game even though I do not actually understand it.</description>
 			<name>Pretentious Bastard</name>
 			<website>Artsy Page</website>
-			<link>https://</link>
+			<link>http://</link>
 		</quote>
 		<quote>
 			<description>HOLY SHIT SO AMAZING</description>
 			<name>Caps Guy</name>
 			<website>Angry Review</website>
-			<link>https://</link>
+			<link>http://</link>
 		</quote>
 	</quotes>
 	
@@ -119,12 +119,12 @@
 		<additional>
 			<title>Original Soundtrack</title>
 			<description>Available for free from</description>
-			<link>https://somemusicsite.com/thislink</link>
+			<link>http://somemusicsite.com/thislink</link>
 		</additional>
 		<additional>
 			<title>Release Blog Post</title>
 			<description>The blog-post through which this game was released is available at</description>
-			<link>https://vlambeer.com/bloglink</link>
+			<link>http://vlambeer.com/bloglink</link>
 		</additional>
 	</additionals>
 	

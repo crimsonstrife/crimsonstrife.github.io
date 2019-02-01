@@ -1,13 +1,13 @@
 /*
 * FeedEk jQuery RSS/ATOM Feed Plugin v3.0 with YQL API
-* https://jquery-plugins.net/FeedEk/FeedEk.html  https://github.com/enginkizil/FeedEk
-* Author : Engin KIZIL https://www.enginkizil.com   
+* http://jquery-plugins.net/FeedEk/FeedEk.html  https://github.com/enginkizil/FeedEk
+* Author : Engin KIZIL http://www.enginkizil.com   
 */
 
 (function ($) {
     $.fn.FeedEk = function (opt) {
         var def = $.extend({
-            FeedUrl: "https://jquery-plugins.net/rss",
+            FeedUrl: "http://jquery-plugins.net/rss",
             MaxCount: 5,
             ShowDesc: true,
             ShowPubDate: true,

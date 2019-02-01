@@ -1,6 +1,6 @@
 /**
  * jQuery Roundabout Shapes v1.1
- * https://fredhq.com/projects/roundabout-shapes/
+ * http://fredhq.com/projects/roundabout-shapes/
  * 
  * Provides additional paths along which items can move for the
  * jQuery Roundabout plugin (v1.0+).

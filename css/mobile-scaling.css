@@ -187,7 +187,7 @@
 }
 
 .flag-staffpicked {
-    background-image: url(../images/staffpick-small-1cd51a0cf88582872bc101b447e28bf9.png) !important;
+    background-image: url(/http://patrickbarnhardt.info/images/staffpick-small-1cd51a0cf88582872bc101b447e28bf9.png) !important;
 }
 @media screen and (min-width: 1000px){
       #menu-wrapper{
@@ -215,9 +215,4 @@
   .scroller{
       background: url(../images/scrollermobile.png) no-repeat center center;
   }
-}
-@media screen and (max-width: 890px){
-.calendar{
-    display: none;
-}
 }
