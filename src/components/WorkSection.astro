@@ -3,6 +3,7 @@ import { Image, getImage } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
 import SectionHeader from './SectionHeader.astro';
+import { hasWriteup } from '../lib/content';
 
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 const allCategories = (await getCollection('categories')).sort((a, b) => a.data.order - b.data.order);
@@ -18,13 +19,16 @@ const categories = allCategories.filter((c) => used.has(c.data.id));
 const tiles = await Promise.all(
   projects.map(async (project) => {
     const { media } = project.data;
+    // Projects with a write-up navigate to their page; the rest open the lightbox.
+    const href = hasWriteup(project.body) ? `/projects/${project.id}/` : undefined;
     if (media.type === 'image') {
       const full = await getImage({ src: media.full ?? media.thumbnail, width: 1400 });
-      return { project, kind: 'image' as const, src: full.src };
+      return { project, href, kind: 'image' as const, src: full.src };
     }
     if (media.type === 'youtube') {
       return {
         project,
+        href,
         kind: 'youtube' as const,
         src: `https://www.youtube-nocookie.com/embed/${media.videoId}?autoplay=1`,
         poster: `https://i.ytimg.com/vi/${media.videoId}/hqdefault.jpg`,
@@ -32,6 +36,7 @@ const tiles = await Promise.all(
     }
     return {
       project,
+      href,
       kind: 'sketchfab' as const,
       src: `https://sketchfab.com/models/${media.modelId}/embed?autostart=1`,
     };
@@ -58,13 +63,17 @@ const tiles = await Promise.all(
   </div>
 
   <ul class="grid" role="list">
-    {tiles.map(({ project, kind, src, poster }) => (
+    {tiles.map(({ project, href, kind, src, poster }) => {
+      // Dynamic tag: an anchor when there's a page to go to, a button otherwise.
+      const Tag = href ? 'a' : 'button';
+      return (
       <li class="cell" data-category={project.data.category}>
-        <button
-          type="button"
+        <Tag
           class="tile"
-          data-kind={kind}
-          data-src={src}
+          href={href}
+          type={href ? undefined : 'button'}
+          data-kind={href ? undefined : kind}
+          data-src={href ? undefined : src}
           data-title={project.data.title}
         >
           {project.data.media.type === 'image' && (
@@ -92,12 +101,19 @@ const tiles = await Promise.all(
             <span class="title">{project.data.title}</span>
             {project.data.summary && <span class="summary">{project.data.summary}</span>}
             <span class="cue">
-              {kind === 'youtube' ? 'Play video' : kind === 'sketchfab' ? 'View in 3D' : 'View image'}
+              {href
+                ? 'Read more'
+                : kind === 'youtube'
+                  ? 'Play video'
+                  : kind === 'sketchfab'
+                    ? 'View in 3D'
+                    : 'View image'}
             </span>
           </span>
-        </button>
+        </Tag>
       </li>
-    ))}
+      );
+    })}
   </ul>
 
   <p class="empty" hidden>Nothing in that category yet.</p>
@@ -170,6 +186,8 @@ const tiles = await Promise.all(
   .tile {
     position: relative;
     display: block;
+    color: inherit;
+    text-decoration: none;
     width: 100%;
     aspect-ratio: 1;
     padding: 0;
@@ -341,7 +359,7 @@ const tiles = await Promise.all(
     if (stage) stage.replaceChildren();
   }
 
-  document.querySelectorAll<HTMLButtonElement>('.tile').forEach((tile) => {
+  document.querySelectorAll<HTMLButtonElement>('button.tile').forEach((tile) => {
     tile.addEventListener('click', () => {
       if (!dialog || !stage || !caption) return;
       const { kind, src, title } = tile.dataset;

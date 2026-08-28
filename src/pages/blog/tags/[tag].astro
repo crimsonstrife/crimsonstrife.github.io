@@ -1,0 +1,102 @@
+---
+import type { InferGetStaticPropsType } from 'astro';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import site from '../../../data/site.json';
+import { includeDrafts } from '../../../lib/content';
+
+export const getStaticPaths = async () => {
+  const posts = await getCollection('blog', ({ data }) => includeDrafts || !data.draft);
+  const tags = [...new Set(posts.flatMap((post) => post.data.tags))];
+
+  return tags.map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      posts: posts
+        .filter((post) => post.data.tags.includes(tag))
+        .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()),
+    },
+  }));
+};
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { tag, posts } = Astro.props;
+const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeZone: 'UTC' });
+---
+
+<BaseLayout
+  title={`Posts tagged “${tag}” | ${site.name}`}
+  description={`Blog posts tagged ${tag}.`}
+>
+  <div class="wrap">
+    <SectionHeader title={tag} />
+    <p class="count">{posts.length} {posts.length === 1 ? 'post' : 'posts'}</p>
+
+    <ul class="posts" role="list">
+      {posts.map((post) => (
+        <li>
+          <time datetime={post.data.pubDate.toISOString()}>
+            {formatter.format(post.data.pubDate)}
+          </time>
+          <h2><a href={`/blog/${post.id}/`}>{post.data.title}</a></h2>
+          <p>{post.data.description}</p>
+        </li>
+      ))}
+    </ul>
+
+    <p class="back"><a href="/blog">← All posts</a></p>
+  </div>
+</BaseLayout>
+
+<style>
+  .wrap {
+    max-width: 46rem;
+    margin-inline: auto;
+    padding: 0 clamp(1rem, 4vw, 2.25rem) var(--section-padding-y);
+  }
+
+  .count {
+    text-align: center;
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: 2.5rem;
+  }
+
+  .posts { list-style: none; margin: 0; padding: 0; display: grid; gap: 2rem; }
+
+  li { border-bottom: 1px solid var(--color-rule); padding-bottom: 2rem; }
+  li:last-child { border-bottom: 0; }
+
+  time {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  h2 { font-size: 1.3rem; text-transform: uppercase; margin: 0.5rem 0; }
+  h2 a { color: var(--color-ink); text-decoration: none; }
+  h2 a:hover, h2 a:focus-visible { color: var(--color-crimson); }
+
+  p { color: var(--color-muted); }
+
+  .back { margin-top: 2.5rem; }
+  .back a {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-crimson);
+  }
+</style>

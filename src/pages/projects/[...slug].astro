@@ -1,0 +1,159 @@
+---
+import type { InferGetStaticPropsType } from 'astro';
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import site from '../../data/site.json';
+import { hasWriteup } from '../../lib/content';
+
+/**
+ * Only projects with an actual write-up get a page. A project with an empty
+ * body stays a tile in the gallery — add prose to the Markdown file and its
+ * page appears on the next build.
+ */
+export const getStaticPaths = async () => {
+  const projects = await getCollection('projects');
+  return projects
+    .filter((project) => hasWriteup(project.body))
+    .map((project) => ({ params: { slug: project.id }, props: { project } }));
+};
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+
+const categories = await getCollection('categories');
+const category = categories.find((c) => c.data.id === project.data.category);
+const { media } = project.data;
+---
+
+<BaseLayout
+  title={`${project.data.title} | ${site.name}`}
+  description={project.data.summary || `${project.data.title} — work by ${site.name}.`}
+>
+  <article class="project">
+    <header>
+      {category && <p class="category">{category.data.label}</p>}
+      <h1>{project.data.title}</h1>
+      {project.data.summary && <p class="lede">{project.data.summary}</p>}
+
+      {(project.data.links.repo || project.data.links.live) && (
+        <p class="links">
+          {project.data.links.repo && (
+            <a href={project.data.links.repo} rel="noopener">Source</a>
+          )}
+          {project.data.links.live && (
+            <a href={project.data.links.live} rel="noopener">View live</a>
+          )}
+        </p>
+      )}
+    </header>
+
+    <div class="media">
+      {media.type === 'image' && (
+        <Image src={media.full ?? media.thumbnail} alt={project.data.title} widths={[600, 1200]} />
+      )}
+      {media.type === 'youtube' && (
+        <iframe
+          src={`https://www.youtube-nocookie.com/embed/${media.videoId}`}
+          title={project.data.title}
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+        />
+      )}
+      {media.type === 'sketchfab' && (
+        <iframe
+          src={`https://sketchfab.com/models/${media.modelId}/embed`}
+          title={project.data.title}
+          allow="autoplay; fullscreen; xr-spatial-tracking"
+          allowfullscreen
+          loading="lazy"
+        />
+      )}
+    </div>
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    {project.data.tags.length > 0 && (
+      <ul class="tags" role="list">
+        {project.data.tags.map((tag) => <li>{tag}</li>)}
+      </ul>
+    )}
+
+    <p class="back"><a href="/#work">← All work</a></p>
+  </article>
+</BaseLayout>
+
+<style>
+  .project {
+    max-width: 46rem;
+    margin-inline: auto;
+    padding: clamp(3rem, 7vw, 5.5rem) clamp(1rem, 4vw, 2.25rem) var(--section-padding-y);
+  }
+
+  .category {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-crimson);
+  }
+
+  h1 { font-size: clamp(1.75rem, 5vw, 2.75rem); text-transform: uppercase; margin-top: 0.6rem; }
+
+  .lede { margin-top: 0.85rem; color: var(--color-muted); font-size: 1.05rem; }
+
+  .links { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+
+  .links a {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-crimson);
+    border: 2px solid var(--color-crimson);
+    padding: 0.6rem 1.1rem;
+    text-decoration: none;
+  }
+
+  .links a:hover, .links a:focus-visible { background: var(--color-crimson); color: #fff; }
+
+  .media { margin-top: 2.25rem; background: var(--color-surface-sunk); }
+  .media :global(img) { display: block; width: 100%; height: auto; }
+  .media iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; }
+
+  .prose { margin-top: 2rem; }
+  .prose :global(h2) { font-size: 1.3rem; text-transform: uppercase; margin: 2rem 0 0.7rem; }
+  .prose :global(p) { margin-bottom: 1rem; }
+  .prose :global(ul), .prose :global(ol) { margin: 0 0 1rem; padding-left: 1.3rem; }
+  .prose :global(a) { color: var(--color-crimson); }
+  .prose :global(img) { display: block; width: 100%; height: auto; margin: 1.5rem 0; }
+
+  .tags { list-style: none; margin: 2.25rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+  .tags li {
+    font-family: var(--font-ui);
+    font-size: 0.78rem;
+    color: var(--color-muted);
+    background: var(--color-surface-sunk);
+    border: 1px solid var(--color-rule);
+    padding: 0.2rem 0.55rem;
+  }
+
+  .back { margin-top: 2.5rem; }
+  .back a {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-crimson);
+  }
+</style>
