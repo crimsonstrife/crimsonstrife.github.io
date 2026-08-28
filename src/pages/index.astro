@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="The Work of Patrick Barnhardt">
+  <div class="bar"></div>
+
+  <main>
+    <p class="eyebrow">Phase 1 &middot; scaffold</p>
+    <h1>The pipeline works.</h1>
+    <p class="lede">
+      Astro is building, the design tokens are loaded, and this page is
+      deploying from GitHub Actions. The site itself gets built in phases
+      2&ndash;7.
+    </p>
+    <ul class="checks">
+      <li>Montserrat, Raleway and Roboto self-hosted via Fontsource</li>
+      <li>Crimson <code>#a80000</code> and the 48px bar from <code>tokens.css</code></li>
+      <li>Sitemap and canonical URLs wired to the custom domain</li>
+    </ul>
+  </main>
+</BaseLayout>
+
+<style>
+  .bar {
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: var(--header-height);
+    background: var(--color-crimson);
+    z-index: 10;
+  }
+
+  main {
+    max-width: 42rem;
+    margin: 0 auto;
+    padding: calc(var(--header-height) + 5rem) var(--gutter) 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .eyebrow {
+    font-family: var(--font-display);
+    font-size: var(--size-small);
+    font-weight: 700;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-crimson);
+  }
+
+  h1 {
+    font-size: var(--size-section-header);
+    text-transform: uppercase;
+  }
+
+  .lede { color: var(--color-muted); }
+
+  .checks {
+    margin: 0;
+    padding-left: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: var(--size-small);
+    color: var(--color-muted);
+  }
+
+  .checks li::marker { color: var(--color-crimson); }
+
+  code {
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    background: var(--color-surface-sunk);
+    padding: 0.1em 0.3em;
+    border-radius: 3px;
+  }
+</style>

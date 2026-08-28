@@ -1,88 +1,66 @@
 # patrickbarnhardt.info
 
-personal portfolio/resume site.
+Personal portfolio and resume site for Patrick Barnhardt, built with
+[Astro](https://astro.build) and deployed to GitHub Pages at
+<https://www.patrickbarnhardt.info>.
 
-## Getting Started
+## Requirements
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+- Node 22.12 or newer
 
-### Prerequisities
+## Getting started
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you have to get a development env running
-
-Stay what the step will be
-
-```
-Give the example
+```bash
+npm install
+npm run dev      # http://localhost:4321
+npm run build    # type-check, then build to dist/
+npm run preview  # serve the production build locally
 ```
 
-And repeat
+## Adding content
+
+Content is plain files — no CMS, no admin panel. Add a file, push, done.
+
+| To add… | Create or edit |
+| --- | --- |
+| A portfolio project | `src/content/projects/<slug>.md` |
+| A blog post | `src/content/blog/<slug>.md` |
+| A job | an entry in `src/data/experience.json` |
+| A degree | an entry in `src/data/education.json` |
+| A certification | an entry in `src/data/certifications.json` |
+| A social profile | an entry in `src/data/social.json` |
+| A skill | an entry in `src/data/skills.json` |
+
+Every collection is validated by a Zod schema in `src/content.config.ts`.
+A missing field or a mistyped category fails the build rather than
+shipping a broken page.
+
+Astro writes JSON Schema files to `.astro/collections/` on each build.
+Point your editor at them for autocomplete while editing the `.json`
+files above.
+
+## Project layout
 
 ```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
+public/          Served as-is (CNAME, favicon)
+src/assets/      Images and fonts processed at build time
+src/components/  Section and UI components
+src/content/     Markdown collections (projects, blog)
+src/data/        JSON collections (resume, social, skills)
+src/layouts/     Page shells
+src/pages/       Routes
+src/styles/      tokens.css defines the whole visual system
 ```
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+Pushing to `master` triggers `.github/workflows/deploy.yml`, which builds
+the site and publishes it to GitHub Pages. Pushes to other branches build
+but do not deploy.
 
-## Built With
-
-* Dropwizard - Bla bla bla
-* Maven - Maybe
-* Atom - ergaerga
-
-## Contributing
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+The repository's **Settings → Pages → Source** must be set to
+**GitHub Actions**.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
-
+See [LICENSE.MD](LICENSE.MD).
