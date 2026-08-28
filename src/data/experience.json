@@ -1,0 +1,50 @@
+[
+  {
+    "id": "gis-technician-software-support",
+    "order": 1,
+    "title": "GIS Technician & Software Support",
+    "organization": "QC Data - Charlotte, NC",
+    "period": "June 2013 - Present",
+    "summary": "GIS work, digitization of drafted blueprints into online databases with a focus on maintaining records. Providing technical support and error handling on proprietary software for ~30-40 local users"
+  },
+  {
+    "id": "game-design-examiner",
+    "order": 2,
+    "title": "Game Design Examiner",
+    "organization": "Examiner (Closed) - Charlotte, NC/Remote",
+    "period": "April 2010 - March 2013",
+    "summary": "Writing/Publishing online articles on video games from a design and development viewpoint. Performing “post-mortem” analysis on released games."
+  },
+  {
+    "id": "plastics-packaging",
+    "order": 3,
+    "title": "Plastics Packaging",
+    "organization": "Charlotte Pipe & Foundry - Monroe, NC",
+    "period": "May 2012 - August 2012",
+    "summary": "Nightshift work packing PVC and ABS parts for shipping."
+  },
+  {
+    "id": "visual-effects-2nd-grip",
+    "order": 4,
+    "title": "Visual Effects & 2nd Grip",
+    "organization": "Wolf359 Productions, LLC - Albemarle, NC",
+    "period": "August 2012 - August 2015",
+    "summary": "Film crew, Post crew. Created visual/post effects for production. Sound/Grip on set. Worked on the Noir short “One Man’s Poison (2015)\"."
+  },
+  {
+    "id": "marketing-and-media-studio-intern",
+    "order": 5,
+    "title": "Marketing and Media Studio Intern",
+    "organization": "Stanly Community College - Albemarle, NC",
+    "period": "June 2011 - August 2012",
+    "summary": "Film crew in recording studio. Maintaining archives of past recordings, and created animations for TV presentations and specials."
+  },
+  {
+    "id": "independent-annual-volunteerperformer",
+    "order": 6,
+    "title": "Independent Annual Volunteer/Performer",
+    "organization": "Extra Life - extra-life.org",
+    "period": "October 2010 - Present",
+    "summary": "Thousands of gamers have join together annually to play for 24 hours for Extra Life – a gaming marathon in support of Children’s Miracle Network Hospitals®. Gamers rally friends and family members to sponsor their play. The funds they raise go to help save and improve the lives of kids at the CMN Hospital in their community."
+  }
+]

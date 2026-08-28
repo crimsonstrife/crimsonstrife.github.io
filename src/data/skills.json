@@ -1,0 +1,45 @@
+[
+  {
+    "id": "professional",
+    "order": 1,
+    "label": "Professional",
+    "items": [
+      "HTML",
+      "PHP",
+      "CSS",
+      "Javascript",
+      "MySQL",
+      "Adobe Photoshop",
+      "Adobe Dreamweaver",
+      "Adobe Indesign",
+      "Visual Studio",
+      "Visual C#",
+      "C++",
+      "Alice"
+    ]
+  },
+  {
+    "id": "personal",
+    "order": 2,
+    "label": "Personal",
+    "items": [
+      "Committed",
+      "Punctual",
+      "Leadership",
+      "Communication",
+      "Analytical Skill",
+      "Research Ability",
+      "Learning Flexibility"
+    ]
+  },
+  {
+    "id": "language",
+    "order": 3,
+    "label": "Language",
+    "items": [
+      "English (Native)",
+      "Spanish",
+      "Japanese"
+    ]
+  }
+]

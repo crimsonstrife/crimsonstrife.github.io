@@ -1,0 +1,21 @@
+[
+  {
+    "id": "comptia-a-ce",
+    "order": 1,
+    "title": "CompTIA A+ ce",
+    "period": "June 2016 - June 2019",
+    "badge": "../assets/images/Aplus-Logo-Certified-CE.png"
+  },
+  {
+    "id": "creating-ui-elements-in-unreal-engine",
+    "order": 2,
+    "title": "Creating UI Elements in Unreal Engine",
+    "period": "Digital Tutors - May, 2015"
+  },
+  {
+    "id": "game-asset-production-pipeline-in-unreal-engine",
+    "order": 3,
+    "title": "Game Asset Production Pipeline in Unreal Engine",
+    "period": "Digital Tutors - May, 2015"
+  }
+]

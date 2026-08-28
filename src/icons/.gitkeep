@@ -1,0 +1,2 @@
+Drop custom SVGs here to use them as <Icon name="filename" />.
+astro-icon warns on every build if this directory is missing.

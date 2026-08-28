@@ -1,0 +1,52 @@
+[
+  {
+    "id": "games",
+    "order": 1,
+    "label": "Games"
+  },
+  {
+    "id": "3d",
+    "order": 2,
+    "label": "3D Modeling"
+  },
+  {
+    "id": "branding",
+    "order": 3,
+    "label": "Branding"
+  },
+  {
+    "id": "web",
+    "order": 4,
+    "label": "Web"
+  },
+  {
+    "id": "textures",
+    "order": 5,
+    "label": "Texturing"
+  },
+  {
+    "id": "blueprints",
+    "order": 6,
+    "label": "Blueprint (Scripting)"
+  },
+  {
+    "id": "tools",
+    "order": 7,
+    "label": "Tools"
+  },
+  {
+    "id": "uxui",
+    "order": 8,
+    "label": "UX/UI"
+  },
+  {
+    "id": "cad",
+    "order": 9,
+    "label": "AutoCAD"
+  },
+  {
+    "id": "video",
+    "order": 10,
+    "label": "Video"
+  }
+]

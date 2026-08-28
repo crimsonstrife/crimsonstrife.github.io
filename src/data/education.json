@@ -1,0 +1,26 @@
+[
+  {
+    "id": "bachelor-of-web-page-digitalmultimedia-and-information-resources-design",
+    "order": 1,
+    "title": "Bachelor of Web Page, Digital/Multimedia and Information Resources Design",
+    "organization": "University of North Carolina at Charlotte",
+    "period": "2012 -",
+    "summary": ""
+  },
+  {
+    "id": "associate-of-applied-sciences-simulation-and-game-design",
+    "order": 2,
+    "title": "Associate of Applied Sciences Simulation and Game Design",
+    "organization": "Stanly Community College",
+    "period": "2009 - 2012",
+    "summary": ""
+  },
+  {
+    "id": "diploma",
+    "order": 3,
+    "title": "Diploma",
+    "organization": "Mount Pleasant High School",
+    "period": "2005 - 2009",
+    "summary": ""
+  }
+]
