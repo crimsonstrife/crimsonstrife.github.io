@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
 """
+WARNING — partially superseded (Aug 2026).
+
+experience.json, education.json, certifications.json, skills.json and
+pages/about.md are now maintained by hand from Patrick's LinkedIn profile.
+Re-running this script would overwrite them with the stale 2017 content.
+Only the `projects` extraction is still the source of truth.
+
 One-shot extractor: pulls content out of the 2017 index.html into the
 Markdown and JSON files the Astro site reads.
 

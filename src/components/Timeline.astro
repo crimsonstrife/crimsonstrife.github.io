@@ -5,6 +5,7 @@ interface Entry {
   organization: string;
   period: string;
   summary: string;
+  highlights: string[];
 }
 interface Props {
   entries: Entry[];
@@ -20,6 +21,11 @@ const { entries } = Astro.props;
         <p class="meta">{entry.organization}</p>
         <p class="meta">{entry.period}</p>
         {entry.summary && <p class="body">{entry.summary}</p>}
+        {entry.highlights.length > 0 && (
+          <ul class="points">
+            {entry.highlights.map((point) => <li>{point}</li>)}
+          </ul>
+        )}
       </div>
     </li>
   ))}
@@ -120,4 +126,16 @@ const { entries } = Astro.props;
     font-size: 0.95rem;
     line-height: 1.55;
   }
+
+  .points {
+    margin: 0.75rem 0 0;
+    padding-left: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .points li::marker { color: var(--color-crimson); }
 </style>

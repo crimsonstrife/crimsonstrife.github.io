@@ -2,13 +2,18 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import site from '../data/site.json';
+import { formatMonth, hasExpired } from '../lib/dates';
 
 const byOrder = (a: { data: { order: number } }, b: { data: { order: number } }) =>
   a.data.order - b.data.order;
 
-const experience = (await getCollection('experience')).sort(byOrder);
+// Only the technical/professional roles belong on a printed résumé.
+const experience = (await getCollection('experience'))
+  .filter((entry) => entry.data.technical)
+  .sort(byOrder);
 const education = (await getCollection('education')).sort(byOrder);
 const certifications = (await getCollection('certifications')).sort(byOrder);
+const awards = (await getCollection('awards')).sort(byOrder);
 const skills = (await getCollection('skills')).sort(byOrder);
 ---
 
@@ -30,6 +35,11 @@ const skills = (await getCollection('skills')).sort(byOrder);
           <h3>{entry.data.title}</h3>
           <p class="meta">{entry.data.organization} <span aria-hidden="true">·</span> {entry.data.period}</p>
           {entry.data.summary && <p>{entry.data.summary}</p>}
+          {entry.data.highlights.length > 0 && (
+            <ul class="points">
+              {entry.data.highlights.map((point) => <li>{point}</li>)}
+            </ul>
+          )}
         </div>
       ))}
     </section>
@@ -40,6 +50,7 @@ const skills = (await getCollection('skills')).sort(byOrder);
         <div class="entry">
           <h3>{entry.data.title}</h3>
           <p class="meta">{entry.data.organization} <span aria-hidden="true">·</span> {entry.data.period}</p>
+          {entry.data.summary && <p class="meta">{entry.data.summary}</p>}
         </div>
       ))}
     </section>
@@ -48,7 +59,24 @@ const skills = (await getCollection('skills')).sort(byOrder);
       <h2>Certifications</h2>
       <ul class="plain">
         {certifications.map((entry) => (
-          <li>{entry.data.title} <span class="meta">— {entry.data.period}</span></li>
+          <li>
+            {entry.data.title}
+            {entry.data.issuer && <span class="meta"> — {entry.data.issuer}</span>}
+            <span class="meta"> ({formatMonth(entry.data.issued)}{entry.data.expires && `, ${hasExpired(entry.data.expires) ? 'expired' : 'expires'} ${formatMonth(entry.data.expires)}`})</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section>
+      <h2>Honors &amp; Awards</h2>
+      <ul class="plain">
+        {awards.map((entry) => (
+          <li>
+            {entry.data.title}
+            <span class="meta"> — {entry.data.issuer}</span>
+            {entry.data.issued && <span class="meta"> ({formatMonth(entry.data.issued)})</span>}
+          </li>
         ))}
       </ul>
     </section>
@@ -107,6 +135,14 @@ const skills = (await getCollection('skills')).sort(byOrder);
   .entry p:last-child { margin-top: 0.4rem; font-size: 0.95rem; }
 
   .plain { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; }
+
+  .points {
+    margin: 0.4rem 0 0;
+    padding-left: 1.1rem;
+    display: grid;
+    gap: 0.2rem;
+    font-size: 0.9rem;
+  }
 
   .skills + .skills { margin-top: 0.5rem; }
 

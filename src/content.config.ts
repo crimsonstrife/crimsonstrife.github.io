@@ -69,6 +69,21 @@ const projects = defineCollection({
     }),
 });
 
+const blog = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      pubDate: z.coerce.date(),
+      updatedDate: z.coerce.date().optional(),
+      tags: z.array(z.string()).default([]),
+      /** Drafts are excluded from production builds but visible in `astro dev`. */
+      draft: z.boolean().default(false),
+      heroImage: image().optional(),
+    }),
+});
+
 const pages = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/pages' }),
   schema: z.object({
@@ -84,6 +99,16 @@ const timelineEntry = z.object({
   organization: z.string(),
   period: z.string(),
   summary: z.string().default(''),
+  /** Bullet points, where the role has them. */
+  highlights: z.array(z.string()).default([]),
+  credentialId: z.string().optional(),
+  credentialUrl: z.url().optional(),
+  /**
+   * Technical/professional roles. The site lists every entry (the most recent
+   * few up front, the rest behind a toggle); the printable résumé at /resume
+   * shows only the entries flagged here.
+   */
+  technical: z.boolean().default(false),
 });
 
 const experience = defineCollection({
@@ -103,10 +128,30 @@ const certifications = defineCollection({
       id: z.string(),
       order: z.number().int().positive(),
       title: z.string(),
-      period: z.string(),
-      badge: image().optional(),
+      issuer: z.string().optional(),
+      issued: z.string().regex(/^\d{4}-\d{2}$/, 'Expected a YYYY-MM month'),
+      /**
+       * Lapsed credentials stay on the site — the training still counts — and
+       * are labelled as expired rather than removed.
+       */
+      expires: z.string().regex(/^\d{4}-\d{2}$/, 'Expected a YYYY-MM month').optional(),
+      credentialId: z.string().optional(),
       credentialUrl: z.url().optional(),
+      badge: image().optional(),
     }),
+});
+
+/** Recognitions rather than credentials: community awards, cadet honours. */
+const awards = defineCollection({
+  loader: file('src/data/awards.json'),
+  schema: z.object({
+    id: z.string(),
+    order: z.number().int().positive(),
+    title: z.string(),
+    issuer: z.string(),
+    issued: z.string().regex(/^\d{4}-\d{2}$/, 'Expected a YYYY-MM month').optional(),
+    credentialUrl: z.url().optional(),
+  }),
 });
 
 const skills = defineCollection({
@@ -153,10 +198,12 @@ const social = defineCollection({
 
 export const collections = {
   projects,
+  blog,
   pages,
   experience,
   education,
   certifications,
+  awards,
   skills,
   interests,
   categories,

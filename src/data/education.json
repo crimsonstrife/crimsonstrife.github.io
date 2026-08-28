@@ -1,26 +1,44 @@
 [
   {
-    "id": "bachelor-of-web-page-digitalmultimedia-and-information-resources-design",
+    "id": "bs-software-development-wgu",
     "order": 1,
-    "title": "Bachelor of Web Page, Digital/Multimedia and Information Resources Design",
-    "organization": "University of North Carolina at Charlotte",
-    "period": "2012 -",
-    "summary": ""
+    "title": "Bachelor of Science, Software Development",
+    "organization": "Western Governors University",
+    "period": "2018 - March 2024",
+    "summary": "",
+    "highlights": [],
+    "technical": true,
+    "credentialId": "24BL-MAB4-P2T4",
+    "credentialUrl": "https://www.wgu.edu/alumni/commencement/e-diploma-verification/validate.html"
   },
   {
-    "id": "associate-of-applied-sciences-simulation-and-game-design",
+    "id": "web-digital-multimedia-uncc",
     "order": 2,
-    "title": "Associate of Applied Sciences Simulation and Game Design",
+    "title": "Bachelor's programme — Web Page, Digital/Multimedia and Information Resources Design",
+    "organization": "University of North Carolina at Charlotte",
+    "period": "2012 - 2013",
+    "summary": "Programme not completed.",
+    "highlights": [],
+    "technical": true
+  },
+  {
+    "id": "aas-simulation-game-design-scc",
+    "order": 3,
+    "title": "Associate of Applied Sciences, Simulation and Game Design",
     "organization": "Stanly Community College",
     "period": "2009 - 2012",
-    "summary": ""
+    "summary": "",
+    "highlights": [],
+    "technical": true
   },
   {
-    "id": "diploma",
-    "order": 3,
-    "title": "Diploma",
+    "id": "diploma-mount-pleasant",
+    "order": 4,
+    "title": "High School Diploma",
     "organization": "Mount Pleasant High School",
     "period": "2005 - 2009",
-    "summary": ""
+    "summary": "",
+    "highlights": [],
+    "technical": false
   }
 ]

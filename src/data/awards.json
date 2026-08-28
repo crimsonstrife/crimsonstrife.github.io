@@ -1,0 +1,32 @@
+[
+  {
+    "id": "experts-exchange-distinguished-expert-2023",
+    "order": 1,
+    "title": "2023 Distinguished Expert",
+    "issuer": "Experts Exchange",
+    "issued": "2024-02",
+    "credentialUrl": "https://www.credly.com/badges/d0405f9e-af68-420b-8f47-e53761701d46"
+  },
+  {
+    "id": "experts-exchange-rookie-of-the-year-2023",
+    "order": 2,
+    "title": "2023 Rookie of the Year",
+    "issuer": "Experts Exchange",
+    "issued": "2024-02",
+    "credentialUrl": "https://www.credly.com/badges/fd904685-b012-4aa3-b1ac-35eb62047cad"
+  },
+  {
+    "id": "experts-exchange-community-builder",
+    "order": 3,
+    "title": "Community Builder",
+    "issuer": "Experts Exchange",
+    "issued": "2023-10",
+    "credentialUrl": "https://www.credly.com/badges/dbb8e449-193b-412b-8de6-0d90ce229174"
+  },
+  {
+    "id": "tai-air-force-jrotc-cadet-award",
+    "order": 4,
+    "title": "Air Force JROTC Cadet Award",
+    "issuer": "Tuskegee Airmen Incorporated (TAI)"
+  }
+]

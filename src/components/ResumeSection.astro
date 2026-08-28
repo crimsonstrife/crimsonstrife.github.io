@@ -9,6 +9,12 @@ const byOrder = (a: { data: { order: number } }, b: { data: { order: number } })
 const experience = (await getCollection('experience')).sort(byOrder).map((e) => e.data);
 const education = (await getCollection('education')).sort(byOrder).map((e) => e.data);
 const skills = (await getCollection('skills')).sort(byOrder);
+
+// Entries are ordered newest first. Show the five most recent up front and
+// keep the rest one click away rather than dropping them from the record.
+const RECENT = 5;
+const recent = experience.slice(0, RECENT);
+const earlier = experience.slice(RECENT);
 ---
 
 <section id="resume" class="resume">
@@ -19,7 +25,20 @@ const skills = (await getCollection('skills')).sort(byOrder);
   </div>
 
   <h3 class="sub">Experience</h3>
-  <Timeline entries={experience} />
+  <Timeline entries={recent} />
+
+  {earlier.length > 0 && (
+    <>
+      <div class="more">
+        <button type="button" id="show-earlier" aria-expanded="false" aria-controls="earlier-roles">
+          Show earlier roles ({earlier.length})
+        </button>
+      </div>
+      <div id="earlier-roles" class="earlier" hidden>
+        <Timeline entries={earlier} />
+      </div>
+    </>
+  )}
 
   <h3 class="sub">Education</h3>
   <Timeline entries={education} />
@@ -72,10 +91,35 @@ const skills = (await getCollection('skills')).sort(byOrder);
     margin: clamp(2.5rem, 6vw, 4rem) 0 1.75rem;
   }
 
+  .more { text-align: center; margin-top: 1.75rem; }
+
+  .more button {
+    background: none;
+    border: 0;
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-muted);
+    padding: 0.7rem 1rem;
+    border-bottom: 2px solid var(--color-rule);
+  }
+
+  .more button:hover,
+  .more button:focus-visible {
+    color: var(--color-crimson);
+    border-bottom-color: var(--color-crimson);
+  }
+
+  .earlier { margin-top: 1.5rem; }
+  .earlier[hidden] { display: none; }
+
   .skills {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-    gap: 1.5rem;
+    gap: 1.75rem;
   }
 
   .group h4 {
@@ -103,3 +147,17 @@ const skills = (await getCollection('skills')).sort(byOrder);
     padding: 0.35rem 0.7rem;
   }
 </style>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('#show-earlier');
+  const panel = document.querySelector<HTMLElement>('#earlier-roles');
+
+  toggle?.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    panel?.toggleAttribute('hidden', open);
+    toggle.textContent = open
+      ? `Show earlier roles (${panel?.querySelectorAll('.node').length ?? 0})`
+      : 'Hide earlier roles';
+  });
+</script>

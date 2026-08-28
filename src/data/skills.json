@@ -1,45 +1,136 @@
 [
   {
-    "id": "professional",
+    "id": "software-development",
     "order": 1,
+    "label": "Software Development",
+    "items": [
+      "Software Development",
+      "Object-Oriented Programming (OOP)",
+      "Software Development Life Cycle (SDLC)",
+      "Java",
+      "C++",
+      "PHP",
+      "JavaScript",
+      "MySQL",
+      "Perforce",
+      "Git",
+      "GitHub",
+      "Laravel",
+      "Requirements Gathering",
+      "Technical Documentation"
+    ]
+  },
+  {
+    "id": "salesforce",
+    "order": 2,
+    "label": "Salesforce",
+    "items": [
+      "Salesforce.com Administration",
+      "Apex",
+      "Salesforce Flow",
+      "Declarative Development"
+    ]
+  },
+  {
+    "id": "web",
+    "order": 3,
+    "label": "Web",
+    "items": [
+      "Front-End Development",
+      "Web Development",
+      "Web Design",
+      "Responsive Web Design",
+      "HTML",
+      "CSS",
+      "jQuery",
+      "WordPress",
+      "WordPress Design",
+      "Dreamweaver",
+      "phpBB",
+      "Search Engine Optimization (SEO)",
+      "Astro",
+      "Static Site Generators",
+      "CI/CD (GitHub Actions)",
+      "DigitalOcean",
+      "Redis / Valkey",
+      "TLS Configuration",
+      "Localization (i18n)"
+    ]
+  },
+  {
+    "id": "design-ux",
+    "order": 4,
+    "label": "Design & UX",
+    "items": [
+      "User Experience (UX)",
+      "User Interface Design",
+      "Adobe XD",
+      "Photoshop",
+      "Flash",
+      "Premiere",
+      "Sony Vegas",
+      "Audio and Video Tech",
+      "Social Media",
+      "Brand Identity Design",
+      "Streaming Production (OBS)"
+    ]
+  },
+  {
+    "id": "games-3d",
+    "order": 5,
+    "label": "Games & 3D",
+    "items": [
+      "Game Design",
+      "Unreal Engine 4",
+      "Unreal Engine 3",
+      "Blueprint (UE4)",
+      "Maya",
+      "3D Studio Max",
+      "Zbrush",
+      "Mudbox",
+      "3D",
+      "3D Modeling & Animation",
+      "Animation",
+      "Character Animation",
+      "AutoCAD",
+      "Unreal Engine 5"
+    ]
+  },
+  {
+    "id": "it-support",
+    "order": 6,
+    "label": "IT & Support",
+    "items": [
+      "Technical Support",
+      "Troubleshooting",
+      "Computer Hardware",
+      "Computer Hardware Troubleshooting",
+      "Computer Hardware Installation",
+      "Windows 10",
+      "Microsoft Office",
+      "Microsoft Outlook",
+      "Microsoft Word",
+      "Microsoft Excel",
+      "Android"
+    ]
+  },
+  {
+    "id": "professional",
+    "order": 7,
     "label": "Professional",
     "items": [
-      "HTML",
-      "PHP",
-      "CSS",
-      "Javascript",
-      "MySQL",
-      "Adobe Photoshop",
-      "Adobe Dreamweaver",
-      "Adobe Indesign",
-      "Visual Studio",
-      "Visual C#",
-      "C++",
-      "Alice"
-    ]
-  },
-  {
-    "id": "personal",
-    "order": 2,
-    "label": "Personal",
-    "items": [
-      "Committed",
-      "Punctual",
-      "Leadership",
       "Communication",
-      "Analytical Skill",
-      "Research Ability",
-      "Learning Flexibility"
+      "Project Management"
     ]
   },
   {
-    "id": "language",
-    "order": 3,
-    "label": "Language",
+    "id": "languages",
+    "order": 8,
+    "label": "Languages",
     "items": [
-      "English (Native)",
-      "Spanish",
-      "Japanese"
+      "English (Native or Bilingual)",
+      "Spanish (Elementary)",
+      "Japanese (Elementary)"
     ]
   }
 ]
