@@ -38,7 +38,7 @@ jobs:
           # Fine-grained PAT with read access to your profile's contribution
           # data. Without it the calendar is skipped and the build still
           # succeeds — see src/lib/github.ts.
-          GITHUB_CONTRIBUTIONS_TOKEN: ${{ secrets.GITHUB_CONTRIBUTIONS_TOKEN }}
+          CONTRIBUTIONS_TOKEN: ${{ secrets.CONTRIBUTIONS_TOKEN }}
 
   deploy:
     name: Deploy

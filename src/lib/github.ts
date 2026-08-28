@@ -15,8 +15,8 @@ const TIMEOUT_MS = 10_000;
 
 /** Set as a repo secret and exposed to the build in deploy.yml. */
 const token =
-  import.meta.env.GITHUB_CONTRIBUTIONS_TOKEN ??
-  process.env.GITHUB_CONTRIBUTIONS_TOKEN ??
+  import.meta.env.CONTRIBUTIONS_TOKEN ??
+  process.env.CONTRIBUTIONS_TOKEN ??
   '';
 
 export interface Repo {
@@ -141,7 +141,7 @@ const CONTRIBUTIONS_QUERY = `
  */
 export async function fetchContributions(): Promise<Contributions | null> {
   if (!token) {
-    console.warn('[github] no GITHUB_CONTRIBUTIONS_TOKEN — skipping contribution calendar');
+    console.warn('[github] no CONTRIBUTIONS_TOKEN — skipping contribution calendar');
     return null;
   }
 

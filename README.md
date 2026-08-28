@@ -65,7 +65,7 @@ which requires authentication:
 1. Create a fine-grained personal access token with read access to your
    profile's contribution data.
 2. Add it to the repository under **Settings → Secrets and variables →
-   Actions** as `GITHUB_CONTRIBUTIONS_TOKEN`.
+   Actions** as `CONTRIBUTIONS_TOKEN`.
 
 Without the token the calendar is skipped and the build still succeeds —
 see `src/lib/github.ts`, where every network call fails soft.
@@ -76,7 +76,7 @@ current between pushes.
 To see the real data locally:
 
 ```bash
-GITHUB_CONTRIBUTIONS_TOKEN=github_pat_... npm run build
+CONTRIBUTIONS_TOKEN=github_pat_... npm run build
 ```
 
 ## Deployment
@@ -90,7 +90,7 @@ merge.
 
 - Set **Settings → Pages → Source** to **GitHub Actions** (it is currently
   set to deploy from a branch).
-- Add the `GITHUB_CONTRIBUTIONS_TOKEN` secret described above.
+- Add the `CONTRIBUTIONS_TOKEN` secret described above.
 - Confirm the custom domain still resolves — `public/CNAME` carries
   `www.patrickbarnhardt.info`.
 
