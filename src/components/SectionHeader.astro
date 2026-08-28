@@ -1,0 +1,24 @@
+---
+interface Props {
+  title: string;
+  id?: string;
+}
+const { title, id } = Astro.props;
+---
+
+<div class="section-header" id={id}>
+  <h2>{title}</h2>
+</div>
+
+<style>
+  .section-header {
+    padding-block: clamp(3.5rem, 9vw, 9.375rem) clamp(1.75rem, 4vw, 3.125rem);
+  }
+
+  h2 {
+    font-size: var(--size-section-header);
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0;
+  }
+</style>

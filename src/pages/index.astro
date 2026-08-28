@@ -1,66 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import AboutSection from '../components/AboutSection.astro';
+import WorkSection from '../components/WorkSection.astro';
+import ResumeSection from '../components/ResumeSection.astro';
+import CertificationsSection from '../components/CertificationsSection.astro';
+import InterestsSection from '../components/InterestsSection.astro';
+import ContactSection from '../components/ContactSection.astro';
 ---
 
 <BaseLayout>
-  <section class="scaffold">
-    <p class="eyebrow">Phase 2 &middot; layout shell</p>
-    <h1>Header, footer and SEO are in.</h1>
-    <p class="lede">
-      The crimson bar, navigation, footer and structured data are built from
-      <code>site.json</code> and <code>social.json</code>. Sections land in
-      phase 4.
-    </p>
-  </section>
-
-  <section id="about" class="placeholder"><h2>Who Am I?</h2></section>
-  <section id="work" class="placeholder"><h2>My Work</h2></section>
-  <section id="resume" class="placeholder"><h2>Résumé</h2></section>
-  <section id="contact" class="placeholder"><h2>Contact</h2></section>
+  <Hero />
+  <AboutSection />
+  <WorkSection />
+  <ResumeSection />
+  <CertificationsSection />
+  <InterestsSection />
+  <ContactSection />
 </BaseLayout>
-
-<style>
-  .scaffold {
-    max-width: var(--container-max);
-    margin-inline: auto;
-    padding: 5rem clamp(1rem, 4vw, 2.25rem) 3rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .eyebrow {
-    font-family: var(--font-display);
-    font-size: var(--size-small);
-    font-weight: 700;
-    letter-spacing: var(--tracking-label);
-    text-transform: uppercase;
-    color: var(--color-crimson);
-  }
-
-  h1 { font-size: var(--size-section-header); text-transform: uppercase; }
-
-  .lede { color: var(--color-muted); max-width: 40rem; }
-
-  .placeholder {
-    border-top: 1px solid var(--color-rule);
-    padding: var(--section-padding-y) clamp(1rem, 4vw, 2.25rem);
-    max-width: var(--container-max);
-    margin-inline: auto;
-    width: 100%;
-  }
-
-  .placeholder h2 {
-    font-size: var(--size-section-header);
-    text-transform: uppercase;
-    text-align: center;
-    color: var(--color-rule);
-  }
-
-  code {
-    font-family: ui-monospace, Menlo, Consolas, monospace;
-    background: var(--color-surface-sunk);
-    padding: 0.1em 0.3em;
-    border-radius: 3px;
-  }
-</style>

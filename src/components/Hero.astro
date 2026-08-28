@@ -1,0 +1,144 @@
+---
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import heroImage from '../assets/images/slider/headerimage.png';
+---
+
+<section class="hero" aria-labelledby="hero-title">
+  <Image
+    class="backdrop"
+    src={heroImage}
+    alt=""
+    widths={[900, 1440, 1920]}
+    sizes="100vw"
+    loading="eager"
+    fetchpriority="high"
+  />
+
+  <div class="badge">
+    <p class="circle" id="hero-title">
+      <span class="greet">Heidy Ho!</span>
+      <span class="small">I'm</span>
+      <span class="given">Patrick</span>
+      <span class="family">Barnhardt</span>
+    </p>
+  </div>
+
+  <div class="disciplines">
+    <p><span>Web</span><span>Design &amp;</span><span>Development</span></p>
+    <p><span>Game</span><span>Design &amp;</span><span>Development</span></p>
+  </div>
+
+  <a class="scroll" href="#about">
+    <span>Scroll down or click me</span>
+    <Icon name="fa6-solid:chevron-down" aria-hidden="true" />
+  </a>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: min(100svh, 52rem);
+    display: grid;
+    grid-template-rows: 1fr auto auto;
+    align-items: center;
+    justify-items: center;
+    padding: 3rem clamp(1rem, 4vw, 2.25rem) 2rem;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .backdrop {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgb(0 0 0 / 0.35);
+    z-index: -1;
+  }
+
+  .badge { display: grid; place-items: center; }
+
+  .circle {
+    display: grid;
+    place-content: center;
+    gap: 0.15rem;
+    text-align: center;
+    aspect-ratio: 1;
+    width: clamp(15rem, 38vw, 22rem);
+    border-radius: 50%;
+    border: 6px solid #fff;
+    background: rgb(168 0 0 / 0.82);
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 1rem;
+  }
+
+  .greet { font-family: var(--font-script); font-size: clamp(1.5rem, 4vw, 2.25rem); text-transform: none; }
+  .small { font-size: clamp(0.75rem, 1.6vw, 0.95rem); letter-spacing: var(--tracking-label); }
+  .given, .family { font-size: clamp(1.5rem, 4.2vw, 2.5rem); line-height: 1.05; }
+
+  .disciplines {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(1.5rem, 8vw, 6rem);
+    margin-top: 2.5rem;
+  }
+
+  .disciplines p {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1rem, 2.2vw, 1.5rem);
+    line-height: 1.25;
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 12px rgb(0 0 0 / 0.55);
+  }
+
+  .disciplines span { display: block; }
+
+  .scroll {
+    margin-top: 2.5rem;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    color: #fff;
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    text-shadow: 0 1px 10px rgb(0 0 0 / 0.6);
+  }
+
+  .scroll [data-icon] {
+    font-size: 1.4rem;
+    animation: bob 2s var(--ease) infinite;
+  }
+
+  .scroll:hover [data-icon],
+  .scroll:focus-visible [data-icon] { color: var(--color-rule); }
+
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scroll [data-icon] { animation: none; }
+  }
+</style>

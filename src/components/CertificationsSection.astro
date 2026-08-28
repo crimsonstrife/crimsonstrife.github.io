@@ -1,0 +1,77 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import SectionHeader from './SectionHeader.astro';
+
+const certifications = (await getCollection('certifications')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+<section id="certifications" class="certs">
+  <SectionHeader title="Certifications" />
+
+  <ul class="grid" role="list">
+    {certifications.map((entry) => (
+      <li class="card">
+        <h3>{entry.data.title}</h3>
+        <div class="body">
+          {entry.data.badge && (
+            <Image src={entry.data.badge} alt="" width={120} height={120} loading="lazy" />
+          )}
+          <p class="period">{entry.data.period}</p>
+          {entry.data.credentialUrl && (
+            <a href={entry.data.credentialUrl} rel="noopener">Verify</a>
+          )}
+        </div>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .certs {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding: 0 clamp(1rem, 4vw, 2.25rem) var(--section-padding-y);
+  }
+
+  .grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 1.5rem;
+  }
+
+  .card { border: 1px solid var(--color-rule); }
+
+  h3 {
+    background: var(--color-crimson);
+    color: #fff;
+    font-size: 1.05rem;
+    font-weight: 400;
+    text-align: center;
+    padding: 0.85rem 0.9rem;
+    margin: 0;
+  }
+
+  .body {
+    display: grid;
+    place-items: center;
+    gap: 0.75rem;
+    min-height: 12.5rem;
+    padding: 1.5rem 1.25rem;
+    background: var(--color-surface);
+    text-align: center;
+  }
+
+  .body img { object-fit: contain; }
+
+  .period {
+    font-family: var(--font-ui);
+    font-size: 0.95rem;
+    color: var(--color-muted);
+  }
+</style>

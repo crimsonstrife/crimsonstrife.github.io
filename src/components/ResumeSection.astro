@@ -1,0 +1,105 @@
+---
+import { getCollection } from 'astro:content';
+import SectionHeader from './SectionHeader.astro';
+import Timeline from './Timeline.astro';
+
+const byOrder = (a: { data: { order: number } }, b: { data: { order: number } }) =>
+  a.data.order - b.data.order;
+
+const experience = (await getCollection('experience')).sort(byOrder).map((e) => e.data);
+const education = (await getCollection('education')).sort(byOrder).map((e) => e.data);
+const skills = (await getCollection('skills')).sort(byOrder);
+---
+
+<section id="resume" class="resume">
+  <SectionHeader title="Résumé" />
+
+  <div class="actions">
+    <a class="print-link" href="/resume">Printable version</a>
+  </div>
+
+  <h3 class="sub">Experience</h3>
+  <Timeline entries={experience} />
+
+  <h3 class="sub">Education</h3>
+  <Timeline entries={education} />
+
+  <h3 class="sub">Skills</h3>
+  <div class="skills">
+    {skills.map((group) => (
+      <div class="group">
+        <h4>{group.data.label}</h4>
+        <ul role="list">
+          {group.data.items.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .resume {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding: 0 clamp(1rem, 4vw, 2.25rem) var(--section-padding-y);
+  }
+
+  .actions { text-align: center; margin-bottom: 2.5rem; }
+
+  .print-link {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-crimson);
+    border: 2px solid var(--color-crimson);
+    padding: 0.7rem 1.4rem;
+    text-decoration: none;
+    transition: background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+  }
+
+  .print-link:hover,
+  .print-link:focus-visible { background: var(--color-crimson); color: #fff; }
+
+  .sub {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-label);
+    text-align: center;
+    color: var(--color-muted);
+    margin: clamp(2.5rem, 6vw, 4rem) 0 1.75rem;
+  }
+
+  .skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1.5rem;
+  }
+
+  .group h4 {
+    font-size: 0.8rem;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-crimson);
+    margin-bottom: 0.9rem;
+  }
+
+  .group ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .group li {
+    font-family: var(--font-ui);
+    font-size: 0.82rem;
+    background: var(--color-surface-sunk);
+    border: 1px solid var(--color-rule);
+    padding: 0.35rem 0.7rem;
+  }
+</style>
