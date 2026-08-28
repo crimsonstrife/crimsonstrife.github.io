@@ -2,41 +2,31 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="The Work of Patrick Barnhardt">
-  <div class="bar"></div>
-
-  <main>
-    <p class="eyebrow">Phase 1 &middot; scaffold</p>
-    <h1>The pipeline works.</h1>
+<BaseLayout>
+  <section class="scaffold">
+    <p class="eyebrow">Phase 2 &middot; layout shell</p>
+    <h1>Header, footer and SEO are in.</h1>
     <p class="lede">
-      Astro is building, the design tokens are loaded, and this page is
-      deploying from GitHub Actions. The site itself gets built in phases
-      2&ndash;7.
+      The crimson bar, navigation, footer and structured data are built from
+      <code>site.json</code> and <code>social.json</code>. Sections land in
+      phase 4.
     </p>
-    <ul class="checks">
-      <li>Montserrat, Raleway and Roboto self-hosted via Fontsource</li>
-      <li>Crimson <code>#a80000</code> and the 48px bar from <code>tokens.css</code></li>
-      <li>Sitemap and canonical URLs wired to the custom domain</li>
-    </ul>
-  </main>
+  </section>
+
+  <section id="about" class="placeholder"><h2>Who Am I?</h2></section>
+  <section id="work" class="placeholder"><h2>My Work</h2></section>
+  <section id="resume" class="placeholder"><h2>Résumé</h2></section>
+  <section id="contact" class="placeholder"><h2>Contact</h2></section>
 </BaseLayout>
 
 <style>
-  .bar {
-    position: fixed;
-    inset: 0 0 auto 0;
-    height: var(--header-height);
-    background: var(--color-crimson);
-    z-index: 10;
-  }
-
-  main {
-    max-width: 42rem;
-    margin: 0 auto;
-    padding: calc(var(--header-height) + 5rem) var(--gutter) 5rem;
+  .scaffold {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding: 5rem clamp(1rem, 4vw, 2.25rem) 3rem;
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 1rem;
   }
 
   .eyebrow {
@@ -48,24 +38,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     color: var(--color-crimson);
   }
 
-  h1 {
+  h1 { font-size: var(--size-section-header); text-transform: uppercase; }
+
+  .lede { color: var(--color-muted); max-width: 40rem; }
+
+  .placeholder {
+    border-top: 1px solid var(--color-rule);
+    padding: var(--section-padding-y) clamp(1rem, 4vw, 2.25rem);
+    max-width: var(--container-max);
+    margin-inline: auto;
+    width: 100%;
+  }
+
+  .placeholder h2 {
     font-size: var(--size-section-header);
     text-transform: uppercase;
+    text-align: center;
+    color: var(--color-rule);
   }
-
-  .lede { color: var(--color-muted); }
-
-  .checks {
-    margin: 0;
-    padding-left: 1.1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    font-size: var(--size-small);
-    color: var(--color-muted);
-  }
-
-  .checks li::marker { color: var(--color-crimson); }
 
   code {
     font-family: ui-monospace, Menlo, Consolas, monospace;

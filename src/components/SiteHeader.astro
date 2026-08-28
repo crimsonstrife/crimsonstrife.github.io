@@ -1,0 +1,190 @@
+---
+import site from '../data/site.json';
+
+const path = Astro.url.pathname;
+---
+
+<header class="bar">
+  <a class="brand" href="/">{site.shortName}</a>
+
+  <button
+    class="toggle"
+    type="button"
+    aria-expanded="false"
+    aria-controls="primary-nav"
+    aria-label="Open menu"
+  >
+    <span class="bars" aria-hidden="true"></span>
+  </button>
+
+  <nav id="primary-nav" class="nav" aria-label="Primary">
+    <ul>
+      {site.nav.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            aria-current={item.href === path ? 'page' : undefined}
+          >{item.label}</a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>
+
+<style>
+  .bar {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 100;
+    min-height: var(--header-height);
+    background: var(--color-crimson);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-inline: clamp(1rem, 4vw, 2.25rem);
+  }
+
+  .brand {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+    margin-right: auto;
+    white-space: nowrap;
+  }
+
+  .nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: clamp(0.5rem, 2vw, 1.5rem);
+  }
+
+  .nav a {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.4rem 0.2rem;
+    border-bottom: 2px solid transparent;
+    transition: border-color var(--dur-fast) var(--ease);
+  }
+
+  .nav a:hover,
+  .nav a:focus-visible,
+  .nav a[aria-current='page'] {
+    border-bottom-color: #fff;
+  }
+
+  :global(a):focus-visible {
+    outline-color: #fff;
+  }
+
+  /* --- Mobile ----------------------------------------------------- */
+
+  .toggle {
+    display: none;
+    background: none;
+    border: 0;
+    color: inherit;
+    padding: 0.6rem;
+    cursor: pointer;
+  }
+
+  .bars,
+  .bars::before,
+  .bars::after {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: #fff;
+    transition: transform var(--dur-fast) var(--ease), opacity var(--dur-fast) var(--ease);
+  }
+
+  .bars::before,
+  .bars::after {
+    content: '';
+    position: relative;
+  }
+
+  .bars::before { top: -6px; }
+  .bars::after { top: 4px; }
+
+  .toggle[aria-expanded='true'] .bars { background: transparent; }
+  .toggle[aria-expanded='true'] .bars::before { transform: translateY(6px) rotate(45deg); }
+  .toggle[aria-expanded='true'] .bars::after { transform: translateY(-4px) rotate(-45deg); }
+
+  @media (max-width: 46rem) {
+    .toggle { display: block; }
+
+    .nav {
+      position: absolute;
+      inset: 100% 0 auto 0;
+      background: var(--color-crimson);
+      display: none;
+    }
+
+    .nav[data-open] { display: block; }
+
+    .nav ul {
+      flex-direction: column;
+      gap: 0;
+      padding: 0.5rem 0 1rem;
+    }
+
+    .nav a {
+      padding: 0.7rem clamp(1rem, 4vw, 2.25rem);
+      border-bottom: 0;
+      border-left: 3px solid transparent;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible,
+    .nav a[aria-current='page'] {
+      border-bottom-color: transparent;
+      border-left-color: #fff;
+      background: rgb(0 0 0 / 0.12);
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.toggle');
+  const nav = document.querySelector<HTMLElement>('#primary-nav');
+
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!open));
+      toggle.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+      nav.toggleAttribute('data-open', !open);
+    });
+
+    // Close after following an in-page link on mobile.
+    nav.addEventListener('click', (event) => {
+      if ((event.target as HTMLElement).closest('a')) {
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open menu');
+        nav.removeAttribute('data-open');
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && nav.hasAttribute('data-open')) {
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open menu');
+        nav.removeAttribute('data-open');
+        toggle.focus();
+      }
+    });
+  }
+</script>
