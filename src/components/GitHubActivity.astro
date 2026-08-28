@@ -1,8 +1,9 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { fetchRepos, fetchContributions } from '../lib/github';
+import { fetchActivity, fetchContributions } from '../lib/github';
 
-const [repos, contributions] = await Promise.all([fetchRepos(6), fetchContributions()]);
+const [activity, contributions] = await Promise.all([fetchActivity(6), fetchContributions()]);
+const { repos, languages } = activity;
 
 const CELL = 11;
 const GAP = 3;
@@ -36,6 +37,13 @@ const dayFormatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', tim
 
 {(repos.length > 0 || contributions) && (
   <div class="activity">
+    {languages.length > 0 && (
+      <p class="languages">
+        <span class="label">Top languages</span>
+        <span class="list">{languages.map((language) => <span>{language}</span>)}</span>
+      </p>
+    )}
+
     {contributions && (
       <figure class="calendar">
         <figcaption>
@@ -113,6 +121,39 @@ const dayFormatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', tim
     flex-direction: column;
     gap: clamp(2rem, 5vw, 3.25rem);
     margin-bottom: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  .languages {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .languages .label {
+    font-family: var(--font-script);
+    font-size: 1.5rem;
+    color: var(--color-muted);
+  }
+
+  .languages .list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.65rem;
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  /* Interpuncts between languages, as the original card had. */
+  .languages .list span + span::before {
+    content: '·';
+    color: var(--color-crimson);
+    margin-right: 0.65rem;
   }
 
   /* --- Calendar --------------------------------------------------- */

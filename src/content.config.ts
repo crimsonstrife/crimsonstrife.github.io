@@ -48,7 +48,21 @@ const projects = defineCollection({
       category: z.enum(CATEGORIES),
       summary: z.string().default(''),
       order: z.number().int().positive(),
+      /**
+       * Marks the project for the full-width feature panel above the gallery —
+       * the 2017 site's "showbox". Only the first featured project renders.
+       */
       featured: z.boolean().default(false),
+      /** Selling points shown beside a featured project. */
+      featureHighlights: z
+        .array(
+          z.object({
+            icon: z.string(),
+            title: z.string(),
+            body: z.string(),
+          })
+        )
+        .default([]),
       tags: z.array(z.string()).default([]),
       links,
       media: z.discriminatedUnion('type', [

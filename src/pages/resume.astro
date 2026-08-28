@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import site from '../data/site.json';
 import { formatMonth, hasExpired } from '../lib/dates';
 
@@ -8,6 +8,9 @@ const byOrder = (a: { data: { order: number } }, b: { data: { order: number } })
   a.data.order - b.data.order;
 
 // Only the technical/professional roles belong on a printed résumé.
+const [about] = await getCollection('pages', (entry) => entry.id === 'about');
+const { Content: Bio } = about ? await render(about) : { Content: null };
+
 const experience = (await getCollection('experience'))
   .filter((entry) => entry.data.technical)
   .sort(byOrder);
@@ -27,6 +30,13 @@ const skills = (await getCollection('skills')).sort(byOrder);
         <a href="https://www.patrickbarnhardt.info">patrickbarnhardt.info</a>
       </p>
     </header>
+
+    {Bio && (
+      <section class="bio">
+        <h2>Profile</h2>
+        <Bio />
+      </section>
+    )}
 
     <section>
       <h2>Experience</h2>
@@ -125,6 +135,9 @@ const skills = (await getCollection('skills')).sort(byOrder);
     padding-bottom: 0.4rem;
     margin-bottom: 1.1rem;
   }
+
+  .bio :global(p) { font-size: 0.95rem; line-height: 1.55; }
+  .bio :global(p + p) { margin-top: 0.7rem; }
 
   .entry + .entry { margin-top: 1.25rem; }
 

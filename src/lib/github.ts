@@ -35,6 +35,12 @@ export interface ContributionDay {
   level: number;
 }
 
+export interface Activity {
+  repos: Repo[];
+  /** Most common primary language across owned repos, as the 2017 card showed. */
+  languages: string[];
+}
+
 export interface Contributions {
   total: number;
   weeks: ContributionDay[][];
@@ -69,29 +75,47 @@ async function request(url: string, init: RequestInit = {}): Promise<Response | 
   }
 }
 
-/** Most recently pushed public repositories, forks excluded. */
-export async function fetchRepos(limit = 6): Promise<Repo[]> {
+/**
+ * One request covers both the recent-repo cards and the top-languages line:
+ * the full owned-repo list is fetched, the newest few are shown, and every
+ * repo's primary language feeds the tally.
+ */
+export async function fetchActivity(limit = 6): Promise<Activity> {
+  const empty: Activity = { repos: [], languages: [] };
+
   const response = await request(
     `https://api.github.com/users/${USER}/repos?sort=pushed&per_page=100&type=owner`
   );
-  if (!response) return [];
+  if (!response) return empty;
 
   try {
     const raw = (await response.json()) as any[];
-    return raw
-      .filter((repo) => !repo.fork && !repo.archived)
-      .slice(0, limit)
-      .map((repo) => ({
-        name: repo.name,
-        description: repo.description ?? null,
-        url: repo.html_url,
-        language: repo.language ?? null,
-        stars: repo.stargazers_count ?? 0,
-        pushedAt: repo.pushed_at,
-      }));
+    const owned = raw.filter((repo) => !repo.fork && !repo.archived);
+
+    const tally = new Map<string, number>();
+    for (const repo of owned) {
+      if (!repo.language) continue;
+      tally.set(repo.language, (tally.get(repo.language) ?? 0) + 1);
+    }
+
+    const languages = [...tally.entries()]
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+      .slice(0, 3)
+      .map(([name]) => name);
+
+    const repos = owned.slice(0, limit).map((repo) => ({
+      name: repo.name,
+      description: repo.description ?? null,
+      url: repo.html_url,
+      language: repo.language ?? null,
+      stars: repo.stargazers_count ?? 0,
+      pushedAt: repo.pushed_at,
+    }));
+
+    return { repos, languages };
   } catch (error) {
     console.warn('[github] could not parse repos:', (error as Error).message);
-    return [];
+    return empty;
   }
 }
 
