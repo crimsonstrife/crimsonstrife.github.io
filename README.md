@@ -52,14 +52,47 @@ src/pages/       Routes
 src/styles/      tokens.css defines the whole visual system
 ```
 
+## GitHub activity
+
+The repository list and the contribution calendar in the Work section are
+fetched at **build time**, not in the browser — no rate limit spent on
+visitors, no loading spinner, nothing to break when GitHub changes its
+markup.
+
+The contribution graph is only available through GitHub's GraphQL API,
+which requires authentication:
+
+1. Create a fine-grained personal access token with read access to your
+   profile's contribution data.
+2. Add it to the repository under **Settings → Secrets and variables →
+   Actions** as `GITHUB_CONTRIBUTIONS_TOKEN`.
+
+Without the token the calendar is skipped and the build still succeeds —
+see `src/lib/github.ts`, where every network call fails soft.
+
+A nightly workflow run at 07:00 UTC rebuilds the site so this data stays
+current between pushes.
+
+To see the real data locally:
+
+```bash
+GITHUB_CONTRIBUTIONS_TOKEN=github_pat_... npm run build
+```
+
 ## Deployment
 
 Pushing to `master` triggers `.github/workflows/deploy.yml`, which builds
-the site and publishes it to GitHub Pages. Pushes to other branches build
-but do not deploy.
+the site and publishes it to GitHub Pages. Pushes to `astro-replacement`
+build but do **not** deploy, so the live site is never touched before the
+merge.
 
-The repository's **Settings → Pages → Source** must be set to
-**GitHub Actions**.
+### Before the first deploy
+
+- Set **Settings → Pages → Source** to **GitHub Actions** (it is currently
+  set to deploy from a branch).
+- Add the `GITHUB_CONTRIBUTIONS_TOKEN` secret described above.
+- Confirm the custom domain still resolves — `public/CNAME` carries
+  `www.patrickbarnhardt.info`.
 
 ## License
 

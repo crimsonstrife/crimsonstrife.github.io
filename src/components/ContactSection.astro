@@ -8,6 +8,7 @@ const endpoint = site.contact.endpoint as string | null;
 ---
 
 <section id="contact" class="contact">
+  <span id="project-section" class="legacy-anchor" aria-hidden="true"></span>
   <div class="panels">
     <div class="panel start">
       <p class="kicker">Like what you see?</p>
@@ -256,6 +257,12 @@ const endpoint = site.contact.endpoint as string | null;
 
   @media (max-width: 34rem) {
     .form { grid-template-columns: 1fr; }
+  }
+  /* Anchors from the 2017 site, kept so old links and bookmarks still land. */
+  .legacy-anchor {
+    display: block;
+    height: 0;
+    scroll-margin-top: var(--header-height);
   }
 </style>
 

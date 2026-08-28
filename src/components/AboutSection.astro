@@ -14,6 +14,7 @@ const columns = [social.slice(0, half), social.slice(half)];
 ---
 
 <section id="about" class="about">
+  <span id="about-section" class="legacy-anchor" aria-hidden="true"></span>
   <SectionHeader title="Who Am I?" />
 
   {Content && (
@@ -168,5 +169,11 @@ const columns = [social.slice(0, half), social.slice(half)];
     .grid { grid-template-columns: 1fr; }
     .medallion { order: -1; margin-inline: auto; }
     .column.right .box { flex-direction: row; text-align: left; }
+  }
+  /* Anchors from the 2017 site, kept so old links and bookmarks still land. */
+  .legacy-anchor {
+    display: block;
+    height: 0;
+    scroll-margin-top: var(--header-height);
   }
 </style>

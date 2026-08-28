@@ -3,6 +3,7 @@ import { Image, getImage } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
 import SectionHeader from './SectionHeader.astro';
+import GitHubActivity from './GitHubActivity.astro';
 import { hasWriteup } from '../lib/content';
 
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
@@ -45,7 +46,10 @@ const tiles = await Promise.all(
 ---
 
 <section id="work" class="work">
+  <span id="showbox-helicalgamesnet" class="legacy-anchor" aria-hidden="true"></span>
   <SectionHeader title="My Work" />
+
+  <GitHubActivity />
 
   <div class="filters">
     <ul role="list">
@@ -326,6 +330,12 @@ const tiles = await Promise.all(
   }
 
   .close:hover { color: var(--color-crimson); }
+  /* Anchors from the 2017 site, kept so old links and bookmarks still land. */
+  .legacy-anchor {
+    display: block;
+    height: 0;
+    scroll-margin-top: var(--header-height);
+  }
 </style>
 
 <script>

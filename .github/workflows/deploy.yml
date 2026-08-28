@@ -9,10 +9,10 @@ on:
     branches: [master]
   workflow_dispatch:
 
-  # Enabled in phase 6, once the GitHub activity feed and contribution
-  # calendar are fetched at build time and need a nightly refresh.
-  # schedule:
-  #   - cron: '0 7 * * *'
+  # The GitHub activity feed and contribution calendar are baked in at build
+  # time, so a nightly rebuild is what keeps them current. 07:00 UTC.
+  schedule:
+    - cron: '0 7 * * *'
 
 permissions:
   contents: read
@@ -34,9 +34,11 @@ jobs:
 
       - name: Build site
         uses: withastro/action@v6
-        # env:
-        #   Added in phase 6 for the contribution calendar GraphQL query.
-        #   GITHUB_CONTRIBUTIONS_TOKEN: ${{ secrets.GITHUB_CONTRIBUTIONS_TOKEN }}
+        env:
+          # Fine-grained PAT with read access to your profile's contribution
+          # data. Without it the calendar is skipped and the build still
+          # succeeds — see src/lib/github.ts.
+          GITHUB_CONTRIBUTIONS_TOKEN: ${{ secrets.GITHUB_CONTRIBUTIONS_TOKEN }}
 
   deploy:
     name: Deploy
