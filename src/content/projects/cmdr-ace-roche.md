@@ -2,7 +2,7 @@
 title: "Cmdr. Ace Roche"
 category: "3d"
 summary: ""
-order: 16
+order: 20
 media:
   type: "sketchfab"
   modelId: "bd91254f02e14089a7202551ba7109de"

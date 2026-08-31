@@ -2,7 +2,7 @@
 title: "emptyskies"
 category: "3d"
 summary: ""
-order: 20
+order: 24
 media:
   type: "sketchfab"
   modelId: "0fd0ecd809964811984f67d5b04ba0d5"

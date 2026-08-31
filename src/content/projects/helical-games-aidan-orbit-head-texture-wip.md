@@ -2,7 +2,7 @@
 title: "Helical Games: Aidan Orbit Head Texture WIP"
 category: "3d"
 summary: ""
-order: 12
+order: 16
 media:
   type: "sketchfab"
   modelId: "dbbfe84ee023481685d3e9d0bd8a3461"

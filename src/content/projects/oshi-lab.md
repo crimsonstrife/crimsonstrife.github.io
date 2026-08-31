@@ -2,7 +2,7 @@
 title: "Oshi Lab"
 category: "web"
 summary: "A browser-based theme editor for MyOshi profiles. Lets you write Custom CSS and HTML against a realistic demo profile, preview it safely, and export only your own code."
-order: 3
+order: 2
 media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/oshi-lab-thumb.jpg"

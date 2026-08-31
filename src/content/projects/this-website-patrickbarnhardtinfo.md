@@ -2,7 +2,7 @@
 title: "This website: patrickbarnhardt.info (old)"
 category: "web"
 summary: "A static HTML CSS responsive design made for this portfolio site around 2017."
-order: 6
+order: 10
 media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/pbarnhardtinfo-thumb.png"

@@ -53,6 +53,7 @@ const { media } = project.data;
       )}
     </header>
 
+    {media && (
     <div class="media">
       {media.type === 'image' && (
         <Image src={media.full ?? media.thumbnail} alt={project.data.title} widths={[600, 1200]} />
@@ -76,6 +77,7 @@ const { media } = project.data;
         />
       )}
     </div>
+    )}
 
     {project.data.imageCredit && (
       <p class="credit">

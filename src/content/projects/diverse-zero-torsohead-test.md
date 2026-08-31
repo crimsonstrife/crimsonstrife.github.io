@@ -2,7 +2,7 @@
 title: "DIVERSE - Zero Torso/Head Test"
 category: "3d"
 summary: ""
-order: 13
+order: 17
 media:
   type: "sketchfab"
   modelId: "3e6ab0aea66b49199a79aa5c39bb3d70"

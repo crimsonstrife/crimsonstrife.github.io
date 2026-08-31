@@ -2,7 +2,7 @@
 title: "[DESTINY] Team STREAMHÄUS : First Trials of Osiris Attempt"
 category: "video"
 summary: ""
-order: 45
+order: 49
 media:
   type: "youtube"
   videoId: "n27kS9RdQyU"

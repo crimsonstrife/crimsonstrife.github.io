@@ -80,7 +80,12 @@ const projects = defineCollection({
         })
         .optional(),
       links,
-      media: z.discriminatedUnion('type', [
+      /**
+       * Optional. A project with nothing to show yet still earns a tile — it
+       * renders as a titled panel and, if it has a write-up, links to its page.
+       */
+      media: z
+        .discriminatedUnion('type', [
         z.object({
           type: z.literal('image'),
           thumbnail: image(),
@@ -99,7 +104,8 @@ const projects = defineCollection({
            */
           poster: image().optional(),
         }),
-      ]),
+        ])
+        .optional(),
     }),
 });
 

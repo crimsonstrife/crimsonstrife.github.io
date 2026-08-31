@@ -2,7 +2,7 @@
 title: "Mass Effect M-8 Avenger Rifle"
 category: "3d"
 summary: ""
-order: 10
+order: 14
 media:
   type: "sketchfab"
   modelId: "sYos15jXKtwbexZENXUCZWMGrOg"

@@ -27,9 +27,10 @@
   --color-surface-sunk: #f3f3f3;
   --color-dark: #3c3d42;
   --color-dark-deep: #303135;
-  /* Matches the backdrop Sketchfab renders models against, so a 3D tile
-     without a captured poster sits on the same stage as one with. */
-  --color-viewer-stage: radial-gradient(circle at 50% 50%, #333333 0%, #272727 45%, #181818 100%);
+  /* Backdrop for a gallery tile that has no image yet. Tuned to match the
+     stage Sketchfab renders models against, so a 3D project without a captured
+     poster sits on the same ground as the ones beside it that have one. */
+  --color-tile-empty: radial-gradient(circle at 50% 50%, #333333 0%, #272727 45%, #181818 100%);
 
   /* --- Type ------------------------------------------------------- */
   --font-display: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;

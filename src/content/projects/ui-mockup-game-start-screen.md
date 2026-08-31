@@ -2,7 +2,7 @@
 title: "UI Mockup: Game Start Screen"
 category: "uxui"
 summary: "A UX/UI mockup for a start screen ingame in Unreal Engine 4."
-order: 32
+order: 36
 media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/ry5Me2t.png"

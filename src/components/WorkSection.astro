@@ -22,9 +22,12 @@ const tiles = await Promise.all(
     const { media } = project.data;
     // Projects with a write-up navigate to their page; the rest open the lightbox.
     const href = hasWriteup(project.body) ? `/projects/${project.id}/` : undefined;
+    // Nothing to show and nothing to open: the tile is inert rather than a
+    // button that does nothing when clicked.
+    if (!media) return { project, href, kind: 'none' as const, src: undefined };
     if (media.type === 'image') {
       const full = await getImage({ src: media.full ?? media.thumbnail, width: 1400 });
-      return { project, href, kind: 'image' as const, src: full.src };
+      return { project, href, kind: 'image' as const, src: full.src, thumb: media.thumbnail };
     }
     if (media.type === 'youtube') {
       return {
@@ -69,23 +72,25 @@ const tiles = await Promise.all(
   </div>
 
   <ul class="grid" role="list">
-    {tiles.map(({ project, href, kind, src, poster, posterImage }) => {
-      // Dynamic tag: an anchor when there's a page to go to, a button otherwise.
-      const Tag = href ? 'a' : 'button';
+    {tiles.map(({ project, href, kind, src, poster, posterImage, thumb }) => {
+      // An anchor when there's a page to go to, a button when there's something
+      // to open in the lightbox, and inert when there is neither.
+      const Tag = href ? 'a' : kind === 'none' ? 'div' : 'button';
+      const interactive = Boolean(href) || kind !== 'none';
       return (
       <li class="cell" data-category={project.data.category}>
         <Tag
-          class="tile"
+          class:list={['tile', { inert: !interactive }]}
           href={href}
-          type={href ? undefined : 'button'}
-          data-kind={href ? undefined : kind}
+          type={Tag === 'button' ? 'button' : undefined}
+          data-kind={href || !interactive ? undefined : kind}
           data-src={href ? undefined : src}
           data-title={project.data.title}
         >
-          {project.data.media.type === 'image' && (
+          {kind === 'image' && (
             <Image
               class="art"
-              src={project.data.media.thumbnail}
+              src={thumb}
               alt=""
               widths={[300, 600]}
               sizes="(min-width: 62rem) 25vw, (min-width: 40rem) 50vw, 100vw"
@@ -95,6 +100,13 @@ const tiles = await Promise.all(
 
           {kind === 'youtube' && (
             <img class="art" src={poster} alt="" loading="lazy" decoding="async" width="480" height="360" />
+          )}
+
+          {kind === 'none' && (
+            <span class="art placeholder">
+              <Icon name="fa6-solid:code" aria-hidden="true" />
+              <span class="placeholder-title">{project.data.title}</span>
+            </span>
           )}
 
           {kind === 'sketchfab' &&
@@ -124,7 +136,9 @@ const tiles = await Promise.all(
                   ? 'Play video'
                   : kind === 'sketchfab'
                     ? 'View in 3D'
-                    : 'View image'}
+                    : kind === 'none'
+                      ? 'In development'
+                      : 'View image'}
             </span>
           </span>
         </Tag>
@@ -214,6 +228,11 @@ const tiles = await Promise.all(
     overflow: hidden;
   }
 
+  /* Nothing to open and nowhere to go — don't promise a click. */
+  .tile.inert {
+    cursor: default;
+  }
+
   .art {
     position: absolute;
     inset: 0;
@@ -229,7 +248,7 @@ const tiles = await Promise.all(
     align-content: center;
     gap: 0.7rem;
     padding: 1rem;
-    background: var(--color-viewer-stage);
+    background: var(--color-tile-empty);
     color: var(--color-crimson);
     font-size: 2.1rem;
     text-align: center;
