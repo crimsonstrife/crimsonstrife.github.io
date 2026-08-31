@@ -6,6 +6,7 @@ order: 16
 media:
   type: "sketchfab"
   modelId: "bd91254f02e14089a7202551ba7109de"
+  poster: "../../assets/images/portfolio/cmdr-ace-roche-poster.jpg"
 links:
   live: "https://sketchfab.com/models/bd91254f02e14089a7202551ba7109de"
 ---

@@ -6,6 +6,7 @@ order: 9
 media:
   type: "sketchfab"
   modelId: "dD1GPieprzx2S041KBQUT7KYpvr"
+  poster: "../../assets/images/portfolio/liara-tsoni-poster.jpg"
 links:
   live: "https://sketchfab.com/models/dD1GPieprzx2S041KBQUT7KYpvr"
 ---

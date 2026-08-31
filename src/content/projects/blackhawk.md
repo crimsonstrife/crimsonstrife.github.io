@@ -6,6 +6,7 @@ order: 17
 media:
   type: "sketchfab"
   modelId: "AcQ3DEbmLiurZpBuL2yQ946s907"
+  poster: "../../assets/images/portfolio/blackhawk-poster.jpg"
 links:
   live: "https://sketchfab.com/models/AcQ3DEbmLiurZpBuL2yQ946s907"
 ---

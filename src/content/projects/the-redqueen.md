@@ -6,6 +6,7 @@ order: 19
 media:
   type: "sketchfab"
   modelId: "c06a388657cb48ab8ba7c63ac5ce4065"
+  poster: "../../assets/images/portfolio/the-redqueen-poster.jpg"
 links:
   live: "https://sketchfab.com/models/c06a388657cb48ab8ba7c63ac5ce4065"
 ---

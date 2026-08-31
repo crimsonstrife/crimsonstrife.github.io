@@ -93,6 +93,11 @@ const projects = defineCollection({
         z.object({
           type: z.literal('sketchfab'),
           modelId: z.string(),
+          /**
+           * A still for the gallery tile. Sketchfab has no derivable thumbnail
+           * URL, so without one the tile falls back to a titled panel.
+           */
+          poster: image().optional(),
         }),
       ]),
     }),

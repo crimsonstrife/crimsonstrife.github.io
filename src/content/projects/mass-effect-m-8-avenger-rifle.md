@@ -6,6 +6,7 @@ order: 10
 media:
   type: "sketchfab"
   modelId: "sYos15jXKtwbexZENXUCZWMGrOg"
+  poster: "../../assets/images/portfolio/mass-effect-m-8-avenger-rifle-poster.jpg"
 links:
   live: "https://sketchfab.com/models/sYos15jXKtwbexZENXUCZWMGrOg"
 ---
