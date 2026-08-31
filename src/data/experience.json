@@ -1,0 +1,122 @@
+[
+  {
+    "id": "programmer-analyst-charlotte-pipe",
+    "order": 1,
+    "title": "Programmer Analyst",
+    "organization": "Charlotte Pipe and Foundry Company — Charlotte, NC",
+    "period": "March 2023 - Present",
+    "summary": "Salesforce administration and development, alongside software development and user support.",
+    "highlights": [],
+    "technical": true
+  },
+  {
+    "id": "it-technician-webmaster-modern-impressions",
+    "order": 2,
+    "title": "IT Technician / Webmaster",
+    "organization": "Modern Impressions — Charlotte, NC",
+    "period": "December 2020 - March 2023",
+    "summary": "",
+    "highlights": [
+      "Provide connectivity support to copier/printer users.",
+      "Provide general IT support to Managed IT Customers.",
+      "Part of internal System Admin team.",
+      "Webmaster/Web Developer duties for the company website.",
+      "Support specialty software for customers, such as AutoStore."
+    ],
+    "technical": true
+  },
+  {
+    "id": "it-support-technician-modern-impressions",
+    "order": 3,
+    "title": "IT Support Technician",
+    "organization": "Modern Impressions — Charlotte, NC",
+    "period": "July 2018 - December 2020",
+    "summary": "",
+    "highlights": [
+      "Provide connectivity support to copier/printer users.",
+      "Provide general IT support to Managed IT Customers.",
+      "Support specialty software for customers, such as AutoStore."
+    ],
+    "technical": true
+  },
+  {
+    "id": "gis-technician-qc-data",
+    "order": 4,
+    "title": "GIS Technician & Software Troubleshooting",
+    "organization": "QC Data — Charlotte, NC Area",
+    "period": "June 2013 - July 2018",
+    "summary": "",
+    "highlights": [
+      "Correcting database errors for production users.",
+      "Providing technical support and error handling on proprietary software for ~60-80 local users.",
+      "Windows and proprietary software support.",
+      "Software and hardware installation.",
+      "Machine migration/re-imaging."
+    ],
+    "technical": true
+  },
+  {
+    "id": "founder-helical-games",
+    "order": 5,
+    "title": "Founder, Project Lead, Modeler/Animator",
+    "organization": "Helical Games — Charlotte, NC",
+    "period": "October 2012 - January 2018",
+    "summary": "Indie game studio I founded.",
+    "highlights": [],
+    "technical": true
+  },
+  {
+    "id": "summer-temp-packaging-charlotte-pipe",
+    "order": 6,
+    "title": "Summer Temp Packaging",
+    "organization": "Charlotte Pipe and Foundry — Monroe, NC",
+    "period": "May 2012 - August 2012",
+    "summary": "Night shift packing PVC and ABS parts for shipping.",
+    "highlights": [],
+    "technical": false
+  },
+  {
+    "id": "marketing-media-studio-intern-scc",
+    "order": 7,
+    "title": "Marketing and Media Studio Intern",
+    "organization": "Stanly Community College — Albemarle, NC",
+    "period": "June 2011 - August 2012",
+    "summary": "",
+    "highlights": [
+      "Film crew in recording studio.",
+      "Archive past recordings.",
+      "Created animations for TV presentations, and helped in production of several TV specials."
+    ],
+    "technical": true
+  },
+  {
+    "id": "cashier-pizza-maker-sbarro",
+    "order": 8,
+    "title": "Cashier / Pizza Maker",
+    "organization": "Sbarro — Concord, NC",
+    "period": "November 2010 - December 2010",
+    "summary": "Cooked pizza and ran the front line, including a register.",
+    "highlights": [],
+    "technical": false
+  },
+  {
+    "id": "game-design-examiner",
+    "order": 9,
+    "title": "Game Design Examiner",
+    "organization": "Examiner.com — Remote",
+    "period": "April 2010 - March 2013",
+    "summary": "Wrote videogame reviews from a design aspect.",
+    "highlights": [],
+    "technical": true
+  },
+  {
+    "id": "senior-sales-associate-movie-gallery",
+    "order": 10,
+    "title": "Senior Sales Associate, Game Rentals and Sales",
+    "organization": "Movie Gallery — Rockwell, NC",
+    "period": "August 2009 - November 2009",
+    "summary": "Point of contact for knowledge of consoles, games and peripherals.",
+    "highlights": [],
+    "technical": false
+  }
+]

@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Page not found | Patrick Barnhardt">
+  <main>
+    <p class="code">404</p>
+    <h1>That page isn't here</h1>
+    <p>It may have moved when the site was rebuilt.</p>
+    <a href="/">Back to the homepage</a>
+  </main>
+</BaseLayout>
+
+<style>
+  main {
+    max-width: 34rem;
+    margin: 0 auto;
+    padding: 8rem var(--gutter);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  .code {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--color-crimson);
+    line-height: 1;
+  }
+  h1 { font-size: var(--size-block-title); text-transform: uppercase; }
+  p { color: var(--color-muted); }
+</style>

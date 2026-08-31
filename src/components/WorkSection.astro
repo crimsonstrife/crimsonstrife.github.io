@@ -1,0 +1,451 @@
+---
+import { Image, getImage } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import { getCollection } from 'astro:content';
+import SectionHeader from './SectionHeader.astro';
+import GitHubActivity from './GitHubActivity.astro';
+import { hasWriteup } from '../lib/content';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const allCategories = (await getCollection('categories')).sort((a, b) => a.data.order - b.data.order);
+
+// Only offer filters that actually have work behind them.
+const used = new Set(projects.map((p) => p.data.category));
+const categories = allCategories.filter((c) => used.has(c.data.id));
+
+/**
+ * Pre-resolve each tile's lightbox payload at build time so the dialog only
+ * has to read data attributes — no client-side asset resolution.
+ */
+const tiles = await Promise.all(
+  projects.map(async (project) => {
+    const { media } = project.data;
+    // Projects with a write-up navigate to their page; the rest open the lightbox.
+    const href = hasWriteup(project.body) ? `/projects/${project.id}/` : undefined;
+    // Nothing to show and nothing to open: the tile is inert rather than a
+    // button that does nothing when clicked.
+    if (!media) return { project, href, kind: 'none' as const, src: undefined };
+    if (media.type === 'image') {
+      const full = await getImage({ src: media.full ?? media.thumbnail, width: 1400 });
+      return { project, href, kind: 'image' as const, src: full.src, thumb: media.thumbnail };
+    }
+    if (media.type === 'youtube') {
+      return {
+        project,
+        href,
+        kind: 'youtube' as const,
+        src: `https://www.youtube-nocookie.com/embed/${media.videoId}?autoplay=1`,
+        poster: `https://i.ytimg.com/vi/${media.videoId}/hqdefault.jpg`,
+      };
+    }
+    return {
+      project,
+      href,
+      kind: 'sketchfab' as const,
+      src: `https://sketchfab.com/models/${media.modelId}/embed?autostart=1`,
+      // Optional still for the tile; the viewer itself still loads on click.
+      posterImage: media.poster,
+    };
+  })
+);
+---
+
+<section id="work" class="work">
+  <span id="showbox-helicalgamesnet" class="legacy-anchor" aria-hidden="true"></span>
+  <SectionHeader title="My Work" />
+
+  <GitHubActivity />
+
+  <div class="filters">
+    <ul role="list">
+      <li>
+        <button type="button" class="chip" data-filter="all" aria-pressed="true">Show all</button>
+      </li>
+      {categories.map((category) => (
+        <li>
+          <button type="button" class="chip" data-filter={category.data.id} aria-pressed="false">
+            {category.data.label}
+          </button>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <ul class="grid" role="list">
+    {tiles.map(({ project, href, kind, src, poster, posterImage, thumb }) => {
+      // An anchor when there's a page to go to, a button when there's something
+      // to open in the lightbox, and inert when there is neither.
+      const Tag = href ? 'a' : kind === 'none' ? 'div' : 'button';
+      const interactive = Boolean(href) || kind !== 'none';
+      return (
+      <li class="cell" data-category={project.data.category}>
+        <Tag
+          class:list={['tile', { inert: !interactive }]}
+          href={href}
+          type={Tag === 'button' ? 'button' : undefined}
+          data-kind={href || !interactive ? undefined : kind}
+          data-src={href ? undefined : src}
+          data-title={project.data.title}
+        >
+          {kind === 'image' && (
+            <Image
+              class="art"
+              src={thumb}
+              alt=""
+              widths={[300, 600]}
+              sizes="(min-width: 62rem) 25vw, (min-width: 40rem) 50vw, 100vw"
+              loading="lazy"
+            />
+          )}
+
+          {kind === 'youtube' && (
+            <img class="art" src={poster} alt="" loading="lazy" decoding="async" width="480" height="360" />
+          )}
+
+          {kind === 'none' && (
+            <span class="art placeholder">
+              <Icon name="fa6-solid:code" aria-hidden="true" />
+              <span class="placeholder-title">{project.data.title}</span>
+            </span>
+          )}
+
+          {kind === 'sketchfab' &&
+            (posterImage ? (
+              <Image
+                class="art"
+                src={posterImage}
+                alt=""
+                widths={[300, 600]}
+                sizes="(min-width: 62rem) 25vw, (min-width: 40rem) 50vw, 100vw"
+                loading="lazy"
+              />
+            ) : (
+              <span class="art placeholder">
+                <Icon name="fa6-solid:cube" aria-hidden="true" />
+                <span class="placeholder-title">{project.data.title}</span>
+              </span>
+            ))}
+
+          <span class="overlay">
+            <span class="title">{project.data.title}</span>
+            {project.data.summary && <span class="summary">{project.data.summary}</span>}
+            <span class="cue">
+              {href
+                ? 'Read more'
+                : kind === 'youtube'
+                  ? 'Play video'
+                  : kind === 'sketchfab'
+                    ? 'View in 3D'
+                    : kind === 'none'
+                      ? 'In development'
+                      : 'View image'}
+            </span>
+          </span>
+        </Tag>
+      </li>
+      );
+    })}
+  </ul>
+
+  <p class="empty" hidden>Nothing in that category yet.</p>
+</section>
+
+<dialog id="lightbox" class="lightbox" aria-label="Project viewer">
+  <button type="button" class="close" aria-label="Close">
+    <Icon name="fa6-solid:xmark" aria-hidden="true" />
+  </button>
+  <div class="stage"></div>
+  <p class="caption"></p>
+</dialog>
+
+<style>
+  .work {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding: 0 clamp(1rem, 4vw, 2.25rem) var(--section-padding-y);
+  }
+
+  /* --- Filter bar ------------------------------------------------- */
+
+  .filters ul {
+    list-style: none;
+    margin: 0 0 clamp(1.75rem, 4vw, 3.125rem);
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.15rem 0.35rem;
+  }
+
+  .chip {
+    background: none;
+    border: 0;
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-muted);
+    padding: 0.85rem 1.1rem;
+    border-bottom: 2px solid transparent;
+    transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+  }
+
+  .chip:hover { color: var(--color-ink); }
+
+  .chip[aria-pressed='true'] {
+    color: var(--color-crimson);
+    border-bottom-color: var(--color-crimson);
+  }
+
+  /* --- Grid ------------------------------------------------------- */
+
+  .grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  @media (max-width: 62rem) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 30rem) { .grid { grid-template-columns: minmax(0, 1fr); } }
+
+  .cell[hidden] { display: none; }
+
+  .tile {
+    position: relative;
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    width: 100%;
+    aspect-ratio: 1;
+    padding: 0;
+    border: 0;
+    background: var(--color-surface-sunk);
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  /* Nothing to open and nowhere to go — don't promise a click. */
+  .tile.inert {
+    cursor: default;
+  }
+
+  .art {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .placeholder {
+    display: grid;
+    place-items: center;
+    align-content: center;
+    gap: 0.7rem;
+    padding: 1rem;
+    background: var(--color-tile-empty);
+    color: var(--color-crimson);
+    font-size: 2.1rem;
+    text-align: center;
+  }
+
+  .placeholder-title {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: rgb(255 255 255 / 0.7);
+  }
+
+  .overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1.25rem;
+    background: rgb(168 0 0 / 0.9);
+    color: #fff;
+    text-align: center;
+    opacity: 0;
+    transition: opacity var(--dur) var(--ease);
+  }
+
+  .tile:hover .overlay,
+  .tile:focus-visible .overlay { opacity: 1; }
+
+  .title {
+    font-family: var(--font-display);
+    font-size: clamp(0.95rem, 1.6vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.25;
+    text-transform: uppercase;
+  }
+
+  .summary {
+    font-size: 0.75rem;
+    font-weight: 300;
+    line-height: 1.45;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .cue {
+    font-family: var(--font-display);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    border-top: 1px solid rgb(255 255 255 / 0.5);
+    padding-top: 0.5rem;
+    margin-top: 0.15rem;
+  }
+
+  .empty {
+    text-align: center;
+    color: var(--color-muted);
+    padding: 3rem 0;
+  }
+
+  /* --- Lightbox --------------------------------------------------- */
+
+  .lightbox {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    max-width: min(96vw, 1200px);
+    max-height: 94svh;
+    overflow: visible;
+    color: #fff;
+  }
+
+  .lightbox::backdrop { background: rgb(24 20 19 / 0.92); }
+
+  .stage {
+    display: grid;
+    place-items: center;
+    background: #000;
+  }
+
+  .stage :global(img) {
+    display: block;
+    max-width: 100%;
+    max-height: 82svh;
+    width: auto;
+    height: auto;
+  }
+
+  .stage :global(iframe) {
+    display: block;
+    width: min(92vw, 1100px);
+    aspect-ratio: 16 / 9;
+    max-height: 82svh;
+    border: 0;
+  }
+
+  .caption {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0.9rem 1rem 0;
+  }
+
+  .close {
+    position: absolute;
+    top: -2.75rem;
+    right: 0;
+    background: none;
+    border: 0;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.4rem;
+  }
+
+  .close:hover { color: var(--color-crimson); }
+  /* Anchors from the 2017 site, kept so old links and bookmarks still land. */
+  .legacy-anchor {
+    display: block;
+    height: 0;
+    scroll-margin-top: var(--header-height);
+  }
+</style>
+
+<script>
+  // --- Filtering ---------------------------------------------------
+  const chips = document.querySelectorAll<HTMLButtonElement>('.chip');
+  const cells = document.querySelectorAll<HTMLLIElement>('.cell');
+  const empty = document.querySelector<HTMLParagraphElement>('.empty');
+
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const filter = chip.dataset.filter ?? 'all';
+      chips.forEach((c) => c.setAttribute('aria-pressed', String(c === chip)));
+
+      let shown = 0;
+      cells.forEach((cell) => {
+        const match = filter === 'all' || cell.dataset.category === filter;
+        cell.hidden = !match;
+        if (match) shown += 1;
+      });
+
+      if (empty) empty.hidden = shown > 0;
+    });
+  });
+
+  // --- Lightbox ----------------------------------------------------
+  const dialog = document.querySelector<HTMLDialogElement>('#lightbox');
+  const stage = dialog?.querySelector<HTMLDivElement>('.stage');
+  const caption = dialog?.querySelector<HTMLParagraphElement>('.caption');
+
+  function clearStage() {
+    if (stage) stage.replaceChildren();
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('button.tile').forEach((tile) => {
+    tile.addEventListener('click', () => {
+      if (!dialog || !stage || !caption) return;
+      const { kind, src, title } = tile.dataset;
+      clearStage();
+
+      if (kind === 'image') {
+        const img = document.createElement('img');
+        img.src = src ?? '';
+        img.alt = title ?? '';
+        stage.append(img);
+      } else {
+        const frame = document.createElement('iframe');
+        frame.src = src ?? '';
+        frame.title = title ?? '';
+        frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; xr-spatial-tracking';
+        frame.allowFullscreen = true;
+        stage.append(frame);
+      }
+
+      caption.textContent = title ?? '';
+      dialog.showModal();
+    });
+  });
+
+  // Stop playback when the dialog closes.
+  dialog?.addEventListener('close', clearStage);
+  dialog?.querySelector('.close')?.addEventListener('click', () => dialog.close());
+
+  // Click outside the content closes it.
+  dialog?.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+</script>

@@ -1,0 +1,64 @@
+/*
+ * Design tokens extracted from the 2017 site's style.css.
+ * This file is the single definition of the site's look — components
+ * reference these variables and never hard-code a colour or a face.
+ */
+
+@font-face {
+  font-family: 'Mission Script';
+  src: url('../assets/fonts/mission-script-webfont.woff2') format('woff2'),
+       url('../assets/fonts/mission-script-webfont.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* --- Brand ------------------------------------------------------ */
+  --color-crimson: #a80000;
+  --color-crimson-dark: #8a0000;
+  --color-crimson-tint: #f3e2e0;
+
+  /* --- Neutrals --------------------------------------------------- */
+  --color-ink: #333333;
+  --color-muted: #666666;
+  --color-rule: #cfd0d1;
+  --color-surface: #ffffff;
+  --color-surface-sunk: #f3f3f3;
+  --color-dark: #3c3d42;
+  --color-dark-deep: #303135;
+  /* Backdrop for a gallery tile that has no image yet. Tuned to match the
+     stage Sketchfab renders models against, so a 3D project without a captured
+     poster sits on the same ground as the ones beside it that have one. */
+  --color-tile-empty: radial-gradient(circle at 50% 50%, #333333 0%, #272727 45%, #181818 100%);
+
+  /* --- Type ------------------------------------------------------- */
+  --font-display: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-body: 'Raleway', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-ui: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-script: 'Mission Script', 'Brush Script MT', cursive;
+
+  /* Section headers were 45px uppercase bold Montserrat. */
+  --size-section-header: clamp(2rem, 1.4rem + 2.4vw, 2.8125rem);
+  --size-block-title: 1.5rem;
+  --size-body: 1rem;
+  --size-small: 0.875rem;
+
+  --tracking-label: 0.06em;
+  --leading-body: 1.65;
+
+  /* --- Layout ----------------------------------------------------- */
+  --header-height: 48px;
+  --container-max: 1170px;   /* Bootstrap 3's .container at >=1200px */
+  --section-padding-y: clamp(3.5rem, 8vw, 6.875rem); /* was 110px */
+  --gutter: 1.25rem;
+
+  /* --- Motion ----------------------------------------------------- */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur-fast: 160ms;
+  --dur: 280ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur-fast: 0ms; --dur: 0ms; }
+}

@@ -1,0 +1,312 @@
+---
+import { Icon } from 'astro-icon/components';
+import site from '../data/site.json';
+
+// Stubbed until a form provider is chosen. With no endpoint the form still
+// works: submitting composes a mail message instead of POSTing anywhere.
+const endpoint = site.contact.endpoint as string | null;
+---
+
+<section id="contact" class="contact">
+  <span id="project-section" class="legacy-anchor" aria-hidden="true"></span>
+  <div class="panels">
+    <div class="panel start">
+      <p class="kicker">Like what you see?</p>
+      <h2>Start a project</h2>
+      <button type="button" class="cta" data-open-contact data-intent="project">
+        <span>Let's go</span>
+      </button>
+    </div>
+
+    <div class="panel message">
+      <p class="kicker">Want to tell me something?</p>
+      <h2>Send a message</h2>
+      <button type="button" class="cta" data-open-contact data-intent="message">
+        <span>Tell me</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<dialog id="contact-dialog" class="dialog" aria-labelledby="contact-heading">
+  <button type="button" class="close" aria-label="Close">
+    <Icon name="fa6-solid:xmark" aria-hidden="true" />
+  </button>
+
+  <div class="head">
+    <p class="kicker">Let's take the next step together</p>
+    <h2 id="contact-heading">Start your project</h2>
+  </div>
+
+  <form
+    class="form"
+    method={endpoint ? 'post' : 'dialog'}
+    action={endpoint ?? undefined}
+    data-fallback={endpoint ? undefined : `mailto:${site.email}`}
+  >
+    <p class="field">
+      <label for="c-name">Name <span aria-hidden="true">*</span></label>
+      <input id="c-name" name="name" type="text" required autocomplete="name" />
+    </p>
+    <p class="field">
+      <label for="c-company">Company</label>
+      <input id="c-company" name="company" type="text" autocomplete="organization" />
+    </p>
+    <p class="field">
+      <label for="c-email">Email <span aria-hidden="true">*</span></label>
+      <input id="c-email" name="email" type="email" required autocomplete="email" />
+    </p>
+    <p class="field">
+      <label for="c-phone">Telephone</label>
+      <input id="c-phone" name="phone" type="tel" autocomplete="tel" />
+    </p>
+    <p class="field wide">
+      <label for="c-subject">Subject</label>
+      <input id="c-subject" name="subject" type="text" />
+    </p>
+    <p class="field wide">
+      <label for="c-message">Message <span aria-hidden="true">*</span></label>
+      <textarea id="c-message" name="message" rows="5" required></textarea>
+    </p>
+
+    <p class="submit">
+      <button type="submit">Send</button>
+    </p>
+
+    {!endpoint && (
+      <p class="note">
+        No form service is wired up yet, so this opens your mail app with the
+        details filled in. Set <code>contact.endpoint</code> in
+        <code>src/data/site.json</code> to post it instead.
+      </p>
+    )}
+  </form>
+</dialog>
+
+<style>
+  .contact {
+    position: relative;
+    padding-block: clamp(4rem, 10vw, 8.125rem);
+    background:
+      linear-gradient(100deg, var(--color-crimson) 0 52%, var(--color-surface) 52%);
+  }
+
+  .panels {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 4vw, 2.25rem);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1.5rem, 5vw, 4rem);
+    align-items: center;
+  }
+
+  .panel { text-transform: uppercase; }
+
+  .start { color: #fff; }
+  .message {
+    color: var(--color-ink);
+    padding-left: clamp(1.5rem, 7vw, 6rem);
+  }
+
+  .kicker {
+    font-family: var(--font-ui);
+    font-size: clamp(0.85rem, 1.6vw, 1.125rem);
+    text-transform: none;
+  }
+
+  .panel h2 {
+    font-size: clamp(1.75rem, 4.5vw, 3.4375rem);
+    margin-block: clamp(0.75rem, 2vw, 2.5rem);
+    line-height: 1.05;
+  }
+
+  .cta {
+    display: inline-block;
+    border: 0;
+    cursor: pointer;
+    padding: clamp(0.9rem, 2vw, 1.5rem) clamp(1.4rem, 3vw, 2.1875rem);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.05rem, 2.4vw, 1.875rem);
+    text-transform: uppercase;
+    transform: skewX(-10deg);
+    transition: background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+  }
+
+  .cta span { display: block; transform: skewX(10deg); }
+
+  .start .cta { background: #fff; color: var(--color-crimson); }
+  .start .cta:hover, .start .cta:focus-visible { background: #000; color: #fff; }
+
+  .message .cta { background: var(--color-ink); color: #fff; }
+  .message .cta:hover, .message .cta:focus-visible { background: var(--color-crimson); }
+
+  @media (max-width: 46rem) {
+    .contact {
+      background: linear-gradient(190deg, var(--color-crimson) 0 50%, var(--color-surface) 50%);
+    }
+    .panels { grid-template-columns: 1fr; }
+    .message { padding-left: 0; }
+  }
+
+  /* --- Dialog ----------------------------------------------------- */
+
+  .dialog {
+    border: 0;
+    padding: clamp(1.5rem, 4vw, 2.75rem);
+    max-width: min(94vw, 46rem);
+    width: 100%;
+    background: var(--color-surface);
+    color: var(--color-ink);
+    position: relative;
+  }
+
+  .dialog::backdrop { background: rgb(24 20 19 / 0.9); }
+
+  .close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: none;
+    border: 0;
+    font-size: 1.25rem;
+    color: var(--color-muted);
+    cursor: pointer;
+    padding: 0.4rem;
+  }
+
+  .close:hover { color: var(--color-crimson); }
+
+  .head { margin-bottom: 1.75rem; }
+  .head .kicker { color: var(--color-muted); }
+
+  .head h2 {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    text-transform: uppercase;
+    margin-top: 0.35rem;
+  }
+
+  .form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .field { display: flex; flex-direction: column; gap: 0.35rem; margin: 0; }
+  .field.wide, .submit, .note { grid-column: 1 / -1; }
+
+  label {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  label span { color: var(--color-crimson); }
+
+  input, textarea {
+    font-family: var(--font-ui);
+    font-size: 1rem;
+    padding: 0.7rem 0.8rem;
+    border: 1px solid var(--color-rule);
+    background: var(--color-surface);
+    color: var(--color-ink);
+    width: 100%;
+  }
+
+  input:focus-visible, textarea:focus-visible {
+    outline: 2px solid var(--color-crimson);
+    outline-offset: 1px;
+    border-color: transparent;
+  }
+
+  .submit { margin: 0; }
+
+  .submit button {
+    border: 0;
+    cursor: pointer;
+    background: var(--color-crimson);
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    padding: 0.9rem 2rem;
+  }
+
+  .submit button:hover, .submit button:focus-visible { background: var(--color-ink); }
+
+  .note {
+    margin: 0;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--color-muted);
+    border-top: 1px solid var(--color-rule);
+    padding-top: 0.9rem;
+  }
+
+  .note code {
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    background: var(--color-surface-sunk);
+    padding: 0.05em 0.3em;
+  }
+
+  @media (max-width: 34rem) {
+    .form { grid-template-columns: 1fr; }
+  }
+  /* Anchors from the 2017 site, kept so old links and bookmarks still land. */
+  .legacy-anchor {
+    display: block;
+    height: 0;
+    scroll-margin-top: var(--header-height);
+  }
+</style>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>('#contact-dialog');
+  const heading = document.querySelector<HTMLHeadingElement>('#contact-heading');
+  const form = dialog?.querySelector<HTMLFormElement>('.form');
+  const subject = dialog?.querySelector<HTMLInputElement>('#c-subject');
+
+  document.querySelectorAll<HTMLButtonElement>('[data-open-contact]').forEach((button) => {
+    button.addEventListener('click', () => {
+      if (!dialog) return;
+      const project = button.dataset.intent === 'project';
+      if (heading) heading.textContent = project ? 'Start your project' : 'Send a message';
+      if (subject && !subject.value) subject.value = project ? 'Project enquiry' : '';
+      dialog.showModal();
+    });
+  });
+
+  dialog?.querySelector('.close')?.addEventListener('click', () => dialog.close());
+
+  dialog?.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+
+  // With no endpoint configured, compose a mail message from the fields.
+  form?.addEventListener('submit', (event) => {
+    const fallback = form.dataset.fallback;
+    if (!fallback) return;
+
+    event.preventDefault();
+    const data = new FormData(form);
+    const lines = ['name', 'company', 'email', 'phone']
+      .map((key) => {
+        const value = String(data.get(key) ?? '').trim();
+        return value ? `${key[0].toUpperCase()}${key.slice(1)}: ${value}` : null;
+      })
+      .filter(Boolean);
+
+    const body = [...lines, '', String(data.get('message') ?? '')].join('\n');
+    const subjectLine = String(data.get('subject') ?? '').trim() || 'Message from patrickbarnhardt.info';
+
+    window.location.href =
+      `${fallback}?subject=${encodeURIComponent(subjectLine)}&body=${encodeURIComponent(body)}`;
+    dialog?.close();
+  });
+</script>

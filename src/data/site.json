@@ -1,0 +1,36 @@
+{
+  "name": "Patrick Barnhardt",
+  "shortName": "Patrick Barnhardt",
+  "title": "The Work of Patrick Barnhardt",
+  "tagline": "Web Design & Development / Game Design & Development",
+  "description": "Portfolio and resume of Patrick Barnhardt — game development, web development, and design.",
+  "email": "contact@patrickbarnhardt.info",
+  "locale": "en",
+  "nav": [
+    {
+      "label": "Who Am I?",
+      "href": "/#about"
+    },
+    {
+      "label": "Work",
+      "href": "/#work"
+    },
+    {
+      "label": "Résumé",
+      "href": "/#resume"
+    },
+    {
+      "label": "Blog",
+      "href": "/blog"
+    },
+    {
+      "label": "Contact",
+      "href": "/#contact"
+    }
+  ],
+  "contact": {
+    "//": "Phase 1 stub. Set endpoint to a form service URL to make the modal live; until then the form falls back to a mailto: link.",
+    "endpoint": null,
+    "method": "POST"
+  }
+}

@@ -1,4 +1,30 @@
+# build output
+dist/
+
+# generated types & content store
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+*.log
+npm-debug.log*
+
+# environment variables
+.env
+.env.*
+!.env.example
+
+# editor / OS
+.DS_Store
+.vs/
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# legacy holdovers
 resume/
 oldsites/
 Templates/
-.vs/crimsonstrife.github.io/v14/.suo

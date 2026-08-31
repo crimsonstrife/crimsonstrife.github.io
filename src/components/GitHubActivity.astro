@@ -1,0 +1,271 @@
+---
+import { Icon } from 'astro-icon/components';
+import { fetchActivity, fetchContributions } from '../lib/github';
+
+const [activity, contributions] = await Promise.all([fetchActivity(6), fetchContributions()]);
+const { repos, languages } = activity;
+
+const CELL = 11;
+const GAP = 3;
+const STEP = CELL + GAP;
+
+const weeks = contributions?.weeks ?? [];
+const width = weeks.length * STEP;
+const height = 7 * STEP;
+
+// Month labels sit above the first week that starts a new month.
+const months: { label: string; x: number }[] = [];
+let lastMonth = -1;
+weeks.forEach((week, index) => {
+  const first = week[0];
+  if (!first) return;
+  const month = new Date(`${first.date}T00:00:00Z`).getUTCMonth();
+  if (month !== lastMonth) {
+    lastMonth = month;
+    months.push({
+      label: new Date(`${first.date}T00:00:00Z`).toLocaleDateString('en-US', {
+        month: 'short',
+        timeZone: 'UTC',
+      }),
+      x: index * STEP,
+    });
+  }
+});
+
+const dayFormatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', timeZone: 'UTC' });
+---
+
+{(repos.length > 0 || contributions) && (
+  <div class="activity">
+    {languages.length > 0 && (
+      <p class="languages">
+        <span class="label">Top languages</span>
+        <span class="list">{languages.map((language) => <span>{language}</span>)}</span>
+      </p>
+    )}
+
+    {contributions && (
+      <figure class="calendar">
+        <figcaption>
+          <strong>{contributions.total.toLocaleString()}</strong> contributions in the last year
+        </figcaption>
+
+        <div class="scroll">
+          <svg
+            viewBox={`0 -14 ${width} ${height + 14}`}
+            width={width}
+            height={height + 14}
+            role="img"
+            aria-label={`GitHub contribution calendar: ${contributions.total} contributions between ${contributions.from} and ${contributions.to}`}
+          >
+            {months.map((month) => (
+              <text class="month" x={month.x} y={-4}>{month.label}</text>
+            ))}
+            {weeks.map((week, weekIndex) =>
+              week.map((day) => (
+                <rect
+                  class={`day level-${day.level}`}
+                  x={weekIndex * STEP}
+                  y={new Date(`${day.date}T00:00:00Z`).getUTCDay() * STEP}
+                  width={CELL}
+                  height={CELL}
+                >
+                  <title>
+                    {day.count === 0
+                      ? `No contributions on ${dayFormatter.format(new Date(`${day.date}T00:00:00Z`))}`
+                      : `${day.count} contribution${day.count === 1 ? '' : 's'} on ${dayFormatter.format(new Date(`${day.date}T00:00:00Z`))}`}
+                  </title>
+                </rect>
+              ))
+            )}
+          </svg>
+        </div>
+
+        <p class="legend">
+          <span>Less</span>
+          {[0, 1, 2, 3, 4].map((level) => <i class={`swatch level-${level}`} aria-hidden="true" />)}
+          <span>More</span>
+        </p>
+      </figure>
+    )}
+
+    {repos.length > 0 && (
+      <ul class="repos" role="list">
+        {repos.map((repo) => (
+          <li>
+            <a href={repo.url} rel="noopener">
+              <span class="name">
+                <Icon name="fa6-brands:github" aria-hidden="true" />
+                {repo.name}
+              </span>
+              {repo.description && <span class="desc">{repo.description}</span>}
+              <span class="meta">
+                {repo.language && <span class="lang">{repo.language}</span>}
+                {repo.stars > 0 && (
+                  <span class="stars">
+                    <Icon name="fa6-solid:star" aria-hidden="true" /> {repo.stars}
+                  </span>
+                )}
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+)}
+
+<style>
+  .activity {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2rem, 5vw, 3.25rem);
+    margin-bottom: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  .languages {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .languages .label {
+    font-family: var(--font-script);
+    font-size: 1.5rem;
+    color: var(--color-muted);
+  }
+
+  .languages .list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.65rem;
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  /* Interpuncts between languages, as the original card had. */
+  .languages .list span + span::before {
+    content: '·';
+    color: var(--color-crimson);
+    margin-right: 0.65rem;
+  }
+
+  /* --- Calendar --------------------------------------------------- */
+
+  .calendar { margin: 0; }
+
+  figcaption {
+    font-family: var(--font-ui);
+    font-size: 0.95rem;
+    color: var(--color-muted);
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  figcaption strong { color: var(--color-ink); font-weight: 600; }
+
+  .scroll {
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  svg { display: block; flex: none; }
+
+  .month {
+    font-family: var(--font-ui);
+    font-size: 9px;
+    fill: var(--color-muted);
+  }
+
+  /* GitHub's green, swapped for the site's crimson ramp. */
+  .day, .swatch { rx: 2px; }
+  .level-0 { fill: #ebedef; }
+  .level-1 { fill: #f0bcb8; }
+  .level-2 { fill: #d97a72; }
+  .level-3 { fill: #bc2f26; }
+  .level-4 { fill: var(--color-crimson); }
+
+  .legend {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    margin-top: 0.75rem;
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    color: var(--color-muted);
+  }
+
+  .legend span:first-child { margin-right: 0.2rem; }
+  .legend span:last-child { margin-left: 0.2rem; }
+
+  .swatch {
+    display: block;
+    width: 11px;
+    height: 11px;
+    border-radius: 2px;
+  }
+
+  .swatch.level-0 { background: #ebedef; }
+  .swatch.level-1 { background: #f0bcb8; }
+  .swatch.level-2 { background: #d97a72; }
+  .swatch.level-3 { background: #bc2f26; }
+  .swatch.level-4 { background: var(--color-crimson); }
+
+  /* --- Repositories ----------------------------------------------- */
+
+  .repos {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 1rem;
+  }
+
+  .repos a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    height: 100%;
+    border: 1px solid var(--color-rule);
+    border-left: 3px solid var(--color-crimson);
+    padding: 1rem 1.15rem;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color var(--dur-fast) var(--ease), background-color var(--dur-fast) var(--ease);
+  }
+
+  .repos a:hover, .repos a:focus-visible { background: var(--color-surface-sunk); }
+
+  .name {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-crimson);
+    word-break: break-word;
+  }
+
+  .desc { font-size: 0.85rem; line-height: 1.5; color: var(--color-muted); flex: 1; }
+
+  .meta {
+    display: flex;
+    gap: 0.9rem;
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    color: var(--color-muted);
+  }
+
+  .stars { display: inline-flex; align-items: center; gap: 0.25rem; }
+</style>

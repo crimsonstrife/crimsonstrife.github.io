@@ -1,0 +1,99 @@
+[
+  {
+    "id": "cprime-business-analyst-boot-camp",
+    "order": 1,
+    "title": "Business Analyst Boot Camp",
+    "issuer": "Cprime, Inc",
+    "issued": "2024-06",
+    "credentialUrl": "https://www.cprime.com/learning/courses/business-analyst-boot-camp/"
+  },
+  {
+    "id": "salesforce-certified-administrator",
+    "order": 2,
+    "title": "Salesforce Certified Administrator (SCA)",
+    "issuer": "Salesforce",
+    "issued": "2024-03",
+    "credentialId": "4180765",
+    "credentialUrl": "https://sforce.co/verifycerts"
+  },
+  {
+    "id": "android-development-essential-training",
+    "order": 3,
+    "title": "Android Development Essential Training: Create Your First App with Java",
+    "issuer": "LinkedIn Learning",
+    "issued": "2023-06",
+    "credentialUrl": "https://www.linkedin.com/learning/certificates/deb5d90b4298dab6e5fa8cbf1d4e84af03bdf377e7ac603ec54495d80c3d2414/"
+  },
+  {
+    "id": "comptia-project-plus",
+    "order": 4,
+    "title": "CompTIA Project+",
+    "issuer": "CompTIA",
+    "issued": "2021-08",
+    "credentialUrl": "https://www.credly.com/badges/a6a18f84-37fe-4145-8a80-01bfacade732"
+  },
+  {
+    "id": "ciw-user-interface-designer",
+    "order": 5,
+    "title": "CIW User Interface Designer",
+    "issuer": "Certification Partners",
+    "issued": "2020-09"
+  },
+  {
+    "id": "ciw-advanced-html-css3-specialist",
+    "order": 6,
+    "title": "CIW Advanced HTML & CSS3 Specialist",
+    "issuer": "Certification Partners",
+    "issued": "2019-11"
+  },
+  {
+    "id": "itil-foundation",
+    "order": 7,
+    "title": "ITIL Foundation Certificate in IT Service Management",
+    "issuer": "PeopleCert",
+    "issued": "2019-05",
+    "credentialId": "GR750556524PB"
+  },
+  {
+    "id": "ciw-site-development-associate",
+    "order": 8,
+    "title": "CIW Site Development Associate",
+    "issuer": "Certification Partners",
+    "issued": "2018-11"
+  },
+  {
+    "id": "comptia-a-plus-ce",
+    "order": 9,
+    "title": "CompTIA A+ ce",
+    "issuer": "CompTIA",
+    "issued": "2016-06",
+    "expires": "2022-06",
+    "credentialUrl": "https://www.credly.com/badges/682a44d5-4a8b-4799-9dff-5b31b8586e2f",
+    "badge": "../assets/images/Aplus-Logo-Certified-CE.png"
+  },
+  {
+    "id": "unreal-game-asset-production-pipeline",
+    "order": 10,
+    "title": "Game Asset Production Pipeline in Unreal Engine",
+    "issuer": "Digital-Tutors",
+    "issued": "2015-05",
+    "credentialId": "4BAE9XH7",
+    "credentialUrl": "http://www.cgverify.com"
+  },
+  {
+    "id": "unreal-creating-ui-elements",
+    "order": 11,
+    "title": "Creating UI Elements in Unreal Engine",
+    "issuer": "Digital-Tutors",
+    "issued": "2015-05",
+    "credentialId": "KNCMGQJY",
+    "credentialUrl": "http://www.cgverify.com"
+  },
+  {
+    "id": "getting-started-with-perforce",
+    "order": 12,
+    "title": "Getting Started with Perforce",
+    "issuer": "Tony Vinayak, Professional Services Manager",
+    "issued": "2013-04"
+  }
+]

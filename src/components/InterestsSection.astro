@@ -1,0 +1,56 @@
+---
+import { Icon } from 'astro-icon/components';
+import { getCollection } from 'astro:content';
+import SectionHeader from './SectionHeader.astro';
+
+const interests = (await getCollection('interests')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<section id="interests" class="interests">
+  <SectionHeader title="Interests" />
+
+  <ul class="row" role="list">
+    {interests.map((entry) => (
+      <li>
+        <Icon name={entry.data.icon} aria-hidden="true" />
+        <span>{entry.data.label}</span>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .interests {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding: 0 clamp(1rem, 4vw, 2.25rem) var(--section-padding-y);
+  }
+
+  .row {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(1.25rem, 4vw, 3rem);
+  }
+
+  li {
+    display: grid;
+    justify-items: center;
+    gap: 0.5rem;
+    min-width: 6rem;
+  }
+
+  li [data-icon] {
+    font-size: 2.2rem;
+    color: var(--color-crimson);
+  }
+
+  span {
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+    color: var(--color-muted);
+  }
+</style>

@@ -1,0 +1,44 @@
+[
+  {
+    "id": "videography",
+    "order": 1,
+    "label": "Videography",
+    "icon": "fa6-solid:film"
+  },
+  {
+    "id": "development",
+    "order": 2,
+    "label": "Development",
+    "icon": "fa6-solid:code"
+  },
+  {
+    "id": "writing",
+    "order": 3,
+    "label": "Writing",
+    "icon": "fa6-solid:pencil"
+  },
+  {
+    "id": "music",
+    "order": 4,
+    "label": "Music",
+    "icon": "fa6-solid:headphones"
+  },
+  {
+    "id": "traveling",
+    "order": 5,
+    "label": "Traveling",
+    "icon": "fa6-solid:globe"
+  },
+  {
+    "id": "gaming",
+    "order": 6,
+    "label": "Gaming",
+    "icon": "fa6-solid:gamepad"
+  },
+  {
+    "id": "photography",
+    "order": 7,
+    "label": "Photography",
+    "icon": "fa6-solid:camera"
+  }
+]

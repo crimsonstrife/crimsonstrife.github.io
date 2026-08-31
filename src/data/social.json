@@ -1,0 +1,74 @@
+[
+  {
+    "id": "github",
+    "order": 1,
+    "label": "GitHub",
+    "url": "https://github.com/crimsonstrife",
+    "icon": "fa6-brands:github",
+    "color": "#6e5494",
+    "description": "My collection of repos for public projects. Including the source code for this site."
+  },
+  {
+    "id": "linkedin",
+    "order": 2,
+    "label": "LinkedIn",
+    "url": "https://linkedin.com/in/patrickbarnhardt",
+    "icon": "fa6-brands:linkedin",
+    "color": "#007bb6",
+    "description": "Connect with me professionally. A consistent source for up-to-date work information on me."
+  },
+  {
+    "id": "twitter",
+    "order": 3,
+    "label": "X",
+    "url": "https://twitter.com/rambology101",
+    "icon": "fa6-brands:x-twitter",
+    "color": "#000000",
+    "description": "Various musings, and where I post when I'm going live."
+  },
+  {
+    "id": "youtube",
+    "order": 4,
+    "label": "YouTube",
+    "url": "https://youtube.com/@crimsonstrife",
+    "icon": "fa6-brands:youtube",
+    "color": "#ff0000",
+    "description": "Longer-form video: devlogs, breakdowns, and recorded work."
+  },
+  {
+    "id": "twitch",
+    "order": 5,
+    "label": "Twitch",
+    "url": "https://twitch.tv/crimsonstrife",
+    "icon": "fa6-brands:twitch",
+    "color": "#9146ff",
+    "description": "Live development streams and the occasional game."
+  },
+  {
+    "id": "instagram",
+    "order": 6,
+    "label": "Instagram",
+    "url": "https://www.instagram.com/crimsonstrife",
+    "icon": "fa6-brands:instagram",
+    "color": "#e4405f",
+    "description": "Screenshots, work in progress, and art from current projects."
+  },
+  {
+    "id": "tiktok",
+    "order": 7,
+    "label": "TikTok",
+    "url": "https://www.tiktok.com/@crimsonstrife",
+    "icon": "fa6-brands:tiktok",
+    "color": "#010101",
+    "description": "Short clips from development and finished work."
+  },
+  {
+    "id": "facebook",
+    "order": 8,
+    "label": "Facebook",
+    "url": "https://facebook.com/patrickbarnhardt",
+    "icon": "fa6-brands:facebook",
+    "color": "#3b5998",
+    "description": "My personal social page. Occasionally I upload works in progress."
+  }
+]

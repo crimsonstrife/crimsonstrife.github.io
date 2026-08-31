@@ -1,0 +1,141 @@
+---
+interface Entry {
+  id: string;
+  title: string;
+  organization: string;
+  period: string;
+  summary: string;
+  highlights: string[];
+}
+interface Props {
+  entries: Entry[];
+}
+const { entries } = Astro.props;
+---
+
+<ol class="timeline" role="list">
+  {entries.map((entry) => (
+    <li class="node">
+      <div class="card">
+        <h4>{entry.title}</h4>
+        <p class="meta">{entry.organization}</p>
+        <p class="meta">{entry.period}</p>
+        {entry.summary && <p class="body">{entry.summary}</p>}
+        {entry.highlights.length > 0 && (
+          <ul class="points">
+            {entry.highlights.map((point) => <li>{point}</li>)}
+          </ul>
+        )}
+      </div>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  /* Centre rail, desktop only. */
+  @media (min-width: 52rem) {
+    .timeline {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 4rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background: var(--color-rule);
+      transform: translateX(-50%);
+    }
+
+    .node:nth-child(odd) { grid-column: 1; }
+    .node:nth-child(even) { grid-column: 2; }
+  }
+
+  .node { position: relative; }
+
+  .card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-rule);
+    border-top: 3px solid var(--color-crimson);
+    padding: 1.25rem 1.4rem 1.4rem;
+    position: relative;
+  }
+
+  /* The crimson notch and dot that gave the original timeline its look. */
+  @media (min-width: 52rem) {
+    .card::after {
+      content: '';
+      position: absolute;
+      top: 1.4rem;
+      width: 0;
+      height: 0;
+      border-block: 0.7rem solid transparent;
+    }
+
+    .node:nth-child(odd) .card::after {
+      right: -0.7rem;
+      border-left: 0.7rem solid var(--color-crimson);
+    }
+
+    .node:nth-child(even) .card::after {
+      left: -0.7rem;
+      border-right: 0.7rem solid var(--color-crimson);
+    }
+
+    .node::after {
+      content: '';
+      position: absolute;
+      top: 1.75rem;
+      width: 0.85rem;
+      height: 0.85rem;
+      border-radius: 50%;
+      background: var(--color-crimson);
+      border: 2px solid var(--color-surface);
+    }
+
+    .node:nth-child(odd)::after { right: -2.42rem; }
+    .node:nth-child(even)::after { left: -2.42rem; }
+  }
+
+  h4 {
+    font-size: 1.05rem;
+    text-transform: capitalize;
+    margin-bottom: 0.5rem;
+  }
+
+  .meta {
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    color: var(--color-muted);
+  }
+
+  .body {
+    margin-top: 0.75rem;
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  .points {
+    margin: 0.75rem 0 0;
+    padding-left: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .points li::marker { color: var(--color-crimson); }
+</style>

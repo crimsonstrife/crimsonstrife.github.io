@@ -1,0 +1,56 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    # Builds run on both branches so the migration branch gets CI,
+    # but the deploy job below is gated to master.
+    branches: [master, astro-replacement]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+  # The GitHub activity feed and contribution calendar are baked in at build
+  # time, so a nightly rebuild is what keeps them current. 07:00 UTC.
+  schedule:
+    - cron: '0 7 * * *'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never run two deploys at once; let a newer push supersede an older one.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Build site
+        uses: withastro/action@v6
+        env:
+          # Fine-grained PAT with read access to your profile's contribution
+          # data. Without it the calendar is skipped and the build still
+          # succeeds — see src/lib/github.ts.
+          CONTRIBUTIONS_TOKEN: ${{ secrets.CONTRIBUTIONS_TOKEN }}
+
+  deploy:
+    name: Deploy
+    # Only master reaches production. Pushes to astro-replacement build
+    # and stop, so the live site is never touched before the merge.
+    if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

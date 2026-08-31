@@ -1,0 +1,198 @@
+---
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import heroImage from '../assets/images/slider/headerimage.png';
+---
+
+<section class="hero" aria-labelledby="hero-title">
+  <Image
+    class="backdrop"
+    src={heroImage}
+    alt=""
+    widths={[900, 1440, 1920]}
+    sizes="100vw"
+    loading="eager"
+    fetchpriority="high"
+  />
+
+  <div class="badge">
+    <p class="circle" id="hero-title">
+      <span class="greet">Heidy Ho!</span>
+      <span class="small">I'm</span>
+      <span class="given">Patrick</span>
+      <span class="family">Barnhardt</span>
+    </p>
+  </div>
+
+  <!--
+    The 2017 hero hid both discipline labels and revealed one when you moved
+    into that half of the screen: left for web, right for games. Rebuilt here
+    with CSS only, gated behind `hover: hover` so touch devices — which can
+    never trigger it — just see both.
+  -->
+  <div class="disciplines">
+    <div class="half left">
+      <p><span>Web</span><span>Design &amp;</span><span>Development</span></p>
+    </div>
+    <div class="half right">
+      <p><span>Game</span><span>Design &amp;</span><span>Development</span></p>
+    </div>
+  </div>
+
+  <a class="scroll" href="#about">
+    <span>Scroll down or click me</span>
+    <Icon name="fa6-solid:chevron-down" aria-hidden="true" />
+  </a>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: min(100svh, 52rem);
+    display: grid;
+    grid-template-rows: 1fr auto;
+    align-items: center;
+    justify-items: center;
+    padding: 3rem clamp(1rem, 4vw, 2.25rem) 2rem;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .backdrop {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgb(0 0 0 / 0.35);
+    z-index: -1;
+  }
+
+  .badge { display: grid; place-items: center; }
+
+  /* Outer ring: faint white. Inner ring: crimson. Both transparent, exactly
+     as the original — the photo shows through. */
+  .circle {
+    display: grid;
+    place-content: center;
+    align-content: center;
+    gap: 0.1rem;
+    text-align: center;
+    aspect-ratio: 1;
+    width: clamp(15rem, 34vw, 31.25rem);
+    border-radius: 50%;
+    border: 2px solid rgb(255 255 255 / 0.2);
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    text-shadow: 0 2px 14px rgb(0 0 0 / 0.55);
+    padding: clamp(1.5rem, 3vw, 3rem);
+    position: relative;
+  }
+
+  .circle::before {
+    content: '';
+    position: absolute;
+    inset: clamp(1.25rem, 2.6vw, 3.125rem);
+    border: 2px solid var(--color-crimson);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .greet { font-family: var(--font-script); font-size: clamp(1.6rem, 4.4vw, 3.4375rem); text-transform: none; line-height: 1.1; }
+  .small { font-size: clamp(1rem, 2.4vw, 1.75rem); }
+  .given, .family { font-size: clamp(1.4rem, 3.6vw, 2.8125rem); line-height: 1.1; }
+
+  .disciplines {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+    pointer-events: none;
+  }
+
+  .half {
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 clamp(1.5rem, 5vw, 4.75rem) clamp(2.5rem, 8vw, 6.3125rem);
+    pointer-events: auto;
+  }
+
+  .half.right { justify-content: flex-end; text-align: right; }
+
+  .disciplines p {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.25rem, 3.4vw, 3.5rem);
+    line-height: 1.05;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 0 2px 14px rgb(0 0 0 / 0.6);
+  }
+
+  .disciplines span { display: block; }
+
+  /* Only hide the labels where hovering is actually possible. */
+  @media (hover: hover) and (pointer: fine) {
+    .half p {
+      opacity: 0;
+      transform: translateY(0.5rem);
+      transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+    }
+
+    .half:hover p,
+    .half:focus-within p { opacity: 1; transform: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .half p { transform: none !important; }
+  }
+
+  /* Same call the original made: too cramped to be worth it on small screens. */
+  @media (max-width: 46rem) {
+    .disciplines { display: none; }
+  }
+
+  .scroll {
+    margin-top: 2.5rem;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    color: #fff;
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    text-shadow: 0 1px 10px rgb(0 0 0 / 0.6);
+  }
+
+  .scroll [data-icon] {
+    font-size: 1.4rem;
+    animation: bob 2s var(--ease) infinite;
+  }
+
+  .scroll:hover [data-icon],
+  .scroll:focus-visible [data-icon] { color: var(--color-rule); }
+
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scroll [data-icon] { animation: none; }
+  }
+</style>

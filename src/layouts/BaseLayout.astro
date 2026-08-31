@@ -1,0 +1,104 @@
+---
+import '@fontsource/montserrat/400.css';
+import '@fontsource/montserrat/700.css';
+import '@fontsource/raleway/400.css';
+import '@fontsource/raleway/600.css';
+import '@fontsource/roboto/400.css';
+import '../styles/global.css';
+
+import { getCollection } from 'astro:content';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import site from '../data/site.json';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** Set false on pages that supply their own chrome (e.g. the print résumé). */
+  chrome?: boolean;
+}
+
+const {
+  title = site.title,
+  description = site.description,
+  chrome = true,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const social = (await getCollection('social')).sort((a, b) => a.data.order - b.data.order);
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.name,
+  url: Astro.site?.href,
+  email: `mailto:${site.email}`,
+  sameAs: social.map((entry) => entry.data.url),
+};
+---
+
+<!doctype html>
+<html lang={site.locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={site.name} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/rss+xml" title={`${site.name} — Blog`} href="/rss.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <meta name="generator" content={Astro.generator} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+  </head>
+
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <span id="top"></span>
+
+    {chrome && <SiteHeader />}
+
+    <main id="main" class:list={[{ 'has-chrome': chrome }]}>
+      <slot />
+    </main>
+
+    {chrome && <SiteFooter />}
+  </body>
+</html>
+
+<style>
+  .skip {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 200;
+    background: var(--color-crimson);
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-label);
+    padding: 0.75rem 1.25rem;
+    text-decoration: none;
+  }
+
+  .skip:focus {
+    left: 0;
+  }
+
+  main.has-chrome {
+    padding-top: var(--header-height);
+  }
+</style>

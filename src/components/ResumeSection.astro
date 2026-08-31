@@ -1,0 +1,163 @@
+---
+import { getCollection } from 'astro:content';
+import SectionHeader from './SectionHeader.astro';
+import Timeline from './Timeline.astro';
+
+const byOrder = (a: { data: { order: number } }, b: { data: { order: number } }) =>
+  a.data.order - b.data.order;
+
+const experience = (await getCollection('experience')).sort(byOrder).map((e) => e.data);
+const education = (await getCollection('education')).sort(byOrder).map((e) => e.data);
+const skills = (await getCollection('skills')).sort(byOrder);
+
+// Entries are ordered newest first. Show the five most recent up front and
+// keep the rest one click away rather than dropping them from the record.
+const RECENT = 5;
+const recent = experience.slice(0, RECENT);
+const earlier = experience.slice(RECENT);
+---
+
+<section id="resume" class="resume">
+  <SectionHeader title="Résumé" />
+
+  <div class="actions">
+    <a class="print-link" href="/resume">Printable version</a>
+  </div>
+
+  <h3 class="sub">Experience</h3>
+  <Timeline entries={recent} />
+
+  {earlier.length > 0 && (
+    <>
+      <div class="more">
+        <button type="button" id="show-earlier" aria-expanded="false" aria-controls="earlier-roles">
+          Show earlier roles ({earlier.length})
+        </button>
+      </div>
+      <div id="earlier-roles" class="earlier" hidden>
+        <Timeline entries={earlier} />
+      </div>
+    </>
+  )}
+
+  <h3 class="sub">Education</h3>
+  <Timeline entries={education} />
+
+  <h3 class="sub">Skills</h3>
+  <div class="skills">
+    {skills.map((group) => (
+      <div class="group">
+        <h4>{group.data.label}</h4>
+        <ul role="list">
+          {group.data.items.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .resume {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding: 0 clamp(1rem, 4vw, 2.25rem) var(--section-padding-y);
+  }
+
+  .actions { text-align: center; margin-bottom: 2.5rem; }
+
+  .print-link {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-crimson);
+    border: 2px solid var(--color-crimson);
+    padding: 0.7rem 1.4rem;
+    text-decoration: none;
+    transition: background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+  }
+
+  .print-link:hover,
+  .print-link:focus-visible { background: var(--color-crimson); color: #fff; }
+
+  .sub {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-label);
+    text-align: center;
+    color: var(--color-muted);
+    margin: clamp(2.5rem, 6vw, 4rem) 0 1.75rem;
+  }
+
+  .more { text-align: center; margin-top: 1.75rem; }
+
+  .more button {
+    background: none;
+    border: 0;
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-muted);
+    padding: 0.7rem 1rem;
+    border-bottom: 2px solid var(--color-rule);
+  }
+
+  .more button:hover,
+  .more button:focus-visible {
+    color: var(--color-crimson);
+    border-bottom-color: var(--color-crimson);
+  }
+
+  .earlier { margin-top: 1.5rem; }
+  .earlier[hidden] { display: none; }
+
+  .skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1.75rem;
+  }
+
+  .group h4 {
+    font-size: 0.8rem;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-crimson);
+    margin-bottom: 0.9rem;
+  }
+
+  .group ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .group li {
+    font-family: var(--font-ui);
+    font-size: 0.82rem;
+    background: var(--color-surface-sunk);
+    border: 1px solid var(--color-rule);
+    padding: 0.35rem 0.7rem;
+  }
+</style>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('#show-earlier');
+  const panel = document.querySelector<HTMLElement>('#earlier-roles');
+
+  toggle?.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    panel?.toggleAttribute('hidden', open);
+    toggle.textContent = open
+      ? `Show earlier roles (${panel?.querySelectorAll('.node').length ?? 0})`
+      : 'Hide earlier roles';
+  });
+</script>

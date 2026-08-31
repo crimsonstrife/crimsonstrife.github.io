@@ -1,88 +1,99 @@
 # patrickbarnhardt.info
 
-personal portfolio/resume site.
+Personal portfolio and resume site for Patrick Barnhardt, built with
+[Astro](https://astro.build) and deployed to GitHub Pages at
+<https://www.patrickbarnhardt.info>.
 
-## Getting Started
+## Requirements
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+- Node 22.12 or newer
 
-### Prerequisities
+## Getting started
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you have to get a development env running
-
-Stay what the step will be
-
-```
-Give the example
+```bash
+npm install
+npm run dev      # http://localhost:4321
+npm run build    # type-check, then build to dist/
+npm run preview  # serve the production build locally
 ```
 
-And repeat
+## Adding content
+
+Content is plain files — no CMS, no admin panel. Add a file, push, done.
+
+| To add… | Create or edit |
+| --- | --- |
+| A portfolio project | `src/content/projects/<slug>.md` |
+| A blog post | `src/content/blog/<slug>.md` |
+| A job | an entry in `src/data/experience.json` |
+| A degree | an entry in `src/data/education.json` |
+| A certification | an entry in `src/data/certifications.json` |
+| A social profile | an entry in `src/data/social.json` |
+| A skill | an entry in `src/data/skills.json` |
+
+Every collection is validated by a Zod schema in `src/content.config.ts`.
+A missing field or a mistyped category fails the build rather than
+shipping a broken page.
+
+Astro writes JSON Schema files to `.astro/collections/` on each build.
+Point your editor at them for autocomplete while editing the `.json`
+files above.
+
+## Project layout
 
 ```
-until finished
+public/          Served as-is (CNAME, favicon)
+src/assets/      Images and fonts processed at build time
+src/components/  Section and UI components
+src/content/     Markdown collections (projects, blog)
+src/data/        JSON collections (resume, social, skills)
+src/layouts/     Page shells
+src/pages/       Routes
+src/styles/      tokens.css defines the whole visual system
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+## GitHub activity
 
-## Running the tests
+The repository list and the contribution calendar in the Work section are
+fetched at **build time**, not in the browser — no rate limit spent on
+visitors, no loading spinner, nothing to break when GitHub changes its
+markup.
 
-Explain how to run the automated tests for this system
+The contribution graph is only available through GitHub's GraphQL API,
+which requires authentication:
 
-### Break down into end to end tests
+1. Create a fine-grained personal access token with read access to your
+   profile's contribution data.
+2. Add it to the repository under **Settings → Secrets and variables →
+   Actions** as `CONTRIBUTIONS_TOKEN`.
 
-Explain what these tests test and why
+Without the token the calendar is skipped and the build still succeeds —
+see `src/lib/github.ts`, where every network call fails soft.
 
-```
-Give an example
-```
+A nightly workflow run at 07:00 UTC rebuilds the site so this data stays
+current between pushes.
 
-### And coding style tests
+To see the real data locally:
 
-Explain what these tests test and why
-
-```
-Give an example
+```bash
+CONTRIBUTIONS_TOKEN=github_pat_... npm run build
 ```
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+Pushing to `master` triggers `.github/workflows/deploy.yml`, which builds
+the site and publishes it to GitHub Pages. Pushes to `astro-replacement`
+build but do **not** deploy, so the live site is never touched before the
+merge.
 
-## Built With
+### Before the first deploy
 
-* Dropwizard - Bla bla bla
-* Maven - Maybe
-* Atom - ergaerga
-
-## Contributing
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+- Set **Settings → Pages → Source** to **GitHub Actions** (it is currently
+  set to deploy from a branch).
+- Add the `CONTRIBUTIONS_TOKEN` secret described above.
+- Confirm the custom domain still resolves — `public/CNAME` carries
+  `www.patrickbarnhardt.info`.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
-
+See [LICENSE.MD](LICENSE.MD).

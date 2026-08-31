@@ -1,0 +1,161 @@
+---
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import { getCollection } from 'astro:content';
+import SectionHeader from './SectionHeader.astro';
+import { formatMonth, hasExpired } from '../lib/dates';
+
+const certifications = (await getCollection('certifications')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+<section id="certifications" class="certs">
+  <SectionHeader title="Certifications" />
+
+  <ul class="grid" role="list">
+    {certifications.map((entry) => {
+      const expired = hasExpired(entry.data.expires);
+      return (
+        <li class="card" class:list={[{ expired }]}>
+          <h3>{entry.data.title}</h3>
+
+          <div class="body">
+            {entry.data.badge && (
+              <Image class="badge" src={entry.data.badge} alt="" width={110} height={110} loading="lazy" />
+            )}
+
+            {entry.data.issuer && <p class="issuer">{entry.data.issuer}</p>}
+
+            <p class="dates">
+              <span>Issued {formatMonth(entry.data.issued)}</span>
+              {entry.data.expires && (
+                <span class="flag">
+                  {expired ? 'Expired' : 'Expires'} {formatMonth(entry.data.expires)}
+                </span>
+              )}
+            </p>
+
+            {entry.data.credentialId && (
+              <p class="cred">ID {entry.data.credentialId}</p>
+            )}
+
+            {entry.data.credentialUrl && (
+              <a class="verify" href={entry.data.credentialUrl} rel="noopener">
+                Verify <Icon name="fa6-solid:arrow-up-right-from-square" aria-hidden="true" />
+              </a>
+            )}
+          </div>
+        </li>
+      );
+    })}
+  </ul>
+</section>
+
+<style>
+  .certs {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding: 0 clamp(1rem, 4vw, 2.25rem) var(--section-padding-y);
+  }
+
+  .grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 1.5rem;
+  }
+
+  .card {
+    border: 1px solid var(--color-rule);
+    display: flex;
+    flex-direction: column;
+  }
+
+  h3 {
+    background: var(--color-crimson);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.35;
+    text-align: center;
+    padding: 0.85rem 0.9rem;
+    margin: 0;
+  }
+
+  /* Lapsed credentials stay, but read as past rather than current. */
+  .card.expired h3 { background: var(--color-dark); }
+
+  .body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1.5rem 1.25rem;
+    text-align: center;
+  }
+
+  .badge { object-fit: contain; margin-bottom: 0.25rem; }
+
+  .issuer {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-ink);
+  }
+
+  .dates {
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .flag {
+    align-self: center;
+    font-family: var(--font-display);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    border: 1px solid var(--color-rule);
+    padding: 0.2rem 0.5rem;
+  }
+
+  .card.expired .flag {
+    border-color: var(--color-dark);
+    background: var(--color-surface-sunk);
+    color: var(--color-dark);
+  }
+
+  .cred {
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-size: 0.72rem;
+    color: var(--color-muted);
+  }
+
+  .verify {
+    font-family: var(--font-display);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-crimson);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.25rem;
+  }
+
+  .verify:hover, .verify:focus-visible { text-decoration: underline; }
+  .verify [data-icon] { font-size: 0.75em; }
+</style>

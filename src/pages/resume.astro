@@ -1,0 +1,173 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+import site from '../data/site.json';
+import { formatMonth, hasExpired } from '../lib/dates';
+
+const byOrder = (a: { data: { order: number } }, b: { data: { order: number } }) =>
+  a.data.order - b.data.order;
+
+// Only the technical/professional roles belong on a printed résumé.
+const [about] = await getCollection('pages', (entry) => entry.id === 'about');
+const { Content: Bio } = about ? await render(about) : { Content: null };
+
+const experience = (await getCollection('experience'))
+  .filter((entry) => entry.data.technical)
+  .sort(byOrder);
+const education = (await getCollection('education')).sort(byOrder);
+const certifications = (await getCollection('certifications')).sort(byOrder);
+const awards = (await getCollection('awards')).sort(byOrder);
+const skills = (await getCollection('skills')).sort(byOrder);
+---
+
+<BaseLayout title={`Résumé | ${site.name}`} description={`Résumé of ${site.name}.`}>
+  <article class="sheet">
+    <header>
+      <h1>{site.name}</h1>
+      <p class="contact">
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+        <span aria-hidden="true">·</span>
+        <a href="https://www.patrickbarnhardt.info">patrickbarnhardt.info</a>
+      </p>
+    </header>
+
+    {Bio && (
+      <section class="bio">
+        <h2>Profile</h2>
+        <Bio />
+      </section>
+    )}
+
+    <section>
+      <h2>Experience</h2>
+      {experience.map((entry) => (
+        <div class="entry">
+          <h3>{entry.data.title}</h3>
+          <p class="meta">{entry.data.organization} <span aria-hidden="true">·</span> {entry.data.period}</p>
+          {entry.data.summary && <p>{entry.data.summary}</p>}
+          {entry.data.highlights.length > 0 && (
+            <ul class="points">
+              {entry.data.highlights.map((point) => <li>{point}</li>)}
+            </ul>
+          )}
+        </div>
+      ))}
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      {education.map((entry) => (
+        <div class="entry">
+          <h3>{entry.data.title}</h3>
+          <p class="meta">{entry.data.organization} <span aria-hidden="true">·</span> {entry.data.period}</p>
+          {entry.data.summary && <p class="meta">{entry.data.summary}</p>}
+        </div>
+      ))}
+    </section>
+
+    <section>
+      <h2>Certifications</h2>
+      <ul class="plain">
+        {certifications.map((entry) => (
+          <li>
+            {entry.data.title}
+            {entry.data.issuer && <span class="meta"> — {entry.data.issuer}</span>}
+            <span class="meta"> ({formatMonth(entry.data.issued)}{entry.data.expires && `, ${hasExpired(entry.data.expires) ? 'expired' : 'expires'} ${formatMonth(entry.data.expires)}`})</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section>
+      <h2>Honors &amp; Awards</h2>
+      <ul class="plain">
+        {awards.map((entry) => (
+          <li>
+            {entry.data.title}
+            <span class="meta"> — {entry.data.issuer}</span>
+            {entry.data.issued && <span class="meta"> ({formatMonth(entry.data.issued)})</span>}
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section>
+      <h2>Skills</h2>
+      {skills.map((group) => (
+        <p class="skills"><strong>{group.data.label}:</strong> {group.data.items.join(', ')}</p>
+      ))}
+    </section>
+
+    <p class="print-hint">Use your browser's print dialog to save this as a PDF.</p>
+  </article>
+</BaseLayout>
+
+<style>
+  .sheet {
+    max-width: 48rem;
+    margin-inline: auto;
+    padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1rem, 4vw, 2.25rem) 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.25rem;
+  }
+
+  header { border-bottom: 3px solid var(--color-crimson); padding-bottom: 1rem; }
+
+  h1 { font-size: clamp(1.75rem, 5vw, 2.5rem); text-transform: uppercase; }
+
+  .contact {
+    margin-top: 0.5rem;
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+    color: var(--color-muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  h2 {
+    font-size: 0.85rem;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-crimson);
+    border-bottom: 1px solid var(--color-rule);
+    padding-bottom: 0.4rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .bio :global(p) { font-size: 0.95rem; line-height: 1.55; }
+  .bio :global(p + p) { margin-top: 0.7rem; }
+
+  .entry + .entry { margin-top: 1.25rem; }
+
+  h3 { font-size: 1rem; text-transform: capitalize; }
+
+  .meta { font-family: var(--font-ui); font-size: 0.85rem; color: var(--color-muted); }
+
+  .entry p:last-child { margin-top: 0.4rem; font-size: 0.95rem; }
+
+  .plain { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; }
+
+  .points {
+    margin: 0.4rem 0 0;
+    padding-left: 1.1rem;
+    display: grid;
+    gap: 0.2rem;
+    font-size: 0.9rem;
+  }
+
+  .skills + .skills { margin-top: 0.5rem; }
+
+  .print-hint { font-size: 0.8rem; color: var(--color-muted); }
+
+  @media print {
+    :global(header.bar), :global(.footer), :global(.skip) { display: none !important; }
+    :global(main.has-chrome) { padding-top: 0 !important; }
+    .sheet { padding: 0; gap: 1.5rem; max-width: none; }
+    .print-hint { display: none; }
+    h2 { color: #000; }
+    header { border-bottom-color: #000; }
+    a { color: #000; text-decoration: none; }
+  }
+</style>

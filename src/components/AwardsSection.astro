@@ -1,0 +1,81 @@
+---
+import { Icon } from 'astro-icon/components';
+import { getCollection } from 'astro:content';
+import SectionHeader from './SectionHeader.astro';
+import { formatMonth } from '../lib/dates';
+
+const awards = (await getCollection('awards')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<section id="awards" class="awards">
+  <SectionHeader title="Honors & Awards" />
+
+  <ul class="list" role="list">
+    {awards.map((entry) => (
+      <li>
+        <Icon class="mark" name="fa6-solid:award" aria-hidden="true" />
+        <div>
+          <h3>{entry.data.title}</h3>
+          <p class="meta">
+            {entry.data.issuer}
+            {entry.data.issued && <span aria-hidden="true"> · </span>}
+            {entry.data.issued && formatMonth(entry.data.issued)}
+          </p>
+          {entry.data.credentialUrl && (
+            <a href={entry.data.credentialUrl} rel="noopener">View badge</a>
+          )}
+        </div>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .awards {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding: 0 clamp(1rem, 4vw, 2.25rem) var(--section-padding-y);
+  }
+
+  .list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    gap: 1.5rem;
+  }
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    border-left: 3px solid var(--color-crimson);
+    padding: 0.25rem 0 0.25rem 1.1rem;
+  }
+
+  .mark { font-size: 1.6rem; color: var(--color-crimson); flex: none; margin-top: 0.1rem; }
+
+  h3 { font-size: 1rem; text-transform: uppercase; }
+
+  .meta {
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    margin-top: 0.25rem;
+  }
+
+  a {
+    display: inline-block;
+    margin-top: 0.4rem;
+    font-family: var(--font-display);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-crimson);
+    text-decoration: none;
+  }
+
+  a:hover, a:focus-visible { text-decoration: underline; }
+</style>
