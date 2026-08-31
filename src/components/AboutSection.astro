@@ -3,59 +3,64 @@ import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 import { getCollection, render } from 'astro:content';
 import SectionHeader from './SectionHeader.astro';
-import logo from '../assets/images/CSlogo2.png';
+import monogram from '../assets/brand/barnhardt-monogram.svg';
 
 const social = (await getCollection('social')).sort((a, b) => a.data.order - b.data.order);
+const featuredIds = new Set(['github', 'linkedin', 'youtube', 'twitch']);
+const featuredSocial = social.filter((entry) => featuredIds.has(entry.data.id));
+const elsewhere = social.filter((entry) => !featuredIds.has(entry.data.id));
 const [about] = await getCollection('pages', (entry) => entry.id === 'about');
 const { Content } = about ? await render(about) : { Content: null };
-
-const half = Math.ceil(social.length / 2);
-const columns = [social.slice(0, half), social.slice(half)];
 ---
 
 <section id="about" class="about">
   <span id="about-section" class="legacy-anchor" aria-hidden="true"></span>
-  <SectionHeader title="Who Am I?" />
+  <SectionHeader eyebrow="The person behind the work" title="About Patrick" />
 
-  {Content && (
-    <div class="prose">
-      <Content />
-    </div>
-  )}
+  <div class="layout">
+    {Content && (
+      <div class="prose">
+        <Content />
+      </div>
+    )}
 
-  <div class="grid">
-    <div class="column">
-      {columns[0].map((entry) => (
-        <a class="box" href={entry.data.url} rel="me noopener">
-          <span class="tile" style={`--brand: ${entry.data.color}`}>
-            <Icon name={entry.data.icon} aria-hidden="true" />
-          </span>
-          <span class="text">
-            <span class="label">{entry.data.label}</span>
-            <span class="desc">{entry.data.description}</span>
-          </span>
-        </a>
-      ))}
-    </div>
+    <aside class="connect" aria-labelledby="connect-title">
+      <div class="connect-head">
+        <Image src={monogram} alt="" width={72} height={72} />
+        <div>
+          <p>Follow the work</p>
+          <h3 id="connect-title">Code, devlogs, and professional updates</h3>
+        </div>
+      </div>
 
-    <div class="medallion" aria-hidden="true">
-      <Image src={logo} alt="" width={260} height={260} />
-      <p>Stay in touch</p>
-    </div>
+      <ul class="featured" role="list">
+        {featuredSocial.map((entry) => (
+          <li>
+            <a href={entry.data.url} rel="me noopener">
+              <Icon name={entry.data.icon} aria-hidden="true" />
+              <span>
+                <strong>{entry.data.label}</strong>
+                <small>{entry.data.description}</small>
+              </span>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+        ))}
+      </ul>
 
-    <div class="column right">
-      {columns[1].map((entry) => (
-        <a class="box" href={entry.data.url} rel="me noopener">
-          <span class="tile" style={`--brand: ${entry.data.color}`}>
-            <Icon name={entry.data.icon} aria-hidden="true" />
-          </span>
-          <span class="text">
-            <span class="label">{entry.data.label}</span>
-            <span class="desc">{entry.data.description}</span>
-          </span>
-        </a>
-      ))}
-    </div>
+      <div class="elsewhere">
+        <span>Elsewhere</span>
+        <ul role="list">
+          {elsewhere.map((entry) => (
+            <li>
+              <a href={entry.data.url} aria-label={entry.data.label} title={entry.data.label} rel="me noopener">
+                <Icon name={entry.data.icon} />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </aside>
   </div>
 </section>
 
@@ -66,114 +71,65 @@ const columns = [social.slice(0, half), social.slice(half)];
     padding: 0 clamp(1rem, 4vw, 2.25rem) var(--section-padding-y);
   }
 
-  .prose {
-    max-width: 46rem;
-    margin: 0 auto clamp(2.5rem, 6vw, 4.5rem);
-    text-align: center;
-    color: var(--color-muted);
-  }
-
-  .prose :global(p + p) { margin-top: 1rem; }
-
-  .grid {
+  .layout {
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    gap: clamp(1.5rem, 4vw, 3rem);
-    align-items: center;
+    grid-template-columns: minmax(0, 0.8fr) minmax(28rem, 1.2fr);
+    gap: clamp(2rem, 7vw, 6rem);
+    align-items: start;
   }
 
-  .column {
-    display: flex;
-    flex-direction: column;
-    gap: clamp(1.5rem, 3vw, 2.75rem);
+  .prose { color: var(--color-muted); font-size: clamp(1rem, 1.3vw, 1.1rem); line-height: 1.8; }
+  .prose :global(p:first-child) { color: var(--color-ink); font-size: clamp(1.2rem, 2vw, 1.5rem); line-height: 1.55; }
+  .prose :global(p + p) { margin-top: 1.25rem; }
+
+  .connect {
+    background: var(--color-surface-raised);
+    border: 1px solid var(--color-rule);
+    border-radius: 1.5rem;
+    padding: clamp(1.25rem, 4vw, 2rem);
+    box-shadow: 0 1.25rem 3rem rgb(38 35 36 / 0.06);
   }
 
-  .box {
-    display: flex;
-    align-items: center;
-    gap: 1.1rem;
-    text-decoration: none;
-    color: inherit;
-  }
+  .connect-head { display: flex; align-items: center; gap: 1rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--color-rule); }
+  .connect-head img { flex: none; border-radius: 1rem; }
+  .connect-head p { color: var(--color-accent); font-family: var(--font-display); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  .connect-head h3 { margin-top: 0.25rem; font-size: clamp(1rem, 2vw, 1.25rem); }
 
-  .column.right .box { flex-direction: row-reverse; text-align: right; }
+  .featured { list-style: none; margin: 0; padding: 0; }
+  .featured li + li { border-top: 1px solid var(--color-rule); }
 
-  .tile {
-    flex: none;
+  .featured a {
     display: grid;
-    place-items: center;
-    width: 4.75rem;
-    height: 4.75rem;
-    border-radius: 50%;
-    border: 5px solid var(--color-surface);
-    background: #ebebeb;
-    color: #9a938f;
-    font-size: 1.9rem;
-    box-shadow: 0 0 0 1px var(--color-rule);
-    transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease);
-  }
-
-  .box:hover .tile,
-  .box:focus-visible .tile {
-    background: var(--brand, var(--color-crimson));
-    color: #fff;
-  }
-
-  .label {
-    display: block;
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 1.05rem;
-    text-transform: uppercase;
+    grid-template-columns: 2.5rem 1fr auto;
+    gap: 0.9rem;
+    align-items: center;
+    padding: 1.1rem 0.25rem;
     color: var(--color-ink);
+    text-decoration: none;
   }
 
-  .desc {
-    display: block;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    color: var(--color-muted);
-    margin-top: 0.2rem;
+  .featured [data-icon] { font-size: 1.25rem; color: var(--color-accent); }
+  .featured strong, .featured small { display: block; }
+  .featured strong { font-family: var(--font-display); font-size: 0.85rem; }
+  .featured small { margin-top: 0.2rem; color: var(--color-muted); font-size: 0.72rem; line-height: 1.4; }
+  .featured .arrow { color: var(--color-accent-warm); }
+  .featured a:hover strong, .featured a:focus-visible strong { color: var(--color-accent); }
+
+  .elsewhere { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 1.25rem; border-top: 1px solid var(--color-rule); }
+  .elsewhere > span { color: var(--color-muted); font-family: var(--font-display); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  .elsewhere ul { list-style: none; display: flex; gap: 0.75rem; margin: 0; padding: 0; }
+  .elsewhere a { color: var(--color-muted); font-size: 1rem; }
+  .elsewhere a:hover, .elsewhere a:focus-visible { color: var(--color-accent); }
+
+  @media (max-width: 56rem) {
+    .layout { grid-template-columns: 1fr; }
   }
 
-  .medallion {
-    position: relative;
-    display: grid;
-    place-items: center;
-    width: clamp(11rem, 22vw, 16.25rem);
-    aspect-ratio: 1;
+  @media (max-width: 32rem) {
+    .connect { padding: 1rem; }
+    .connect-head img { width: 3.5rem; height: 3.5rem; }
+    .featured small { display: none; }
   }
 
-  .medallion img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-  }
-
-  .medallion p {
-    position: absolute;
-    inset: auto 0 auto 0;
-    text-align: center;
-    background: rgb(24 20 19 / 0.72);
-    padding: 0.5rem 0.25rem;
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: clamp(1.1rem, 2.4vw, 1.6rem);
-    text-transform: uppercase;
-    color: #fff;
-    text-shadow: 0 2px 10px rgb(0 0 0 / 0.6);
-  }
-
-  @media (max-width: 60rem) {
-    .grid { grid-template-columns: 1fr; }
-    .medallion { order: -1; margin-inline: auto; }
-    .column.right .box { flex-direction: row; text-align: left; }
-  }
-  /* Anchors from the 2017 site, kept so old links and bookmarks still land. */
-  .legacy-anchor {
-    display: block;
-    height: 0;
-    scroll-margin-top: var(--header-height);
-  }
+  .legacy-anchor { display: block; height: 0; scroll-margin-top: var(--header-height); }
 </style>

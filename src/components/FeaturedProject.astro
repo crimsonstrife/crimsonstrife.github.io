@@ -4,44 +4,47 @@ import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
 import { hasWriteup } from '../lib/content';
 
-/**
- * The 2017 site had a "showbox": a full-width band with the project's artwork
- * behind a skewed crimson panel carrying the title and four selling points.
- * It was hard-coded to one project; this reads whichever project is flagged
- * `featured: true`, so promoting new work is a one-line edit.
- *
- * Renders nothing when no project is flagged.
- */
 const featured = (await getCollection('projects'))
   .filter((project) => project.data.featured)
   .sort((a, b) => a.data.order - b.data.order)[0];
 
 const media = featured?.data.media;
-const backdrop = media?.type === 'image' ? (media.full ?? media.thumbnail) : undefined;
+const artwork = media?.type === 'image' ? (media.full ?? media.thumbnail) : undefined;
 const href = featured && hasWriteup(featured.body) ? `/projects/${featured.id}/` : undefined;
-const external =
-  featured?.data.links.live ?? featured?.data.links.download ?? featured?.data.links.repo;
+const external = featured?.data.links.live ?? featured?.data.links.download ?? featured?.data.links.repo;
 const link = href ?? external;
 ---
 
 {featured && (
-  <section class="showbox" aria-labelledby="featured-title">
-    {backdrop && (
-      <Image
-        class="backdrop"
-        src={backdrop}
-        alt=""
-        widths={[900, 1600]}
-        sizes="100vw"
-        loading="lazy"
-      />
-    )}
+  <section id="selected-work" class="featured" aria-labelledby="featured-title">
+    <div class="shell">
+      <div class="media">
+        {artwork ? (
+          <Image
+            src={artwork}
+            alt=""
+            widths={[700, 1100, 1500]}
+            sizes="(min-width: 54rem) 52vw, 100vw"
+            loading="lazy"
+          />
+        ) : (
+          <span class="placeholder"><Icon name="fa6-solid:gamepad" aria-hidden="true" /></span>
+        )}
+        <p class="track">Games &amp; interactive systems</p>
 
-    <div class="panel">
-      <div class="inner">
-        <p class="eyebrow">Featured project</p>
+        {featured.data.imageCredit && (
+          <p class="credit">
+            {featured.data.imageCredit.role ?? 'Artwork'} by{' '}
+            {featured.data.imageCredit.url ? (
+              <a href={featured.data.imageCredit.url} rel="noopener">{featured.data.imageCredit.name}</a>
+            ) : featured.data.imageCredit.name}
+          </p>
+        )}
+      </div>
+
+      <div class="content">
+        <p class="eyebrow">Featured independent game</p>
         <h2 id="featured-title">{featured.data.title}</h2>
-
         {featured.data.summary && <p class="summary">{featured.data.summary}</p>}
 
         {featured.data.featureHighlights.length > 0 && (
@@ -58,25 +61,10 @@ const link = href ?? external;
           </ul>
         )}
 
-        {featured.data.imageCredit && (
-          <p class="credit">
-            {featured.data.imageCredit.role ?? 'Artwork'} by{' '}
-            {featured.data.imageCredit.url ? (
-              <a href={featured.data.imageCredit.url} rel="noopener">
-                {featured.data.imageCredit.name}
-              </a>
-            ) : (
-              featured.data.imageCredit.name
-            )}
-          </p>
-        )}
-
         {link && (
-          <p class="cta">
-            <a href={link} rel={href ? undefined : 'noopener'}>
-              {href ? 'Read more' : 'View project'}
-            </a>
-          </p>
+          <a class="cta" href={link} rel={href ? undefined : 'noopener'}>
+            {href ? 'Read the case study' : 'View project'} <span aria-hidden="true">→</span>
+          </a>
         )}
       </div>
     </div>
@@ -84,119 +72,84 @@ const link = href ?? external;
 )}
 
 <style>
-  .showbox {
-    position: relative;
-    isolation: isolate;
+  .featured {
+    padding: 0 clamp(1rem, 4vw, 2.25rem) var(--section-padding-y);
+    scroll-margin-top: var(--header-height);
+  }
+
+  .shell {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(24rem, 0.92fr);
+    min-height: 42rem;
     overflow: hidden;
-    background: var(--color-dark-deep);
-    margin-bottom: var(--section-padding-y);
-    min-height: clamp(28rem, 55vw, 44rem);
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    border-radius: 1.75rem;
+    background: var(--color-dark);
+    box-shadow: 0 2rem 5rem rgb(38 35 36 / 0.14);
   }
 
-  .backdrop {
+  .media { position: relative; min-height: 32rem; overflow: hidden; background: var(--color-dark-deep); }
+  .media > img { width: 100%; height: 100%; object-fit: cover; }
+  .media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 58%, rgb(24 22 23 / 0.8)); pointer-events: none; }
+
+  .placeholder { display: grid; place-items: center; width: 100%; height: 100%; color: var(--color-accent); font-size: 4rem; }
+
+  .track {
     position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -2;
-  }
-
-  /*
-    The original drew this wedge with a 1021px border triangle. A clip-path
-    does the same job and actually scales.
-  */
-  .panel {
-    position: relative;
-    width: min(56%, 40rem);
-    align-self: stretch;
-    display: flex;
-    align-items: center;
-    background: rgb(168 0 0 / 0.92);
-    clip-path: polygon(clamp(3rem, 9vw, 16.25rem) 0, 100% 0, 100% 100%, 0 100%);
-    padding: clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 4vw, 3.5rem)
-             clamp(2.5rem, 6vw, 5rem) clamp(4rem, 11vw, 18rem);
+    top: 1.5rem;
+    left: 1.5rem;
+    z-index: 1;
+    margin: 0;
+    padding: 0.55rem 0.8rem;
+    border-left: 0.25rem solid var(--color-accent-warm);
+    background: rgb(24 22 23 / 0.86);
     color: #fff;
-  }
-
-  .inner { display: flex; flex-direction: column; gap: 1rem; }
-
-  .eyebrow {
     font-family: var(--font-display);
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     font-weight: 700;
-    letter-spacing: var(--tracking-label);
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    opacity: 0.85;
   }
 
-  h2 {
-    font-size: clamp(1.6rem, 4vw, 2.8125rem);
-    text-transform: uppercase;
-    line-height: 1.1;
-  }
-
-  .summary { font-size: 1rem; line-height: 1.6; opacity: 0.92; max-width: 34rem; }
-
-  .points {
-    list-style: none;
-    margin: 0.75rem 0 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-  }
-
-  .points li { display: flex; gap: 1rem; align-items: flex-start; }
-
-  .points [data-icon] { font-size: 1.6rem; flex: none; margin-top: 0.15rem; }
-
-  .points h3 {
-    font-size: 0.95rem;
-    text-transform: uppercase;
-    line-height: 1.3;
-  }
-
-  .points p { font-size: 0.88rem; line-height: 1.55; opacity: 0.9; margin-top: 0.25rem; }
-
-  .credit {
-    font-family: var(--font-ui);
-    font-size: 0.72rem;
-    line-height: 1.4;
-    opacity: 0.8;
-  }
-
+  .credit { position: absolute; z-index: 1; left: 1.5rem; bottom: 1.25rem; margin: 0; color: rgb(255 255 255 / 0.7); font-size: 0.68rem; }
   .credit a { color: inherit; }
 
-  .cta { margin-top: 0.25rem; }
+  .content { display: flex; flex-direction: column; justify-content: center; padding: clamp(2.5rem, 6vw, 5rem); color: #fff; }
 
-  .cta a {
-    display: inline-block;
+  .eyebrow { color: #9fd1cf; font-family: var(--font-display); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+  h2 { margin-top: 0.7rem; font-size: clamp(2.35rem, 5vw, 4.5rem); line-height: 0.98; letter-spacing: -0.04em; }
+  .summary { margin-top: 1.25rem; color: rgb(255 255 255 / 0.72); font-size: 1rem; line-height: 1.65; }
+
+  .points { list-style: none; margin: 2rem 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem; }
+  .points li { display: flex; gap: 0.75rem; align-items: flex-start; }
+  .points [data-icon] { flex: none; margin-top: 0.15rem; color: var(--color-accent-warm); font-size: 1.1rem; }
+  .points h3 { font-size: 0.78rem; line-height: 1.3; }
+  .points p { margin-top: 0.25rem; color: rgb(255 255 255 / 0.58); font-size: 0.72rem; line-height: 1.5; }
+
+  .cta {
+    align-self: flex-start;
+    margin-top: 0.5rem;
+    padding: 0.9rem 1.2rem;
+    border-radius: 0.35rem;
+    background: var(--color-accent);
+    color: #fff;
     font-family: var(--font-display);
     font-size: 0.72rem;
     font-weight: 700;
-    letter-spacing: var(--tracking-label);
-    text-transform: uppercase;
-    color: var(--color-crimson);
-    background: #fff;
-    padding: 0.85rem 1.5rem;
     text-decoration: none;
-    transition: background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
   }
 
-  .cta a:hover, .cta a:focus-visible { background: var(--color-ink); color: #fff; }
+  .cta span { margin-left: 0.35rem; color: #b7dcda; }
+  .cta:hover, .cta:focus-visible { background: #fff; color: var(--color-dark); }
 
-  @media (max-width: 52rem) {
-    .showbox { min-height: 0; }
+  @media (max-width: 58rem) {
+    .shell { grid-template-columns: 1fr; min-height: 0; }
+    .media { aspect-ratio: 16 / 10; min-height: 0; }
+  }
 
-    .panel {
-      width: 100%;
-      clip-path: none;
-      padding: clamp(2rem, 7vw, 3rem) clamp(1.25rem, 5vw, 2.5rem);
-      background: rgb(168 0 0 / 0.95);
-    }
+  @media (max-width: 34rem) {
+    .content { padding: 2rem 1.25rem 2.5rem; }
+    .points { grid-template-columns: 1fr; }
   }
 </style>

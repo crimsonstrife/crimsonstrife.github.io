@@ -2,23 +2,40 @@
 interface Props {
   title: string;
   id?: string;
+  eyebrow?: string;
 }
-const { title, id } = Astro.props;
+const { title, id, eyebrow } = Astro.props;
 ---
 
 <div class="section-header" id={id}>
+  {eyebrow && <p>{eyebrow}</p>}
   <h2>{title}</h2>
 </div>
 
 <style>
   .section-header {
-    padding-block: clamp(3.5rem, 9vw, 9.375rem) clamp(1.75rem, 4vw, 3.125rem);
+    padding-block: clamp(4rem, 9vw, 7.5rem) clamp(2rem, 4vw, 3.5rem);
+    display: grid;
+    gap: 0.65rem;
+    justify-items: start;
+    text-align: left;
   }
 
-  h2 {
+  .section-header h2 {
     font-size: var(--size-section-header);
-    text-transform: uppercase;
-    text-align: center;
+    line-height: 1.02;
+    letter-spacing: -0.035em;
     margin: 0;
+    text-align: left;
+    text-transform: none;
+  }
+
+  .section-header p {
+    color: var(--color-accent);
+    font-family: var(--font-display);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
   }
 </style>

@@ -1,14 +1,14 @@
 {
   "name": "Patrick Barnhardt",
   "shortName": "Patrick Barnhardt",
-  "title": "The Work of Patrick Barnhardt",
-  "tagline": "Web Design & Development / Game Design & Development",
-  "description": "Portfolio and resume of Patrick Barnhardt — game development, web development, and design.",
+  "title": "Patrick Barnhardt — Software & Game Developer",
+  "tagline": "Software systems and interactive worlds",
+  "description": "Portfolio and résumé of Patrick Barnhardt — software development, Salesforce, web platforms, Unreal Engine tools, and independent game development.",
   "email": "contact@patrickbarnhardt.info",
   "locale": "en",
   "nav": [
     {
-      "label": "Who Am I?",
+      "label": "About",
       "href": "/#about"
     },
     {

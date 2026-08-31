@@ -11,18 +11,18 @@ const endpoint = site.contact.endpoint as string | null;
   <span id="project-section" class="legacy-anchor" aria-hidden="true"></span>
   <div class="panels">
     <div class="panel start">
-      <p class="kicker">Like what you see?</p>
-      <h2>Start a project</h2>
+      <p class="kicker">Have a problem worth solving?</p>
+      <h2>Let's build something useful</h2>
       <button type="button" class="cta" data-open-contact data-intent="project">
-        <span>Let's go</span>
+        <span>Start a conversation</span>
       </button>
     </div>
 
     <div class="panel message">
-      <p class="kicker">Want to tell me something?</p>
-      <h2>Send a message</h2>
+      <p class="kicker">Making a game or a tool?</p>
+      <h2>Let's compare notes</h2>
       <button type="button" class="cta" data-open-contact data-intent="message">
-        <span>Tell me</span>
+        <span>Talk game development</span>
       </button>
     </div>
   </div>
@@ -86,9 +86,8 @@ const endpoint = site.contact.endpoint as string | null;
 <style>
   .contact {
     position: relative;
-    padding-block: clamp(4rem, 10vw, 8.125rem);
-    background:
-      linear-gradient(100deg, var(--color-crimson) 0 52%, var(--color-surface) 52%);
+    padding-block: var(--section-padding-y);
+    background: var(--color-dark-deep);
   }
 
   .panels {
@@ -98,26 +97,36 @@ const endpoint = site.contact.endpoint as string | null;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: clamp(1.5rem, 5vw, 4rem);
-    align-items: center;
+    align-items: stretch;
   }
 
-  .panel { text-transform: uppercase; }
+  .panel {
+    min-height: 23rem;
+    padding: clamp(2rem, 5vw, 4rem);
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
 
-  .start { color: #fff; }
+  .start { color: #fff; background: var(--color-accent); }
   .message {
     color: var(--color-ink);
-    padding-left: clamp(1.5rem, 7vw, 6rem);
+    background: var(--color-surface-raised);
   }
 
   .kicker {
     font-family: var(--font-ui);
     font-size: clamp(0.85rem, 1.6vw, 1.125rem);
-    text-transform: none;
+    color: inherit;
+    opacity: 0.72;
   }
 
   .panel h2 {
-    font-size: clamp(1.75rem, 4.5vw, 3.4375rem);
-    margin-block: clamp(0.75rem, 2vw, 2.5rem);
+    max-width: 12ch;
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    margin-block: 0.75rem clamp(1.5rem, 3vw, 2.5rem);
     line-height: 1.05;
   }
 
@@ -125,29 +134,26 @@ const endpoint = site.contact.endpoint as string | null;
     display: inline-block;
     border: 0;
     cursor: pointer;
-    padding: clamp(0.9rem, 2vw, 1.5rem) clamp(1.4rem, 3vw, 2.1875rem);
+    padding: 0.9rem 1.2rem;
+    border-radius: 0.35rem;
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: clamp(1.05rem, 2.4vw, 1.875rem);
-    text-transform: uppercase;
-    transform: skewX(-10deg);
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
     transition: background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
   }
 
-  .cta span { display: block; transform: skewX(10deg); }
+  .cta span { display: block; }
 
-  .start .cta { background: #fff; color: var(--color-crimson); }
-  .start .cta:hover, .start .cta:focus-visible { background: #000; color: #fff; }
+  .start .cta { background: #fff; color: var(--color-accent-dark); }
+  .start .cta:hover, .start .cta:focus-visible { background: var(--color-dark); color: #fff; }
 
   .message .cta { background: var(--color-ink); color: #fff; }
-  .message .cta:hover, .message .cta:focus-visible { background: var(--color-crimson); }
+  .message .cta:hover, .message .cta:focus-visible { background: var(--color-accent-warm); }
 
   @media (max-width: 46rem) {
-    .contact {
-      background: linear-gradient(190deg, var(--color-crimson) 0 50%, var(--color-surface) 50%);
-    }
     .panels { grid-template-columns: 1fr; }
-    .message { padding-left: 0; }
+    .panel { min-height: 20rem; }
   }
 
   /* --- Dialog ----------------------------------------------------- */
@@ -157,7 +163,7 @@ const endpoint = site.contact.endpoint as string | null;
     padding: clamp(1.5rem, 4vw, 2.75rem);
     max-width: min(94vw, 46rem);
     width: 100%;
-    background: var(--color-surface);
+    background: var(--color-surface-raised);
     color: var(--color-ink);
     position: relative;
   }

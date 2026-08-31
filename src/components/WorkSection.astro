@@ -6,7 +6,11 @@ import SectionHeader from './SectionHeader.astro';
 import GitHubActivity from './GitHubActivity.astro';
 import { hasWriteup } from '../lib/content';
 
-const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+// The featured project receives a full case-study treatment immediately above
+// this archive, so it does not need a duplicate tile here.
+const projects = (await getCollection('projects'))
+  .filter((project) => !project.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
 const allCategories = (await getCollection('categories')).sort((a, b) => a.data.order - b.data.order);
 
 // Only offer filters that actually have work behind them.
@@ -52,9 +56,7 @@ const tiles = await Promise.all(
 
 <section id="work" class="work">
   <span id="showbox-helicalgamesnet" class="legacy-anchor" aria-hidden="true"></span>
-  <SectionHeader title="My Work" />
-
-  <GitHubActivity />
+  <SectionHeader eyebrow="The broader body of work" title="Project archive" />
 
   <div class="filters">
     <ul role="list">
@@ -148,6 +150,10 @@ const tiles = await Promise.all(
   </ul>
 
   <p class="empty" hidden>Nothing in that category yet.</p>
+
+  <div class="github">
+    <GitHubActivity />
+  </div>
 </section>
 
 <dialog id="lightbox" class="lightbox" aria-label="Project viewer">
@@ -173,7 +179,7 @@ const tiles = await Promise.all(
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 0.15rem 0.35rem;
   }
 
@@ -207,6 +213,7 @@ const tiles = await Promise.all(
     padding: 0;
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(0.5rem, 1.2vw, 0.9rem);
   }
 
   @media (max-width: 62rem) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -226,6 +233,7 @@ const tiles = await Promise.all(
     background: var(--color-surface-sunk);
     cursor: pointer;
     overflow: hidden;
+    border-radius: 0.65rem;
   }
 
   /* Nothing to open and nowhere to go — don't promise a click. */
@@ -273,7 +281,7 @@ const tiles = await Promise.all(
     justify-content: center;
     gap: 0.5rem;
     padding: 1.25rem;
-    background: rgb(168 0 0 / 0.9);
+    background: rgb(0 101 101 / 0.92);
     color: #fff;
     text-align: center;
     opacity: 0;
@@ -288,7 +296,7 @@ const tiles = await Promise.all(
     font-size: clamp(0.95rem, 1.6vw, 1.4rem);
     font-weight: 700;
     line-height: 1.25;
-    text-transform: uppercase;
+    text-wrap: balance;
   }
 
   .summary {
@@ -316,6 +324,12 @@ const tiles = await Promise.all(
     text-align: center;
     color: var(--color-muted);
     padding: 3rem 0;
+  }
+
+  .github {
+    margin-top: clamp(4rem, 9vw, 7rem);
+    padding-top: clamp(2rem, 5vw, 4rem);
+    border-top: 1px solid var(--color-rule);
   }
 
   /* --- Lightbox --------------------------------------------------- */

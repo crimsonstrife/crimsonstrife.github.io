@@ -1,7 +1,9 @@
 ---
-title: "Who Am I?"
+title: "About Patrick"
 ---
 
-With a strong foundation in software development and Salesforce administration, my professional journey has been marked by a commitment to technological innovation and user support. At Charlotte Pipe and Foundry, my role as a Programmer Analyst encompasses not only software development but also enhancing business processes through Salesforce solutions.
+I’m a software developer who likes understanding a system from the inside out—how its parts connect, where people lose time, and what would make the experience more dependable.
 
-Previously, as an IT Technician and Webmaster at Modern Impressions, I contributed to the internal System Admin and Helpdesk teams and managed the company website, showcasing a versatile skill set in IT support and web development and I honed my skills in providing connectivity support and IT services that bolstered customer satisfaction. My commitment is steadfast in leveraging technology to drive innovation.
+Professionally, my work spans software development, Salesforce administration and development, web platforms, business processes, and user support. That range helps me connect implementation details with the real people and workflows a solution needs to serve.
+
+Outside my primary role, I’m an independent game developer. I build Unreal Engine tools and gameplay systems, work across C++ and Blueprint, and lead development of *One Man’s Poison*. Game development is where engineering, design, storytelling, and technical art meet—and it remains an important path for future professional work.
