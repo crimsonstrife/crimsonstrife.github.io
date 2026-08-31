@@ -18,49 +18,60 @@ const earlier = experience.slice(RECENT);
 ---
 
 <section id="resume" class="resume">
-  <SectionHeader title="Résumé" />
+  <div class="inner">
+    <SectionHeader title="Résumé" />
 
-  <div class="actions">
-    <a class="print-link" href="/resume">Printable version</a>
-  </div>
+    <div class="actions">
+      <a class="print-link" href="/resume">Printable version</a>
+    </div>
 
-  <h3 class="sub">Experience</h3>
-  <Timeline entries={recent} />
+    <h3 class="sub">Experience</h3>
+    <Timeline entries={recent} />
 
-  {earlier.length > 0 && (
-    <>
-      <div class="more">
-        <button type="button" id="show-earlier" aria-expanded="false" aria-controls="earlier-roles">
-          Show earlier roles ({earlier.length})
-        </button>
-      </div>
-      <div id="earlier-roles" class="earlier" hidden>
-        <Timeline entries={earlier} />
-      </div>
-    </>
-  )}
+    {earlier.length > 0 && (
+      <>
+        <div class="more">
+          <button type="button" id="show-earlier" aria-expanded="false" aria-controls="earlier-roles">
+            Show earlier roles ({earlier.length})
+          </button>
+        </div>
+        <div id="earlier-roles" class="earlier" hidden>
+          <Timeline entries={earlier} />
+        </div>
+      </>
+    )}
 
-  <h3 class="sub">Education</h3>
-  <Timeline entries={education} />
+    <h3 class="sub">Education</h3>
+    <Timeline entries={education} />
 
-  <h3 class="sub">Skills</h3>
-  <div class="skills">
-    {skills.map((group) => (
-      <div class="group">
-        <h4>{group.data.label}</h4>
-        <ul role="list">
-          {group.data.items.map((item) => <li>{item}</li>)}
-        </ul>
-      </div>
-    ))}
+    <h3 class="sub">Skills</h3>
+    <div class="skills">
+      {skills.map((group) => (
+        <div class="group">
+          <h4>{group.data.label}</h4>
+          <ul role="list">
+            {group.data.items.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
   </div>
 </section>
 
 <style>
   .resume {
+    position: relative;
+    padding: 0 0 calc(var(--section-padding-y) + var(--section-slant));
+    background:
+      linear-gradient(165deg, transparent 62%, rgb(167 30 34 / 0.055) 62%),
+      var(--color-surface-sunk);
+    clip-path: polygon(0 var(--section-slant), 31% 0, 100% clamp(1rem, 3vw, 3rem), 100% calc(100% - 1.5rem), 70% 100%, 0 calc(100% - 3rem));
+  }
+
+  .inner {
     max-width: var(--container-max);
     margin-inline: auto;
-    padding: 0 clamp(1rem, 4vw, 2.25rem) var(--section-padding-y);
+    padding-inline: var(--content-gutter);
   }
 
   .actions { text-align: center; margin-bottom: 2.5rem; }
@@ -142,9 +153,13 @@ const earlier = experience.slice(RECENT);
   .group li {
     font-family: var(--font-ui);
     font-size: 0.82rem;
-    background: var(--color-surface-sunk);
+    background: var(--color-surface-raised);
     border: 1px solid var(--color-rule);
     padding: 0.35rem 0.7rem;
+  }
+
+  @media (max-width: 48rem) {
+    .resume { clip-path: polygon(0 2rem, 30% 0, 100% 1rem, 100% calc(100% - 1rem), 70% 100%, 0 calc(100% - 1.75rem)); }
   }
 </style>
 

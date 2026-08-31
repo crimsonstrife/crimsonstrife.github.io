@@ -49,21 +49,30 @@ const awards = (await getCollection('awards')).sort((a, b) => a.data.order - b.d
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 clamp(2rem, 6vw, 5rem);
+    border-top: 1px solid var(--color-rule);
   }
 
   .awards .list > li {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 1.25rem;
     min-height: 10.5rem;
-    border: 1px solid var(--color-rule);
-    border-left: 1px solid var(--color-rule);
-    border-radius: 0.85rem;
-    padding: 1.25rem;
-    background: var(--color-surface-raised);
-    box-shadow: 0 1rem 2.5rem rgb(38 35 36 / 0.05);
+    border-bottom: 1px solid var(--color-rule);
+    padding: 1.5rem 1rem 1.5rem 0;
+  }
+
+  .awards .list > li::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    width: 2.5rem;
+    height: 0.24rem;
+    background: var(--color-accent-warm);
+    clip-path: polygon(0 0, 100% 0, 78% 100%, 0 100%);
   }
 
   .badge-well {
@@ -72,8 +81,8 @@ const awards = (await getCollection('awards')).sort((a, b) => a.data.order - b.d
     flex: none;
     display: grid;
     place-items: center;
-    border-radius: 50%;
-    background: var(--color-surface-sunk);
+    background: transparent;
+    clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
   }
 
   .badge { width: 7rem; height: 7rem; object-fit: contain; }
@@ -107,5 +116,9 @@ const awards = (await getCollection('awards')).sort((a, b) => a.data.order - b.d
     .awards .list > li { align-items: flex-start; min-height: 0; }
     .badge-well { width: 5.5rem; height: 5.5rem; }
     .badge { width: 5.1rem; height: 5.1rem; }
+  }
+
+  @media (max-width: 48rem) {
+    .list { grid-template-columns: 1fr; }
   }
 </style>

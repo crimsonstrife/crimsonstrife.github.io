@@ -74,9 +74,9 @@ const certifications = (await getCollection('certifications')).sort(
     flex-direction: column;
     position: relative;
     overflow: hidden;
-    border-radius: 0.85rem;
     background: var(--color-surface-raised);
     box-shadow: 0 1rem 2.5rem rgb(38 35 36 / 0.05);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 1rem), calc(100% - 1rem) 100%, 0 100%);
   }
 
   .card::before {

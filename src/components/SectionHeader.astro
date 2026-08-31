@@ -19,6 +19,16 @@ const { title, id, eyebrow } = Astro.props;
     gap: 0.65rem;
     justify-items: start;
     text-align: left;
+    position: relative;
+  }
+
+  .section-header::after {
+    content: '';
+    width: clamp(4.5rem, 9vw, 8rem);
+    height: 0.3rem;
+    margin-top: 0.45rem;
+    background: linear-gradient(90deg, var(--color-accent) 0 72%, var(--color-accent-warm) 72%);
+    clip-path: polygon(0 0, 100% 0, calc(100% - 0.8rem) 100%, 0 100%);
   }
 
   .section-header h2 {

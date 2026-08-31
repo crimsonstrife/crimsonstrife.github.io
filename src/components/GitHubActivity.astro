@@ -37,117 +37,126 @@ const dayFormatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', tim
 
 {(repos.length > 0 || contributions) && (
   <section class="activity" aria-labelledby="github-title">
-    <header class="activity-head">
-      <div>
-        <p class="eyebrow">Open-source footprint</p>
-        <h3 id="github-title">Recent GitHub activity</h3>
-        <p class="intro">Public repositories, experiments, and the tools and projects I am working on.</p>
-      </div>
-      <a class="profile" href="https://github.com/crimsonstrife" rel="noopener">
-        View GitHub profile
-        <Icon name="fa6-solid:arrow-up-right-from-square" aria-hidden="true" />
-      </a>
-    </header>
+    <div class="activity-inner">
+      <header class="activity-head">
+        <div>
+          <p class="eyebrow">Open-source footprint</p>
+          <h3 id="github-title">Recent GitHub activity</h3>
+          <p class="intro">Public repositories, experiments, and the tools and projects I am working on.</p>
+        </div>
+        <a class="profile" href="https://github.com/crimsonstrife" rel="noopener">
+          View GitHub profile
+          <Icon name="fa6-solid:arrow-up-right-from-square" aria-hidden="true" />
+        </a>
+      </header>
 
-    {(languages.length > 0 || contributions) && (
-      <div class="overview">
-        {languages.length > 0 && (
-          <div class="languages">
-            <span class="overview-icon"><Icon name="fa6-solid:code" aria-hidden="true" /></span>
-            <p class="label">Most-used languages</p>
-            <p class="language-list">{languages.map((language) => <span>{language}</span>)}</p>
-          </div>
-        )}
-
-        {contributions && (
-          <figure class="calendar">
-            <figcaption>
-              <span>Last 12 months</span>
-              <strong>{contributions.total.toLocaleString()} contributions</strong>
-            </figcaption>
-
-            <div class="scroll">
-              <svg
-                viewBox={`0 -14 ${width} ${height + 14}`}
-                width={width}
-                height={height + 14}
-                role="img"
-                aria-label={`GitHub contribution calendar: ${contributions.total} contributions between ${contributions.from} and ${contributions.to}`}
-              >
-                {months.map((month) => (
-                  <text class="month" x={month.x} y={-4}>{month.label}</text>
-                ))}
-                {weeks.map((week, weekIndex) =>
-                  week.map((day) => (
-                    <rect
-                      class={`day level-${day.level}`}
-                      x={weekIndex * STEP}
-                      y={new Date(`${day.date}T00:00:00Z`).getUTCDay() * STEP}
-                      width={CELL}
-                      height={CELL}
-                    >
-                      <title>
-                        {day.count === 0
-                          ? `No contributions on ${dayFormatter.format(new Date(`${day.date}T00:00:00Z`))}`
-                          : `${day.count} contribution${day.count === 1 ? '' : 's'} on ${dayFormatter.format(new Date(`${day.date}T00:00:00Z`))}`}
-                      </title>
-                    </rect>
-                  ))
-                )}
-              </svg>
+      {(languages.length > 0 || contributions) && (
+        <div class="overview">
+          {languages.length > 0 && (
+            <div class="languages">
+              <span class="overview-icon"><Icon name="fa6-solid:code" aria-hidden="true" /></span>
+              <p class="label">Most-used languages</p>
+              <p class="language-list">{languages.map((language) => <span>{language}</span>)}</p>
             </div>
+          )}
 
-            <p class="legend">
-              <span>Less</span>
-              {[0, 1, 2, 3, 4].map((level) => <i class={`swatch level-${level}`} aria-hidden="true" />)}
-              <span>More</span>
-            </p>
-          </figure>
-        )}
-      </div>
-    )}
+          {contributions && (
+            <figure class="calendar">
+              <figcaption>
+                <span>Last 12 months</span>
+                <strong>{contributions.total.toLocaleString()} contributions</strong>
+              </figcaption>
 
-    {repos.length > 0 && (
-      <div class="repository-block">
-        <h4>Recently updated repositories</h4>
-        <ul class="repos" role="list">
-          {repos.map((repo) => (
-            <li>
-              <a href={repo.url} rel="noopener">
-                <span class="repo-head">
-                  <span class="name">
-                    <Icon name="fa6-brands:github" aria-hidden="true" />
-                    {repo.name}
-                  </span>
-                  <Icon class="arrow" name="fa6-solid:arrow-up-right-from-square" aria-hidden="true" />
-                </span>
-                {repo.description && <span class="desc">{repo.description}</span>}
-                <span class="meta">
-                  {repo.language && <span class="lang">{repo.language}</span>}
-                  {repo.stars > 0 && (
-                    <span class="stars">
-                      <Icon name="fa6-solid:star" aria-hidden="true" /> {repo.stars}
-                    </span>
+              <div class="scroll">
+                <svg
+                  viewBox={`0 -14 ${width} ${height + 14}`}
+                  width={width}
+                  height={height + 14}
+                  role="img"
+                  aria-label={`GitHub contribution calendar: ${contributions.total} contributions between ${contributions.from} and ${contributions.to}`}
+                >
+                  {months.map((month) => (
+                    <text class="month" x={month.x} y={-4}>{month.label}</text>
+                  ))}
+                  {weeks.map((week, weekIndex) =>
+                    week.map((day) => (
+                      <rect
+                        class={`day level-${day.level}`}
+                        x={weekIndex * STEP}
+                        y={new Date(`${day.date}T00:00:00Z`).getUTCDay() * STEP}
+                        width={CELL}
+                        height={CELL}
+                      >
+                        <title>
+                          {day.count === 0
+                            ? `No contributions on ${dayFormatter.format(new Date(`${day.date}T00:00:00Z`))}`
+                            : `${day.count} contribution${day.count === 1 ? '' : 's'} on ${dayFormatter.format(new Date(`${day.date}T00:00:00Z`))}`}
+                        </title>
+                      </rect>
+                    ))
                   )}
-                </span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    )}
+                </svg>
+              </div>
+
+              <p class="legend">
+                <span>Less</span>
+                {[0, 1, 2, 3, 4].map((level) => <i class={`swatch level-${level}`} aria-hidden="true" />)}
+                <span>More</span>
+              </p>
+            </figure>
+          )}
+        </div>
+      )}
+
+      {repos.length > 0 && (
+        <div class="repository-block">
+          <h4>Recently updated repositories</h4>
+          <ul class="repos" role="list">
+            {repos.map((repo) => (
+              <li>
+                <a href={repo.url} rel="noopener">
+                  <span class="repo-head">
+                    <span class="name">
+                      <Icon name="fa6-brands:github" aria-hidden="true" />
+                      {repo.name}
+                    </span>
+                    <Icon class="arrow" name="fa6-solid:arrow-up-right-from-square" aria-hidden="true" />
+                  </span>
+                  {repo.description && <span class="desc">{repo.description}</span>}
+                  <span class="meta">
+                    {repo.language && <span class="lang">{repo.language}</span>}
+                    {repo.stars > 0 && (
+                      <span class="stars">
+                        <Icon name="fa6-solid:star" aria-hidden="true" /> {repo.stars}
+                      </span>
+                    )}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
   </section>
 )}
 
 <style>
   .activity {
-    display: grid;
-    gap: clamp(1.5rem, 4vw, 2.5rem);
-    padding: clamp(1.5rem, 4vw, 3rem);
-    border-radius: 1rem;
+    padding: calc(var(--section-padding-y) + 1.5rem) 0 calc(var(--section-padding-y) + 1.5rem);
     background: var(--color-dark);
     color: #fff;
     overflow: hidden;
+    clip-path: polygon(0 1.5rem, 42% 0, 100% 1rem, 100% calc(100% - 1.5rem), 62% 100%, 0 calc(100% - 0.5rem));
+  }
+
+  .activity-inner {
+    width: 100%;
+    max-width: 70rem;
+    margin-inline: auto;
+    padding-inline: var(--content-gutter);
+    display: grid;
+    gap: clamp(1.5rem, 4vw, 2.5rem);
   }
 
   .activity-head {
@@ -157,7 +166,7 @@ const dayFormatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', tim
     gap: 2rem;
   }
 
-  .activity-head > div { max-width: 42rem; }
+  .activity-head > div { max-width: 38rem; }
 
   .eyebrow {
     color: #9fd1cf;
@@ -170,7 +179,7 @@ const dayFormatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', tim
   }
 
   h3 {
-    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-size: clamp(2rem, 4vw, 3.15rem);
     letter-spacing: -0.04em;
     line-height: 1;
   }
@@ -188,7 +197,6 @@ const dayFormatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', tim
     flex: none;
     color: #fff;
     border: 1px solid rgb(255 255 255 / 0.3);
-    border-radius: 999px;
     padding: 0.75rem 1rem;
     font-family: var(--font-display);
     font-size: 0.7rem;
@@ -196,6 +204,7 @@ const dayFormatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', tim
     letter-spacing: var(--tracking-label);
     text-transform: uppercase;
     text-decoration: none;
+    clip-path: polygon(0 0, 100% 0, calc(100% - 0.65rem) 100%, 0 100%);
     transition: background-color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
   }
 
@@ -206,8 +215,9 @@ const dayFormatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', tim
 
   .overview {
     display: grid;
-    grid-template-columns: minmax(13rem, 0.7fr) minmax(0, 2.3fr);
+    grid-template-columns: minmax(11.5rem, 0.34fr) minmax(0, 1.66fr);
     gap: 1rem;
+    align-items: start;
   }
 
   .overview > * {
@@ -222,6 +232,7 @@ const dayFormatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', tim
   .languages {
     display: grid;
     align-content: center;
+    align-self: start;
     gap: 0.5rem;
     padding: 1.35rem;
   }

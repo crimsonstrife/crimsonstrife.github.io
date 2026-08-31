@@ -248,7 +248,7 @@ const tiles = await Promise.all(
     background: var(--color-surface-sunk);
     cursor: pointer;
     overflow: hidden;
-    border-radius: 0.65rem;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 0.9rem), calc(100% - 0.9rem) 100%, 0 100%);
   }
 
   /* Nothing to open and nowhere to go — don't promise a click. */
@@ -362,7 +362,6 @@ const tiles = await Promise.all(
     align-items: center;
     justify-content: center;
     border: 1px solid var(--color-accent);
-    border-radius: 999px;
     background: transparent;
     color: var(--color-accent-dark);
     cursor: pointer;
@@ -372,6 +371,7 @@ const tiles = await Promise.all(
     font-weight: 700;
     letter-spacing: var(--tracking-label);
     text-transform: uppercase;
+    clip-path: polygon(0 0, 100% 0, calc(100% - 0.7rem) 100%, 0 100%);
     transition: background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
   }
 
@@ -393,9 +393,10 @@ const tiles = await Promise.all(
   }
 
   .github {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
     margin-top: clamp(4rem, 9vw, 7rem);
-    padding-top: clamp(2rem, 5vw, 4rem);
-    border-top: 1px solid var(--color-rule);
+    padding-top: 0;
   }
 
   /* --- Lightbox --------------------------------------------------- */

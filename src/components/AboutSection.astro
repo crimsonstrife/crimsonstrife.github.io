@@ -15,60 +15,71 @@ const { Content } = about ? await render(about) : { Content: null };
 
 <section id="about" class="about">
   <span id="about-section" class="legacy-anchor" aria-hidden="true"></span>
-  <SectionHeader eyebrow="The person behind the work" title="About Patrick" />
+  <div class="inner">
+    <SectionHeader eyebrow="The person behind the work" title="About Patrick" />
 
-  <div class="layout">
-    {Content && (
-      <div class="prose">
-        <Content />
-      </div>
-    )}
-
-    <aside class="connect" aria-labelledby="connect-title">
-      <div class="connect-head">
-        <Image src={monogram} alt="" width={72} height={72} />
-        <div>
-          <p>Follow the work</p>
-          <h3 id="connect-title">Code, devlogs, and professional updates</h3>
+    <div class="layout">
+      {Content && (
+        <div class="prose">
+          <Content />
         </div>
-      </div>
+      )}
 
-      <ul class="featured" role="list">
-        {featuredSocial.map((entry) => (
-          <li>
-            <a href={entry.data.url} rel="me noopener">
-              <Icon name={entry.data.icon} aria-hidden="true" />
-              <span>
-                <strong>{entry.data.label}</strong>
-                <small>{entry.data.description}</small>
-              </span>
-              <span class="arrow" aria-hidden="true">↗</span>
-            </a>
-          </li>
-        ))}
-      </ul>
+      <aside class="connect" aria-labelledby="connect-title">
+        <div class="connect-head">
+          <Image src={monogram} alt="" width={72} height={72} />
+          <div>
+            <p>Follow the work</p>
+            <h3 id="connect-title">Code, devlogs, and professional updates</h3>
+          </div>
+        </div>
 
-      <div class="elsewhere">
-        <span>Elsewhere</span>
-        <ul role="list">
-          {elsewhere.map((entry) => (
+        <ul class="featured" role="list">
+          {featuredSocial.map((entry) => (
             <li>
-              <a href={entry.data.url} aria-label={entry.data.label} title={entry.data.label} rel="me noopener">
-                <Icon name={entry.data.icon} />
+              <a href={entry.data.url} rel="me noopener">
+                <Icon name={entry.data.icon} aria-hidden="true" />
+                <span>
+                  <strong>{entry.data.label}</strong>
+                  <small>{entry.data.description}</small>
+                </span>
+                <span class="arrow" aria-hidden="true">↗</span>
               </a>
             </li>
           ))}
         </ul>
-      </div>
-    </aside>
+
+        <div class="elsewhere">
+          <span>Elsewhere</span>
+          <ul role="list">
+            {elsewhere.map((entry) => (
+              <li>
+                <a href={entry.data.url} aria-label={entry.data.label} title={entry.data.label} rel="me noopener">
+                  <Icon name={entry.data.icon} />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </aside>
+    </div>
   </div>
 </section>
 
 <style>
   .about {
+    position: relative;
+    padding: 0 0 calc(var(--section-padding-y) + var(--section-slant));
+    background:
+      linear-gradient(105deg, rgb(0 101 101 / 0.07), transparent 44%),
+      var(--color-surface-sunk);
+    clip-path: polygon(0 var(--section-slant), 24% 0, 100% clamp(1.5rem, 3.5vw, 3.5rem), 100% calc(100% - var(--section-slant)), 78% 100%, 0 calc(100% - clamp(0.8rem, 1.75vw, 1.75rem)));
+  }
+
+  .inner {
     max-width: var(--container-max);
     margin-inline: auto;
-    padding: 0 clamp(1rem, 4vw, 2.25rem) var(--section-padding-y);
+    padding-inline: var(--content-gutter);
   }
 
   .layout {
@@ -83,15 +94,23 @@ const { Content } = about ? await render(about) : { Content: null };
   .prose :global(p + p) { margin-top: 1.25rem; }
 
   .connect {
-    background: var(--color-surface-raised);
-    border: 1px solid var(--color-rule);
-    border-radius: 1.5rem;
-    padding: clamp(1.25rem, 4vw, 2rem);
-    box-shadow: 0 1.25rem 3rem rgb(38 35 36 / 0.06);
+    position: relative;
+    padding: clamp(1.25rem, 4vw, 2rem) 0 clamp(1.25rem, 4vw, 2rem) clamp(1.5rem, 4vw, 3.25rem);
+    border-left: 0.35rem solid var(--color-accent);
+  }
+
+  .connect::after {
+    content: '';
+    position: absolute;
+    left: -0.35rem;
+    bottom: 0;
+    width: 0.35rem;
+    height: 23%;
+    background: var(--color-accent-warm);
   }
 
   .connect-head { display: flex; align-items: center; gap: 1rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--color-rule); }
-  .connect-head img { flex: none; border-radius: 1rem; }
+  .connect-head img { flex: none; clip-path: polygon(0 0, 100% 0, 78% 100%, 0 100%); }
   .connect-head p { color: var(--color-accent); font-family: var(--font-display); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
   .connect-head h3 { margin-top: 0.25rem; font-size: clamp(1rem, 2vw, 1.25rem); }
 
@@ -122,6 +141,7 @@ const { Content } = about ? await render(about) : { Content: null };
   .elsewhere a:hover, .elsewhere a:focus-visible { color: var(--color-accent); }
 
   @media (max-width: 56rem) {
+    .about { clip-path: polygon(0 2.5rem, 28% 0, 100% 1.5rem, 100% calc(100% - 2rem), 75% 100%, 0 calc(100% - 1rem)); }
     .layout { grid-template-columns: 1fr; }
   }
 

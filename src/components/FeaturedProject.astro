@@ -73,8 +73,24 @@ const link = href ?? external;
 
 <style>
   .featured {
-    padding: 0 clamp(1rem, 4vw, 2.25rem) var(--section-padding-y);
+    position: relative;
+    padding: calc(var(--section-padding-y) + 2rem) var(--content-gutter) calc(var(--section-padding-y) + 2.5rem);
     scroll-margin-top: var(--header-height);
+    background: var(--color-dark);
+    color: #fff;
+    clip-path: polygon(0 var(--section-slant), 64% 0, 100% clamp(1rem, 3vw, 3rem), 100% calc(100% - 2rem), 31% 100%, 0 calc(100% - 1rem));
+  }
+
+  .featured::before {
+    content: '';
+    position: absolute;
+    top: var(--section-slant);
+    right: 0;
+    width: min(32vw, 32rem);
+    height: 0.42rem;
+    background: var(--color-accent-warm);
+    transform: skewY(-5deg);
+    transform-origin: right;
   }
 
   .shell {
@@ -82,16 +98,21 @@ const link = href ?? external;
     margin-inline: auto;
     display: grid;
     grid-template-columns: minmax(0, 1.08fr) minmax(24rem, 0.92fr);
-    min-height: 42rem;
-    overflow: hidden;
-    border-radius: 1.75rem;
-    background: var(--color-dark);
-    box-shadow: 0 2rem 5rem rgb(38 35 36 / 0.14);
+    min-height: 38rem;
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: center;
   }
 
-  .media { position: relative; min-height: 32rem; overflow: hidden; background: var(--color-dark-deep); }
-  .media > img { width: 100%; height: 100%; object-fit: cover; }
-  .media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 58%, rgb(24 22 23 / 0.8)); pointer-events: none; }
+  .media {
+    position: relative;
+    min-height: 32rem;
+    height: 100%;
+    overflow: hidden;
+    background: var(--color-dark-deep);
+    clip-path: polygon(0 0, 100% 0, 93% 100%, 0 100%);
+  }
+  .media > img { position: relative; z-index: 0; width: 100%; height: 100%; object-fit: cover; }
+  .media::after { content: ''; position: absolute; z-index: 1; inset: 0; background: linear-gradient(180deg, transparent 58%, rgb(24 22 23 / 0.8)); pointer-events: none; }
 
   .placeholder { display: grid; place-items: center; width: 100%; height: 100%; color: var(--color-accent); font-size: 4rem; }
 
@@ -99,7 +120,7 @@ const link = href ?? external;
     position: absolute;
     top: 1.5rem;
     left: 1.5rem;
-    z-index: 1;
+    z-index: 2;
     margin: 0;
     padding: 0.55rem 0.8rem;
     border-left: 0.25rem solid var(--color-accent-warm);
@@ -112,10 +133,10 @@ const link = href ?? external;
     text-transform: uppercase;
   }
 
-  .credit { position: absolute; z-index: 1; left: 1.5rem; bottom: 1.25rem; margin: 0; color: rgb(255 255 255 / 0.7); font-size: 0.68rem; }
+  .credit { position: absolute; z-index: 2; left: 1.5rem; bottom: 1.25rem; margin: 0; color: rgb(255 255 255 / 0.7); font-size: 0.68rem; }
   .credit a { color: inherit; }
 
-  .content { display: flex; flex-direction: column; justify-content: center; padding: clamp(2.5rem, 6vw, 5rem); color: #fff; }
+  .content { display: flex; flex-direction: column; justify-content: center; padding: clamp(1rem, 3vw, 2.5rem) 0; color: #fff; }
 
   .eyebrow { color: #9fd1cf; font-family: var(--font-display); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
   h2 { margin-top: 0.7rem; font-size: clamp(2.35rem, 5vw, 4.5rem); line-height: 0.98; letter-spacing: -0.04em; }
@@ -130,22 +151,23 @@ const link = href ?? external;
   .cta {
     align-self: flex-start;
     margin-top: 0.5rem;
-    padding: 0.9rem 1.2rem;
-    border-radius: 0.35rem;
+    padding: 0.9rem 1.7rem 0.9rem 1.2rem;
     background: var(--color-accent);
     color: #fff;
     font-family: var(--font-display);
     font-size: 0.72rem;
     font-weight: 700;
     text-decoration: none;
+    clip-path: polygon(0 0, 100% 0, calc(100% - 0.8rem) 100%, 0 100%);
   }
 
   .cta span { margin-left: 0.35rem; color: #b7dcda; }
   .cta:hover, .cta:focus-visible { background: #fff; color: var(--color-dark); }
 
   @media (max-width: 58rem) {
+    .featured { clip-path: polygon(0 2rem, 65% 0, 100% 1rem, 100% calc(100% - 1.25rem), 30% 100%, 0 calc(100% - 0.6rem)); }
     .shell { grid-template-columns: 1fr; min-height: 0; }
-    .media { aspect-ratio: 16 / 10; min-height: 0; }
+    .media { aspect-ratio: 16 / 10; min-height: 0; clip-path: polygon(0 0, 100% 0, 96% 100%, 0 100%); }
   }
 
   @media (max-width: 34rem) {

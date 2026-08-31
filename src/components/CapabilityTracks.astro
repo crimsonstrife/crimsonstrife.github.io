@@ -3,55 +3,65 @@ import { Icon } from 'astro-icon/components';
 ---
 
 <section id="capabilities" class="tracks" aria-labelledby="capabilities-title">
-  <header class="intro">
-    <p>One developer, two arenas</p>
-    <h2 id="capabilities-title">Software systems and interactive worlds</h2>
-    <span>
-      The same curiosity, systems thinking, and care for the person using the
-      result runs through both sides of my work.
-    </span>
-  </header>
+  <div class="inner">
+    <header class="intro">
+      <p>One developer, two arenas</p>
+      <h2 id="capabilities-title">Software systems and interactive worlds</h2>
+      <span>
+        The same curiosity, systems thinking, and care for the person using the
+        result runs through both sides of my work.
+      </span>
+    </header>
 
-  <div class="grid">
-    <article class="track software">
-      <Icon name="fa6-solid:code" aria-hidden="true" />
-      <p class="number">Professional track</p>
-      <h3>Software &amp; business systems</h3>
-      <p>
-        Reliable software, Salesforce solutions, web platforms, automation,
-        and support for the people and processes behind them.
-      </p>
-      <ul role="list">
-        <li>Salesforce &amp; Apex</li>
-        <li>Web platforms</li>
-        <li>Internal tools</li>
-      </ul>
-      <a href="#resume">See professional experience <span aria-hidden="true">→</span></a>
-    </article>
+    <div class="grid">
+      <article class="track software">
+        <Icon name="fa6-solid:code" aria-hidden="true" />
+        <p class="number">Professional track</p>
+        <h3>Software &amp; business systems</h3>
+        <p>
+          Reliable software, Salesforce solutions, web platforms, automation,
+          and support for the people and processes behind them.
+        </p>
+        <ul role="list">
+          <li>Salesforce &amp; Apex</li>
+          <li>Web platforms</li>
+          <li>Internal tools</li>
+        </ul>
+        <a href="#resume">See professional experience <span aria-hidden="true">→</span></a>
+      </article>
 
-    <article class="track games">
-      <Icon name="fa6-solid:gamepad" aria-hidden="true" />
-      <p class="number">Independent track</p>
-      <h3>Games &amp; interactive systems</h3>
-      <p>
-        Original game development, Unreal Engine tooling, C++ and Blueprint
-        gameplay systems, integration work, and technical art.
-      </p>
-      <ul role="list">
-        <li>Unreal Engine</li>
-        <li>Gameplay systems</li>
-        <li>Tools &amp; plugins</li>
-      </ul>
-      <a href="#selected-work">Explore One Man's Poison <span aria-hidden="true">→</span></a>
-    </article>
+      <article class="track games">
+        <Icon name="fa6-solid:gamepad" aria-hidden="true" />
+        <p class="number">Independent track</p>
+        <h3>Games &amp; interactive systems</h3>
+        <p>
+          Original game development, Unreal Engine tooling, C++ and Blueprint
+          gameplay systems, integration work, and technical art.
+        </p>
+        <ul role="list">
+          <li>Unreal Engine</li>
+          <li>Gameplay systems</li>
+          <li>Tools &amp; plugins</li>
+        </ul>
+        <a href="#selected-work">Explore One Man's Poison <span aria-hidden="true">→</span></a>
+      </article>
+    </div>
   </div>
 </section>
 
 <style>
   .tracks {
+    position: relative;
+    margin-top: -1rem;
+    padding: calc(var(--section-padding-y) + var(--section-slant)) 0 var(--section-padding-y);
+    background: var(--color-surface-sunk);
+    clip-path: polygon(0 var(--section-slant), 22% 0, 100% clamp(1.25rem, 2.75vw, 2.75rem), 100% 100%, 0 100%);
+  }
+
+  .inner {
     max-width: var(--container-max);
     margin-inline: auto;
-    padding: var(--section-padding-y) clamp(1rem, 4vw, 2.25rem);
+    padding-inline: var(--content-gutter);
   }
 
   .intro {
@@ -94,7 +104,10 @@ import { Icon } from 'astro-icon/components';
   .grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(1rem, 3vw, 2rem);
+    gap: 0;
+    background: var(--color-dark);
+    color: #fff;
+    clip-path: polygon(0 var(--shape-cut), calc(50% - var(--shape-cut)) 0, 100% var(--shape-cut), 100% calc(100% - var(--shape-cut)), calc(50% + var(--shape-cut)) 100%, 0 calc(100% - var(--shape-cut)));
   }
 
   .track {
@@ -102,35 +115,37 @@ import { Icon } from 'astro-icon/components';
     overflow: hidden;
     min-height: 26rem;
     padding: clamp(2rem, 5vw, 3.5rem);
-    background: var(--color-surface-raised);
-    border: 1px solid var(--color-rule);
-    border-radius: 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    box-shadow: 0 1.25rem 3rem rgb(38 35 36 / 0.06);
+    isolation: isolate;
   }
 
   .track::before {
     content: '';
     position: absolute;
-    inset: 0 0 auto;
-    height: 0.35rem;
-    background: var(--track-color);
+    inset: 0;
+    background: linear-gradient(145deg, var(--track-color), transparent 66%);
+    opacity: 0.28;
+    z-index: -1;
   }
 
   .track > [data-icon] {
     width: 3rem;
     height: 3rem;
     padding: 0.75rem;
-    border-radius: 0.85rem;
     color: #fff;
     background: var(--track-color);
     margin-bottom: 2rem;
+    clip-path: polygon(0 0, 100% 0, 76% 100%, 0 100%);
   }
 
   .software { --track-color: var(--color-accent); }
-  .games { --track-color: var(--color-accent-warm); }
+  .games {
+    --track-color: var(--color-accent-warm);
+    background: rgb(255 255 255 / 0.055);
+    border-left: 1px solid rgb(255 255 255 / 0.14);
+  }
 
   .number {
     color: var(--track-color);
@@ -149,7 +164,7 @@ import { Icon } from 'astro-icon/components';
 
   .track > p:not(.number) {
     margin-top: 1rem;
-    color: var(--color-muted);
+    color: rgb(255 255 255 / 0.7);
     line-height: 1.7;
   }
 
@@ -164,16 +179,15 @@ import { Icon } from 'astro-icon/components';
 
   li {
     border: 1px solid var(--color-rule);
-    border-radius: 999px;
     padding: 0.35rem 0.7rem;
-    color: var(--color-muted);
+    color: rgb(255 255 255 / 0.7);
     font-family: var(--font-ui);
     font-size: 0.76rem;
   }
 
   a {
     margin-top: auto;
-    color: var(--color-ink);
+    color: #fff;
     font-family: var(--font-display);
     font-size: 0.78rem;
     font-weight: 700;
@@ -188,7 +202,9 @@ import { Icon } from 'astro-icon/components';
     .intro { grid-template-columns: 1fr; }
     .intro > p, .intro h2, .intro > span { grid-column: 1; grid-row: auto; justify-self: start; }
     .intro > span { margin-top: 0.75rem; }
-    .grid { grid-template-columns: 1fr; }
+    .tracks { clip-path: polygon(0 1.75rem, 28% 0, 100% 1rem, 100% 100%, 0 100%); }
+    .grid { grid-template-columns: 1fr; clip-path: polygon(0 1.2rem, 100% 0, 100% calc(100% - 1.2rem), 0 100%); }
     .track { min-height: 0; }
+    .games { border-left: 0; border-top: 1px solid rgb(255 255 255 / 0.14); }
   }
 </style>

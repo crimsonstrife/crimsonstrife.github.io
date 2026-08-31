@@ -86,34 +86,44 @@ const endpoint = site.contact.endpoint as string | null;
 <style>
   .contact {
     position: relative;
-    padding-block: var(--section-padding-y);
+    margin-top: -2rem;
+    padding-block: calc(var(--section-padding-y) + 2rem) var(--section-padding-y);
     background: var(--color-dark-deep);
+    clip-path: polygon(0 var(--section-slant), 27% 0, 100% clamp(1.2rem, 3vw, 3rem), 100% 100%, 0 100%);
   }
 
   .panels {
     max-width: var(--container-max);
     margin-inline: auto;
-    padding-inline: clamp(1rem, 4vw, 2.25rem);
+    padding-inline: var(--content-gutter);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: clamp(1.5rem, 5vw, 4rem);
+    gap: 0;
     align-items: stretch;
   }
 
   .panel {
-    min-height: 23rem;
+    min-height: 26rem;
     padding: clamp(2rem, 5vw, 4rem);
-    border-radius: 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
   }
 
-  .start { color: #fff; background: var(--color-accent); }
+  .start {
+    z-index: 1;
+    margin-right: -4rem;
+    padding-right: clamp(5rem, 9vw, 8rem);
+    color: #fff;
+    background: var(--color-accent);
+    clip-path: polygon(0 0, 100% 0, calc(100% - 4rem) 100%, 0 100%);
+  }
   .message {
+    padding-left: clamp(6rem, 10vw, 9rem);
     color: var(--color-ink);
     background: var(--color-surface-raised);
+    clip-path: polygon(4rem 0, 100% 0, 100% 100%, 0 100%);
   }
 
   .kicker {
@@ -135,7 +145,8 @@ const endpoint = site.contact.endpoint as string | null;
     border: 0;
     cursor: pointer;
     padding: 0.9rem 1.2rem;
-    border-radius: 0.35rem;
+    padding-right: 1.8rem;
+    clip-path: polygon(0 0, 100% 0, calc(100% - 0.8rem) 100%, 0 100%);
     font-family: var(--font-display);
     font-weight: 700;
     font-size: 0.75rem;
@@ -152,8 +163,11 @@ const endpoint = site.contact.endpoint as string | null;
   .message .cta:hover, .message .cta:focus-visible { background: var(--color-accent-warm); }
 
   @media (max-width: 46rem) {
+    .contact { clip-path: polygon(0 2rem, 28% 0, 100% 1rem, 100% 100%, 0 100%); }
     .panels { grid-template-columns: 1fr; }
     .panel { min-height: 20rem; }
+    .start { margin: 0 0 -2rem; padding: 2.5rem 2rem 4rem; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 2rem), 30% 100%, 0 calc(100% - 1rem)); }
+    .message { padding: 4.5rem 2rem 2.5rem; clip-path: polygon(0 2rem, 70% 0, 100% 1rem, 100% 100%, 0 100%); }
   }
 
   /* --- Dialog ----------------------------------------------------- */

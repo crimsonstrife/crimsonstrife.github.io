@@ -74,7 +74,8 @@ import headshot from '../assets/images/patrick-headshot.png';
     justify-content: center;
     color: #fff;
     background: var(--color-dark-deep);
-    padding: clamp(3.5rem, 7vw, 6.5rem) clamp(1rem, 4vw, 2.25rem) 2rem;
+    padding: clamp(3.5rem, 7vw, 6.5rem) var(--content-gutter) clamp(4rem, 7vw, 6rem);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 1.4rem), 68% 100%, 0 calc(100% - 0.7rem));
   }
 
   .code-backdrop {
@@ -102,8 +103,9 @@ import headshot from '../assets/images/patrick-headshot.png';
     content: '';
     position: absolute;
     inset: auto 0 0;
-    height: 0.3rem;
+    height: 0.42rem;
     background: linear-gradient(90deg, var(--color-accent) 0 68%, var(--color-accent-warm) 68%);
+    clip-path: polygon(0 0, 100% 55%, 100% 100%, 0 100%);
   }
 
   .inner {
@@ -155,7 +157,12 @@ import headshot from '../assets/images/patrick-headshot.png';
     text-decoration: none;
   }
 
-  .primary { color: #fff; background: var(--color-accent); border-radius: 0.35rem; padding: 0.95rem 1.35rem; }
+  .primary {
+    color: #fff;
+    background: var(--color-accent);
+    padding: 0.95rem 1.75rem 0.95rem 1.35rem;
+    clip-path: polygon(0 0, 100% 0, calc(100% - 0.85rem) 100%, 0 100%);
+  }
   .primary:hover, .primary:focus-visible { background: #fff; color: var(--color-dark); }
   .secondary { color: #fff; }
   .secondary span { color: #9fd1cf; margin-left: 0.35rem; }
@@ -180,7 +187,7 @@ import headshot from '../assets/images/patrick-headshot.png';
     width: 0.35rem;
     height: 0.35rem;
     margin-right: 0.55rem;
-    border-radius: 50%;
+    transform: rotate(45deg);
     background: var(--color-accent);
     vertical-align: 0.08rem;
   }
@@ -189,10 +196,10 @@ import headshot from '../assets/images/patrick-headshot.png';
   .portrait { position: relative; margin: 0; width: min(100%, 29rem); justify-self: end; }
 
   .frame {
+    position: relative;
     aspect-ratio: 4 / 5;
     overflow: hidden;
-    border-radius: 1.5rem;
-    border: 1px solid rgb(255 255 255 / 0.2);
+    clip-path: polygon(9% 0, 100% 0, 100% 90%, 88% 100%, 0 100%, 0 10%);
     box-shadow: 0 2rem 5rem rgb(0 0 0 / 0.4);
   }
 
@@ -203,11 +210,12 @@ import headshot from '../assets/images/patrick-headshot.png';
     right: -1rem;
     bottom: 2rem;
     width: min(18rem, 86%);
-    padding: 1rem 1.15rem;
-    border-left: 0.28rem solid var(--color-accent-warm);
+    padding: 1rem 1.9rem 1rem 1.15rem;
+    border-left: 0.3rem solid var(--color-accent-warm);
     background: rgb(251 250 247 / 0.96);
     color: var(--color-ink);
     box-shadow: 0 1rem 2.5rem rgb(0 0 0 / 0.28);
+    clip-path: polygon(0 0, 100% 0, calc(100% - 1.1rem) 100%, 0 100%);
   }
 
   figcaption span, figcaption strong, figcaption small { display: block; }
@@ -234,7 +242,7 @@ import headshot from '../assets/images/patrick-headshot.png';
   .scroll [data-icon] { color: #9fd1cf; }
 
   @media (max-width: 56rem) {
-    .hero { padding-top: 3rem; }
+    .hero { padding-top: 3rem; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 0.75rem), 32% 100%, 0 calc(100% - 0.35rem)); }
     .inner { grid-template-columns: 1fr; }
     .copy { max-width: none; }
     .portrait { width: min(82vw, 31rem); justify-self: center; }

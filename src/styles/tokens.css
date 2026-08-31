@@ -64,6 +64,9 @@
   --container-max: 1200px;
   --section-padding-y: clamp(4.5rem, 8vw, 7rem);
   --gutter: 1.25rem;
+  --content-gutter: clamp(1rem, 4vw, 2.25rem);
+  --section-slant: clamp(2.25rem, 5vw, 5rem);
+  --shape-cut: clamp(1rem, 2vw, 2rem);
 
   /* --- Motion ----------------------------------------------------- */
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
