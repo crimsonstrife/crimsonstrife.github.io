@@ -7,7 +7,7 @@ import { formatMonth, hasExpired } from '../lib/dates';
 const byOrder = (a: { data: { order: number } }, b: { data: { order: number } }) =>
   a.data.order - b.data.order;
 
-// Only the technical/professional roles belong on a printed résumé.
+// Only the technical/professional roles belong on a printed resumé.
 const [about] = await getCollection('pages', (entry) => entry.id === 'about');
 const { Content: Bio } = about ? await render(about) : { Content: null };
 
@@ -20,7 +20,7 @@ const awards = (await getCollection('awards')).sort(byOrder);
 const skills = (await getCollection('skills')).sort(byOrder);
 ---
 
-<BaseLayout title={`Résumé | ${site.name}`} description={`Résumé of ${site.name}.`}>
+<BaseLayout title={`Resumé | ${site.name}`} description={`Resumé of ${site.name}.`}>
   <article class="sheet">
     <header>
       <h1>{site.name}</h1>

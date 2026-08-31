@@ -3,7 +3,7 @@
   "shortName": "Patrick Barnhardt",
   "title": "Patrick Barnhardt — Software & Game Developer",
   "tagline": "Software systems and interactive worlds",
-  "description": "Portfolio and résumé of Patrick Barnhardt — software development, Salesforce, web platforms, Unreal Engine tools, and independent game development.",
+  "description": "Portfolio and resumé of Patrick Barnhardt — software development, Salesforce, web platforms, Unreal Engine tools, and independent game development.",
   "email": "contact@patrickbarnhardt.info",
   "locale": "en",
   "nav": [
@@ -16,7 +16,7 @@
       "href": "/#work"
     },
     {
-      "label": "Résumé",
+      "label": "Resumé",
       "href": "/#resume"
     },
     {

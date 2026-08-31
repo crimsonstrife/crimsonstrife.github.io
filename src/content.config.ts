@@ -131,7 +131,7 @@ const pages = defineCollection({
   }),
 });
 
-/** Shared shape for the two résumé timelines. */
+/** Shared shape for the two resumé timelines. */
 const timelineEntry = z.object({
   id: z.string(),
   order: z.number().int().positive(),
@@ -145,7 +145,7 @@ const timelineEntry = z.object({
   credentialUrl: z.url().optional(),
   /**
    * Technical/professional roles. The site lists every entry (the most recent
-   * few up front, the rest behind a toggle); the printable résumé at /resume
+   * few up front, the rest behind a toggle); the printable resumé at /resume
    * shows only the entries flagged here.
    */
   technical: z.boolean().default(false),
