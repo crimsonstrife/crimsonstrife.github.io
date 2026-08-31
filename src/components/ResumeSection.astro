@@ -12,7 +12,7 @@ const skills = (await getCollection('skills')).sort(byOrder);
 
 // Entries are ordered newest first. Show the five most recent up front and
 // keep the rest one click away rather than dropping them from the record.
-const RECENT = 5;
+const RECENT = 4;
 const recent = experience.slice(0, RECENT);
 const earlier = experience.slice(RECENT);
 const INITIAL_SKILL_GROUPS = 3;

@@ -6,7 +6,15 @@
     "organization": "Charlotte Pipe and Foundry Company — Charlotte, NC",
     "period": "March 2023 - Present",
     "summary": "Salesforce administration and development, alongside software development and user support.",
-    "highlights": [],
+    "highlights": [
+      "Developing and maintaining Salesforce applications.",
+      "Salesforce Flows for Screens and Automations.",
+      "Technical support for Salesforce applications.",
+      "Troubleshooting and debugging of Salesforce applications.",
+      "Managing Salesforce Integrations.",
+      "Created Apex functions and LWC components.",
+      "Creating internal web applications and tools."
+    ],
     "technical": true
   },
   {
