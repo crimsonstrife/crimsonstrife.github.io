@@ -2,7 +2,7 @@
 title: "ClapTrap"
 category: "3d"
 summary: ""
-order: 15
+order: 18
 media:
   type: "sketchfab"
   modelId: "3dkuGVmKZdnC0RzsNKp2bfv0JI0"

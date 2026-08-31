@@ -2,7 +2,7 @@
 title: "dallara"
 category: "3d"
 summary: ""
-order: 22
+order: 25
 media:
   type: "sketchfab"
   modelId: "50fd65e695ce4034b728ced9fc924c54"

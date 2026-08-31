@@ -2,7 +2,7 @@
 title: "Can We Shoot Something? [Keep Talking And Nobody Explodes]"
 category: "video"
 summary: ""
-order: 44
+order: 47
 media:
   type: "youtube"
   videoId: "EPFFcSpHRr8"

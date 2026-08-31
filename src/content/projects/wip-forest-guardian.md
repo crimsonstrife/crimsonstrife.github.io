@@ -2,7 +2,7 @@
 title: "WIP - Forest Guardian"
 category: "3d"
 summary: ""
-order: 19
+order: 22
 media:
   type: "sketchfab"
   modelId: "Fm7leJ26YIk1CVJqcuxRW2zTgD"

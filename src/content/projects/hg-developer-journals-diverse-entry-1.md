@@ -2,7 +2,7 @@
 title: "HG Developer Journals - DIVERSE Entry 1"
 category: "video"
 summary: ""
-order: 51
+order: 54
 media:
   type: "youtube"
   videoId: "Mvq6HpJ1hfU"

@@ -2,7 +2,7 @@
 title: "ExtraLife 2015 Highlight: LASO [Halo 5: Guardians]"
 category: "video"
 summary: ""
-order: 45
+order: 48
 media:
   type: "youtube"
   videoId: "3oBxlSLbX84"

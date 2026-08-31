@@ -3,6 +3,10 @@ title: "Forge"
 category: "web"
 summary: "A Laravel 12 work platform that folds project planning, issue tracking, a support desk and feedback boards into one application instead of four subscriptions."
 order: 3
+media:
+  type: "image"
+  thumbnail: "../../assets/images/portfolio/forge-thumb.jpg"
+  full: "../../assets/images/portfolio/forge.jpg"
 tags: ["Laravel 12", "PHP 8.3", "Livewire 3", "Filament 4", "Tailwind CSS", "Vite"]
 links:
   repo: "https://github.com/crimsonstrife/forge"

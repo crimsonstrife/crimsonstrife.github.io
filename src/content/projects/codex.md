@@ -3,6 +3,10 @@ title: "Codex"
 category: "web"
 summary: "A Confluence-style documentation platform and the sister application to Forge — nested page trees, revision history, native diagrams and full-text search."
 order: 4
+media:
+  type: "image"
+  thumbnail: "../../assets/images/portfolio/codex-thumb.jpg"
+  full: "../../assets/images/portfolio/codex.jpg"
 tags: ["Laravel 12", "PHP 8.3", "Livewire 3", "Filament 4", "Laravel Scout", "Mermaid"]
 links:
   repo: "https://github.com/crimsonstrife/codex"

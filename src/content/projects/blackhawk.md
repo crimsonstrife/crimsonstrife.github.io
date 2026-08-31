@@ -2,7 +2,7 @@
 title: "Blackhawk"
 category: "3d"
 summary: ""
-order: 21
+order: 24
 media:
   type: "sketchfab"
   modelId: "AcQ3DEbmLiurZpBuL2yQ946s907"

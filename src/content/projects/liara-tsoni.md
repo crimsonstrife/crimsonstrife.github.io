@@ -2,7 +2,7 @@
 title: "Liara T'Soni"
 category: "3d"
 summary: ""
-order: 13
+order: 16
 media:
   type: "sketchfab"
   modelId: "dD1GPieprzx2S041KBQUT7KYpvr"

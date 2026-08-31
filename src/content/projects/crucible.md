@@ -3,6 +3,10 @@ title: "Crucible SCM"
 category: "web"
 summary: "A self-hosted Git platform built for game teams — LFS with pluggable backends, file locking, engine-aware policies, and an Unreal Engine plugin that puts it in the editor's revision control menu."
 order: 5
+media:
+  type: "image"
+  thumbnail: "../../assets/images/portfolio/crucible-thumb.jpg"
+  full: "../../assets/images/portfolio/crucible.jpg"
 tags: ["Laravel 12", "PHP 8.3", "Git", "Git LFS", "Unreal Engine", "C++", "Tailwind CSS"]
 links:
   repo: "https://github.com/crimsonstrife/crucible"
