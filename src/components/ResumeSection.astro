@@ -15,6 +15,9 @@ const skills = (await getCollection('skills')).sort(byOrder);
 const RECENT = 5;
 const recent = experience.slice(0, RECENT);
 const earlier = experience.slice(RECENT);
+const INITIAL_SKILL_GROUPS = 3;
+const primarySkills = skills.slice(0, INITIAL_SKILL_GROUPS);
+const additionalSkills = skills.slice(INITIAL_SKILL_GROUPS);
 ---
 
 <section id="resume" class="resume">
@@ -46,7 +49,7 @@ const earlier = experience.slice(RECENT);
 
     <h3 class="sub">Skills</h3>
     <div class="skills">
-      {skills.map((group) => (
+      {primarySkills.map((group) => (
         <div class="group">
           <h4>{group.data.label}</h4>
           <ul role="list">
@@ -55,6 +58,32 @@ const earlier = experience.slice(RECENT);
         </div>
       ))}
     </div>
+
+    {additionalSkills.length > 0 && (
+      <>
+        <div id="additional-skills" class="skills additional-skills" hidden>
+          {additionalSkills.map((group) => (
+            <div class="group">
+              <h4>{group.data.label}</h4>
+              <ul role="list">
+                {group.data.items.map((item) => <li>{item}</li>)}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <div class="more skills-more">
+          <button
+            type="button"
+            id="show-more-skills"
+            aria-expanded="false"
+            aria-controls="additional-skills"
+            data-collapsed-label={`Show all skills (${additionalSkills.length} more categories)`}
+          >
+            Show all skills ({additionalSkills.length} more categories)
+          </button>
+        </div>
+      </>
+    )}
   </div>
 </section>
 
@@ -129,9 +158,13 @@ const earlier = experience.slice(RECENT);
 
   .skills {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1.75rem;
   }
+
+  .additional-skills { margin-top: 1.75rem; }
+  .additional-skills[hidden] { display: none; }
+  .skills-more { margin-top: 2rem; }
 
   .group h4 {
     font-size: 0.8rem;
@@ -160,19 +193,32 @@ const earlier = experience.slice(RECENT);
 
   @media (max-width: 48rem) {
     .resume { clip-path: polygon(0 2rem, 30% 0, 100% 1rem, 100% calc(100% - 1rem), 70% 100%, 0 calc(100% - 1.75rem)); }
+    .skills { grid-template-columns: 1fr; }
   }
 </style>
 
 <script>
-  const toggle = document.querySelector<HTMLButtonElement>('#show-earlier');
-  const panel = document.querySelector<HTMLElement>('#earlier-roles');
+  const rolesToggle = document.querySelector<HTMLButtonElement>('#show-earlier');
+  const rolesPanel = document.querySelector<HTMLElement>('#earlier-roles');
 
-  toggle?.addEventListener('click', () => {
-    const open = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', String(!open));
-    panel?.toggleAttribute('hidden', open);
-    toggle.textContent = open
-      ? `Show earlier roles (${panel?.querySelectorAll('.node').length ?? 0})`
+  rolesToggle?.addEventListener('click', () => {
+    const open = rolesToggle.getAttribute('aria-expanded') === 'true';
+    rolesToggle.setAttribute('aria-expanded', String(!open));
+    rolesPanel?.toggleAttribute('hidden', open);
+    rolesToggle.textContent = open
+      ? `Show earlier roles (${rolesPanel?.querySelectorAll('.node').length ?? 0})`
       : 'Hide earlier roles';
+  });
+
+  const skillsToggle = document.querySelector<HTMLButtonElement>('#show-more-skills');
+  const skillsPanel = document.querySelector<HTMLElement>('#additional-skills');
+
+  skillsToggle?.addEventListener('click', () => {
+    const open = skillsToggle.getAttribute('aria-expanded') === 'true';
+    skillsToggle.setAttribute('aria-expanded', String(!open));
+    skillsPanel?.toggleAttribute('hidden', open);
+    skillsToggle.textContent = open
+      ? (skillsToggle.dataset.collapsedLabel ?? 'Show all skills')
+      : 'Show fewer skills';
   });
 </script>
