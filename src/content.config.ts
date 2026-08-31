@@ -184,14 +184,16 @@ const certifications = defineCollection({
 /** Recognitions rather than credentials: community awards, cadet honours. */
 const awards = defineCollection({
   loader: file('src/data/awards.json'),
-  schema: z.object({
-    id: z.string(),
-    order: z.number().int().positive(),
-    title: z.string(),
-    issuer: z.string(),
-    issued: z.string().regex(/^\d{4}-\d{2}$/, 'Expected a YYYY-MM month').optional(),
-    credentialUrl: z.url().optional(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      id: z.string(),
+      order: z.number().int().positive(),
+      title: z.string(),
+      issuer: z.string(),
+      issued: z.string().regex(/^\d{4}-\d{2}$/, 'Expected a YYYY-MM month').optional(),
+      credentialUrl: z.url().optional(),
+      badge: image().optional(),
+    }),
 });
 
 const skills = defineCollection({

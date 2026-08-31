@@ -14,7 +14,8 @@
     "issuer": "Salesforce",
     "issued": "2024-03",
     "credentialId": "4180765",
-    "credentialUrl": "https://sforce.co/verifycerts"
+    "credentialUrl": "https://sforce.co/verifycerts",
+    "badge": "../assets/images/badges/salesforce-platform-administrator.png"
   },
   {
     "id": "android-development-essential-training",
@@ -30,21 +31,24 @@
     "title": "CompTIA Project+",
     "issuer": "CompTIA",
     "issued": "2021-08",
-    "credentialUrl": "https://www.credly.com/badges/a6a18f84-37fe-4145-8a80-01bfacade732"
+    "credentialUrl": "https://www.credly.com/badges/a6a18f84-37fe-4145-8a80-01bfacade732",
+    "badge": "../assets/images/badges/comptia-project-plus.webp"
   },
   {
     "id": "ciw-user-interface-designer",
     "order": 5,
     "title": "CIW User Interface Designer",
     "issuer": "Certification Partners",
-    "issued": "2020-09"
+    "issued": "2020-09",
+    "badge": "../assets/images/badges/ciw-user-interface-designer.webp"
   },
   {
     "id": "ciw-advanced-html-css3-specialist",
     "order": 6,
     "title": "CIW Advanced HTML & CSS3 Specialist",
     "issuer": "Certification Partners",
-    "issued": "2019-11"
+    "issued": "2019-11",
+    "badge": "../assets/images/badges/ciw-advanced-html5-css3.webp"
   },
   {
     "id": "itil-foundation",
@@ -52,14 +56,16 @@
     "title": "ITIL Foundation Certificate in IT Service Management",
     "issuer": "PeopleCert",
     "issued": "2019-05",
-    "credentialId": "GR750556524PB"
+    "credentialId": "GR750556524PB",
+    "badge": "../assets/images/badges/itil-4-foundation.png"
   },
   {
     "id": "ciw-site-development-associate",
     "order": 8,
     "title": "CIW Site Development Associate",
     "issuer": "Certification Partners",
-    "issued": "2018-11"
+    "issued": "2018-11",
+    "badge": "../assets/images/badges/ciw-site-development-associate.webp"
   },
   {
     "id": "comptia-a-plus-ce",
@@ -69,7 +75,7 @@
     "issued": "2016-06",
     "expires": "2022-06",
     "credentialUrl": "https://www.credly.com/badges/682a44d5-4a8b-4799-9dff-5b31b8586e2f",
-    "badge": "../assets/images/Aplus-Logo-Certified-CE.png"
+    "badge": "../assets/images/badges/comptia-a-plus.webp"
   },
   {
     "id": "unreal-game-asset-production-pipeline",
