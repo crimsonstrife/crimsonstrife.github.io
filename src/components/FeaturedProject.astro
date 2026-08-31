@@ -19,7 +19,8 @@ const featured = (await getCollection('projects'))
 const media = featured?.data.media;
 const backdrop = media?.type === 'image' ? (media.full ?? media.thumbnail) : undefined;
 const href = featured && hasWriteup(featured.body) ? `/projects/${featured.id}/` : undefined;
-const external = featured?.data.links.live ?? featured?.data.links.repo;
+const external =
+  featured?.data.links.live ?? featured?.data.links.download ?? featured?.data.links.repo;
 const link = href ?? external;
 ---
 
@@ -55,6 +56,19 @@ const link = href ?? external;
               </li>
             ))}
           </ul>
+        )}
+
+        {featured.data.imageCredit && (
+          <p class="credit">
+            {featured.data.imageCredit.role ?? 'Artwork'} by{' '}
+            {featured.data.imageCredit.url ? (
+              <a href={featured.data.imageCredit.url} rel="noopener">
+                {featured.data.imageCredit.name}
+              </a>
+            ) : (
+              featured.data.imageCredit.name
+            )}
+          </p>
         )}
 
         {link && (
@@ -148,7 +162,16 @@ const link = href ?? external;
 
   .points p { font-size: 0.88rem; line-height: 1.55; opacity: 0.9; margin-top: 0.25rem; }
 
-  .cta { margin-top: 0.75rem; }
+  .credit {
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    line-height: 1.4;
+    opacity: 0.8;
+  }
+
+  .credit a { color: inherit; }
+
+  .cta { margin-top: 0.25rem; }
 
   .cta a {
     display: inline-block;

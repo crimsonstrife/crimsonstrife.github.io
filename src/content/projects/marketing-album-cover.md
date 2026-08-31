@@ -2,7 +2,7 @@
 title: "Marketing: Album Cover"
 category: "branding"
 summary: "An album cover done as part of a marketing campaign for a local band."
-order: 34
+order: 37
 media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/4266_77239448947_7056003_n.jpg"

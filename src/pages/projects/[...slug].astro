@@ -38,13 +38,16 @@ const { media } = project.data;
       <h1>{project.data.title}</h1>
       {project.data.summary && <p class="lede">{project.data.summary}</p>}
 
-      {(project.data.links.repo || project.data.links.live) && (
+      {(project.data.links.repo || project.data.links.live || project.data.links.download) && (
         <p class="links">
           {project.data.links.repo && (
             <a href={project.data.links.repo} rel="noopener">Source</a>
           )}
           {project.data.links.live && (
             <a href={project.data.links.live} rel="noopener">View live</a>
+          )}
+          {project.data.links.download && (
+            <a href={project.data.links.download} rel="noopener">Download</a>
           )}
         </p>
       )}
@@ -73,6 +76,17 @@ const { media } = project.data;
         />
       )}
     </div>
+
+    {project.data.imageCredit && (
+      <p class="credit">
+        {project.data.imageCredit.role ?? 'Artwork'} by{' '}
+        {project.data.imageCredit.url ? (
+          <a href={project.data.imageCredit.url} rel="noopener">{project.data.imageCredit.name}</a>
+        ) : (
+          project.data.imageCredit.name
+        )}
+      </p>
+    )}
 
     <div class="prose">
       <Content />
@@ -127,6 +141,15 @@ const { media } = project.data;
   .media { margin-top: 2.25rem; background: var(--color-surface-sunk); }
   .media :global(img) { display: block; width: 100%; height: auto; }
   .media iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; }
+
+  .credit {
+    margin-top: 0.6rem;
+    font-family: var(--font-ui);
+    font-size: 0.78rem;
+    color: var(--color-muted);
+  }
+
+  .credit a { color: var(--color-crimson); }
 
   .prose { margin-top: 2rem; }
   .prose :global(h2) { font-size: 1.3rem; text-transform: uppercase; margin: 2rem 0 0.7rem; }

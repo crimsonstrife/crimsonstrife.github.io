@@ -2,7 +2,7 @@
 title: "Cardinal Solutions Developer Evaluation"
 category: "web"
 summary: "This project was a coding evaluation, with the objective of converting a still image mockup into a responsive site with HTML/CSS3 and support for older IE browsers. Code is available at: https://github.com/crimsonstrife/developer-coding-evaluation."
-order: 1
+order: 5
 media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/spu-ea68c8-ogi2-3cwn3bmfojjlb56e-thumb.jpg"

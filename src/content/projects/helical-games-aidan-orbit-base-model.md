@@ -2,7 +2,7 @@
 title: "Helical Games: Aidan Orbit Base Model"
 category: "3d"
 summary: ""
-order: 11
+order: 14
 media:
   type: "sketchfab"
   modelId: "5611902e14cf46b289c8c1546da519d7"

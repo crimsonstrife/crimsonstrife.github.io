@@ -17,7 +17,8 @@
       "GitHub",
       "Laravel",
       "Requirements Gathering",
-      "Technical Documentation"
+      "Technical Documentation",
+      "Twitch API Integration"
     ]
   },
   {
@@ -93,7 +94,10 @@
       "Animation",
       "Character Animation",
       "AutoCAD",
-      "Unreal Engine 5"
+      "Unreal Engine 5",
+      "Gameplay Systems Design",
+      "Character Rigging",
+      "Steam Deck / Linux Porting"
     ]
   },
   {

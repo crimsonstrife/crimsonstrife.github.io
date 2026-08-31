@@ -1,8 +1,8 @@
 ---
-title: "This website: patrickbarnhardt.info"
+title: "This website: patrickbarnhardt.info (old)"
 category: "web"
-summary: "One of my most responsive designs yet, aimed to support my new portfolio."
-order: 4
+summary: "A static HTML CSS responsive design made for this portfolio site around 2017."
+order: 6
 media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/pbarnhardtinfo-thumb.png"

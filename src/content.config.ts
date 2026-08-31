@@ -33,6 +33,8 @@ const links = z
   .object({
     repo: z.url().optional(),
     live: z.url().optional(),
+    /** A release or download page, for things that are installed rather than visited. */
+    download: z.url().optional(),
   })
   .default({});
 
@@ -47,7 +49,8 @@ const projects = defineCollection({
       title: z.string(),
       category: z.enum(CATEGORIES),
       summary: z.string().default(''),
-      order: z.number().int().positive(),
+      /** Ascending. 0 pins a project to the front of the gallery. */
+      order: z.number().int().nonnegative(),
       /**
        * Marks the project for the full-width feature panel above the gallery —
        * the 2017 site's "showbox". Only the first featured project renders.
@@ -64,6 +67,18 @@ const projects = defineCollection({
         )
         .default([]),
       tags: z.array(z.string()).default([]),
+      /**
+       * Attribution for artwork that isn't Patrick's. Rendered wherever the
+       * image is shown, so a commissioned piece can headline a project without
+       * implying he made it.
+       */
+      imageCredit: z
+        .object({
+          name: z.string(),
+          role: z.string().optional(),
+          url: z.url().optional(),
+        })
+        .optional(),
       links,
       media: z.discriminatedUnion('type', [
         z.object({
