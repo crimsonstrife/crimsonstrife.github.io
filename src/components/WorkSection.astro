@@ -16,6 +16,7 @@ const allCategories = (await getCollection('categories')).sort((a, b) => a.data.
 // Only offer filters that actually have work behind them.
 const used = new Set(projects.map((p) => p.data.category));
 const categories = allCategories.filter((c) => used.has(c.data.id));
+const ARCHIVE_BATCH_SIZE = 8;
 
 /**
  * Pre-resolve each tile's lightbox payload at build time so the dialog only
@@ -73,14 +74,14 @@ const tiles = await Promise.all(
     </ul>
   </div>
 
-  <ul class="grid" role="list">
-    {tiles.map(({ project, href, kind, src, poster, posterImage, thumb }) => {
+  <ul id="project-grid" class="grid" role="list">
+    {tiles.map(({ project, href, kind, src, poster, posterImage, thumb }, index) => {
       // An anchor when there's a page to go to, a button when there's something
       // to open in the lightbox, and inert when there is neither.
       const Tag = href ? 'a' : kind === 'none' ? 'div' : 'button';
       const interactive = Boolean(href) || kind !== 'none';
       return (
-      <li class="cell" data-category={project.data.category}>
+      <li class="cell" data-category={project.data.category} hidden={index >= ARCHIVE_BATCH_SIZE}>
         <Tag
           class:list={['tile', { inert: !interactive }]}
           href={href}
@@ -150,6 +151,20 @@ const tiles = await Promise.all(
   </ul>
 
   <p class="empty" hidden>Nothing in that category yet.</p>
+
+  <div class="archive-controls" data-batch-size={ARCHIVE_BATCH_SIZE}>
+    <p class="archive-count" aria-live="polite">
+      Showing {Math.min(ARCHIVE_BATCH_SIZE, tiles.length)} of {tiles.length} projects
+    </p>
+    <button
+      type="button"
+      class="load-more"
+      aria-controls="project-grid"
+      hidden={tiles.length <= ARCHIVE_BATCH_SIZE}
+    >
+      Show {Math.min(ARCHIVE_BATCH_SIZE, Math.max(0, tiles.length - ARCHIVE_BATCH_SIZE))} more projects
+    </button>
+  </div>
 
   <div class="github">
     <GitHubActivity />
@@ -326,6 +341,57 @@ const tiles = await Promise.all(
     padding: 3rem 0;
   }
 
+  .archive-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: clamp(1.5rem, 4vw, 2.5rem);
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-rule);
+  }
+
+  .archive-count {
+    color: var(--color-muted);
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+  }
+
+  .load-more {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-accent);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--color-accent-dark);
+    cursor: pointer;
+    padding: 0.75rem 1.05rem;
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    transition: background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+  }
+
+  .load-more:hover,
+  .load-more:focus-visible {
+    background: var(--color-accent);
+    color: #fff;
+  }
+
+  .load-more[hidden] { display: none; }
+
+  @media (max-width: 34rem) {
+    .archive-controls {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .archive-count { text-align: center; }
+  }
+
   .github {
     margin-top: clamp(4rem, 9vw, 7rem);
     padding-top: clamp(2rem, 5vw, 4rem);
@@ -401,24 +467,53 @@ const tiles = await Promise.all(
 <script>
   // --- Filtering ---------------------------------------------------
   const chips = document.querySelectorAll<HTMLButtonElement>('.chip');
-  const cells = document.querySelectorAll<HTMLLIElement>('.cell');
+  const cells = [...document.querySelectorAll<HTMLLIElement>('.cell')];
   const empty = document.querySelector<HTMLParagraphElement>('.empty');
+  const archiveControls = document.querySelector<HTMLDivElement>('.archive-controls');
+  const archiveCount = document.querySelector<HTMLParagraphElement>('.archive-count');
+  const loadMore = document.querySelector<HTMLButtonElement>('.load-more');
+  const batchSize = Number(archiveControls?.dataset.batchSize ?? 8);
+  let activeFilter = 'all';
+  let visibleLimit = batchSize;
+
+  function renderArchive() {
+    const matching = cells.filter(
+      (cell) => activeFilter === 'all' || cell.dataset.category === activeFilter
+    );
+
+    cells.forEach((cell) => { cell.hidden = true; });
+    matching.slice(0, visibleLimit).forEach((cell) => { cell.hidden = false; });
+
+    const visible = Math.min(visibleLimit, matching.length);
+    const remaining = Math.max(0, matching.length - visible);
+    if (empty) empty.hidden = matching.length > 0;
+    if (archiveCount) {
+      archiveCount.textContent = matching.length > 0
+        ? `Showing ${visible} of ${matching.length} projects`
+        : 'No projects in this category';
+    }
+    if (loadMore) {
+      loadMore.hidden = remaining === 0;
+      const nextBatch = Math.min(batchSize, remaining);
+      loadMore.textContent = `Show ${nextBatch} more project${nextBatch === 1 ? '' : 's'}`;
+    }
+  }
 
   chips.forEach((chip) => {
     chip.addEventListener('click', () => {
-      const filter = chip.dataset.filter ?? 'all';
+      activeFilter = chip.dataset.filter ?? 'all';
+      visibleLimit = batchSize;
       chips.forEach((c) => c.setAttribute('aria-pressed', String(c === chip)));
-
-      let shown = 0;
-      cells.forEach((cell) => {
-        const match = filter === 'all' || cell.dataset.category === filter;
-        cell.hidden = !match;
-        if (match) shown += 1;
-      });
-
-      if (empty) empty.hidden = shown > 0;
+      renderArchive();
     });
   });
+
+  loadMore?.addEventListener('click', () => {
+    visibleLimit += batchSize;
+    renderArchive();
+  });
+
+  renderArchive();
 
   // --- Lightbox ----------------------------------------------------
   const dialog = document.querySelector<HTMLDialogElement>('#lightbox');
