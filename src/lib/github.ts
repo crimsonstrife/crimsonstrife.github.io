@@ -80,7 +80,7 @@ async function request(url: string, init: RequestInit = {}): Promise<Response | 
  * the full owned-repo list is fetched, the newest few are shown, and every
  * repo's primary language feeds the tally.
  */
-export async function fetchActivity(limit = 6): Promise<Activity> {
+export async function fetchActivity(limit = 8): Promise<Activity> {
   const empty: Activity = { repos: [], languages: [] };
 
   const response = await request(
