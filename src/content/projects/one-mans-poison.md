@@ -1,63 +1,218 @@
 ---
 title: "One Man's Poison"
 category: "games"
-summary: "A detective trapped in a nightmare asylum. What is real, and how far will you go to escape?"
+summary: "A solo-developed third-person survival-horror game in Unreal Engine 5, turning a missing-person case into a focused vertical slice built around investigation, scarcity, and systemic threat."
 order: 0
 featured: true
+caseStudy: true
 media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/one-mans-poison-hero.jpg"
   full: "../../assets/images/portfolio/one-mans-poison-hero.jpg"
-tags: ["Unreal Engine 5", "C++", "Survival Horror", "Game Design", "Project Management"]
+tags: ["Unreal Engine 5", "C++", "Blueprint", "Survival Horror", "Systems Design", "Game Design", "Technical Direction", "Project Management"]
 links:
   live: "https://ompgame.com"
 imageCredit:
-  name: "Sherry Chenn"
+  name: "Sherry Chen"
   role: "Character model, texture and render"
   url: "https://www.artstation.com/sherrrychen"
 featureHighlights:
   - icon: "fa6-solid:diagram-project"
-    title: "Every internal system"
-    body: "Inventory, combat and interaction; systems designed and built from scratch in C++ and Blueprint."
-  - icon: "fa6-solid:tower-broadcast"
-    title: "Twitch interactivity, built from nothing"
-    body: "A viewer-interaction system written from the ground up, alongside a CrowdControl integration."
+    title: "C++ core, Blueprint tuning"
+    body: "Gameplay systems live in a C++ foundation with a designer-facing Blueprint layer for iteration."
+  - icon: "fa6-solid:table-cells-large"
+    title: "A real spatial inventory"
+    body: "Grid placement, rotation and drag-and-drop, presented as a layered 3D attaché case inside the UI."
   - icon: "fa6-solid:plug"
-    title: "Third-party integration and porting"
-    body: "FMOD audio, and the work to get the game running on Steam Deck."
+    title: "Integration and platform work"
+    body: "FMOD audio, CrowdControl, custom Twitch interactivity and the work to run the game on Steam Deck."
   - icon: "fa6-solid:cube"
-    title: "Lead, and sole developer"
-    body: "All engine and gameplay code to date, plus art direction, scoping and coordination of the outsourced work."
+    title: "Lead and sole developer"
+    body: "All gameplay programming to date, plus design, scoping, art direction and coordination of specialist collaborators."
 ---
 
-Detective Jake Dubrowski is visited in his office by Darla Brant, whose younger
-sister has been missing. Chasing a lead, Jake finds himself at the supposedly
-abandoned Fountain Vale Mental Hospital. Now trapped inside, he has to find the youngest Brant sister and get them both out before reality
-finishes falling apart around him.
+One Man's Poison starts as a missing-person case. Darla Brant hires private
+detective Jake Dubrowski to find her younger sister, Jess; the trail ends at the
+supposedly abandoned Fountain Vale Mental Hospital. Jake enters as an
+investigator and wakes as a prisoner, with the building beginning to disobey its
+own floor plan around him.
 
-One Man's Poison is a survival horror game in development at CrimsonStrife
-Games for PC and Linux, with characters loosely based on the work of James
-Cotton and Wolf359 Productions alongside original ones.
+It is a third-person survival-horror game in active development at
+CrimsonStrife Games for PC and Linux. Some characters originate in the work of
+James Cotton and Wolf359 Productions; the setting, game systems, expanded cast,
+and the shape of this particular story have been developed for the game.
 
-## My work on it
+This is a development case study, not a postmortem for a finished release. The
+useful story is how I have turned a large horror-game premise into a buildable
+vertical slice, how the systems support the same experience, and where the
+project honestly stands now.
 
-I am the project lead and, to date, its only developer. All C++ and Blueprint
-scripting is mine, as is every internal system in the game — inventory,
-combat, interaction, and the rest — designed and implemented from scratch.
+## My role is bigger than the code
 
-Beyond gameplay code that has meant third-party integration and platform work:
-FMOD for audio, CrowdControl, a Twitch viewer-interaction system written from
-the ground up, and getting the game running on Steam Deck. I led the character
-designs and did the rigging; the animation in place today is still placeholder.
-I have also built and maintained the game's website.
+I am the project lead, designer, and, to date, its sole developer. All gameplay
+programming in C++ and Blueprint is mine, including the inventory, interaction,
+combat, and supporting framework work. I also own the technical architecture,
+game design, production planning, art direction, platform work, and the public
+website.
 
-Character concept art, modeling, and texturing have been outsourced so far, so
-that I could concentrate on the engineering, I do have modeling and texture experince, 
-so this will likely change eventually and some of that work will be mine as well. 
-Running that side of it is its own job: writing the briefs, 
-directing the work against the designs, and scheduling it around the build. 
-The character model, texture, and render shown here are the work of
-[Sherry Chenn](https://www.artstation.com/sherrrychen).
+Specialists make the work possible without pretending one person is every
+discipline. Composition and audio engineering, concept art, casting and voice
+direction, and character modeling and texturing are collaborative work. My part
+is to turn the game's requirements into useful briefs, review work against the
+art and story bibles, keep credits attached to assets, and schedule each
+deliverable around what the build can actually use.
 
-More at [ompgame.com](https://ompgame.com), including the press kit, character
-art, and the story so far.
+The Jake model, texture, and hero render on this page are by
+[Sherry Chen](https://www.artstation.com/sherrrychen). I led the character
+design and handled rigging; the animation currently in the build is placeholder.
+
+## The first design problem was making it finishable
+
+The full design covers a campaign, a changing asylum, several kinds of enemies,
+branching outcomes, a persistent hunter, an adaptive Director, accessibility
+settings, and more. That is an exciting list and a terrible first milestone for
+a very small team.
+
+The working target is now a public vertical slice with a deliberate boundary:
+introduce Jake, establish Darla's case, get the player into Fountain Vale, and
+prove one complete horror-and-puzzle loop. It has to demonstrate the controls,
+investigation, limited combat, resource pressure, stealth, an anchor room, and
+the first enemy pressure. It does not have to summarize the entire campaign or
+spend the story's biggest reveal just to make a demo look complete.
+
+That boundary changed production from "make the game" into a sequence I can
+test: grounded opening, asylum entry, safe room, threat area, puzzle, shortcut,
+return. Every feature now has to earn a place in that loop.
+
+## Five pillars keep the features pointed the same way
+
+**Detective horror.** Jake is working a case, not just looking for an exit.
+Clues, documents, environmental details, and puzzles need a reason to exist in
+the world and should reframe what the player thinks happened there.
+
+**Scarcity.** Ammunition, healing, weapon durability, and inventory space are
+competing resources. Combat is usually an option, but not always a viable one and
+the player needs to be able to make decisions on the fly.
+
+**Systemic pressure.** The long-term goal is a hunter that exists across rooms
+and rest phases instead of teleporting in for a scripted scare. If the player
+can learn its behavior, anticipation can do more work than a jump cut.
+
+**A simulation with rules.** Fountain Vale can loop, shift, and absorb Jake's
+memories, but the instability needs an internal logic. The premise connects the
+architecture, interface, save points, hallucinations, and progression instead
+of excusing arbitrary weirdness.
+
+**Readable horror.** Tension should come from a difficult decision made with
+understandable information. Routes need landmarks, puzzles need discoverable
+clues, enemy behavior needs tells, and accessibility options should remove
+friction without removing the horror.
+
+## The loop is a set of connected systems
+
+The core loop starts in a secure anchor room. The player leaves to investigate,
+collect evidence and supplies, solve a local problem, and decide whether to
+avoid or spend resources on a threat. A shortcut or story change opens the way
+back. The further the player pushes before returning, the more the Director can
+respond to time, noise, progress, and the resources still in reserve.
+
+That means these are not independent portfolio features. Inventory capacity
+changes exploration. Exploration changes exposure. Noise changes enemy
+attention. A shortcut changes the value of pressing forward. The save room
+stores the consequences of all of it.
+
+### The inventory is the clearest implemented example
+
+The inventory began with my memory of *Resident Evil 4*: a "Tetris" case full
+of irregular shapes. That memory was wrong in a useful way. Its items are
+rectangles, so a footprint only needs a top-left root slot, width, height, and
+orientation. Collision becomes a predictable bounds check instead of a library
+of arbitrary polyomino masks.
+
+The working prototype supports grid placement, rotation, and drag-and-drop. The
+visual problem was harder: the case should feel like a physical object, but a
+separate 3D inventory scene and a rendered actor for every item would be too
+expensive for what the feature needs.
+
+I use Unreal Render Targets and Scene Capture actors to capture the case in two
+layers. The UI composes them as back-of-case render, interactive slot grid, then
+front-of-case render. Items remain UI images for now. The result sells depth
+without spawning and positioning a second set of item actors every time the
+inventory opens. I wrote more about the tradeoff in
+[What's in an Inventory?](https://ompgame.com/blog/whats-in-an-inventory/).
+
+The system is in progress rather than "done." Placement and presentation work;
+item consumption and the full weapon/ammunition connection are the next part of
+the same feature.
+
+### The Director and hunter are architecture, not a finished claim
+
+The Director is designed as a central pacing system. Its inputs include player
+progress, resources, noise, and time in an area; its outputs can influence
+hunter pressure, encounters, ambience, and music intensity. The hunter itself
+is planned around pursuit, search, withdrawal, and repositioning states, with
+auditory foreshadowing and a rule for respecting the anchor-room boundary.
+
+This work is designed and tracked, but the persistent hunter is still in the
+backlog. I would rather show the intended contract between systems than present
+a design document as shipped AI.
+
+## C++ owns the rules; Blueprint exposes the tuning
+
+The technical direction is a C++ core with a Blueprint layer for values a
+designer needs to change while playing: thresholds, timings, resource values,
+and presentation hooks. That split keeps rules testable and discoverable in
+code without making every balance pass a compile cycle.
+
+The same boundary helps with integrations. FMOD owns the audio authoring
+workflow, while the game provides state for intensity and events. I have also
+built a custom Twitch viewer-interaction prototype, integrated CrowdControl,
+and done the platform work required to run the game on Steam Deck. Stream
+features remain isolated from the core loop; a community feature should never
+be able to destabilize the single-player game it is decorating.
+
+## Accessibility is part of the system contract
+
+The accessibility plan covers input remapping, toggle-versus-hold actions, text
+and UI scaling, subtitle and closed-caption support, independent audio levels,
+motion and flashing reduction, high-contrast and color-vision options, puzzle
+hints, navigation assistance, and difficulty controls for resources and enemy
+behavior.
+
+Most of that menu is planned work, not a completed suite. Writing it into the
+technical design now still matters: a puzzle framework needs an optional hint
+layer before dozens of puzzles depend on it, important sounds need visual-event
+hooks before the audio pass is final, and input actions need to be remappable
+before they spread through one-off Blueprint graphs.
+
+The companion site follows the same principle today with visible content
+warnings, reduced-motion controls, and privacy choices that leave analytics off
+until a visitor opts in.
+
+## Production is another system I have to design
+
+The game is tracked through linked milestones, issues, discipline documents,
+asset records, and risk notes in Notion. The design document defines the player
+experience; the technical document defines how the systems divide; the art and
+story bibles keep collaborators working from the same canon. Unreal-style asset
+naming and explicit credit metadata are intentionally boring safeguards against
+a multi-year project becoming a folder of files only I understand.
+
+Publicly, [ompgame.com](https://ompgame.com) turns part of that production work
+into a devlog, press kit, release log, and read-only roadmap. I built that site
+as its own Astro application and have a separate
+[case study for the web platform](/projects/ompgame-com/) rather than treating it
+as a footnote to the game.
+
+## Where it stands
+
+One Man's Poison is in active development, focused on the core loop and the
+vertical slice. The spatial inventory is playable and still being connected to
+item use, weapons, and ammunition. The broader Director, hunter, settings, and
+accessibility work is specified and scheduled around that slice. The public
+release remains TBA; the current platform target is PC and Linux.
+
+The most important outcome so far is not a count of systems. It is a clearer
+way to decide which system deserves to exist next: prove the missing-person
+case, the resource decisions, and the trip from safety into danger and back. If
+a feature does not make that loop stronger, it can wait.
