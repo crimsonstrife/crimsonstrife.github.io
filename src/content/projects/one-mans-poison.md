@@ -38,9 +38,10 @@ investigator and wakes as a prisoner, with the building beginning to disobey its
 own floor plan around him.
 
 It's a third-person survival-horror game in active development at
-CrimsonStrife Games for PC and Linux. Some characters originate in the work of
-James Cotton and Wolf359 Productions; the setting, game systems, expanded cast,
-and the shape of this particular story have been developed for the game.
+CrimsonStrife Games for PC and Linux. It uses the title and certain characters
+from the short film *One Man's Poison*, created by James Cotton through Wolf359
+Productions, with permission. The setting, game systems, expanded cast, and the
+shape of this particular story have been developed for the game.
 
 This is a development case study, not a postmortem for something finished. The
 useful story is how a large horror-game premise got cut down into something one

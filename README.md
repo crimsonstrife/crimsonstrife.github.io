@@ -122,4 +122,7 @@ without creating a new Worker version.
 
 ## License
 
-See [LICENSE.MD](LICENSE.MD).
+Source code originally authored for this site is available under the
+[MIT License](LICENSE.MD). Portfolio copy, media, personal likeness, trademarks,
+trade names, logos and other brand assets are not included in that software
+license. Third-party materials retain their respective rights and licenses.

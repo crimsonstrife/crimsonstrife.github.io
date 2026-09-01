@@ -1,0 +1,85 @@
+---
+import PolicyLayout from '../layouts/PolicyLayout.astro';
+import site from '../data/site.json';
+---
+
+<PolicyLayout
+  title="Legal & attributions"
+  description="Ownership, licensing and attribution information for this portfolio and the work it documents."
+  updated="2026-09-01"
+>
+  <h2>Copyright and source license</h2>
+  <p>
+    Unless otherwise credited, original written content, photographs, artwork
+    and portfolio materials on this site are copyright &copy;{' '}
+    {site.copyrightStartYear}&ndash;{new Date().getFullYear()} Patrick Barnhardt.
+  </p>
+  <p>
+    Software source code originally authored for this site is available under{' '}
+    the <a href="https://github.com/crimsonstrife/crimsonstrife.github.io/blob/master/LICENSE.MD" rel="noopener">MIT License</a>.
+    That software license does not grant rights to portfolio copy, photographs,
+    artwork, video, project media, personal likeness, trademarks, trade names,
+    logos or other brand assets unless a file expressly says otherwise.
+    Third-party materials retain their respective rights and licenses.
+  </p>
+
+  <h2>Names and brand identities</h2>
+  <p>
+    CrimsonStrife&trade; and CrimsonStrife Games&trade; are marks used by Patrick
+    Barnhardt. Helical Games and STREAMHA&Uuml;S are original legacy names and
+    brand identities created by Patrick Barnhardt. The Patrick Barnhardt
+    wordmark and monogram, together with the associated original logos and
+    visual identities, are brand assets of Patrick Barnhardt.
+  </p>
+
+  <h2><cite>One Man's Poison</cite></h2>
+  <p>
+    The <cite>One Man's Poison</cite> game uses the title and certain characters
+    originating in the short film <cite>One Man's Poison</cite>, created by
+    James Cotton through Wolf359 Productions, with permission. Rights in the
+    original short film and its characters remain with James Cotton and
+    Wolf359 Productions. Original game-specific code, systems, writing,
+    artwork and other material are owned by or credited to their respective
+    creators.
+  </p>
+
+  <h2>Third-party properties</h2>
+  <p>
+    Portfolio work may identify, depict or comment on third-party companies,
+    products, games and characters. Their names, trademarks, logos and
+    underlying creative properties remain with their respective owners. Their
+    appearance here is for identification, commentary and portfolio
+    documentation and does not imply affiliation, sponsorship or endorsement.
+  </p>
+  <p>
+    Project-specific credits appear alongside the relevant work. Where a
+    project adapts an existing character or property, the portfolio may own or
+    document the newly created model, texture, code or presentation without
+    claiming ownership of the underlying character or property.
+  </p>
+
+  <h2>Open-source and design resources</h2>
+  <ul>
+    <li>
+      Font Awesome 6 Free icons are provided by Fonticons, Inc. through Iconify
+      and are licensed under{' '}
+      <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a>.
+      Brand icons are trademarks of their respective owners.
+    </li>
+    <li>
+      Montserrat, Raleway and Roboto are used under the{' '}
+      <a href="https://openfontlicense.org/" rel="noopener">SIL Open Font License 1.1</a>.
+      Copyright remains with their respective project authors.
+    </li>
+    <li>
+      Other open-source dependencies retain the copyright notices and license
+      terms distributed with their source packages.
+    </li>
+  </ul>
+
+  <h2>Questions or corrections</h2>
+  <p>
+    For a rights question, attribution correction or request concerning
+    material on this site, email{' '}<a href={`mailto:${site.email}`}>{site.email}</a>.
+  </p>
+</PolicyLayout>

@@ -6,6 +6,7 @@
   "description": "Patrick Barnhardt is a software developer in Charlotte, North Carolina — Salesforce administration and development, internal web applications and integrations, plus One Man's Poison, a survival-horror game in Unreal Engine 5.",
   "email": "contact@patrickbarnhardt.info",
   "locale": "en",
+  "copyrightStartYear": 2016,
   "nav": [
     {
       "label": "About",

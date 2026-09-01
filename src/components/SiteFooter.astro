@@ -5,6 +5,9 @@ import site from '../data/site.json';
 
 const social = (await getCollection('social')).sort((a, b) => a.data.order - b.data.order);
 const year = new Date().getFullYear();
+const copyrightYears = site.copyrightStartYear === year
+  ? `${year}`
+  : `${site.copyrightStartYear}\u2013${year}`;
 ---
 
 <footer class="footer">
@@ -41,7 +44,14 @@ const year = new Date().getFullYear();
     </a>
   </div>
 
-  <p class="fine">&copy; {year} {site.name}</p>
+  <div class="fine">
+    <p>&copy; {copyrightYears} {site.name}</p>
+    <nav aria-label="Legal">
+      <a href="/privacy/">Privacy</a>
+      <span aria-hidden="true">&middot;</span>
+      <a href="/legal/">Legal &amp; attributions</a>
+    </nav>
+  </div>
 </footer>
 
 <style>
@@ -141,7 +151,19 @@ const year = new Date().getFullYear();
     border-top: 1px solid rgb(255 255 255 / 0.12);
     font-size: 0.75rem;
     color: var(--color-rule);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 1.5rem;
   }
+
+  .fine nav { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+  .fine a { color: inherit; text-underline-offset: 0.2em; }
+
+  .fine a:hover,
+  .fine a:focus-visible { color: #fff; }
 
   .footer :global(a):focus-visible { outline-color: #fff; }
 </style>
