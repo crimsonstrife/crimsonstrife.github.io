@@ -21,18 +21,31 @@ const interests = (await getCollection('interests')).sort((a, b) => a.data.order
 
 <style>
   .interests {
+    position: relative;
+    padding: 0 var(--content-gutter) calc(var(--section-padding-y) + 1rem);
+    background:
+      linear-gradient(112deg, rgb(0 101 101 / 0.92) 0 34%, transparent 34%),
+      var(--color-dark);
+    color: #fff;
+    clip-path: polygon(0 2.5rem, 24% 0, 100% 1.4rem, 100% calc(100% - 1.5rem), 76% 100%, 0 calc(100% - 0.6rem));
+  }
+
+  .interests :global(.section-header),
+  .row {
     max-width: var(--container-max);
     margin-inline: auto;
-    padding: 0 clamp(1rem, 4vw, 2.25rem) var(--section-padding-y);
   }
+
+  .interests :global(.section-header h2) { color: #fff; }
+  .interests :global(.section-header p) { color: #b7dcda; }
 
   .row {
     list-style: none;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
     gap: clamp(1.25rem, 4vw, 3rem);
   }
 
@@ -40,17 +53,21 @@ const interests = (await getCollection('interests')).sort((a, b) => a.data.order
     display: grid;
     justify-items: center;
     gap: 0.5rem;
-    min-width: 6rem;
+    min-width: 0;
   }
 
   li [data-icon] {
     font-size: 2.2rem;
-    color: var(--color-crimson);
+    color: #b7dcda;
   }
 
   span {
     font-family: var(--font-ui);
     font-size: 0.9rem;
-    color: var(--color-muted);
+    color: rgb(255 255 255 / 0.72);
+  }
+
+  @media (max-width: 34rem) {
+    .row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
 </style>

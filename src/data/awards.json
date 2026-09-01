@@ -5,7 +5,8 @@
     "title": "2023 Distinguished Expert",
     "issuer": "Experts Exchange",
     "issued": "2024-02",
-    "credentialUrl": "https://www.credly.com/badges/d0405f9e-af68-420b-8f47-e53761701d46"
+    "credentialUrl": "https://www.credly.com/badges/d0405f9e-af68-420b-8f47-e53761701d46",
+    "badge": "../assets/images/badges/experts-exchange-distinguished-expert.png"
   },
   {
     "id": "experts-exchange-rookie-of-the-year-2023",
@@ -13,7 +14,8 @@
     "title": "2023 Rookie of the Year",
     "issuer": "Experts Exchange",
     "issued": "2024-02",
-    "credentialUrl": "https://www.credly.com/badges/fd904685-b012-4aa3-b1ac-35eb62047cad"
+    "credentialUrl": "https://www.credly.com/badges/fd904685-b012-4aa3-b1ac-35eb62047cad",
+    "badge": "../assets/images/badges/experts-exchange-rookie-of-the-year.png"
   },
   {
     "id": "experts-exchange-community-builder",
@@ -21,7 +23,8 @@
     "title": "Community Builder",
     "issuer": "Experts Exchange",
     "issued": "2023-10",
-    "credentialUrl": "https://www.credly.com/badges/dbb8e449-193b-412b-8de6-0d90ce229174"
+    "credentialUrl": "https://www.credly.com/badges/dbb8e449-193b-412b-8de6-0d90ce229174",
+    "badge": "../assets/images/badges/experts-exchange-community-builder.png"
   },
   {
     "id": "tai-air-force-jrotc-cadet-award",

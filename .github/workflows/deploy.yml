@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     # Builds run on both branches so the migration branch gets CI,
-    # but the deploy job below is gated to master.
+    # but the deploy jobs below are gated to master.
     branches: [master, astro-replacement]
   pull_request:
     branches: [master]
@@ -40,12 +40,72 @@ jobs:
           # succeeds — see src/lib/github.ts.
           CONTRIBUTIONS_TOKEN: ${{ secrets.CONTRIBUTIONS_TOKEN }}
 
+  contact-worker-check:
+    name: Check contact Worker
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check generated Worker types
+        run: npm run contact:types -- --check
+
+      - name: Type-check contact Worker
+        run: npm run contact:check
+
+      - name: Test contact Worker
+        run: npm run contact:test
+        env:
+          TURNSTILE_SECRET_KEY: test-secret
+
+      - name: Validate contact Worker bundle
+        run: npm run contact:deploy -- --dry-run
+
+  deploy-contact-worker:
+    name: Deploy contact Worker
+    if: >-
+      github.ref == 'refs/heads/master' &&
+      (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    needs: [build, contact-worker-check]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Deploy contact Worker
+        run: npm run contact:deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
   deploy:
     name: Deploy
     # Only master reaches production. Pushes to astro-replacement build
     # and stop, so the live site is never touched before the merge.
     if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
-    needs: build
+    needs: [build, contact-worker-check]
     runs-on: ubuntu-latest
     environment:
       name: github-pages

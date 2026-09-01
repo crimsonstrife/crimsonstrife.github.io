@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
+import CapabilityTracks from '../components/CapabilityTracks.astro';
 import AboutSection from '../components/AboutSection.astro';
 import WorkSection from '../components/WorkSection.astro';
 import FeaturedProject from '../components/FeaturedProject.astro';
@@ -11,11 +12,12 @@ import InterestsSection from '../components/InterestsSection.astro';
 import ContactSection from '../components/ContactSection.astro';
 ---
 
-<BaseLayout>
+<BaseLayout ogType="profile">
   <Hero />
-  <AboutSection />
-  <WorkSection />
+  <CapabilityTracks />
   <FeaturedProject />
+  <WorkSection />
+  <AboutSection />
   <ResumeSection />
   <CertificationsSection />
   <AwardsSection />

@@ -1,7 +1,6 @@
 /*
- * Design tokens extracted from the 2017 site's style.css.
- * This file is the single definition of the site's look — components
- * reference these variables and never hard-code a colour or a face.
+ * Patrick Barnhardt's personal brand system. Components should prefer the
+ * semantic accent and surface tokens so the red/teal balance can evolve here.
  */
 
 @font-face {
@@ -15,18 +14,32 @@
 
 :root {
   /* --- Brand ------------------------------------------------------ */
-  --color-crimson: #a80000;
-  --color-crimson-dark: #8a0000;
-  --color-crimson-tint: #f3e2e0;
+  --color-brand-charcoal: #262324;
+  --color-brand-teal: #006565;
+  --color-brand-teal-dark: #004c4c;
+  --color-brand-teal-tint: #dceaea;
+  --color-brand-red: #a71e22;
+  --color-brand-red-tint: #f4e2e2;
+
+  --color-accent: var(--color-brand-teal);
+  --color-accent-dark: var(--color-brand-teal-dark);
+  --color-accent-tint: var(--color-brand-teal-tint);
+  --color-accent-warm: var(--color-brand-red);
+
+  /* Compatibility aliases while the legacy components are modernized. */
+  --color-crimson: var(--color-accent);
+  --color-crimson-dark: var(--color-accent-dark);
+  --color-crimson-tint: var(--color-accent-tint);
 
   /* --- Neutrals --------------------------------------------------- */
-  --color-ink: #333333;
-  --color-muted: #666666;
-  --color-rule: #cfd0d1;
-  --color-surface: #ffffff;
-  --color-surface-sunk: #f3f3f3;
-  --color-dark: #3c3d42;
-  --color-dark-deep: #303135;
+  --color-ink: #262324;
+  --color-muted: #625d5f;
+  --color-rule: #d8d3cf;
+  --color-surface: #fbfaf7;
+  --color-surface-raised: #ffffff;
+  --color-surface-sunk: #f0eeea;
+  --color-dark: #262324;
+  --color-dark-deep: #181617;
   /* Backdrop for a gallery tile that has no image yet. Tuned to match the
      stage Sketchfab renders models against, so a 3D project without a captured
      poster sits on the same ground as the ones beside it that have one. */
@@ -38,8 +51,7 @@
   --font-ui: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-script: 'Mission Script', 'Brush Script MT', cursive;
 
-  /* Section headers were 45px uppercase bold Montserrat. */
-  --size-section-header: clamp(2rem, 1.4rem + 2.4vw, 2.8125rem);
+  --size-section-header: clamp(2.25rem, 1.55rem + 2.8vw, 3.5rem);
   --size-block-title: 1.5rem;
   --size-body: 1rem;
   --size-small: 0.875rem;
@@ -48,10 +60,13 @@
   --leading-body: 1.65;
 
   /* --- Layout ----------------------------------------------------- */
-  --header-height: 48px;
-  --container-max: 1170px;   /* Bootstrap 3's .container at >=1200px */
-  --section-padding-y: clamp(3.5rem, 8vw, 6.875rem); /* was 110px */
+  --header-height: 72px;
+  --container-max: 1200px;
+  --section-padding-y: clamp(4.5rem, 8vw, 7rem);
   --gutter: 1.25rem;
+  --content-gutter: clamp(1rem, 4vw, 2.25rem);
+  --section-slant: clamp(2.25rem, 5vw, 5rem);
+  --shape-cut: clamp(1rem, 2vw, 2rem);
 
   /* --- Motion ----------------------------------------------------- */
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);

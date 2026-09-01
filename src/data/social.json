@@ -70,5 +70,15 @@
     "icon": "fa6-brands:facebook",
     "color": "#3b5998",
     "description": "My personal social page. Occasionally I upload works in progress."
+  },
+  {
+    "id": "experts-exchange",
+    "order": 9,
+    "label": "Experts Exchange",
+    "url": "https://rdsrc.us/eKmC1R",
+    "canonicalUrl": "https://www.experts-exchange.com/members/Patrick-Barnhardt.html",
+    "icon": "/images/experts-exchange.png",
+    "color": "#2dace2",
+    "description": "Printer-support articles, community answers, and recognition, including two guides with more than 40,000 views each."
   }
 ]

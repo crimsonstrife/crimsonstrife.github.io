@@ -1,0 +1,116 @@
+---
+import { Image, getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+/**
+ * Supporting images for a write-up. Each tile is a trigger for the shared
+ * Lightbox (rendered once by BaseLayout); giving them all the same group id
+ * is what turns prev/next on and keeps paging inside this one set.
+ */
+interface Props {
+  items: { image: ImageMetadata; alt: string; caption?: string }[];
+  title?: string;
+  /** Stable and unique per gallery — the project id does the job. */
+  groupId: string;
+}
+
+const { items, title, groupId } = Astro.props;
+
+// Resolve the full-size source at build time, the same way the archive tiles
+// do, so the lightbox never has to work out an asset URL in the browser.
+const tiles = await Promise.all(
+  items.map(async (item, index) => ({
+    ...item,
+    index,
+    fullSrc: (await getImage({ src: item.image, width: 1600 })).src,
+  }))
+);
+---
+
+{tiles.length > 0 && (
+  <section class="gallery" aria-label={title ?? 'Gallery'}>
+    {title && <h2 class="gallery-title">{title}</h2>}
+    <ul class="grid" role="list">
+      {tiles.map((tile) => (
+        <li>
+          <button
+            type="button"
+            class="shot"
+            data-lightbox-trigger
+            data-kind="image"
+            data-src={tile.fullSrc}
+            data-title={tile.caption ?? tile.alt}
+            data-lightbox-group={groupId}
+            data-lightbox-index={tile.index}
+          >
+            <Image
+              src={tile.image}
+              alt={tile.alt}
+              widths={[320, 640, 960]}
+              sizes="(min-width: 46rem) 15rem, 45vw"
+              loading="lazy"
+            />
+          </button>
+          {tile.caption && <p class="caption">{tile.caption}</p>}
+        </li>
+      ))}
+    </ul>
+  </section>
+)}
+
+<style>
+  .gallery { margin-top: 2.75rem; }
+
+  .gallery-title {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: 0.9rem;
+  }
+
+  .grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+    gap: 1rem;
+  }
+
+  .shot {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    padding: 0;
+    border: 1px solid var(--color-rule);
+    background: var(--color-surface-sunk);
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  .shot :global(img) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--dur) var(--ease);
+  }
+
+  .shot:hover :global(img), .shot:focus-visible :global(img) { transform: scale(1.04); }
+
+  .caption {
+    margin-top: 0.45rem;
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    line-height: 1.4;
+    color: var(--color-muted);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .shot :global(img) { transition: none; }
+    .shot:hover :global(img), .shot:focus-visible :global(img) { transform: none; }
+  }
+</style>

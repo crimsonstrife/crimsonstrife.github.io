@@ -1,8 +1,8 @@
 ---
 title: "Infographic: Legacy Games"
 category: "branding"
-summary: "Created prior to the rebranding of Helical Games, original Legacy Games. This infographic was to explain the studio and it's goals."
-order: 39
+summary: "An infographic explaining what the studio was and where it meant to go, from back when it was still called Legacy Games — before the rebrand to Helical Games."
+order: 42
 media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/72158_10151254894948948_816512030_n.jpg"

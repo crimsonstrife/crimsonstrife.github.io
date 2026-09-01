@@ -33,6 +33,8 @@ const links = z
   .object({
     repo: z.url().optional(),
     live: z.url().optional(),
+    /** Project documentation, when the docs are separate from the live application. */
+    docs: z.url().optional(),
     /** A release or download page, for things that are installed rather than visited. */
     download: z.url().optional(),
   })
@@ -66,6 +68,13 @@ const projects = defineCollection({
           })
         )
         .default([]),
+      /**
+       * Marks a long-form write-up. Drives the "Case study" label, a reading
+       * estimate, and — once there are enough headings — a table of contents.
+       * Everything else about the entry is unchanged; this only affects how
+       * the detail page is presented.
+       */
+      caseStudy: z.boolean().default(false),
       tags: z.array(z.string()).default([]),
       /**
        * Attribution for artwork that isn't Patrick's. Rendered wherever the
@@ -106,6 +115,24 @@ const projects = defineCollection({
         }),
         ])
         .optional(),
+      /**
+       * Supporting images shown after the write-up, opening in the shared
+       * lightbox. Paths are relative to this Markdown file, like `media`.
+       */
+      gallery: z
+        .object({
+          title: z.string().optional(),
+          items: z
+            .array(
+              z.object({
+                image: image(),
+                alt: z.string(),
+                caption: z.string().optional(),
+              })
+            )
+            .min(1),
+        })
+        .optional(),
     }),
 });
 
@@ -131,13 +158,21 @@ const pages = defineCollection({
   }),
 });
 
-/** Shared shape for the two résumé timelines. */
+/** Shared shape for the two resumé timelines. */
 const timelineEntry = z.object({
   id: z.string(),
   order: z.number().int().positive(),
   title: z.string(),
   organization: z.string(),
   period: z.string(),
+  /**
+   * Machine-readable bounds for the same span `period` describes in prose.
+   * `end` omitted means the role is current. These drive the printable
+   * resumé's history window and the structured data — `period` stays the
+   * only thing rendered, so the two can never disagree on screen.
+   */
+  start: z.string().regex(/^\d{4}(-\d{2})?$/, 'Expected YYYY or YYYY-MM'),
+  end: z.string().regex(/^\d{4}(-\d{2})?$/, 'Expected YYYY or YYYY-MM').optional(),
   summary: z.string().default(''),
   /** Bullet points, where the role has them. */
   highlights: z.array(z.string()).default([]),
@@ -145,7 +180,7 @@ const timelineEntry = z.object({
   credentialUrl: z.url().optional(),
   /**
    * Technical/professional roles. The site lists every entry (the most recent
-   * few up front, the rest behind a toggle); the printable résumé at /resume
+   * few up front, the rest behind a toggle); the printable resumé at /resume
    * shows only the entries flagged here.
    */
   technical: z.boolean().default(false),
@@ -184,14 +219,16 @@ const certifications = defineCollection({
 /** Recognitions rather than credentials: community awards, cadet honours. */
 const awards = defineCollection({
   loader: file('src/data/awards.json'),
-  schema: z.object({
-    id: z.string(),
-    order: z.number().int().positive(),
-    title: z.string(),
-    issuer: z.string(),
-    issued: z.string().regex(/^\d{4}-\d{2}$/, 'Expected a YYYY-MM month').optional(),
-    credentialUrl: z.url().optional(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      id: z.string(),
+      order: z.number().int().positive(),
+      title: z.string(),
+      issuer: z.string(),
+      issued: z.string().regex(/^\d{4}-\d{2}$/, 'Expected a YYYY-MM month').optional(),
+      credentialUrl: z.url().optional(),
+      badge: image().optional(),
+    }),
 });
 
 const skills = defineCollection({
@@ -230,8 +267,15 @@ const social = defineCollection({
     order: z.number().int().positive(),
     label: z.string(),
     url: z.url(),
-    icon: z.string().regex(/^[a-z0-9-]+:[a-z0-9-]+$/, 'Expected an Iconify name like "fa6-brands:github"'),
-    color: z.string().regex(/^#[0-9a-fA-F]{6}$/, 'Expected a 6-digit hex colour'),
+    /** Full profile URL used by structured data when the visible link is a short URL. */
+    canonicalUrl: z.url().optional(),
+    icon: z
+      .string()
+      .regex(
+        /^(?:[a-z0-9-]+:[a-z0-9-]+|\/[a-z0-9/_-]+\.png)$/,
+        'Expected an Iconify name like "fa6-brands:github" or a root-relative PNG path'
+      ),
+    color: z.string().regex(/^#[0-9a-fA-F]{6}$/, 'Expected a 6-digit hex color'),
     description: z.string(),
   }),
 });

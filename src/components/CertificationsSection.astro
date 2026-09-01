@@ -11,7 +11,7 @@ const certifications = (await getCollection('certifications')).sort(
 ---
 
 <section id="certifications" class="certs">
-  <SectionHeader title="Certifications" />
+  <SectionHeader eyebrow="Credentials, current and lapsed" title="Certifications" />
 
   <ul class="grid" role="list">
     {certifications.map((entry) => {
@@ -22,7 +22,7 @@ const certifications = (await getCollection('certifications')).sort(
 
           <div class="body">
             {entry.data.badge && (
-              <Image class="badge" src={entry.data.badge} alt="" width={110} height={110} loading="lazy" />
+              <Image class="badge" src={entry.data.badge} alt="" width={144} loading="lazy" />
             )}
 
             {entry.data.issuer && <p class="issuer">{entry.data.issuer}</p>}
@@ -72,21 +72,35 @@ const certifications = (await getCollection('certifications')).sort(
     border: 1px solid var(--color-rule);
     display: flex;
     flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    background: var(--color-surface-raised);
+    box-shadow: 0 1rem 2.5rem rgb(38 35 36 / 0.05);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 1rem), calc(100% - 1rem) 100%, 0 100%);
   }
 
-  h3 {
-    background: var(--color-crimson);
-    color: #fff;
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 0.25rem;
+    background: var(--color-accent);
+  }
+
+  .certs .card > h3 {
+    background: transparent;
+    color: var(--color-ink);
     font-size: 1rem;
-    font-weight: 400;
+    font-weight: 700;
     line-height: 1.35;
-    text-align: center;
-    padding: 0.85rem 0.9rem;
+    text-align: left;
+    padding: 1.35rem 1.25rem 1rem;
     margin: 0;
+    border-bottom: 1px solid var(--color-rule);
   }
 
   /* Lapsed credentials stay, but read as past rather than current. */
-  .card.expired h3 { background: var(--color-dark); }
+  .card.expired::before { background: var(--color-dark); }
 
   .body {
     flex: 1;
@@ -99,7 +113,12 @@ const certifications = (await getCollection('certifications')).sort(
     text-align: center;
   }
 
-  .badge { object-fit: contain; margin-bottom: 0.25rem; }
+  .badge {
+    width: 8.25rem;
+    height: 8.25rem;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+  }
 
   .issuer {
     font-family: var(--font-display);

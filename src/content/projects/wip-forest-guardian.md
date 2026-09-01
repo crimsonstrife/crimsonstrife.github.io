@@ -1,8 +1,8 @@
 ---
 title: "WIP - Forest Guardian"
 category: "3d"
-summary: ""
-order: 19
+summary: "A made-up enemy — a Forest Guardian — started for a World of Warcraft character design competition. I never finished it in time."
+order: 22
 media:
   type: "sketchfab"
   modelId: "Fm7leJ26YIk1CVJqcuxRW2zTgD"

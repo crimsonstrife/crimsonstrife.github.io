@@ -79,18 +79,43 @@ To see the real data locally:
 CONTRIBUTIONS_TOKEN=github_pat_... npm run build
 ```
 
+## Contact form
+
+The site remains static on GitHub Pages, while contact submissions post to a
+small Cloudflare Worker at `contact.patrickbarnhardt.info`. The Worker validates
+the request, checks its Turnstile token, and uses Cloudflare Email Service to
+deliver it to `contact@patrickbarnhardt.info`.
+
+The two homepage entry points share the endpoint but send different fields and
+inbox subjects for project enquiries and game-development conversations.
+
+For a local end-to-end form test, run the site and Worker in separate terminals:
+
+```bash
+cp workers/contact/.dev.vars.example workers/contact/.dev.vars
+npm run dev
+npm run contact:dev
+```
+
+Local builds use Cloudflare's public dummy Turnstile keys. The production widget
+is restricted to `www.patrickbarnhardt.info`, and the production Worker accepts
+only that hostname and the `portfolio-contact` action.
+
 ## Deployment
 
-Pushing to `master` triggers `.github/workflows/deploy.yml`, which builds
-the site and publishes it to GitHub Pages. Pushes to `astro-replacement`
-build but do **not** deploy, so the live site is never touched before the
-merge.
+Pushing to `master` triggers `.github/workflows/deploy.yml`, which builds the
+site, validates the contact Worker, publishes the site to GitHub Pages, and
+deploys the Worker to Cloudflare. Pushes to `astro-replacement` and pull
+requests run the checks but do **not** deploy. Nightly builds refresh the site
+without creating a new Worker version.
 
 ### Before the first deploy
 
 - Set **Settings → Pages → Source** to **GitHub Actions** (it is currently
   set to deploy from a branch).
 - Add the `CONTRIBUTIONS_TOKEN` secret described above.
+- Add `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` as GitHub Actions
+  secrets for Worker deployments.
 - Confirm the custom domain still resolves — `public/CNAME` carries
   `www.patrickbarnhardt.info`.
 

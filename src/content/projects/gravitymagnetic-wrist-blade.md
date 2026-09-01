@@ -1,8 +1,8 @@
 ---
 title: "Gravity/Magnetic Wrist Blade"
 category: "cad"
-summary: "A simple gravity and magnet powered \"hidden wrist blade\" as shown in the game Assassin's Creed."
-order: 40
+summary: "A CAD model of the hidden wrist blade from Assassin's Creed, built around a gravity and magnet mechanism."
+order: 43
 media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/4529_86619358947_5937265_n.jpg"

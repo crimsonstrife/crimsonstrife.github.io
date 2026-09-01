@@ -1,8 +1,8 @@
 ---
 title: "Helical Games: Aidan Orbit Head Texture WIP"
 category: "3d"
-summary: ""
-order: 16
+summary: "Aidan Orbit's head, textured as an attempt at a painterly style. He has gray skin, which turned out to be hard to paint without it reading as rock."
+order: 19
 media:
   type: "sketchfab"
   modelId: "dbbfe84ee023481685d3e9d0bd8a3461"

@@ -2,31 +2,41 @@
 import { Icon } from 'astro-icon/components';
 import site from '../data/site.json';
 
-// Stubbed until a form provider is chosen. With no endpoint the form still
-// works: submitting composes a mail message instead of POSTing anywhere.
-const endpoint = site.contact.endpoint as string | null;
+const endpoint = import.meta.env.DEV
+  ? 'http://localhost:8787/'
+  : site.contact.endpoint;
+const turnstileSiteKey = import.meta.env.DEV
+  ? '1x00000000000000000000AA'
+  : site.contact.turnstileSiteKey;
 ---
 
 <section id="contact" class="contact">
   <span id="project-section" class="legacy-anchor" aria-hidden="true"></span>
   <div class="panels">
     <div class="panel start">
-      <p class="kicker">Like what you see?</p>
-      <h2>Start a project</h2>
+      <p class="kicker">Got something broken or half-built?</p>
+      <h2>Tell me about it</h2>
       <button type="button" class="cta" data-open-contact data-intent="project">
-        <span>Let's go</span>
+        <span>Start a conversation</span>
       </button>
     </div>
 
     <div class="panel message">
-      <p class="kicker">Want to tell me something?</p>
-      <h2>Send a message</h2>
+      <p class="kicker">Making a game or a tool?</p>
+      <h2>Let's compare notes</h2>
       <button type="button" class="cta" data-open-contact data-intent="message">
-        <span>Tell me</span>
+        <span>Talk game development</span>
       </button>
     </div>
   </div>
 </section>
+
+<script
+  is:inline
+  src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+  async
+  defer
+></script>
 
 <dialog id="contact-dialog" class="dialog" aria-labelledby="contact-heading">
   <button type="button" class="close" aria-label="Close">
@@ -34,90 +44,186 @@ const endpoint = site.contact.endpoint as string | null;
   </button>
 
   <div class="head">
-    <p class="kicker">Let's take the next step together</p>
-    <h2 id="contact-heading">Start your project</h2>
+    <p class="kicker" id="contact-kicker">A few fields, then it becomes an email</p>
+    <h2 id="contact-heading">What do you need?</h2>
+    <p class="intro" id="contact-intro">
+      Tell me what you are trying to make, improve, or untangle.
+    </p>
   </div>
 
   <form
     class="form"
-    method={endpoint ? 'post' : 'dialog'}
-    action={endpoint ?? undefined}
-    data-fallback={endpoint ? undefined : `mailto:${site.email}`}
+    method="post"
+    action={endpoint}
   >
+    <input id="c-intent" name="Inquiry type" type="hidden" value="Project enquiry" />
+
+    <p class="trap" aria-hidden="true">
+      <label for="c-website">Leave this field empty</label>
+      <input id="c-website" name="Website" type="text" tabindex="-1" autocomplete="off" />
+    </p>
+
     <p class="field">
       <label for="c-name">Name <span aria-hidden="true">*</span></label>
       <input id="c-name" name="name" type="text" required autocomplete="name" />
     </p>
     <p class="field">
-      <label for="c-company">Company</label>
-      <input id="c-company" name="company" type="text" autocomplete="organization" />
-    </p>
-    <p class="field">
       <label for="c-email">Email <span aria-hidden="true">*</span></label>
       <input id="c-email" name="email" type="email" required autocomplete="email" />
     </p>
-    <p class="field">
+
+    <p class="field" data-intent-field="project">
+      <label for="c-company">Company or organization</label>
+      <input id="c-company" name="Company or organization" type="text" autocomplete="organization" />
+    </p>
+    <p class="field" data-intent-field="project">
       <label for="c-phone">Telephone</label>
-      <input id="c-phone" name="phone" type="tel" autocomplete="tel" />
+      <input id="c-phone" name="Telephone" type="tel" autocomplete="tel" />
+    </p>
+    <p class="field" data-intent-field="project">
+      <label for="c-project-type">What can I help with?</label>
+      <select id="c-project-type" name="Project type">
+        <option value="" selected>Select one</option>
+        <option>Website or web application</option>
+        <option>Business system or integration</option>
+        <option>Developer tooling or workflow</option>
+        <option>Something else</option>
+      </select>
+    </p>
+    <p class="field" data-intent-field="project">
+      <label for="c-timeline">Ideal timing</label>
+      <select id="c-timeline" name="Ideal timing">
+        <option value="" selected>Flexible or not sure yet</option>
+        <option>As soon as possible</option>
+        <option>Within 1–3 months</option>
+        <option>Within 3–6 months</option>
+        <option>More than 6 months out</option>
+      </select>
+    </p>
+
+    <p class="field" data-intent-field="game" hidden>
+      <label for="c-studio">Studio or team</label>
+      <input id="c-studio" name="Studio or team" type="text" autocomplete="organization" disabled />
+    </p>
+    <p class="field" data-intent-field="game" hidden>
+      <label for="c-project-link">Project or build link</label>
+      <input id="c-project-link" name="Project or build link" type="url" inputmode="url" placeholder="https://" disabled />
+    </p>
+    <p class="field" data-intent-field="game" hidden>
+      <label for="c-game-topic">What should we compare notes on?</label>
+      <select id="c-game-topic" name="Game development topic" disabled>
+        <option value="" selected>Select one</option>
+        <option>Unreal Engine</option>
+        <option>Gameplay systems</option>
+        <option>Tools and pipeline</option>
+        <option>Technical design</option>
+        <option>Independent development</option>
+        <option>Something else</option>
+      </select>
+    </p>
+    <p class="field" data-intent-field="game" hidden>
+      <label for="c-game-stage">Project stage</label>
+      <select id="c-game-stage" name="Project stage" disabled>
+        <option value="" selected>Select one</option>
+        <option>Exploring an idea</option>
+        <option>Prototype</option>
+        <option>In production</option>
+        <option>Preparing to ship</option>
+        <option>Post-launch</option>
+        <option>No current project</option>
+      </select>
     </p>
     <p class="field wide">
       <label for="c-subject">Subject</label>
-      <input id="c-subject" name="subject" type="text" />
+      <input id="c-subject" name="Subject" type="text" placeholder="A quick summary" />
     </p>
     <p class="field wide">
-      <label for="c-message">Message <span aria-hidden="true">*</span></label>
-      <textarea id="c-message" name="message" rows="5" required></textarea>
+      <label for="c-message" id="contact-message-label">
+        What are you hoping to build? <span aria-hidden="true">*</span>
+      </label>
+      <textarea
+        id="c-message"
+        name="Message"
+        rows="5"
+        required
+        placeholder="A little context, the outcome you need, and where things stand today."
+      ></textarea>
     </p>
+
+    <div class="turnstile-field">
+      <div
+        class="cf-turnstile"
+        data-sitekey={turnstileSiteKey}
+        data-action="portfolio-contact"
+        data-theme="auto"
+      ></div>
+    </div>
 
     <p class="submit">
-      <button type="submit">Send</button>
+      <button type="submit" id="contact-submit">Send project enquiry</button>
     </p>
 
-    {!endpoint && (
-      <p class="note">
-        No form service is wired up yet, so this opens your mail app with the
-        details filled in. Set <code>contact.endpoint</code> in
-        <code>src/data/site.json</code> to post it instead.
-      </p>
-    )}
+    <p class="note">
+      Your message is sent securely and delivered directly to
+      <a href={`mailto:${site.email}`}>{site.email}</a>.
+    </p>
   </form>
 </dialog>
 
 <style>
   .contact {
     position: relative;
-    padding-block: clamp(4rem, 10vw, 8.125rem);
-    background:
-      linear-gradient(100deg, var(--color-crimson) 0 52%, var(--color-surface) 52%);
+    margin-top: -2rem;
+    padding-block: calc(var(--section-padding-y) + 2rem) var(--section-padding-y);
+    background: var(--color-dark-deep);
+    clip-path: polygon(0 var(--section-slant), 27% 0, 100% clamp(1.2rem, 3vw, 3rem), 100% 100%, 0 100%);
   }
 
   .panels {
     max-width: var(--container-max);
     margin-inline: auto;
-    padding-inline: clamp(1rem, 4vw, 2.25rem);
+    padding-inline: var(--content-gutter);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: clamp(1.5rem, 5vw, 4rem);
-    align-items: center;
+    gap: 0;
+    align-items: stretch;
   }
 
-  .panel { text-transform: uppercase; }
+  .panel {
+    min-height: 26rem;
+    padding: clamp(2rem, 5vw, 4rem);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
 
-  .start { color: #fff; }
+  .start {
+    z-index: 1;
+    margin-right: -4rem;
+    padding-right: clamp(5rem, 9vw, 8rem);
+    color: #fff;
+    background: var(--color-accent);
+    clip-path: polygon(0 0, 100% 0, calc(100% - 4rem) 100%, 0 100%);
+  }
   .message {
+    padding-left: clamp(6rem, 10vw, 9rem);
     color: var(--color-ink);
-    padding-left: clamp(1.5rem, 7vw, 6rem);
+    background: var(--color-surface-raised);
+    clip-path: polygon(4rem 0, 100% 0, 100% 100%, 0 100%);
   }
 
   .kicker {
     font-family: var(--font-ui);
     font-size: clamp(0.85rem, 1.6vw, 1.125rem);
-    text-transform: none;
+    color: inherit;
+    opacity: 0.72;
   }
 
   .panel h2 {
-    font-size: clamp(1.75rem, 4.5vw, 3.4375rem);
-    margin-block: clamp(0.75rem, 2vw, 2.5rem);
+    max-width: 12ch;
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    margin-block: 0.75rem clamp(1.5rem, 3vw, 2.5rem);
     line-height: 1.05;
   }
 
@@ -125,29 +231,30 @@ const endpoint = site.contact.endpoint as string | null;
     display: inline-block;
     border: 0;
     cursor: pointer;
-    padding: clamp(0.9rem, 2vw, 1.5rem) clamp(1.4rem, 3vw, 2.1875rem);
+    padding: 0.9rem 1.2rem;
+    padding-right: 1.8rem;
+    clip-path: polygon(0 0, 100% 0, calc(100% - 0.8rem) 100%, 0 100%);
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: clamp(1.05rem, 2.4vw, 1.875rem);
-    text-transform: uppercase;
-    transform: skewX(-10deg);
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
     transition: background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
   }
 
-  .cta span { display: block; transform: skewX(10deg); }
+  .cta span { display: block; }
 
-  .start .cta { background: #fff; color: var(--color-crimson); }
-  .start .cta:hover, .start .cta:focus-visible { background: #000; color: #fff; }
+  .start .cta { background: #fff; color: var(--color-accent-dark); }
+  .start .cta:hover, .start .cta:focus-visible { background: var(--color-dark); color: #fff; }
 
   .message .cta { background: var(--color-ink); color: #fff; }
-  .message .cta:hover, .message .cta:focus-visible { background: var(--color-crimson); }
+  .message .cta:hover, .message .cta:focus-visible { background: var(--color-accent-warm); }
 
   @media (max-width: 46rem) {
-    .contact {
-      background: linear-gradient(190deg, var(--color-crimson) 0 50%, var(--color-surface) 50%);
-    }
+    .contact { clip-path: polygon(0 2rem, 28% 0, 100% 1rem, 100% 100%, 0 100%); }
     .panels { grid-template-columns: 1fr; }
-    .message { padding-left: 0; }
+    .panel { min-height: 20rem; }
+    .start { margin: 0 0 -2rem; padding: 2.5rem 2rem 4rem; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 2rem), 30% 100%, 0 calc(100% - 1rem)); }
+    .message { padding: 4.5rem 2rem 2.5rem; clip-path: polygon(0 2rem, 70% 0, 100% 1rem, 100% 100%, 0 100%); }
   }
 
   /* --- Dialog ----------------------------------------------------- */
@@ -157,7 +264,7 @@ const endpoint = site.contact.endpoint as string | null;
     padding: clamp(1.5rem, 4vw, 2.75rem);
     max-width: min(94vw, 46rem);
     width: 100%;
-    background: var(--color-surface);
+    background: var(--color-surface-raised);
     color: var(--color-ink);
     position: relative;
   }
@@ -187,6 +294,13 @@ const endpoint = site.contact.endpoint as string | null;
     margin-top: 0.35rem;
   }
 
+  .intro {
+    color: var(--color-muted);
+    line-height: 1.55;
+    margin: 0.75rem 0 0;
+    max-width: 52ch;
+  }
+
   .form {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -194,7 +308,13 @@ const endpoint = site.contact.endpoint as string | null;
   }
 
   .field { display: flex; flex-direction: column; gap: 0.35rem; margin: 0; }
-  .field.wide, .submit, .note { grid-column: 1 / -1; }
+  .field.wide, .turnstile-field, .submit, .note { grid-column: 1 / -1; }
+
+  .turnstile-field {
+    min-height: 4.1rem;
+    display: flex;
+    align-items: center;
+  }
 
   label {
     font-family: var(--font-display);
@@ -207,7 +327,7 @@ const endpoint = site.contact.endpoint as string | null;
 
   label span { color: var(--color-crimson); }
 
-  input, textarea {
+  input, textarea, select {
     font-family: var(--font-ui);
     font-size: 1rem;
     padding: 0.7rem 0.8rem;
@@ -217,7 +337,9 @@ const endpoint = site.contact.endpoint as string | null;
     width: 100%;
   }
 
-  input:focus-visible, textarea:focus-visible {
+  select { min-height: 2.85rem; }
+
+  input:focus-visible, textarea:focus-visible, select:focus-visible {
     outline: 2px solid var(--color-crimson);
     outline-offset: 1px;
     border-color: transparent;
@@ -249,10 +371,15 @@ const endpoint = site.contact.endpoint as string | null;
     padding-top: 0.9rem;
   }
 
-  .note code {
-    font-family: ui-monospace, Menlo, Consolas, monospace;
-    background: var(--color-surface-sunk);
-    padding: 0.05em 0.3em;
+  .note a { color: inherit; }
+
+  .trap {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
   }
 
   @media (max-width: 34rem) {
@@ -269,15 +396,71 @@ const endpoint = site.contact.endpoint as string | null;
 <script>
   const dialog = document.querySelector<HTMLDialogElement>('#contact-dialog');
   const heading = document.querySelector<HTMLHeadingElement>('#contact-heading');
+  const kicker = document.querySelector<HTMLParagraphElement>('#contact-kicker');
+  const intro = document.querySelector<HTMLParagraphElement>('#contact-intro');
   const form = dialog?.querySelector<HTMLFormElement>('.form');
   const subject = dialog?.querySelector<HTMLInputElement>('#c-subject');
+  const messageLabel = dialog?.querySelector<HTMLLabelElement>('#contact-message-label');
+  const message = dialog?.querySelector<HTMLTextAreaElement>('#c-message');
+  const intentInput = dialog?.querySelector<HTMLInputElement>('#c-intent');
+  const submitButton = dialog?.querySelector<HTMLButtonElement>('#contact-submit');
+  const intentFields = dialog?.querySelectorAll<HTMLElement>('[data-intent-field]');
+
+  type ContactIntent = 'project' | 'game';
+
+  const content = {
+    project: {
+      kicker: "Let's take the next step together",
+      heading: 'Start your project',
+      intro: 'Tell me what you are trying to make, improve, or untangle.',
+      subjectPlaceholder: 'A quick summary',
+      messageLabel: 'What are you hoping to build?',
+      messagePlaceholder: 'A little context, the outcome you need, and where things stand today.',
+      intent: 'Project enquiry',
+      submit: 'Send project enquiry',
+    },
+    game: {
+      kicker: 'Making games is better with good company',
+      heading: 'Talk game development',
+      intro: 'Share what you are working through, or just say hello to a fellow game developer.',
+      subjectPlaceholder: 'What would you like to talk about?',
+      messageLabel: 'What would you like to compare notes on?',
+      messagePlaceholder: 'Tell me about the project, problem, or idea that is on your mind.',
+      intent: 'Game development conversation',
+      submit: 'Send game dev message',
+    },
+  } satisfies Record<ContactIntent, Record<string, string>>;
+
+  function setIntent(intent: ContactIntent) {
+    const copy = content[intent];
+    if (heading) heading.textContent = copy.heading;
+    if (kicker) kicker.textContent = copy.kicker;
+    if (intro) intro.textContent = copy.intro;
+    if (subject) subject.placeholder = copy.subjectPlaceholder;
+    if (messageLabel) {
+      messageLabel.replaceChildren(document.createTextNode(`${copy.messageLabel} `));
+      const required = document.createElement('span');
+      required.setAttribute('aria-hidden', 'true');
+      required.textContent = '*';
+      messageLabel.append(required);
+    }
+    if (message) message.placeholder = copy.messagePlaceholder;
+    if (intentInput) intentInput.value = copy.intent;
+    if (submitButton) submitButton.textContent = copy.submit;
+
+    intentFields?.forEach((field) => {
+      const visible = field.dataset.intentField === intent;
+      field.hidden = !visible;
+      field.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>('input, select, textarea')
+        .forEach((control) => { control.disabled = !visible; });
+    });
+  }
 
   document.querySelectorAll<HTMLButtonElement>('[data-open-contact]').forEach((button) => {
     button.addEventListener('click', () => {
       if (!dialog) return;
-      const project = button.dataset.intent === 'project';
-      if (heading) heading.textContent = project ? 'Start your project' : 'Send a message';
-      if (subject && !subject.value) subject.value = project ? 'Project enquiry' : '';
+      const intent: ContactIntent = button.dataset.intent === 'project' ? 'project' : 'game';
+      setIntent(intent);
       dialog.showModal();
     });
   });
@@ -288,25 +471,9 @@ const endpoint = site.contact.endpoint as string | null;
     if (event.target === dialog) dialog.close();
   });
 
-  // With no endpoint configured, compose a mail message from the fields.
-  form?.addEventListener('submit', (event) => {
-    const fallback = form.dataset.fallback;
-    if (!fallback) return;
-
-    event.preventDefault();
-    const data = new FormData(form);
-    const lines = ['name', 'company', 'email', 'phone']
-      .map((key) => {
-        const value = String(data.get(key) ?? '').trim();
-        return value ? `${key[0].toUpperCase()}${key.slice(1)}: ${value}` : null;
-      })
-      .filter(Boolean);
-
-    const body = [...lines, '', String(data.get('message') ?? '')].join('\n');
-    const subjectLine = String(data.get('subject') ?? '').trim() || 'Message from patrickbarnhardt.info';
-
-    window.location.href =
-      `${fallback}?subject=${encodeURIComponent(subjectLine)}&body=${encodeURIComponent(body)}`;
-    dialog?.close();
+  form?.addEventListener('submit', () => {
+    if (!submitButton || !form.checkValidity()) return;
+    submitButton.disabled = true;
+    submitButton.textContent = 'Sending…';
   });
 </script>

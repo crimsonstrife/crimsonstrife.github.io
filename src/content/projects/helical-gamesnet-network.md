@@ -1,8 +1,8 @@
 ---
 title: "Helical Games.net Network"
 category: "web"
-summary: "An ongoing project to design a functioning and efficient network for a development studio and it's fanbase. I usually avoid CMS systems in favor of coding from scratch, but as this site is to be maintained by other users, I needed to eliminate HTML, PHP, and CSS knowledge as a requirement."
-order: 9
+summary: "A site and community network for Helical Games and the people who followed it. I’d normally build something like this from scratch, but other people had to keep it running, and I wasn’t going to make HTML, PHP and CSS a condition of posting an update — so it ran on a CMS."
+order: 12
 media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/HelicalGamesNET-thumb.png"

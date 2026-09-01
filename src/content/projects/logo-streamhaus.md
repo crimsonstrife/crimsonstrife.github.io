@@ -1,8 +1,8 @@
 ---
 title: "Logo: STREAMHAÜS"
 category: "branding"
-summary: "Logo created for a Game Streaming Team."
-order: 34
+summary: "A logo for STREAMHAÜS, a game streaming team."
+order: 37
 media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/MYdRSFZ.png"

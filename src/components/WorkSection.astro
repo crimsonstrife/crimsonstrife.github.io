@@ -6,12 +6,17 @@ import SectionHeader from './SectionHeader.astro';
 import GitHubActivity from './GitHubActivity.astro';
 import { hasWriteup } from '../lib/content';
 
-const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+// The featured project receives a full case-study treatment immediately above
+// this archive, so it does not need a duplicate tile here.
+const projects = (await getCollection('projects'))
+  .filter((project) => !project.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
 const allCategories = (await getCollection('categories')).sort((a, b) => a.data.order - b.data.order);
 
 // Only offer filters that actually have work behind them.
 const used = new Set(projects.map((p) => p.data.category));
 const categories = allCategories.filter((c) => used.has(c.data.id));
+const ARCHIVE_BATCH_SIZE = 8;
 
 /**
  * Pre-resolve each tile's lightbox payload at build time so the dialog only
@@ -52,9 +57,7 @@ const tiles = await Promise.all(
 
 <section id="work" class="work">
   <span id="showbox-helicalgamesnet" class="legacy-anchor" aria-hidden="true"></span>
-  <SectionHeader title="My Work" />
-
-  <GitHubActivity />
+  <SectionHeader eyebrow="Everything else" title="Project archive" />
 
   <div class="filters">
     <ul role="list">
@@ -71,18 +74,19 @@ const tiles = await Promise.all(
     </ul>
   </div>
 
-  <ul class="grid" role="list">
-    {tiles.map(({ project, href, kind, src, poster, posterImage, thumb }) => {
+  <ul id="project-grid" class="grid" role="list">
+    {tiles.map(({ project, href, kind, src, poster, posterImage, thumb }, index) => {
       // An anchor when there's a page to go to, a button when there's something
       // to open in the lightbox, and inert when there is neither.
       const Tag = href ? 'a' : kind === 'none' ? 'div' : 'button';
       const interactive = Boolean(href) || kind !== 'none';
       return (
-      <li class="cell" data-category={project.data.category}>
+      <li class="cell" data-category={project.data.category} hidden={index >= ARCHIVE_BATCH_SIZE}>
         <Tag
           class:list={['tile', { inert: !interactive }]}
           href={href}
           type={Tag === 'button' ? 'button' : undefined}
+          data-lightbox-trigger={href || !interactive ? undefined : true}
           data-kind={href || !interactive ? undefined : kind}
           data-src={href ? undefined : src}
           data-title={project.data.title}
@@ -148,15 +152,25 @@ const tiles = await Promise.all(
   </ul>
 
   <p class="empty" hidden>Nothing in that category yet.</p>
-</section>
 
-<dialog id="lightbox" class="lightbox" aria-label="Project viewer">
-  <button type="button" class="close" aria-label="Close">
-    <Icon name="fa6-solid:xmark" aria-hidden="true" />
-  </button>
-  <div class="stage"></div>
-  <p class="caption"></p>
-</dialog>
+  <div class="archive-controls" data-batch-size={ARCHIVE_BATCH_SIZE}>
+    <p class="archive-count" aria-live="polite">
+      Showing {Math.min(ARCHIVE_BATCH_SIZE, tiles.length)} of {tiles.length} projects
+    </p>
+    <button
+      type="button"
+      class="load-more"
+      aria-controls="project-grid"
+      hidden={tiles.length <= ARCHIVE_BATCH_SIZE}
+    >
+      Show {Math.min(ARCHIVE_BATCH_SIZE, Math.max(0, tiles.length - ARCHIVE_BATCH_SIZE))} more projects
+    </button>
+  </div>
+
+  <div class="github">
+    <GitHubActivity />
+  </div>
+</section>
 
 <style>
   .work {
@@ -173,7 +187,7 @@ const tiles = await Promise.all(
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 0.15rem 0.35rem;
   }
 
@@ -207,6 +221,7 @@ const tiles = await Promise.all(
     padding: 0;
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(0.5rem, 1.2vw, 0.9rem);
   }
 
   @media (max-width: 62rem) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -226,6 +241,7 @@ const tiles = await Promise.all(
     background: var(--color-surface-sunk);
     cursor: pointer;
     overflow: hidden;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 0.9rem), calc(100% - 0.9rem) 100%, 0 100%);
   }
 
   /* Nothing to open and nowhere to go — don't promise a click. */
@@ -273,7 +289,7 @@ const tiles = await Promise.all(
     justify-content: center;
     gap: 0.5rem;
     padding: 1.25rem;
-    background: rgb(168 0 0 / 0.9);
+    background: rgb(0 101 101 / 0.92);
     color: #fff;
     text-align: center;
     opacity: 0;
@@ -288,7 +304,7 @@ const tiles = await Promise.all(
     font-size: clamp(0.95rem, 1.6vw, 1.4rem);
     font-weight: 700;
     line-height: 1.25;
-    text-transform: uppercase;
+    text-wrap: balance;
   }
 
   .summary {
@@ -318,64 +334,64 @@ const tiles = await Promise.all(
     padding: 3rem 0;
   }
 
-  /* --- Lightbox --------------------------------------------------- */
+  .archive-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: clamp(1.5rem, 4vw, 2.5rem);
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-rule);
+  }
 
-  .lightbox {
-    border: 0;
-    padding: 0;
+  .archive-count {
+    color: var(--color-muted);
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+  }
+
+  .load-more {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-accent);
     background: transparent;
-    max-width: min(96vw, 1200px);
-    max-height: 94svh;
-    overflow: visible;
-    color: #fff;
-  }
-
-  .lightbox::backdrop { background: rgb(24 20 19 / 0.92); }
-
-  .stage {
-    display: grid;
-    place-items: center;
-    background: #000;
-  }
-
-  .stage :global(img) {
-    display: block;
-    max-width: 100%;
-    max-height: 82svh;
-    width: auto;
-    height: auto;
-  }
-
-  .stage :global(iframe) {
-    display: block;
-    width: min(92vw, 1100px);
-    aspect-ratio: 16 / 9;
-    max-height: 82svh;
-    border: 0;
-  }
-
-  .caption {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    text-align: center;
-    padding: 0.9rem 1rem 0;
-  }
-
-  .close {
-    position: absolute;
-    top: -2.75rem;
-    right: 0;
-    background: none;
-    border: 0;
-    color: #fff;
-    font-size: 1.5rem;
+    color: var(--color-accent-dark);
     cursor: pointer;
-    padding: 0.4rem;
+    padding: 0.75rem 1.05rem;
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    clip-path: polygon(0 0, 100% 0, calc(100% - 0.7rem) 100%, 0 100%);
+    transition: background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
   }
 
-  .close:hover { color: var(--color-crimson); }
+  .load-more:hover,
+  .load-more:focus-visible {
+    background: var(--color-accent);
+    color: #fff;
+  }
+
+  .load-more[hidden] { display: none; }
+
+  @media (max-width: 34rem) {
+    .archive-controls {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .archive-count { text-align: center; }
+  }
+
+  .github {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-top: clamp(4rem, 9vw, 7rem);
+    padding-top: 0;
+  }
+
   /* Anchors from the 2017 site, kept so old links and bookmarks still land. */
   .legacy-anchor {
     display: block;
@@ -387,65 +403,52 @@ const tiles = await Promise.all(
 <script>
   // --- Filtering ---------------------------------------------------
   const chips = document.querySelectorAll<HTMLButtonElement>('.chip');
-  const cells = document.querySelectorAll<HTMLLIElement>('.cell');
+  const cells = [...document.querySelectorAll<HTMLLIElement>('.cell')];
   const empty = document.querySelector<HTMLParagraphElement>('.empty');
+  const archiveControls = document.querySelector<HTMLDivElement>('.archive-controls');
+  const archiveCount = document.querySelector<HTMLParagraphElement>('.archive-count');
+  const loadMore = document.querySelector<HTMLButtonElement>('.load-more');
+  const batchSize = Number(archiveControls?.dataset.batchSize ?? 8);
+  let activeFilter = 'all';
+  let visibleLimit = batchSize;
+
+  function renderArchive() {
+    const matching = cells.filter(
+      (cell) => activeFilter === 'all' || cell.dataset.category === activeFilter
+    );
+
+    cells.forEach((cell) => { cell.hidden = true; });
+    matching.slice(0, visibleLimit).forEach((cell) => { cell.hidden = false; });
+
+    const visible = Math.min(visibleLimit, matching.length);
+    const remaining = Math.max(0, matching.length - visible);
+    if (empty) empty.hidden = matching.length > 0;
+    if (archiveCount) {
+      archiveCount.textContent = matching.length > 0
+        ? `Showing ${visible} of ${matching.length} projects`
+        : 'No projects in this category';
+    }
+    if (loadMore) {
+      loadMore.hidden = remaining === 0;
+      const nextBatch = Math.min(batchSize, remaining);
+      loadMore.textContent = `Show ${nextBatch} more project${nextBatch === 1 ? '' : 's'}`;
+    }
+  }
 
   chips.forEach((chip) => {
     chip.addEventListener('click', () => {
-      const filter = chip.dataset.filter ?? 'all';
+      activeFilter = chip.dataset.filter ?? 'all';
+      visibleLimit = batchSize;
       chips.forEach((c) => c.setAttribute('aria-pressed', String(c === chip)));
-
-      let shown = 0;
-      cells.forEach((cell) => {
-        const match = filter === 'all' || cell.dataset.category === filter;
-        cell.hidden = !match;
-        if (match) shown += 1;
-      });
-
-      if (empty) empty.hidden = shown > 0;
+      renderArchive();
     });
   });
 
-  // --- Lightbox ----------------------------------------------------
-  const dialog = document.querySelector<HTMLDialogElement>('#lightbox');
-  const stage = dialog?.querySelector<HTMLDivElement>('.stage');
-  const caption = dialog?.querySelector<HTMLParagraphElement>('.caption');
-
-  function clearStage() {
-    if (stage) stage.replaceChildren();
-  }
-
-  document.querySelectorAll<HTMLButtonElement>('button.tile').forEach((tile) => {
-    tile.addEventListener('click', () => {
-      if (!dialog || !stage || !caption) return;
-      const { kind, src, title } = tile.dataset;
-      clearStage();
-
-      if (kind === 'image') {
-        const img = document.createElement('img');
-        img.src = src ?? '';
-        img.alt = title ?? '';
-        stage.append(img);
-      } else {
-        const frame = document.createElement('iframe');
-        frame.src = src ?? '';
-        frame.title = title ?? '';
-        frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; xr-spatial-tracking';
-        frame.allowFullscreen = true;
-        stage.append(frame);
-      }
-
-      caption.textContent = title ?? '';
-      dialog.showModal();
-    });
+  loadMore?.addEventListener('click', () => {
+    visibleLimit += batchSize;
+    renderArchive();
   });
 
-  // Stop playback when the dialog closes.
-  dialog?.addEventListener('close', clearStage);
-  dialog?.querySelector('.close')?.addEventListener('click', () => dialog.close());
+  renderArchive();
 
-  // Click outside the content closes it.
-  dialog?.addEventListener('click', (event) => {
-    if (event.target === dialog) dialog.close();
-  });
 </script>

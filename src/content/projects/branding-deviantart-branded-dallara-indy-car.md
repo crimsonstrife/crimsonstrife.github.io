@@ -1,8 +1,8 @@
 ---
 title: "Branding: DeviantArt branded Dallara Indy Car"
 category: "branding"
-summary: "As an additional exercise to the Dallara Indycar Model, I gave it a branding/painjob. The QR code is real and actually leads to the site where the work was originally posted."
-order: 27
+summary: "A livery for the Dallara Indycar model, done as a follow-on exercise. The QR code on it is real, and it still points at the page where the work was originally posted."
+order: 30
 media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/d4ew62s.png"

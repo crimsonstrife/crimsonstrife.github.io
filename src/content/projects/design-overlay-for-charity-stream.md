@@ -1,8 +1,8 @@
 ---
 title: "Design: Overlay for Charity Stream"
 category: "branding"
-summary: "An overlay created for a special gaming stream event."
-order: 38
+summary: "A broadcast overlay built for a charity gaming stream."
+order: 41
 media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/W0IzVkG.png"

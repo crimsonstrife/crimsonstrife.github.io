@@ -1,7 +1,7 @@
 ---
 title: "ompgame.com"
 category: "web"
-summary: "The marketing and press site for One Man's Poison. an Astro build with a press kit, devlog, live roadmap and a feedback system."
+summary: "The marketing and press site for One Man's Poison. It's an Astro build with a press kit, devlog, live roadmap and a feedback system."
 order: 1
 media:
   type: "image"

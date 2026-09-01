@@ -1,8 +1,8 @@
 ---
 title: "Blackhawk"
 category: "3d"
-summary: ""
-order: 21
+summary: "An early model of a Blackhawk helicopter, built for a Game Design class at Stanly Community College."
+order: 24
 media:
   type: "sketchfab"
   modelId: "AcQ3DEbmLiurZpBuL2yQ946s907"

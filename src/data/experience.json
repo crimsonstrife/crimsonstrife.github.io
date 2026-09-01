@@ -5,8 +5,14 @@
     "title": "Programmer Analyst",
     "organization": "Charlotte Pipe and Foundry Company — Charlotte, NC",
     "period": "March 2023 - Present",
-    "summary": "Salesforce administration and development, alongside software development and user support.",
-    "highlights": [],
+    "start": "2023-03",
+    "summary": "Salesforce administration and development for a pipe and fitting manufacturer, plus internal web applications and the support that comes with both.",
+    "highlights": [
+      "Build and maintain the Salesforce applications the business runs on, and support the people using them when something stops working.",
+      "Design screen flows and automations in Flow first, and write Apex or Lightning Web Components when a declarative build genuinely won't do the job.",
+      "Manage the org's integrations with the systems around it. Includes but not limited: LinkedIn Sales Nav, PDF Butler, EventSpark, RingCentral, and Mulesoft. As well as proprietary apps.",
+      "Build internal web applications and tools outside Salesforce."
+    ],
     "technical": true
   },
   {
@@ -15,13 +21,15 @@
     "title": "IT Technician / Webmaster",
     "organization": "Modern Impressions — Charlotte, NC",
     "period": "December 2020 - March 2023",
-    "summary": "",
+    "start": "2020-12",
+    "end": "2023-03",
+    "summary": "Ran the company website for a Charlotte office-technology dealer while doing IT support for its managed-services customers.",
     "highlights": [
-      "Provide connectivity support to copier/printer users.",
-      "Provide general IT support to Managed IT Customers.",
-      "Part of internal System Admin team.",
-      "Webmaster/Web Developer duties for the company website.",
-      "Support specialty software for customers, such as AutoStore."
+      "Kept networked copiers and printers working inside customer environments — drivers, scan destinations and authentication.",
+      "Handled general IT support for managed-services customers, and sat on the internal sysadmin team.",
+      "Ran the company website: a purchased WordPress theme I extended rather than replaced, including a Net Promoter Score panel on the homepage fed live from the dealer's survey service.",
+      "Wrote the technical knowledge-base articles, including two printer service-code guides on Experts Exchange that have each passed 40,000 views.",
+      "Supported the specialty software customers depended on, mostly AutoStore document capture."
     ],
     "technical": true
   },
@@ -31,11 +39,13 @@
     "title": "IT Support Technician",
     "organization": "Modern Impressions — Charlotte, NC",
     "period": "July 2018 - December 2020",
-    "summary": "",
+    "start": "2018-07",
+    "end": "2020-12",
+    "summary": "The support-side role I started in at Modern Impressions, before picking up the webmaster work.",
     "highlights": [
-      "Provide connectivity support to copier/printer users.",
-      "Provide general IT support to Managed IT Customers.",
-      "Support specialty software for customers, such as AutoStore."
+      "Kept networked copiers and printers working inside customer environments — drivers, scan destinations and authentication.",
+      "Handled general IT support for managed-services customers.",
+      "Supported the specialty software customers depended on, mostly AutoStore document capture."
     ],
     "technical": true
   },
@@ -45,13 +55,16 @@
     "title": "GIS Technician & Software Troubleshooting",
     "organization": "QC Data — Charlotte, NC Area",
     "period": "June 2013 - July 2018",
-    "summary": "",
+    "start": "2013-06",
+    "end": "2018-07",
+    "summary": "Five years of GIS data work and the software support that came with it.",
     "highlights": [
-      "Correcting database errors for production users.",
-      "Providing technical support and error handling on proprietary software for ~60-80 local users.",
-      "Windows and proprietary software support.",
-      "Software and hardware installation.",
-      "Machine migration/re-imaging."
+      "Utilized various software to update AT&T databases on multiple projects per AT&T guidelines.",
+      "Drafted and engineered construction workprints for various AT&T Fiber and Copper Cable projects.",
+      "Joined the Specialized Services team to learn new software and perform tasks for AT&T engineers.",
+      "Corrected database errors for production users.",
+      "Supported the proprietary GIS software for roughly 60 to 80 local users, and handled the errors it threw at them.",
+      "Windows support, software and hardware installation, and machine migration and re-imaging."
     ],
     "technical": true
   },
@@ -61,8 +74,13 @@
     "title": "Founder, Project Lead, Modeler/Animator",
     "organization": "Helical Games — Charlotte, NC",
     "period": "October 2012 - January 2018",
-    "summary": "Indie game studio I founded.",
-    "highlights": [],
+    "start": "2012-10",
+    "end": "2018-01",
+    "summary": "An indie studio I founded and ran for five years, leading the projects and doing the modeling and animation myself.",
+    "highlights": [
+      "Led and designed DIVERSE, the studio's main project. We shut development down before release because we couldn't cover the cost.",
+      "Did not, with hindsight, have anything like enough experience to be running this at the time."
+    ],
     "technical": true
   },
   {
@@ -71,6 +89,8 @@
     "title": "Summer Temp Packaging",
     "organization": "Charlotte Pipe and Foundry — Monroe, NC",
     "period": "May 2012 - August 2012",
+    "start": "2012-05",
+    "end": "2012-08",
     "summary": "Night shift packing PVC and ABS parts for shipping.",
     "highlights": [],
     "technical": false
@@ -81,11 +101,13 @@
     "title": "Marketing and Media Studio Intern",
     "organization": "Stanly Community College — Albemarle, NC",
     "period": "June 2011 - August 2012",
-    "summary": "",
+    "start": "2011-06",
+    "end": "2012-08",
+    "summary": "A year in the college's media department, on the production side.",
     "highlights": [
-      "Film crew in recording studio.",
-      "Archive past recordings.",
-      "Created animations for TV presentations, and helped in production of several TV specials."
+      "Worked the film crew in the recording studio.",
+      "Archived the back catalogue of past recordings.",
+      "Made animations for TV presentations, and helped produce several TV specials."
     ],
     "technical": true
   },
@@ -95,6 +117,8 @@
     "title": "Cashier / Pizza Maker",
     "organization": "Sbarro — Concord, NC",
     "period": "November 2010 - December 2010",
+    "start": "2010-11",
+    "end": "2010-12",
     "summary": "Cooked pizza and ran the front line, including a register.",
     "highlights": [],
     "technical": false
@@ -105,7 +129,9 @@
     "title": "Game Design Examiner",
     "organization": "Examiner.com — Remote",
     "period": "April 2010 - March 2013",
-    "summary": "Wrote videogame reviews from a design aspect.",
+    "start": "2010-04",
+    "end": "2013-03",
+    "summary": "Wrote videogame reviews that argued about design rather than handing out scores.",
     "highlights": [],
     "technical": true
   },
@@ -115,7 +141,9 @@
     "title": "Senior Sales Associate, Game Rentals and Sales",
     "organization": "Movie Gallery — Rockwell, NC",
     "period": "August 2009 - November 2009",
-    "summary": "Point of contact for knowledge of consoles, games and peripherals.",
+    "start": "2009-08",
+    "end": "2009-11",
+    "summary": "The person on the floor who knew the consoles, the games and the peripherals.",
     "highlights": [],
     "technical": false
   }

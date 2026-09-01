@@ -1,14 +1,14 @@
 {
   "name": "Patrick Barnhardt",
   "shortName": "Patrick Barnhardt",
-  "title": "The Work of Patrick Barnhardt",
-  "tagline": "Web Design & Development / Game Design & Development",
-  "description": "Portfolio and resume of Patrick Barnhardt — game development, web development, and design.",
+  "title": "Patrick Barnhardt — Software & Game Developer",
+  "tagline": "Business software and a horror game",
+  "description": "Patrick Barnhardt is a software developer in Charlotte, North Carolina — Salesforce administration and development, internal web applications and integrations, plus One Man's Poison, a survival-horror game in Unreal Engine 5.",
   "email": "contact@patrickbarnhardt.info",
   "locale": "en",
   "nav": [
     {
-      "label": "Who Am I?",
+      "label": "About",
       "href": "/#about"
     },
     {
@@ -16,7 +16,7 @@
       "href": "/#work"
     },
     {
-      "label": "Résumé",
+      "label": "Resumé",
       "href": "/#resume"
     },
     {
@@ -29,8 +29,14 @@
     }
   ],
   "contact": {
-    "//": "Phase 1 stub. Set endpoint to a form service URL to make the modal live; until then the form falls back to a mailto: link.",
-    "endpoint": null,
-    "method": "POST"
+    "//": "The Cloudflare Worker validates and emails static-site form submissions to the public contact address.",
+    "endpoint": "https://contact.patrickbarnhardt.info/",
+    "turnstileSiteKey": "0x4AAAAAAEj6m5GJ-ihp4ZZA",
+    "successPath": "/contact/thanks/"
+  },
+  "resume": {
+    "//": "Printable resume history window. Shows at least minEntries roles, and keeps going until the printed history spans minYears. Conventional guidance is 10-15 years.",
+    "minEntries": 5,
+    "minYears": 10
   }
 }

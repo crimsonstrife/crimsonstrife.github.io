@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
 import SectionHeader from './SectionHeader.astro';
@@ -8,13 +9,19 @@ const awards = (await getCollection('awards')).sort((a, b) => a.data.order - b.d
 ---
 
 <section id="awards" class="awards">
-  <SectionHeader title="Honors & Awards" />
+  <SectionHeader eyebrow="From the communities I am in" title="Honors & Awards" />
 
   <ul class="list" role="list">
     {awards.map((entry) => (
       <li>
-        <Icon class="mark" name="fa6-solid:award" aria-hidden="true" />
-        <div>
+        <div class="badge-well">
+          {entry.data.badge ? (
+            <Image class="badge" src={entry.data.badge} alt="" width={136} loading="lazy" />
+          ) : (
+            <Icon class="mark" name="fa6-solid:award" aria-hidden="true" />
+          )}
+        </div>
+        <div class="copy">
           <h3>{entry.data.title}</h3>
           <p class="meta">
             {entry.data.issuer}
@@ -42,21 +49,47 @@ const awards = (await getCollection('awards')).sort((a, b) => a.data.order - b.d
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 clamp(2rem, 6vw, 5rem);
+    border-top: 1px solid var(--color-rule);
   }
 
-  li {
+  .awards .list > li {
+    position: relative;
     display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    border-left: 3px solid var(--color-crimson);
-    padding: 0.25rem 0 0.25rem 1.1rem;
+    align-items: center;
+    gap: 1.25rem;
+    min-height: 10.5rem;
+    border-bottom: 1px solid var(--color-rule);
+    padding: 1.5rem 1rem 1.5rem 0;
   }
 
-  .mark { font-size: 1.6rem; color: var(--color-crimson); flex: none; margin-top: 0.1rem; }
+  .awards .list > li::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    width: 2.5rem;
+    height: 0.24rem;
+    background: var(--color-accent-warm);
+    clip-path: polygon(0 0, 100% 0, 78% 100%, 0 100%);
+  }
 
-  h3 { font-size: 1rem; text-transform: uppercase; }
+  .badge-well {
+    width: 7.5rem;
+    height: 7.5rem;
+    flex: none;
+    display: grid;
+    place-items: center;
+    background: transparent;
+    clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
+  }
+
+  .badge { width: 7rem; height: 7rem; object-fit: contain; }
+
+  .mark { font-size: 2rem; color: var(--color-accent); }
+
+  .awards .list h3 { font-size: 1rem; line-height: 1.35; text-transform: none; }
 
   .meta {
     font-family: var(--font-ui);
@@ -78,4 +111,14 @@ const awards = (await getCollection('awards')).sort((a, b) => a.data.order - b.d
   }
 
   a:hover, a:focus-visible { text-decoration: underline; }
+
+  @media (max-width: 30rem) {
+    .awards .list > li { align-items: flex-start; min-height: 0; }
+    .badge-well { width: 5.5rem; height: 5.5rem; }
+    .badge { width: 5.1rem; height: 5.1rem; }
+  }
+
+  @media (max-width: 48rem) {
+    .list { grid-template-columns: 1fr; }
+  }
 </style>
