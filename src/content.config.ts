@@ -66,6 +66,13 @@ const projects = defineCollection({
           })
         )
         .default([]),
+      /**
+       * Marks a long-form write-up. Drives the "Case study" label, a reading
+       * estimate, and — once there are enough headings — a table of contents.
+       * Everything else about the entry is unchanged; this only affects how
+       * the detail page is presented.
+       */
+      caseStudy: z.boolean().default(false),
       tags: z.array(z.string()).default([]),
       /**
        * Attribution for artwork that isn't Patrick's. Rendered wherever the
@@ -105,6 +112,24 @@ const projects = defineCollection({
           poster: image().optional(),
         }),
         ])
+        .optional(),
+      /**
+       * Supporting images shown after the write-up, opening in the shared
+       * lightbox. Paths are relative to this Markdown file, like `media`.
+       */
+      gallery: z
+        .object({
+          title: z.string().optional(),
+          items: z
+            .array(
+              z.object({
+                image: image(),
+                alt: z.string(),
+                caption: z.string().optional(),
+              })
+            )
+            .min(1),
+        })
         .optional(),
     }),
 });

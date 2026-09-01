@@ -1,0 +1,218 @@
+---
+import { Icon } from 'astro-icon/components';
+
+/**
+ * The one media viewer for the whole site, rendered once from BaseLayout.
+ *
+ * It has to be central rather than per-component: two copies would mean two
+ * elements with id="lightbox", which is invalid markup. Anything that wants to
+ * open it just renders a button carrying `data-lightbox-trigger` plus the
+ * payload attributes below — a single delegated listener does the rest, so
+ * this component and its callers never need to know about each other.
+ *
+ *   data-lightbox-trigger  presence marks the element as a trigger
+ *   data-kind              "image" renders an <img>, anything else an <iframe>
+ *   data-src               resolved at build time by the caller
+ *   data-title             caption, and alt/title text
+ *
+ * Optional, for sets that should page:
+ *   data-lightbox-group    triggers sharing a value cycle with prev/next
+ *   data-lightbox-index    position within that group
+ */
+---
+
+<dialog id="lightbox" class="lightbox" aria-label="Media viewer">
+  {/* Keep .close first: showModal() focuses the first focusable child, and it
+      has been the close button since this dialog was in WorkSection. The nav
+      buttons are absolutely positioned, so source order costs them nothing. */}
+  <button type="button" class="close" aria-label="Close">
+    <Icon name="fa6-solid:xmark" aria-hidden="true" />
+  </button>
+  <button type="button" class="nav prev" aria-label="Previous" hidden>
+    <Icon name="fa6-solid:chevron-left" aria-hidden="true" />
+  </button>
+  <div class="stage"></div>
+  <p class="caption"></p>
+  <button type="button" class="nav next" aria-label="Next" hidden>
+    <Icon name="fa6-solid:chevron-right" aria-hidden="true" />
+  </button>
+</dialog>
+
+<style>
+  .lightbox {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    max-width: min(96vw, 1200px);
+    max-height: 94svh;
+    overflow: visible;
+    color: #fff;
+  }
+
+  .lightbox::backdrop { background: rgb(24 20 19 / 0.92); }
+
+  .stage {
+    display: grid;
+    place-items: center;
+    background: #000;
+  }
+
+  .stage :global(img) {
+    display: block;
+    max-width: 100%;
+    max-height: 82svh;
+    width: auto;
+    height: auto;
+  }
+
+  .stage :global(iframe) {
+    display: block;
+    width: min(92vw, 1100px);
+    aspect-ratio: 16 / 9;
+    max-height: 82svh;
+    border: 0;
+  }
+
+  /* Not uppercased: this used to caption single-word project titles, but a
+     gallery caption is a sentence and shouting it costs legibility. */
+  .caption {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.88rem;
+    line-height: 1.45;
+    text-align: center;
+    max-width: 62ch;
+    margin-inline: auto;
+    padding: 0.9rem 1rem 0;
+  }
+
+  .close {
+    position: absolute;
+    top: -2.75rem;
+    right: 0;
+    background: none;
+    border: 0;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.4rem;
+  }
+
+  .close:hover { color: var(--color-accent); }
+
+  .nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgb(0 0 0 / 0.45);
+    border: 0;
+    color: #fff;
+    font-size: 1.25rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+  }
+
+  .nav.prev { left: -1rem; }
+  .nav.next { right: -1rem; }
+  .nav:hover, .nav:focus-visible { background: var(--color-accent); }
+  .nav[hidden] { display: none; }
+
+  @media (max-width: 40rem) {
+    .nav.prev { left: 0.25rem; }
+    .nav.next { right: 0.25rem; }
+  }
+</style>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>('#lightbox');
+  const stage = dialog?.querySelector<HTMLDivElement>('.stage');
+  const caption = dialog?.querySelector<HTMLParagraphElement>('.caption');
+  const closeBtn = dialog?.querySelector<HTMLButtonElement>('.close');
+  const prevBtn = dialog?.querySelector<HTMLButtonElement>('.nav.prev');
+  const nextBtn = dialog?.querySelector<HTMLButtonElement>('.nav.next');
+
+  /** Only set when the trigger belongs to a group worth paging through. */
+  let group: { members: HTMLElement[]; index: number } | null = null;
+
+  function clearStage() {
+    stage?.replaceChildren();
+  }
+
+  function show(trigger: HTMLElement) {
+    if (!stage) return;
+    const { kind, src, title } = trigger.dataset;
+    clearStage();
+
+    if (kind === 'image') {
+      const img = document.createElement('img');
+      img.src = src ?? '';
+      img.alt = title ?? '';
+      stage.append(img);
+    } else {
+      const frame = document.createElement('iframe');
+      frame.src = src ?? '';
+      frame.title = title ?? '';
+      frame.allow =
+        'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; xr-spatial-tracking';
+      frame.allowFullscreen = true;
+      stage.append(frame);
+    }
+
+    if (caption) caption.textContent = title ?? '';
+  }
+
+  function step(delta: number) {
+    if (!group) return;
+    group.index = (group.index + delta + group.members.length) % group.members.length;
+    show(group.members[group.index]);
+  }
+
+  function open(trigger: HTMLElement) {
+    if (!dialog) return;
+    const { lightboxGroup, lightboxIndex } = trigger.dataset;
+
+    if (lightboxGroup && lightboxIndex !== undefined) {
+      const members = [
+        ...document.querySelectorAll<HTMLElement>(
+          `[data-lightbox-trigger][data-lightbox-group="${CSS.escape(lightboxGroup)}"]`
+        ),
+      ].sort((a, b) => Number(a.dataset.lightboxIndex) - Number(b.dataset.lightboxIndex));
+      group = members.length > 1 ? { members, index: Number(lightboxIndex) } : null;
+    } else {
+      group = null;
+    }
+
+    if (prevBtn) prevBtn.hidden = !group;
+    if (nextBtn) nextBtn.hidden = !group;
+
+    show(trigger);
+    dialog.showModal();
+  }
+
+  // One delegated listener rather than binding each trigger at load: it works
+  // for triggers rendered by any component, and survives the archive filter
+  // showing and hiding tiles after this script has run.
+  document.addEventListener('click', (event) => {
+    const trigger = (event.target as HTMLElement).closest<HTMLElement>('[data-lightbox-trigger]');
+    if (trigger) open(trigger);
+  });
+
+  prevBtn?.addEventListener('click', () => step(-1));
+  nextBtn?.addEventListener('click', () => step(1));
+  closeBtn?.addEventListener('click', () => dialog?.close());
+
+  dialog?.addEventListener('keydown', (event) => {
+    if (!group) return;
+    if (event.key === 'ArrowLeft') { event.preventDefault(); step(-1); }
+    if (event.key === 'ArrowRight') { event.preventDefault(); step(1); }
+  });
+
+  // Escape and backdrop-click closing are native <dialog> behaviour.
+  dialog?.addEventListener('close', () => { clearStage(); group = null; });
+  dialog?.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+</script>

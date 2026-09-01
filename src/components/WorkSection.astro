@@ -86,6 +86,7 @@ const tiles = await Promise.all(
           class:list={['tile', { inert: !interactive }]}
           href={href}
           type={Tag === 'button' ? 'button' : undefined}
+          data-lightbox-trigger={href || !interactive ? undefined : true}
           data-kind={href || !interactive ? undefined : kind}
           data-src={href ? undefined : src}
           data-title={project.data.title}
@@ -170,14 +171,6 @@ const tiles = await Promise.all(
     <GitHubActivity />
   </div>
 </section>
-
-<dialog id="lightbox" class="lightbox" aria-label="Project viewer">
-  <button type="button" class="close" aria-label="Close">
-    <Icon name="fa6-solid:xmark" aria-hidden="true" />
-  </button>
-  <div class="stage"></div>
-  <p class="caption"></p>
-</dialog>
 
 <style>
   .work {
@@ -399,64 +392,6 @@ const tiles = await Promise.all(
     padding-top: 0;
   }
 
-  /* --- Lightbox --------------------------------------------------- */
-
-  .lightbox {
-    border: 0;
-    padding: 0;
-    background: transparent;
-    max-width: min(96vw, 1200px);
-    max-height: 94svh;
-    overflow: visible;
-    color: #fff;
-  }
-
-  .lightbox::backdrop { background: rgb(24 20 19 / 0.92); }
-
-  .stage {
-    display: grid;
-    place-items: center;
-    background: #000;
-  }
-
-  .stage :global(img) {
-    display: block;
-    max-width: 100%;
-    max-height: 82svh;
-    width: auto;
-    height: auto;
-  }
-
-  .stage :global(iframe) {
-    display: block;
-    width: min(92vw, 1100px);
-    aspect-ratio: 16 / 9;
-    max-height: 82svh;
-    border: 0;
-  }
-
-  .caption {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    text-align: center;
-    padding: 0.9rem 1rem 0;
-  }
-
-  .close {
-    position: absolute;
-    top: -2.75rem;
-    right: 0;
-    background: none;
-    border: 0;
-    color: #fff;
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 0.4rem;
-  }
-
-  .close:hover { color: var(--color-crimson); }
   /* Anchors from the 2017 site, kept so old links and bookmarks still land. */
   .legacy-anchor {
     display: block;
@@ -516,46 +451,4 @@ const tiles = await Promise.all(
 
   renderArchive();
 
-  // --- Lightbox ----------------------------------------------------
-  const dialog = document.querySelector<HTMLDialogElement>('#lightbox');
-  const stage = dialog?.querySelector<HTMLDivElement>('.stage');
-  const caption = dialog?.querySelector<HTMLParagraphElement>('.caption');
-
-  function clearStage() {
-    if (stage) stage.replaceChildren();
-  }
-
-  document.querySelectorAll<HTMLButtonElement>('button.tile').forEach((tile) => {
-    tile.addEventListener('click', () => {
-      if (!dialog || !stage || !caption) return;
-      const { kind, src, title } = tile.dataset;
-      clearStage();
-
-      if (kind === 'image') {
-        const img = document.createElement('img');
-        img.src = src ?? '';
-        img.alt = title ?? '';
-        stage.append(img);
-      } else {
-        const frame = document.createElement('iframe');
-        frame.src = src ?? '';
-        frame.title = title ?? '';
-        frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; xr-spatial-tracking';
-        frame.allowFullscreen = true;
-        stage.append(frame);
-      }
-
-      caption.textContent = title ?? '';
-      dialog.showModal();
-    });
-  });
-
-  // Stop playback when the dialog closes.
-  dialog?.addEventListener('close', clearStage);
-  dialog?.querySelector('.close')?.addEventListener('click', () => dialog.close());
-
-  // Click outside the content closes it.
-  dialog?.addEventListener('click', (event) => {
-    if (event.target === dialog) dialog.close();
-  });
 </script>

@@ -1,0 +1,134 @@
+---
+import type { MarkdownHeading } from 'astro';
+
+/**
+ * Two variants rather than one element that changes role: a sticky nav beside
+ * the article on wide screens, and a closed <details> above it on narrow ones.
+ * A <details> cannot be held open by CSS without breaking its own disclosure
+ * behaviour, so swapping between two static elements is simpler than fighting
+ * the platform for one.
+ */
+interface Props {
+  /** Already filtered to the depths worth listing. */
+  headings: MarkdownHeading[];
+}
+
+const { headings } = Astro.props;
+---
+
+<nav class="toc toc-wide" aria-label="Table of contents">
+  <p class="toc-label">On this page</p>
+  <ul>
+    {headings.map((heading) => (
+      <li class:list={[`depth-${heading.depth}`]}>
+        <a href={`#${heading.slug}`} data-slug={heading.slug}>{heading.text}</a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<details class="toc toc-narrow">
+  <summary>On this page</summary>
+  <ul>
+    {headings.map((heading) => (
+      <li class:list={[`depth-${heading.depth}`]}>
+        <a href={`#${heading.slug}`}>{heading.text}</a>
+      </li>
+    ))}
+  </ul>
+</details>
+
+<style>
+  /* The parent article places this in column 1 when it is a grid; below the
+     breakpoint the parent is display:block and this is inert. */
+  .toc { grid-column: 1; }
+
+  .toc-wide { display: none; }
+  .toc-narrow { display: block; margin-bottom: 2rem; }
+
+  /* Keep this breakpoint in step with `.project.has-toc` in
+     src/pages/projects/[...slug].astro — media queries cannot read tokens. */
+  @media (min-width: 72rem) {
+    .toc-wide {
+      display: block;
+      position: sticky;
+      /* The site header is fixed, so clear it. */
+      top: calc(var(--header-height) + 2rem);
+      max-height: calc(100svh - var(--header-height) - 4rem);
+      overflow-y: auto;
+    }
+
+    .toc-narrow { display: none; }
+  }
+
+  .toc-label, summary {
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  summary {
+    cursor: pointer;
+    padding: 0.85rem 1rem;
+    background: var(--color-surface-sunk);
+    border: 1px solid var(--color-rule);
+  }
+
+  details[open] summary { border-bottom: 0; }
+
+  .toc ul { list-style: none; margin: 0; padding: 0; }
+  .toc-narrow ul { padding: 0.75rem 1rem 1rem; border: 1px solid var(--color-rule); border-top: 0; }
+  .toc-wide ul { margin-top: 0.75rem; border-left: 2px solid var(--color-rule); }
+
+  .toc li a {
+    display: block;
+    padding: 0.35rem 0 0.35rem 0.9rem;
+    margin-left: -2px;
+    border-left: 2px solid transparent;
+    font-family: var(--font-ui);
+    font-size: 0.82rem;
+    line-height: 1.4;
+    color: var(--color-muted);
+    text-decoration: none;
+  }
+
+  .toc li.depth-3 a { padding-left: 1.7rem; font-size: 0.78rem; }
+  .toc li a:hover, .toc li a:focus-visible { color: var(--color-ink); }
+
+  .toc li a[aria-current='true'] {
+    color: var(--color-accent);
+    border-left-color: var(--color-accent);
+    font-weight: 600;
+  }
+</style>
+
+<script>
+  // Highlight the section currently in view. Only the wide variant needs it —
+  // the narrow one is opened for a single jump, not left open while scrolling.
+  const links = document.querySelectorAll<HTMLAnchorElement>('.toc-wide a[data-slug]');
+
+  if (links.length && 'IntersectionObserver' in window) {
+    const headerHeight =
+      getComputedStyle(document.documentElement).getPropertyValue('--header-height').trim() || '72px';
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.find((entry) => entry.isIntersecting);
+        if (!visible) return;
+        links.forEach((link) => {
+          if (link.dataset.slug === visible.target.id) link.setAttribute('aria-current', 'true');
+          else link.removeAttribute('aria-current');
+        });
+      },
+      { rootMargin: `-${headerHeight} 0px -70% 0px`, threshold: 0 }
+    );
+
+    links.forEach((link) => {
+      const target = link.dataset.slug ? document.getElementById(link.dataset.slug) : null;
+      if (target) observer.observe(target);
+    });
+  }
+</script>

@@ -11,6 +11,13 @@ const featured = (await getCollection('projects'))
 const media = featured?.data.media;
 const artwork = media?.type === 'image' ? (media.full ?? media.thumbnail) : undefined;
 const href = featured && hasWriteup(featured.body) ? `/projects/${featured.id}/` : undefined;
+
+// Only promise a case study when the entry actually is one.
+const cta = href
+  ? featured?.data.caseStudy
+    ? 'Read the case study'
+    : 'Read the write-up'
+  : 'View project';
 const external = featured?.data.links.live ?? featured?.data.links.download ?? featured?.data.links.repo;
 const link = href ?? external;
 ---
@@ -63,7 +70,7 @@ const link = href ?? external;
 
         {link && (
           <a class="cta" href={link} rel={href ? undefined : 'noopener'}>
-            {href ? 'Read the case study' : 'View project'} <span aria-hidden="true">→</span>
+            {cta} <span aria-hidden="true">→</span>
           </a>
         )}
       </div>

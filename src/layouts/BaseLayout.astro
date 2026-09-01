@@ -9,6 +9,7 @@ import '../styles/global.css';
 import { getCollection } from 'astro:content';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import Lightbox from '../components/Lightbox.astro';
 import site from '../data/site.json';
 
 interface Props {
@@ -75,6 +76,9 @@ const personSchema = {
     </main>
 
     {chrome && <SiteFooter />}
+
+    {/* One viewer for every page. Inert until something triggers it. */}
+    <Lightbox />
   </body>
 </html>
 
