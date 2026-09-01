@@ -127,6 +127,15 @@ those fields you either write one article hedged into uselessness or you write
 eight and let the reader guess. With them, a reader lands on an article that is
 already narrowed to their machine and their computer.
 
+Two of the troubleshooting articles I wrote for Modern Impressions were later
+published on Experts Exchange, where each has drawn more than 40,000 views:
+
+- [F248 Service Code Errors — Kyocera Printers](https://www.experts-exchange.com/articles/37814/F248-Service-Code-Errors-Kyocera-Printers.html)
+- [SC899-00 Service Code Errors — RICOH / LANIER / SAVIN Printers](https://www.experts-exchange.com/articles/37771/SC899-00-Service-Code-Errors-RICOH-LANIER-SAVIN-Printers.html)
+
+They also sit alongside my community activity and awards on my
+[Experts Exchange profile](https://rdsrc.us/eKmC1R).
+
 ## Taking payments without touching a card
 
 The payment page collects an invoice number and an amount, then hands off.

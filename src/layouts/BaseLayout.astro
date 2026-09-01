@@ -34,7 +34,7 @@ const personSchema = {
   name: site.name,
   url: Astro.site?.href,
   email: `mailto:${site.email}`,
-  sameAs: social.map((entry) => entry.data.url),
+  sameAs: social.map((entry) => entry.data.canonicalUrl ?? entry.data.url),
 };
 ---
 

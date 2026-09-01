@@ -21,7 +21,15 @@ const year = new Date().getFullYear();
       {social.map((entry) => (
         <li>
           <a href={entry.data.url} aria-label={entry.data.label} rel="me noopener">
-            <Icon name={entry.data.icon} />
+            {entry.data.icon.startsWith('/') ? (
+              <span
+                class="custom-brand-icon"
+                aria-hidden="true"
+                style={`--brand-icon-image: url('${entry.data.icon}')`}
+              ></span>
+            ) : (
+              <Icon name={entry.data.icon} />
+            )}
           </a>
         </li>
       ))}
@@ -96,6 +104,15 @@ const year = new Date().getFullYear();
     color: var(--color-rule);
     transition: color var(--dur-fast) var(--ease);
     display: block;
+  }
+
+  .social .custom-brand-icon {
+    display: block;
+    width: 0.85em;
+    height: 1.12em;
+    background: currentColor;
+    -webkit-mask: var(--brand-icon-image) center / contain no-repeat;
+    mask: var(--brand-icon-image) center / contain no-repeat;
   }
 
   .social a:hover,

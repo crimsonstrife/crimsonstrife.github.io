@@ -6,7 +6,7 @@ import SectionHeader from './SectionHeader.astro';
 import monogram from '../assets/brand/barnhardt-monogram.svg';
 
 const social = (await getCollection('social')).sort((a, b) => a.data.order - b.data.order);
-const featuredIds = new Set(['github', 'linkedin', 'youtube', 'twitch']);
+const featuredIds = new Set(['github', 'linkedin', 'youtube', 'twitch', 'experts-exchange']);
 const featuredSocial = social.filter((entry) => featuredIds.has(entry.data.id));
 const elsewhere = social.filter((entry) => !featuredIds.has(entry.data.id));
 const [about] = await getCollection('pages', (entry) => entry.id === 'about');
@@ -37,8 +37,17 @@ const { Content } = about ? await render(about) : { Content: null };
         <ul class="featured" role="list">
           {featuredSocial.map((entry) => (
             <li>
-              <a href={entry.data.url} rel="me noopener">
-                <Icon name={entry.data.icon} aria-hidden="true" />
+              <a href={entry.data.url} rel="me noopener" style={`--brand-color: ${entry.data.color}`}>
+                <span class="brand-icon-mark" aria-hidden="true">
+                  {entry.data.icon.startsWith('/') ? (
+                    <span
+                      class="custom-brand-icon"
+                      style={`--brand-icon-image: url('${entry.data.icon}')`}
+                    ></span>
+                  ) : (
+                    <Icon name={entry.data.icon} />
+                  )}
+                </span>
                 <span>
                   <strong>{entry.data.label}</strong>
                   <small>{entry.data.description}</small>
@@ -54,8 +63,23 @@ const { Content } = about ? await render(about) : { Content: null };
           <ul role="list">
             {elsewhere.map((entry) => (
               <li>
-                <a href={entry.data.url} aria-label={entry.data.label} title={entry.data.label} rel="me noopener">
-                  <Icon name={entry.data.icon} />
+                <a
+                  href={entry.data.url}
+                  aria-label={entry.data.label}
+                  title={entry.data.label}
+                  rel="me noopener"
+                  style={`--brand-color: ${entry.data.color}`}
+                >
+                  <span class="brand-icon-mark" aria-hidden="true">
+                    {entry.data.icon.startsWith('/') ? (
+                      <span
+                        class="custom-brand-icon"
+                        style={`--brand-icon-image: url('${entry.data.icon}')`}
+                      ></span>
+                    ) : (
+                      <Icon name={entry.data.icon} />
+                    )}
+                  </span>
                 </a>
               </li>
             ))}
@@ -127,18 +151,59 @@ const { Content } = about ? await render(about) : { Content: null };
     text-decoration: none;
   }
 
-  .featured [data-icon] { font-size: 1.25rem; color: var(--color-accent); }
+  .brand-icon-mark {
+    display: grid;
+    place-items: center;
+    color: var(--brand-color);
+    transition: filter var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+  }
+
+  .featured .brand-icon-mark {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+
+  .featured .brand-icon-mark [data-icon] { font-size: 1.25rem; }
+  .featured .custom-brand-icon {
+    width: 0.8rem;
+    height: 1.05rem;
+  }
   .featured strong, .featured small { display: block; }
   .featured strong { font-family: var(--font-display); font-size: 0.85rem; }
   .featured small { margin-top: 0.2rem; color: var(--color-muted); font-size: 0.72rem; line-height: 1.4; }
   .featured .arrow { color: var(--color-accent-warm); }
   .featured a:hover strong, .featured a:focus-visible strong { color: var(--color-accent); }
+  .featured a:hover .brand-icon-mark,
+  .featured a:focus-visible .brand-icon-mark {
+    filter: brightness(0.82) saturate(1.12);
+    transform: translateY(-1px);
+  }
 
   .elsewhere { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 1.25rem; border-top: 1px solid var(--color-rule); }
   .elsewhere > span { color: var(--color-muted); font-family: var(--font-display); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
   .elsewhere ul { list-style: none; display: flex; gap: 0.75rem; margin: 0; padding: 0; }
-  .elsewhere a { color: var(--color-muted); font-size: 1rem; }
-  .elsewhere a:hover, .elsewhere a:focus-visible { color: var(--color-accent); }
+  .elsewhere a { display: block; color: var(--color-muted); font-size: 1rem; }
+  .elsewhere .brand-icon-mark {
+    width: 1.65rem;
+    height: 1.65rem;
+  }
+  .elsewhere .brand-icon-mark [data-icon] { font-size: 1rem; }
+  .elsewhere .custom-brand-icon {
+    width: 0.68rem;
+    height: 0.9rem;
+  }
+  .elsewhere a:hover .brand-icon-mark,
+  .elsewhere a:focus-visible .brand-icon-mark {
+    filter: brightness(0.82) saturate(1.12);
+    transform: translateY(-1px);
+  }
+
+  .custom-brand-icon {
+    display: block;
+    background: currentColor;
+    -webkit-mask: var(--brand-icon-image) center / contain no-repeat;
+    mask: var(--brand-icon-image) center / contain no-repeat;
+  }
 
   @media (max-width: 56rem) {
     .about { clip-path: polygon(0 2.5rem, 28% 0, 100% 1.5rem, 100% calc(100% - 2rem), 75% 100%, 0 calc(100% - 1rem)); }

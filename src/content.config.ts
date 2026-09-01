@@ -259,7 +259,14 @@ const social = defineCollection({
     order: z.number().int().positive(),
     label: z.string(),
     url: z.url(),
-    icon: z.string().regex(/^[a-z0-9-]+:[a-z0-9-]+$/, 'Expected an Iconify name like "fa6-brands:github"'),
+    /** Full profile URL used by structured data when the visible link is a short URL. */
+    canonicalUrl: z.url().optional(),
+    icon: z
+      .string()
+      .regex(
+        /^(?:[a-z0-9-]+:[a-z0-9-]+|\/[a-z0-9/_-]+\.png)$/,
+        'Expected an Iconify name like "fa6-brands:github" or a root-relative PNG path'
+      ),
     color: z.string().regex(/^#[0-9a-fA-F]{6}$/, 'Expected a 6-digit hex colour'),
     description: z.string(),
   }),
