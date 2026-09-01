@@ -103,16 +103,19 @@ only that hostname and the `portfolio-contact` action.
 
 ## Deployment
 
-Pushing to `master` triggers `.github/workflows/deploy.yml`, which builds
-the site and publishes it to GitHub Pages. Pushes to `astro-replacement`
-build but do **not** deploy, so the live site is never touched before the
-merge.
+Pushing to `master` triggers `.github/workflows/deploy.yml`, which builds the
+site, validates the contact Worker, publishes the site to GitHub Pages, and
+deploys the Worker to Cloudflare. Pushes to `astro-replacement` and pull
+requests run the checks but do **not** deploy. Nightly builds refresh the site
+without creating a new Worker version.
 
 ### Before the first deploy
 
 - Set **Settings → Pages → Source** to **GitHub Actions** (it is currently
   set to deploy from a branch).
 - Add the `CONTRIBUTIONS_TOKEN` secret described above.
+- Add `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` as GitHub Actions
+  secrets for Worker deployments.
 - Confirm the custom domain still resolves — `public/CNAME` carries
   `www.patrickbarnhardt.info`.
 
