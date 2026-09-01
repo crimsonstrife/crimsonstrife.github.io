@@ -1,7 +1,7 @@
 ---
 title: "This website: patrickbarnhardt.info (old)"
 category: "web"
-summary: "A static HTML CSS responsive design made for this portfolio site around 2017."
+summary: "The version of this portfolio that ran from around 2017 until the current rebuild. Static HTML and CSS, responsive for its day, and then left untouched for about eight years."
 order: 13
 media:
   type: "image"

@@ -1,7 +1,7 @@
 ---
 title: "Promotional Art: By Darkest Knight"
 category: "branding"
-summary: "While the game never saw light of day, this was a promotional mockup made for an indie hack n' slash to be titled \"By Darkest Knight\"."
+summary: "A promotional mockup for By Darkest Knight, an indie hack-and-slash that never shipped."
 order: 29
 media:
   type: "image"

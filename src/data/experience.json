@@ -5,15 +5,12 @@
     "title": "Programmer Analyst",
     "organization": "Charlotte Pipe and Foundry Company — Charlotte, NC",
     "period": "March 2023 - Present",
-    "summary": "Salesforce administration and development, alongside software development and user support.",
+    "summary": "Salesforce administration and development for a pipe and fitting manufacturer, plus internal web applications and the support that comes with both.",
     "highlights": [
-      "Developing and maintaining Salesforce applications.",
-      "Salesforce Flows for Screens and Automations.",
-      "Technical support for Salesforce applications.",
-      "Troubleshooting and debugging of Salesforce applications.",
-      "Managing Salesforce Integrations.",
-      "Created Apex functions and LWC components.",
-      "Creating internal web applications and tools."
+      "Build and maintain the Salesforce applications the business runs on, and support the people using them when something stops working.",
+      "Design screen flows and automations in Flow first, and write Apex or Lightning Web Components when a declarative build genuinely won't do the job.",
+      "Manage the org's integrations with the systems around it. Includes but not limited: LinkedIn Sales Nav, PDF Butler, EventSpark, RingCentral, and Mulesoft. As well as proprietary apps.",
+      "Build internal web applications and tools outside Salesforce."
     ],
     "technical": true
   },
@@ -23,14 +20,13 @@
     "title": "IT Technician / Webmaster",
     "organization": "Modern Impressions — Charlotte, NC",
     "period": "December 2020 - March 2023",
-    "summary": "In my role at Modern Impressions, I supported both internal and external clients by providing comprehensive IT solutions. I was responsible for connectivity support for printers and copiers, general IT assistance for Managed IT Customers, and contributed to the maintenance of the company website. My work ensured efficient operations and enhanced user satisfaction across various platforms.",
+    "summary": "Ran the company website for a Charlotte office-technology dealer while doing IT support for its managed-services customers.",
     "highlights": [
-      "Provided connectivity support to copier and printer users, ensuring seamless operations.",
-      "Delivered general IT support to Managed IT Customers, enhancing their technology experience.",
-      "Collaborated as part of the internal System Admin team to maintain system integrity.",
-      "Executed webmaster and web development duties for the company website, improving user engagement.",
-      "Authored technical knowledge-base articles; two printer service-code guides published on Experts Exchange have each drawn more than 40,000 views.",
-      "Supported specialty software for customers, such as AutoStore."
+      "Kept networked copiers and printers working inside customer environments — drivers, scan destinations and authentication.",
+      "Handled general IT support for managed-services customers, and sat on the internal sysadmin team.",
+      "Ran the company website: a purchased WordPress theme I extended rather than replaced, including a Net Promoter Score panel on the homepage fed live from the dealer's survey service.",
+      "Wrote the technical knowledge-base articles, including two printer service-code guides on Experts Exchange that have each passed 40,000 views.",
+      "Supported the specialty software customers depended on, mostly AutoStore document capture."
     ],
     "technical": true
   },
@@ -40,11 +36,11 @@
     "title": "IT Support Technician",
     "organization": "Modern Impressions — Charlotte, NC",
     "period": "July 2018 - December 2020",
-    "summary": "",
+    "summary": "The support-side role I started in at Modern Impressions, before picking up the webmaster work.",
     "highlights": [
-      "Provided connectivity support to copier and printer users, ensuring seamless operations.",
-      "Delivered general IT support to Managed IT Customers, enhancing their technology experience.",
-      "Supported specialty software for customers, such as AutoStore."
+      "Kept networked copiers and printers working inside customer environments — drivers, scan destinations and authentication.",
+      "Handled general IT support for managed-services customers.",
+      "Supported the specialty software customers depended on, mostly AutoStore document capture."
     ],
     "technical": true
   },
@@ -54,16 +50,14 @@
     "title": "GIS Technician & Software Troubleshooting",
     "organization": "QC Data — Charlotte, NC Area",
     "period": "June 2013 - July 2018",
-    "summary": "In my role at QC Data, I was responsible for updating AT&T databases and drafting construction workprints for Fiber and Copper Cable projects. I also provided technical support to local users, correcting database errors and ensuring smooth operations. My experience included software troubleshooting and installation, which enhanced my technical skills and knowledge of proprietary software.",
+    "summary": "Five years of GIS data work and the software support that came with it.",
     "highlights": [
       "Utilized various software to update AT&T databases on multiple projects per AT&T guidelines.",
       "Drafted and engineered construction workprints for various AT&T Fiber and Copper Cable projects.",
       "Joined the Specialized Services team to learn new software and perform tasks for AT&T engineers.",
-      "Correcting database errors for production users.",
-      "Providing technical support and error handling on proprietary software for ~60-80 local users.",
-      "Windows and proprietary software support.",
-      "Software and hardware installation.",
-      "Machine migration/re-imaging."
+      "Corrected database errors for production users.",
+      "Supported the proprietary GIS software for roughly 60 to 80 local users, and handled the errors it threw at them.",
+      "Windows support, software and hardware installation, and machine migration and re-imaging."
     ],
     "technical": true
   },
@@ -73,8 +67,11 @@
     "title": "Founder, Project Lead, Modeler/Animator",
     "organization": "Helical Games — Charlotte, NC",
     "period": "October 2012 - January 2018",
-    "summary": "Indie game studio I founded.",
-    "highlights": [],
+    "summary": "An indie studio I founded and ran for five years, leading the projects and doing the modelling and animation myself.",
+    "highlights": [
+      "Worked on the game DIVERSE, which we shutdown development before releasing due to cost. Was the project lead, and main designer.",
+      "Admittedly, did not have enough experience to be doing this at the time."
+    ],
     "technical": true
   },
   {
@@ -93,11 +90,11 @@
     "title": "Marketing and Media Studio Intern",
     "organization": "Stanly Community College — Albemarle, NC",
     "period": "June 2011 - August 2012",
-    "summary": "",
+    "summary": "A year in the college's media department, on the production side.",
     "highlights": [
-      "Film crew in recording studio.",
-      "Archive past recordings.",
-      "Created animations for TV presentations, and helped in production of several TV specials."
+      "Worked the film crew in the recording studio.",
+      "Archived the back catalogue of past recordings.",
+      "Made animations for TV presentations, and helped produce several TV specials."
     ],
     "technical": true
   },
@@ -117,7 +114,7 @@
     "title": "Game Design Examiner",
     "organization": "Examiner.com — Remote",
     "period": "April 2010 - March 2013",
-    "summary": "Wrote videogame reviews from a design aspect.",
+    "summary": "Wrote videogame reviews that argued about design rather than handing out scores.",
     "highlights": [],
     "technical": true
   },
@@ -127,7 +124,7 @@
     "title": "Senior Sales Associate, Game Rentals and Sales",
     "organization": "Movie Gallery — Rockwell, NC",
     "period": "August 2009 - November 2009",
-    "summary": "Point of contact for knowledge of consoles, games and peripherals.",
+    "summary": "The person on the floor who knew the consoles, the games and the peripherals.",
     "highlights": [],
     "technical": false
   }

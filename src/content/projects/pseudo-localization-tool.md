@@ -1,7 +1,7 @@
 ---
 title: "Pseudo Localization Tool"
 category: "tools"
-summary: "An automated table for \"pseudo\" translation for UI features or any short strings. Contains very rough translations, not reliable for production."
+summary: "An automated table that pseudo-translates UI strings, so you can quickly build a localization table. The translations themselves are rough and were never meant for production."
 order: 35
 media:
   type: "image"

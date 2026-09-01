@@ -9,7 +9,7 @@ const awards = (await getCollection('awards')).sort((a, b) => a.data.order - b.d
 ---
 
 <section id="awards" class="awards">
-  <SectionHeader eyebrow="Recognition from the communities I serve" title="Honors & Awards" />
+  <SectionHeader eyebrow="From the communities I am in" title="Honors & Awards" />
 
   <ul class="list" role="list">
     {awards.map((entry) => (

@@ -1,7 +1,7 @@
 ---
 title: "STREAMHAÜS Banner"
 category: "branding"
-summary: "This was a design intended to be used as a splash screen/promotional wallpaper for the game streaming group STREAMHAÜS"
+summary: "A splash screen and promotional wallpaper for the game streaming group STREAMHAÜS."
 order: 15
 media:
   type: "image"

@@ -1,7 +1,7 @@
 ---
 title: "Logo: Crimsonstrife Gaming Channel"
 category: "branding"
-summary: "Logo created for my gaming YouTube channel."
+summary: "A logo for my gaming YouTube channel."
 order: 36
 media:
   type: "image"

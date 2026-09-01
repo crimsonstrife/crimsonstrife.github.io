@@ -11,7 +11,7 @@ const certifications = (await getCollection('certifications')).sort(
 ---
 
 <section id="certifications" class="certs">
-  <SectionHeader eyebrow="Credentials and continuing education" title="Certifications" />
+  <SectionHeader eyebrow="Credentials, current and lapsed" title="Certifications" />
 
   <ul class="grid" role="list">
     {certifications.map((entry) => {

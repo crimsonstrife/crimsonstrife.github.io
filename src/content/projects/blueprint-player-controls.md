@@ -1,7 +1,7 @@
 ---
 title: "Blueprint: Player Controls"
 category: "blueprints"
-summary: "A sample of Player control and ability scripts in Unreal Engine 4."
+summary: "A sample of the player control and ability Blueprints from an Unreal Engine 4 project."
 order: 40
 media:
   type: "image"

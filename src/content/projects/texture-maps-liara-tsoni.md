@@ -1,7 +1,7 @@
 ---
 title: "Texture Maps: Liara T'Soni"
 category: "textures"
-summary: "All textures were hand painted from scratch. Either created in Photoshop or painted directly on the mesh in Mudbox."
+summary: "Texture maps for my Liara T'Soni model, painted from scratch — some in Photoshop, some directly onto the mesh in Mudbox."
 order: 31
 media:
   type: "image"

@@ -1,7 +1,7 @@
 ---
 title: "Blueprint: Reading a User's Steam Id"
 category: "blueprints"
-summary: "Checking for a logged in Steam user on the local machine, through the Steam SDK, and feeding the user ID into Unreal Engine 4 as a variable."
+summary: "Asking the Steam SDK whether anyone is signed in on the machine, and handing that user's ID to Unreal Engine 4 as a variable."
 order: 33
 media:
   type: "image"

@@ -1,5 +1,5 @@
 ---
-title: "[DESTINY] Team STREAMHAUS - First Trials of Osiris Attempt"
+title: "[DESTINY] Team STREAMHAÜS - First Trials of Osiris Attempt"
 category: "video"
 summary: ""
 order: 55
