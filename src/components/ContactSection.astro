@@ -156,6 +156,7 @@ const turnstileSiteKey = import.meta.env.DEV
         data-sitekey={turnstileSiteKey}
         data-action="portfolio-contact"
         data-theme="auto"
+        data-size="flexible"
       ></div>
     </div>
 
@@ -263,10 +264,13 @@ const turnstileSiteKey = import.meta.env.DEV
     border: 0;
     padding: clamp(1.5rem, 4vw, 2.75rem);
     max-width: min(94vw, 46rem);
+    max-height: calc(100dvh - 2rem);
     width: 100%;
+    overflow-y: auto;
     background: var(--color-surface-raised);
     color: var(--color-ink);
-    position: relative;
+    position: fixed;
+    inset: 0;
   }
 
   .dialog::backdrop { background: rgb(24 20 19 / 0.9); }
@@ -308,6 +312,7 @@ const turnstileSiteKey = import.meta.env.DEV
   }
 
   .field { display: flex; flex-direction: column; gap: 0.35rem; margin: 0; }
+  .field[hidden] { display: none; }
   .field.wide, .turnstile-field, .submit, .note { grid-column: 1 / -1; }
 
   .turnstile-field {
@@ -462,6 +467,7 @@ const turnstileSiteKey = import.meta.env.DEV
       const intent: ContactIntent = button.dataset.intent === 'project' ? 'project' : 'game';
       setIntent(intent);
       dialog.showModal();
+      dialog.scrollTop = 0;
     });
   });
 

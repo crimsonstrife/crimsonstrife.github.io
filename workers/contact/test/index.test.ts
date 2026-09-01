@@ -4,11 +4,11 @@ import worker from '../src/index';
 const productionValues = {
   CONTACT_RECIPIENT: 'contact@patrickbarnhardt.info',
   CONTACT_SENDER: 'website@form-mail.patrickbarnhardt.info',
-  EXPECTED_ORIGIN: 'https://www.patrickbarnhardt.info',
-  EXPECTED_HOSTNAME: 'www.patrickbarnhardt.info',
+  ALLOWED_ORIGINS: 'https://patrickbarnhardt.info,https://www.patrickbarnhardt.info',
+  ALLOWED_HOSTNAMES: 'patrickbarnhardt.info,www.patrickbarnhardt.info',
   TURNSTILE_ACTION: 'portfolio-contact',
-  SUCCESS_URL: 'https://www.patrickbarnhardt.info/contact/thanks/',
-  CONTACT_URL: 'https://www.patrickbarnhardt.info/#contact',
+  SUCCESS_URL: 'https://patrickbarnhardt.info/contact/thanks/',
+  CONTACT_URL: 'https://patrickbarnhardt.info/#contact',
   TURNSTILE_SECRET_KEY: 'test-secret',
 } as const;
 
@@ -69,6 +69,19 @@ describe('contact Worker', () => {
     expect(response.status).toBe(400);
     expect(await response.text()).toContain('unexpected site');
     expect(send).not.toHaveBeenCalled();
+  });
+
+  it('accepts the www hostname as well as the canonical apex hostname', async () => {
+    const { env, send } = createEnv();
+    mockSiteverify({ hostname: 'www.patrickbarnhardt.info' });
+
+    const response = await worker.fetch(
+      createRequest(baseParams('Project enquiry'), 'https://www.patrickbarnhardt.info'),
+      env,
+    );
+
+    expect(response.status).toBe(303);
+    expect(send).toHaveBeenCalledOnce();
   });
 
   it('rejects a token with the wrong action before sending email', async () => {
@@ -135,7 +148,7 @@ function createEnv() {
 function mockSiteverify(overrides: Record<string, unknown> = {}) {
   const siteverify = vi.fn(async () => Response.json({
     success: true,
-    hostname: productionValues.EXPECTED_HOSTNAME,
+    hostname: 'patrickbarnhardt.info',
     action: productionValues.TURNSTILE_ACTION,
     ...overrides,
   }));
@@ -156,7 +169,7 @@ function baseParams(intent: 'Project enquiry' | 'Game development conversation')
 
 function createRequest(
   params: URLSearchParams,
-  origin: string = productionValues.EXPECTED_ORIGIN,
+  origin: string = 'https://patrickbarnhardt.info',
 ): Request {
   return new Request('https://contact.patrickbarnhardt.info/', {
     method: 'POST',

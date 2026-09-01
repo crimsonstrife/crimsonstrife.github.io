@@ -2,5 +2,5 @@
 TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA
 
 # Match the local Astro development server and dummy widget response.
-EXPECTED_ORIGIN=http://localhost:4321
-EXPECTED_HOSTNAME=localhost
+ALLOWED_ORIGINS=http://localhost:4321
+ALLOWED_HOSTNAMES=localhost

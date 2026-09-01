@@ -98,8 +98,9 @@ npm run contact:dev
 ```
 
 Local builds use Cloudflare's public dummy Turnstile keys. The production widget
-is restricted to `www.patrickbarnhardt.info`, and the production Worker accepts
-only that hostname and the `portfolio-contact` action.
+is restricted to `patrickbarnhardt.info` (which also authorizes `www`), and the
+production Worker accepts those two origins and hostnames only, together with
+the `portfolio-contact` action.
 
 ## Deployment
 

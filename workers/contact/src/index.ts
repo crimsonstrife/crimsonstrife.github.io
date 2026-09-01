@@ -66,7 +66,7 @@ export default {
     const submissionId = crypto.randomUUID();
 
     try {
-      validateOrigin(request, env.EXPECTED_ORIGIN);
+      validateOrigin(request, env.ALLOWED_ORIGINS);
       const params = await readFormBody(request);
 
       if (readOptionalField(params, 'Website', 200) !== '') {
@@ -117,11 +117,19 @@ export default {
   },
 } satisfies ExportedHandler<Env>;
 
-function validateOrigin(request: Request, expectedOrigin: string): void {
+function validateOrigin(request: Request, allowedOrigins: string): void {
   const origin = request.headers.get('Origin');
-  if (origin !== expectedOrigin) {
+  if (origin === null || !isAllowedValue(origin, allowedOrigins)) {
     throw new RequestError(403, 'This form submission did not come from the portfolio site.');
   }
+}
+
+function isAllowedValue(value: string, allowedValues: string): boolean {
+  return allowedValues
+    .split(',')
+    .map((allowedValue) => allowedValue.trim())
+    .filter(Boolean)
+    .includes(value);
 }
 
 async function readFormBody(request: Request): Promise<URLSearchParams> {
@@ -253,7 +261,7 @@ async function verifyTurnstile(token: string, request: Request, env: Env): Promi
     throw new RequestError(400, 'The anti-spam check could not be verified. Please try again.');
   }
 
-  if (result.hostname !== env.EXPECTED_HOSTNAME) {
+  if (typeof result.hostname !== 'string' || !isAllowedValue(result.hostname, env.ALLOWED_HOSTNAMES)) {
     throw new RequestError(400, 'The anti-spam check came from an unexpected site.');
   }
 
