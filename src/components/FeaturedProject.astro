@@ -18,7 +18,11 @@ const cta = href
     ? 'Read the case study'
     : 'Read the write-up'
   : 'View project';
-const external = featured?.data.links.live ?? featured?.data.links.download ?? featured?.data.links.repo;
+const external =
+  featured?.data.links.live ??
+  featured?.data.links.docs ??
+  featured?.data.links.download ??
+  featured?.data.links.repo;
 const link = href ?? external;
 ---
 

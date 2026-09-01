@@ -33,6 +33,8 @@ const links = z
   .object({
     repo: z.url().optional(),
     live: z.url().optional(),
+    /** Project documentation, when the docs are separate from the live application. */
+    docs: z.url().optional(),
     /** A release or download page, for things that are installed rather than visited. */
     download: z.url().optional(),
   })

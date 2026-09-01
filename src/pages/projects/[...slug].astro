@@ -61,13 +61,16 @@ const showToc = caseStudy && contents.length >= 3;
 
         {project.data.summary && <p class="lede">{project.data.summary}</p>}
 
-        {(project.data.links.repo || project.data.links.live || project.data.links.download) && (
+        {(project.data.links.repo || project.data.links.live || project.data.links.docs || project.data.links.download) && (
           <p class="links">
             {project.data.links.repo && (
               <a href={project.data.links.repo} rel="noopener">Source</a>
             )}
             {project.data.links.live && (
               <a href={project.data.links.live} rel="noopener">View live</a>
+            )}
+            {project.data.links.docs && (
+              <a href={project.data.links.docs} rel="noopener">Documentation</a>
             )}
             {project.data.links.download && (
               <a href={project.data.links.download} rel="noopener">Download</a>
