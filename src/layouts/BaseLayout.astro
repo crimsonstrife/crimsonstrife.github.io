@@ -17,15 +17,35 @@ interface Props {
   description?: string;
   /** Set false on pages that supply their own chrome (e.g. the print resumé). */
   chrome?: boolean;
+  /**
+   * Social preview image. Pass a built image `src` (from astro:assets) or a
+   * root-relative path; it is resolved to an absolute URL below because every
+   * unfurler requires one. Falls back to the site card.
+   */
+  image?: string;
+  imageAlt?: string;
+  /** `profile` for pages about Patrick, `article` for a post. */
+  ogType?: 'website' | 'profile' | 'article';
+  /** Article timestamps, only meaningful when ogType is 'article'. */
+  publishedTime?: Date;
+  modifiedTime?: Date;
 }
 
 const {
   title = site.title,
   description = site.description,
   chrome = true,
+  image,
+  imageAlt,
+  ogType = 'website',
+  publishedTime,
+  modifiedTime,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
+// Absolute, always: relative og:image URLs are silently dropped by most
+// unfurlers, which is how a shared link ends up as a grey box.
+const ogImage = new URL(image ?? '/og-default.png', Astro.site);
 const social = (await getCollection('social')).sort((a, b) => a.data.order - b.data.order);
 
 const personSchema = {
@@ -52,14 +72,27 @@ const personSchema = {
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="alternate" type="application/rss+xml" title={`${site.name} — Blog`} href="/rss.xml" />
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={imageAlt ?? `${site.name} — ${site.tagline}`} />
+    {ogType === 'article' && publishedTime && (
+      <meta property="article:published_time" content={publishedTime.toISOString()} />
+    )}
+    {ogType === 'article' && modifiedTime && (
+      <meta property="article:modified_time" content={modifiedTime.toISOString()} />
+    )}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={imageAlt ?? `${site.name} — ${site.tagline}`} />
 
     <meta name="generator" content={Astro.generator} />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />

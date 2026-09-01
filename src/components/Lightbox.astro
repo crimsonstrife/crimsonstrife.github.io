@@ -210,7 +210,7 @@ import { Icon } from 'astro-icon/components';
     if (event.key === 'ArrowRight') { event.preventDefault(); step(1); }
   });
 
-  // Escape and backdrop-click closing are native <dialog> behaviour.
+  // Escape and backdrop-click closing are native <dialog> behavior.
   dialog?.addEventListener('close', () => { clearStage(); group = null; });
   dialog?.addEventListener('click', (event) => {
     if (event.target === dialog) dialog.close();

@@ -1,7 +1,7 @@
 ---
 title: "DIVERSE - Zero Torso/Head Test"
 category: "3d"
-summary: ""
+summary: "An early model of Zero, a robot from the DIVERSE series. I was working out how he would look folded into his backpack form, and what to do about a face that was supposed to be a screen."
 order: 20
 media:
   type: "sketchfab"

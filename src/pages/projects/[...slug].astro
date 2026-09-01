@@ -1,7 +1,7 @@
 ---
 import type { InferGetStaticPropsType } from 'astro';
 import { getCollection, render } from 'astro:content';
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import TableOfContents from '../../components/TableOfContents.astro';
 import Gallery from '../../components/Gallery.astro';
@@ -35,6 +35,18 @@ const { media, caseStudy, gallery } = project.data;
  * list. Two headings is a page you just scroll.
  */
 const minutes = caseStudy ? readingTime(project.body) : null;
+
+/**
+ * A project's own artwork makes a far better share card than the site default.
+ * Only image projects have something usable — a YouTube or Sketchfab entry has
+ * no local asset, so those fall back to the site card.
+ */
+const shareImage =
+  media?.type === 'image'
+    ? (await getImage({ src: media.full ?? media.thumbnail, width: 1200 })).src
+    : media?.type === 'sketchfab' && media.poster
+      ? (await getImage({ src: media.poster, width: 1200 })).src
+      : undefined;
 const contents = headings.filter((heading) => heading.depth === 2 || heading.depth === 3);
 const showToc = caseStudy && contents.length >= 3;
 ---
@@ -42,6 +54,8 @@ const showToc = caseStudy && contents.length >= 3;
 <BaseLayout
   title={`${project.data.title} | ${site.name}`}
   description={project.data.summary || `${project.data.title} — work by ${site.name}.`}
+  image={shareImage}
+  imageAlt={project.data.title}
 >
   <article class:list={['project', { 'has-toc': showToc }]}>
     {showToc && <TableOfContents headings={contents} />}

@@ -19,3 +19,19 @@ export function hasExpired(expires?: string, now: Date = new Date()): boolean {
   // First instant of the month after the stated expiry.
   return now >= new Date(Date.UTC(year, month, 1));
 }
+
+/** Parses a `YYYY` or `YYYY-MM` bound to the first instant of that period. */
+export function parseBound(value?: string): Date | null {
+  if (!value) return null;
+  const [year, month] = value.split('-').map(Number);
+  if (!year) return null;
+  return new Date(Date.UTC(year, (month ?? 1) - 1, 1));
+}
+
+/** Whole years between `from` and `now`, ignoring partial years. */
+export function yearsSince(from: Date, now: Date = new Date()): number {
+  let years = now.getUTCFullYear() - from.getUTCFullYear();
+  const monthDelta = now.getUTCMonth() - from.getUTCMonth();
+  if (monthDelta < 0) years -= 1;
+  return years;
+}

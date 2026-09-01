@@ -1,7 +1,7 @@
 ---
 title: "Liara T'Soni"
 category: "3d"
-summary: ""
+summary: "Liara T'Soni from Mass Effect, modeled in one of my last character-modeling classes at Stanly Community College. The plan was to turn her into a Jedi Academy mod once the classes were over. That never happened."
 order: 16
 media:
   type: "sketchfab"

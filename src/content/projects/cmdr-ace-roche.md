@@ -1,7 +1,7 @@
 ---
 title: "Cmdr. Ace Roche"
 category: "3d"
-summary: ""
+summary: "A character for a side-scrolling mobile game. The conceit was that it existed inside the DIVERSE universe — the games were real in-world, so this would have been both a mini-game inside DIVERSE and a standalone mobile spin-off."
 order: 23
 media:
   type: "sketchfab"

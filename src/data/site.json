@@ -2,8 +2,8 @@
   "name": "Patrick Barnhardt",
   "shortName": "Patrick Barnhardt",
   "title": "Patrick Barnhardt — Software & Game Developer",
-  "tagline": "Software systems and interactive worlds",
-  "description": "Portfolio and resumé of Patrick Barnhardt — software development, Salesforce, web platforms, Unreal Engine tools, and independent game development.",
+  "tagline": "Business software and a horror game",
+  "description": "Patrick Barnhardt is a software developer in Charlotte, North Carolina — Salesforce administration and development, internal web applications and integrations, plus One Man's Poison, a survival-horror game in Unreal Engine 5.",
   "email": "contact@patrickbarnhardt.info",
   "locale": "en",
   "nav": [
@@ -33,5 +33,10 @@
     "endpoint": "https://contact.patrickbarnhardt.info/",
     "turnstileSiteKey": "0x4AAAAAAEj6m5GJ-ihp4ZZA",
     "successPath": "/contact/thanks/"
+  },
+  "resume": {
+    "//": "Printable resume history window. Shows at least minEntries roles, and keeps going until the printed history spans minYears. Conventional guidance is 10-15 years.",
+    "minEntries": 5,
+    "minYears": 10
   }
 }

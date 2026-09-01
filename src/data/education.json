@@ -5,6 +5,8 @@
     "title": "Bachelor of Science, Software Development",
     "organization": "Western Governors University",
     "period": "2018 - March 2024",
+    "start": "2018",
+    "end": "2024-03",
     "summary": "",
     "highlights": [],
     "technical": true,
@@ -17,6 +19,8 @@
     "title": "Bachelor's Program — Web Page, Digital/Multimedia and Information Resources Design",
     "organization": "University of North Carolina at Charlotte",
     "period": "2012 - 2013",
+    "start": "2012",
+    "end": "2013",
     "summary": "Started the program in 2012 and didn't finish it.",
     "highlights": [],
     "technical": true
@@ -27,7 +31,9 @@
     "title": "Associate of Applied Sciences, Simulation and Game Design",
     "organization": "Stanly Community College",
     "period": "2009 - 2012",
-    "summary": "Where the game work formally started — modelling, animation and design, alongside the programming.",
+    "start": "2009",
+    "end": "2012",
+    "summary": "Where the game work formally started — modeling, animation and design, alongside the programming.",
     "highlights": [],
     "technical": true
   },
@@ -37,6 +43,8 @@
     "title": "High School Diploma",
     "organization": "Mount Pleasant High School",
     "period": "2005 - 2009",
+    "start": "2005",
+    "end": "2009",
     "summary": "",
     "highlights": [],
     "technical": false

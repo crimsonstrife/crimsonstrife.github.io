@@ -165,6 +165,14 @@ const timelineEntry = z.object({
   title: z.string(),
   organization: z.string(),
   period: z.string(),
+  /**
+   * Machine-readable bounds for the same span `period` describes in prose.
+   * `end` omitted means the role is current. These drive the printable
+   * resumé's history window and the structured data — `period` stays the
+   * only thing rendered, so the two can never disagree on screen.
+   */
+  start: z.string().regex(/^\d{4}(-\d{2})?$/, 'Expected YYYY or YYYY-MM'),
+  end: z.string().regex(/^\d{4}(-\d{2})?$/, 'Expected YYYY or YYYY-MM').optional(),
   summary: z.string().default(''),
   /** Bullet points, where the role has them. */
   highlights: z.array(z.string()).default([]),
@@ -267,7 +275,7 @@ const social = defineCollection({
         /^(?:[a-z0-9-]+:[a-z0-9-]+|\/[a-z0-9/_-]+\.png)$/,
         'Expected an Iconify name like "fa6-brands:github" or a root-relative PNG path'
       ),
-    color: z.string().regex(/^#[0-9a-fA-F]{6}$/, 'Expected a 6-digit hex colour'),
+    color: z.string().regex(/^#[0-9a-fA-F]{6}$/, 'Expected a 6-digit hex color'),
     description: z.string(),
   }),
 });

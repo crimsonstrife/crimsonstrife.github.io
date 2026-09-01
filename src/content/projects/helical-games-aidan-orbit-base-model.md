@@ -1,7 +1,7 @@
 ---
 title: "Helical Games: Aidan Orbit Base Model"
 category: "3d"
-summary: ""
+summary: "An early base model of Aidan Orbit, the protagonist of DIVERSE, used to test proportions and settle the design."
 order: 21
 media:
   type: "sketchfab"

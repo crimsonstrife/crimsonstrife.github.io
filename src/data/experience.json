@@ -5,6 +5,7 @@
     "title": "Programmer Analyst",
     "organization": "Charlotte Pipe and Foundry Company — Charlotte, NC",
     "period": "March 2023 - Present",
+    "start": "2023-03",
     "summary": "Salesforce administration and development for a pipe and fitting manufacturer, plus internal web applications and the support that comes with both.",
     "highlights": [
       "Build and maintain the Salesforce applications the business runs on, and support the people using them when something stops working.",
@@ -20,6 +21,8 @@
     "title": "IT Technician / Webmaster",
     "organization": "Modern Impressions — Charlotte, NC",
     "period": "December 2020 - March 2023",
+    "start": "2020-12",
+    "end": "2023-03",
     "summary": "Ran the company website for a Charlotte office-technology dealer while doing IT support for its managed-services customers.",
     "highlights": [
       "Kept networked copiers and printers working inside customer environments — drivers, scan destinations and authentication.",
@@ -36,6 +39,8 @@
     "title": "IT Support Technician",
     "organization": "Modern Impressions — Charlotte, NC",
     "period": "July 2018 - December 2020",
+    "start": "2018-07",
+    "end": "2020-12",
     "summary": "The support-side role I started in at Modern Impressions, before picking up the webmaster work.",
     "highlights": [
       "Kept networked copiers and printers working inside customer environments — drivers, scan destinations and authentication.",
@@ -50,6 +55,8 @@
     "title": "GIS Technician & Software Troubleshooting",
     "organization": "QC Data — Charlotte, NC Area",
     "period": "June 2013 - July 2018",
+    "start": "2013-06",
+    "end": "2018-07",
     "summary": "Five years of GIS data work and the software support that came with it.",
     "highlights": [
       "Utilized various software to update AT&T databases on multiple projects per AT&T guidelines.",
@@ -67,10 +74,12 @@
     "title": "Founder, Project Lead, Modeler/Animator",
     "organization": "Helical Games — Charlotte, NC",
     "period": "October 2012 - January 2018",
-    "summary": "An indie studio I founded and ran for five years, leading the projects and doing the modelling and animation myself.",
+    "start": "2012-10",
+    "end": "2018-01",
+    "summary": "An indie studio I founded and ran for five years, leading the projects and doing the modeling and animation myself.",
     "highlights": [
-      "Worked on the game DIVERSE, which we shutdown development before releasing due to cost. Was the project lead, and main designer.",
-      "Admittedly, did not have enough experience to be doing this at the time."
+      "Led and designed DIVERSE, the studio's main project. We shut development down before release because we couldn't cover the cost.",
+      "Did not, with hindsight, have anything like enough experience to be running this at the time."
     ],
     "technical": true
   },
@@ -80,6 +89,8 @@
     "title": "Summer Temp Packaging",
     "organization": "Charlotte Pipe and Foundry — Monroe, NC",
     "period": "May 2012 - August 2012",
+    "start": "2012-05",
+    "end": "2012-08",
     "summary": "Night shift packing PVC and ABS parts for shipping.",
     "highlights": [],
     "technical": false
@@ -90,6 +101,8 @@
     "title": "Marketing and Media Studio Intern",
     "organization": "Stanly Community College — Albemarle, NC",
     "period": "June 2011 - August 2012",
+    "start": "2011-06",
+    "end": "2012-08",
     "summary": "A year in the college's media department, on the production side.",
     "highlights": [
       "Worked the film crew in the recording studio.",
@@ -104,6 +117,8 @@
     "title": "Cashier / Pizza Maker",
     "organization": "Sbarro — Concord, NC",
     "period": "November 2010 - December 2010",
+    "start": "2010-11",
+    "end": "2010-12",
     "summary": "Cooked pizza and ran the front line, including a register.",
     "highlights": [],
     "technical": false
@@ -114,6 +129,8 @@
     "title": "Game Design Examiner",
     "organization": "Examiner.com — Remote",
     "period": "April 2010 - March 2013",
+    "start": "2010-04",
+    "end": "2013-03",
     "summary": "Wrote videogame reviews that argued about design rather than handing out scores.",
     "highlights": [],
     "technical": true
@@ -124,6 +141,8 @@
     "title": "Senior Sales Associate, Game Rentals and Sales",
     "organization": "Movie Gallery — Rockwell, NC",
     "period": "August 2009 - November 2009",
+    "start": "2009-08",
+    "end": "2009-11",
     "summary": "The person on the floor who knew the consoles, the games and the peripherals.",
     "highlights": [],
     "technical": false

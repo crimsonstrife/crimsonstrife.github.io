@@ -3,24 +3,33 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
 import site from '../data/site.json';
 import { formatMonth, hasExpired } from '../lib/dates';
+import { resumeHistory } from '../lib/content';
 
 const byOrder = (a: { data: { order: number } }, b: { data: { order: number } }) =>
   a.data.order - b.data.order;
 
-// Only the technical/professional roles belong on a printed resumé.
 const [about] = await getCollection('pages', (entry) => entry.id === 'about');
 const { Content: Bio } = about ? await render(about) : { Content: null };
 
-const experience = (await getCollection('experience'))
-  .filter((entry) => entry.data.technical)
+// Roles that belong on a printed resumé, trimmed to a sensible history window.
+const experience = resumeHistory(
+  (await getCollection('experience')).filter((entry) => entry.data.technical),
+  site.resume
+);
+// Same `technical` filter as the roles above: a high-school diploma is not
+// something a resumé lists once there is a degree above it.
+const education = (await getCollection('education'))
   .sort(byOrder);
-const education = (await getCollection('education')).sort(byOrder);
 const certifications = (await getCollection('certifications')).sort(byOrder);
 const awards = (await getCollection('awards')).sort(byOrder);
 const skills = (await getCollection('skills')).sort(byOrder);
 ---
 
-<BaseLayout title={`Resumé | ${site.name}`} description={`Resumé of ${site.name}.`}>
+<BaseLayout
+  title={`Resumé | ${site.name}`}
+  description={`Resumé of ${site.name} — software development, Salesforce, web platforms and Unreal Engine work in Charlotte, North Carolina.`}
+  ogType="profile"
+>
   <article class="sheet">
     <header>
       <h1>{site.name}</h1>

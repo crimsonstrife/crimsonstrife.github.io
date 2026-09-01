@@ -76,7 +76,7 @@ The working target is now a public vertical slice with a deliberate boundary:
 introduce Jake, establish Darla's case, get the player into Fountain Vale, and
 prove one complete horror-and-puzzle loop. It has to demonstrate the controls,
 investigation, limited combat, resource pressure, stealth, an anchor room, and
-the first enemy pressure. It doesn't have to summarise the whole campaign or
+the first enemy pressure. It doesn't have to summarize the whole campaign or
 spend the story's biggest reveal just to make a demo look complete.
 
 That boundary changed production from "make the game" into a sequence I can
@@ -168,7 +168,7 @@ workflow, while the game provides state for intensity and events. I've also buil
 Twitch viewer-interaction prototype, integrated CrowdControl,
 and done the platform work required to run the game on Steam Deck. Stream
 features stay isolated from the core loop; a community feature should never be
-able to destabilise the single-player game it's decorating.
+able to destabilize the single-player game it's decorating.
 
 ## Accessibility has to go in early or not at all
 

@@ -1,7 +1,7 @@
 ---
 title: "The RedQueen"
 category: "3d"
-summary: ""
+summary: "The Red Queen, Nero's sword from Devil May Cry. Another early piece from my 3D modeling classes."
 order: 26
 media:
   type: "sketchfab"

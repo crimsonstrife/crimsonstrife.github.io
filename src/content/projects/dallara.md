@@ -1,7 +1,7 @@
 ---
 title: "dallara"
 category: "3d"
-summary: ""
+summary: "A Dallara Indy car, modeled at Stanly Community College for a competition run by a local company. An internship was supposedly on the line, though I never heard of anyone being selected."
 order: 25
 media:
   type: "sketchfab"
