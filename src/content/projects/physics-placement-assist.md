@@ -2,7 +2,7 @@
 title: "Physics Placement Assist"
 category: "tools"
 summary: "An in-progress Unreal Engine 5.6 editor plugin that turns manual prop placement into an undoable physics-assisted workflow using the editor world's Chaos scene."
-order: 60
+order: 6
 tags: ["Unreal Engine 5.6", "C++", "Chaos Physics", "Editor Tooling", "Slate", "V-HACD"]
 links:
   repo: "https://github.com/crimsonstrife/ue-physics-placement-assist"
@@ -45,6 +45,5 @@ bulk convex-hull generation through Unreal's V-HACD path.
 
 Version 0.1 is an editor-only beta for Unreal Engine 5.6. Static meshes with
 usable collision are the primary path today; instanced meshes, foliage, spline
-meshes and skeletal meshes remain outside the supported set. A demonstration
-GIF is still to come, but the repository documents the current commands,
+meshes and skeletal meshes remain outside the supported set. A demonstration/screenshot/video is still to come, but the repository documents the current commands,
 settings, limitations and roadmap.
