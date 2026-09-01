@@ -29,8 +29,9 @@
     }
   ],
   "contact": {
-    "//": "Phase 1 stub. Set endpoint to a form service URL to make the modal live; until then the form falls back to a mailto: link.",
-    "endpoint": null,
-    "method": "POST"
+    "//": "The Cloudflare Worker validates and emails static-site form submissions to the public contact address.",
+    "endpoint": "https://contact.patrickbarnhardt.info/",
+    "turnstileSiteKey": "0x4AAAAAAEj6m5GJ-ihp4ZZA",
+    "successPath": "/contact/thanks/"
   }
 }

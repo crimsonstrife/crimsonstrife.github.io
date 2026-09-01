@@ -79,6 +79,28 @@ To see the real data locally:
 CONTRIBUTIONS_TOKEN=github_pat_... npm run build
 ```
 
+## Contact form
+
+The site remains static on GitHub Pages, while contact submissions post to a
+small Cloudflare Worker at `contact.patrickbarnhardt.info`. The Worker validates
+the request, checks its Turnstile token, and uses Cloudflare Email Service to
+deliver it to `contact@patrickbarnhardt.info`.
+
+The two homepage entry points share the endpoint but send different fields and
+inbox subjects for project enquiries and game-development conversations.
+
+For a local end-to-end form test, run the site and Worker in separate terminals:
+
+```bash
+cp workers/contact/.dev.vars.example workers/contact/.dev.vars
+npm run dev
+npm run contact:dev
+```
+
+Local builds use Cloudflare's public dummy Turnstile keys. The production widget
+is restricted to `www.patrickbarnhardt.info`, and the production Worker accepts
+only that hostname and the `portfolio-contact` action.
+
 ## Deployment
 
 Pushing to `master` triggers `.github/workflows/deploy.yml`, which builds

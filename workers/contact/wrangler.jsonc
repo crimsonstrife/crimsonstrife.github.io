@@ -1,0 +1,48 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "patrick-barnhardt-contact",
+  "main": "src/index.ts",
+  "account_id": "dcf0d0dc31e521427f5be2e3b8dd6a00",
+  "compatibility_date": "2026-09-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [
+    {
+      "pattern": "contact.patrickbarnhardt.info",
+      "custom_domain": true
+    }
+  ],
+  "vars": {
+    "CONTACT_RECIPIENT": "contact@patrickbarnhardt.info",
+    "CONTACT_SENDER": "website@form-mail.patrickbarnhardt.info",
+    "EXPECTED_ORIGIN": "https://www.patrickbarnhardt.info",
+    "EXPECTED_HOSTNAME": "www.patrickbarnhardt.info",
+    "TURNSTILE_ACTION": "portfolio-contact",
+    "SUCCESS_URL": "https://www.patrickbarnhardt.info/contact/thanks/",
+    "CONTACT_URL": "https://www.patrickbarnhardt.info/#contact"
+  },
+  "secrets": {
+    "required": ["TURNSTILE_SECRET_KEY"]
+  },
+  "send_email": [
+    {
+      "name": "EMAIL",
+      "destination_address": "contact@patrickbarnhardt.info",
+      "allowed_sender_addresses": [
+        "website@form-mail.patrickbarnhardt.info"
+      ]
+    }
+  ],
+  "observability": {
+    "enabled": true,
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 1
+    },
+    "traces": {
+      "enabled": true,
+      "head_sampling_rate": 0.1
+    }
+  }
+}
