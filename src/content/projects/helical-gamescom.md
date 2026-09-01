@@ -1,7 +1,7 @@
 ---
 title: "Helical Games.com"
 category: "web"
-summary: "The original design for the Helical Games website, made in 2012. This design was scraped as of early 2016 as it wasn't very responsive or engaging, and didn't display well on mobile."
+summary: "The first Helical Games site, built in 2012. I scrapped it in early 2016 — it wasn’t especially responsive or engaging, and on a phone it fell apart."
 order: 14
 media:
   type: "image"

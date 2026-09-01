@@ -2,8 +2,19 @@
 title: "About Patrick"
 ---
 
-I’m a software developer who likes understanding a system from the inside out—how its parts connect, how it works, and what would make the experience more dependable.
+I like knowing how a thing works all the way down. Most of what I do starts the
+same way: something is broken, or slow, or quietly annoying everyone who has to
+touch it, and the fix turns out to be somewhere under the surface.
 
-Professionally, my work spans software development, Salesforce administration and development, web platforms, business processes, and user support. That range helps me connect implementation details with the real people and workflows a solution needs to serve.
+Professionally that means Salesforce administration and development, internal
+web applications, and integration work, with years of IT and end-user support
+underneath it. I spent a long stretch being the person who had to explain a
+system to whoever it had just broken for, which is where most of my opinions
+about documentation come from.
 
-Outside my primary role, I’m an independent game developer. I build Unreal Engine tools and gameplay systems, work across C++ and Blueprint, and lead development of *One Man’s Poison*. Game development is where engineering, design, storytelling, and technical art meet—and it remains an important path for future professional work.
+Away from that I run Crimson Strife Games and build *One Man’s Poison*, a
+survival-horror game in Unreal Engine 5 — gameplay code in C++ and Blueprint,
+plus design, scoping, and briefing the specialists whose work I can’t do
+myself. It isn’t a hobby sitting off to one side of the day job. Both are the
+same exercise: work out what the system actually has to do, then find out where
+you were wrong about it.
