@@ -165,8 +165,8 @@ and presentation hooks. That split keeps the rules testable and discoverable in 
 every balance pass into a compile cycle.
 
 The same boundary helps with integrations. FMOD owns the audio authoring
-workflow, while the game provides state for intensity and events. I've also built a custom
-Twitch viewer-interaction prototype, integrated CrowdControl,
+workflow, while the game provides state for intensity and events. I've also built
+[a reusable Twitch viewer-interaction plugin](/projects/ue-twitch-native/), integrated CrowdControl,
 and done the platform work required to run the game on Steam Deck. Stream
 features stay isolated from the core loop; a community feature should never be
 able to destabilize the single-player game it's decorating.
