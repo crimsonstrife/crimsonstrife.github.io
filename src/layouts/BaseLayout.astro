@@ -10,6 +10,7 @@ import { getCollection } from 'astro:content';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import Lightbox from '../components/Lightbox.astro';
+import Analytics from '../components/Analytics.astro';
 import site from '../data/site.json';
 
 interface Props {
@@ -96,6 +97,8 @@ const personSchema = {
 
     <meta name="generator" content={Astro.generator} />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+
+    <Analytics />
   </head>
 
   <body>

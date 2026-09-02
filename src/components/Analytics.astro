@@ -1,0 +1,41 @@
+---
+import site from '../data/site.json';
+
+/**
+ * Google Analytics 4 (gtag.js).
+ *
+ * The measurement ID lives in src/data/site.json so swapping properties — or
+ * turning analytics off entirely — is a one-line JSON edit rather than a code
+ * change. Clear the ID and the tag disappears from every page.
+ */
+const measurementId = site.analytics?.measurementId?.trim() ?? '';
+
+// A malformed ID silently reports to nothing, which is worse than no tag at
+// all because the dashboard looks plausible and stays empty.
+const looksValid = /^G-[A-Z0-9]+$/i.test(measurementId);
+
+// Production builds only. Left ungated, `astro dev` reloads would arrive in
+// the property as live traffic and quietly poison the numbers.
+const enabled = looksValid && import.meta.env.PROD;
+
+// Written out with `set:html` rather than `define:vars`: define:vars wraps the
+// snippet in an IIFE, which would keep `gtag` off the global scope and break
+// any custom event call made from another script later.
+const bootstrap = `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${measurementId}');`;
+---
+
+{
+  enabled && (
+    <>
+      <script
+        is:inline
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}
+      />
+      <script is:inline set:html={bootstrap} />
+    </>
+  )
+}
