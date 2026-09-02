@@ -49,7 +49,7 @@ const skills = (await getCollection('skills')).sort(byOrder);
         <h2>Profile</h2>
         {/* The full About body runs four paragraphs, which is right on the
             homepage and long on a printed page. `summary` wins where it exists. */}
-        {profile ? <p>{profile}</p> : <Bio />}
+        {profile ? <p>{profile}</p> : Bio ? <Bio /> : null}
       </section>
     )}
 
