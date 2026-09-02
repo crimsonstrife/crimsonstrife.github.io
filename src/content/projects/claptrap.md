@@ -8,6 +8,12 @@ media:
   type: "sketchfab"
   modelId: "3dkuGVmKZdnC0RzsNKp2bfv0JI0"
   poster: "../../assets/images/portfolio/claptrap-poster.jpg"
+gallery:
+  title: "Textured model"
+  items:
+    - image: "../../assets/images/portfolio/claptrap-turnaround.jpg"
+      alt: "Three views of the finished Claptrap model showing the applied texture"
+      caption: "Front, side and three-quarter views, all driven by the single texture map the brief called for."
 links:
   live: "https://sketchfab.com/models/3dkuGVmKZdnC0RzsNKp2bfv0JI0"
 ---

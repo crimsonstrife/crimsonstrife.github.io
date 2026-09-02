@@ -80,5 +80,14 @@
     "icon": "/images/experts-exchange.png",
     "color": "#2dace2",
     "description": "Printer-support articles, community answers, and recognition, including two guides with more than 40,000 views each."
+  },
+  {
+    "id": "deviantart",
+    "order": 10,
+    "label": "DeviantArt",
+    "url": "https://www.deviantart.com/crimsonstrife",
+    "icon": "fa6-brands:deviantart",
+    "color": "#05cc47",
+    "description": "An archive of older art and 3D work from when I was active there. Several of the screenshots on this site came off it, watermarks and all — it was the only surviving copy I could find."
   }
 ]

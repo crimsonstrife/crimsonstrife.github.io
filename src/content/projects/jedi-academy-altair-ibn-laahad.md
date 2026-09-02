@@ -9,8 +9,11 @@ media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/jedi-academy-altair-1.png"
 gallery:
-  title: "In-game views"
+  title: "Model and in-game views"
   items:
+    - image: "../../assets/images/portfolio/jedi-academy-altair-turnaround.jpg"
+      alt: "Front, back and side turnaround views of the Altaïr player model"
+      caption: "Turnaround of the finished model — layered robes, hood, bracers, sash and the shoulder-mounted blade."
     - image: "../../assets/images/portfolio/jedi-academy-altair-2.png"
       alt: "Altaïr player model holding a lightsaber in Jedi Academy"
       caption: "Front three-quarter view showing the layered clothing, hood, bracers, and weapon props."
