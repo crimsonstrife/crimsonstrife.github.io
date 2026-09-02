@@ -22,19 +22,8 @@
     ]
   },
   {
-    "id": "salesforce",
-    "order": 2,
-    "label": "Salesforce",
-    "items": [
-      "Salesforce.com Administration",
-      "Apex",
-      "Salesforce Flow",
-      "Declarative Development"
-    ]
-  },
-  {
     "id": "web",
-    "order": 3,
+    "order": 2,
     "label": "Web",
     "items": [
       "Front-End Development",
@@ -56,6 +45,17 @@
       "Redis / Valkey",
       "TLS Configuration",
       "Localization (i18n)"
+    ]
+  },
+  {
+    "id": "salesforce",
+    "order": 3,
+    "label": "Salesforce",
+    "items": [
+      "Salesforce.com Administration",
+      "Apex",
+      "Salesforce Flow",
+      "Declarative Development"
     ]
   },
   {

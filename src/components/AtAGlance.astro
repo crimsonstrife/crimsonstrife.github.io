@@ -1,0 +1,236 @@
+---
+import { Icon } from 'astro-icon/components';
+import { getCollection } from 'astro:content';
+import site from '../data/site.json';
+
+/**
+ * The five-second read, for someone skimming a stack of candidates who is not
+ * going to scroll to the resumé. Every figure here is derived from the same
+ * collections the resumé renders from, so the strip cannot drift out of sync
+ * with the sections it links into — adding a certification updates the count
+ * without anyone remembering to.
+ */
+const byOrder = (a: { data: { order: number } }, b: { data: { order: number } }) =>
+  a.data.order - b.data.order;
+
+const experience = (await getCollection('experience')).sort(byOrder);
+const education = (await getCollection('education')).sort(byOrder);
+const certifications = await getCollection('certifications');
+
+const current = experience[0]?.data;
+const degree = education[0]?.data;
+const yearsInField = new Date().getFullYear() - site.careerStartYear;
+
+const blocks = [
+  {
+    icon: 'fa6-solid:briefcase',
+    label: 'Currently',
+    headline: current?.title ?? 'Software developer',
+    detail: current
+      ? `${current.organization.split('—')[0].trim()} · ${yearsInField} combined years in IT and software`
+      : undefined,
+    href: '#resume',
+    cue: 'Full history',
+  },
+  {
+    icon: 'fa6-solid:code',
+    label: 'Builds',
+    headline: 'Web applications & internal tools',
+    detail: 'Astro · Laravel · PHP · JavaScript · MySQL · Salesforce',
+    href: '#work',
+    cue: 'See the work',
+  },
+  {
+    icon: 'fa6-solid:graduation-cap',
+    label: 'Credentials',
+    headline: degree?.title ?? 'BS, Software Development',
+    detail: `${degree?.organization ?? ''} · ${certifications.length} certifications`,
+    href: '#certifications',
+    cue: 'The full list',
+  },
+  {
+    icon: 'fa6-solid:gamepad',
+    label: 'And after hours',
+    headline: "One Man's Poison",
+    detail: 'Survival horror · Unreal Engine 5 · C++ and Blueprint',
+    href: '#selected-work',
+    cue: 'The game',
+  },
+];
+---
+
+<section class="glance" aria-labelledby="glance-title">
+  <div class="inner">
+    <h2 id="glance-title" class="sr-only">At a glance</h2>
+
+    <ul class="grid" role="list">
+      {blocks.map((block, index) => (
+        <li>
+          <a href={block.href} style={`--i: ${index}`}>
+            <Icon name={block.icon} aria-hidden="true" />
+            <p class="label">{block.label}</p>
+            <h3>{block.headline}</h3>
+            {block.detail && <p class="detail">{block.detail}</p>}
+            <span class="cue">{block.cue} <span aria-hidden="true">→</span></span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <p class="availability">
+      <strong>{site.availability.headline}</strong>
+      <span>{site.availability.detail}</span>
+    </p>
+  </div>
+</section>
+
+<style>
+  .glance {
+    position: relative;
+    padding: clamp(2.75rem, 6vw, 4.5rem) 0 clamp(2.5rem, 5vw, 3.75rem);
+    background: var(--color-surface);
+  }
+
+  .inner {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--content-gutter);
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  }
+
+  a {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+    padding: clamp(1.1rem, 2vw, 1.5rem);
+    background: var(--color-surface-raised);
+    border: 1px solid var(--color-rule);
+    color: var(--color-ink);
+    text-decoration: none;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 0.85rem), calc(100% - 0.85rem) 100%, 0 100%);
+    transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+  }
+
+  /* The two work tracks keep the colours they carry everywhere else on the
+     page: teal for the software side, red for the game side. */
+  a { --tile-color: var(--color-accent); }
+  li:last-child a { --tile-color: var(--color-accent-warm); }
+
+  a::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 0.22rem;
+    background: var(--tile-color);
+  }
+
+  a:hover, a:focus-visible {
+    background: var(--color-surface-sunk);
+    border-color: var(--tile-color);
+    transform: translateY(-2px);
+  }
+
+  a [data-icon] {
+    font-size: 1.15rem;
+    color: var(--tile-color);
+    margin-bottom: 0.3rem;
+  }
+
+  .label {
+    color: var(--color-muted);
+    font-family: var(--font-display);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    font-family: var(--font-display);
+    font-size: clamp(0.98rem, 1.2vw, 1.12rem);
+    line-height: 1.22;
+    text-wrap: balance;
+  }
+
+  .detail {
+    color: var(--color-muted);
+    font-family: var(--font-ui);
+    font-size: 0.76rem;
+    line-height: 1.55;
+  }
+
+  .cue {
+    margin-top: auto;
+    padding-top: 0.9rem;
+    color: var(--color-muted);
+    font-family: var(--font-display);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .cue span { color: var(--tile-color); margin-left: 0.25rem; }
+  a:hover .cue, a:focus-visible .cue { color: var(--color-ink); }
+
+  .availability {
+    margin-top: clamp(1.5rem, 3vw, 2.25rem);
+    padding-top: clamp(1.25rem, 2.5vw, 1.75rem);
+    border-top: 1px solid var(--color-rule);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.4rem 1rem;
+    line-height: 1.65;
+  }
+
+  .availability strong {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .availability span {
+    flex: 1 1 22rem;
+    color: var(--color-muted);
+  }
+
+  @media (max-width: 62rem) {
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 34rem) {
+    .grid { grid-template-columns: 1fr; }
+    a { clip-path: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    a { transition: none; }
+    a:hover, a:focus-visible { transform: none; }
+  }
+</style>

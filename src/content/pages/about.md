@@ -6,8 +6,8 @@ I like knowing how a thing works all the way down. Most of what I do starts the
 same way: something is broken, or slow, or quietly annoying everyone who has to
 touch it, and the fix turns out to be somewhere under the surface.
 
-Professionally that means Salesforce administration and development, internal
-web applications, and integration work, with years of IT and end-user support
+Professionally that means internal web applications, Salesforce administration
+and development, and integration work, with years of IT and end-user support
 underneath it. I spent a long stretch being the person who had to explain a
 system to whoever it had just broken for, which is where most of my opinions
 about documentation come from.

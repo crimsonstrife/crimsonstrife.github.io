@@ -1,12 +1,17 @@
 {
   "name": "Patrick Barnhardt",
   "shortName": "Patrick Barnhardt",
-  "title": "Patrick Barnhardt — Software & Game Developer",
-  "tagline": "Business software and a horror game",
-  "description": "Patrick Barnhardt is a software developer in Charlotte, North Carolina — Salesforce administration and development, internal web applications and integrations, plus One Man's Poison, a survival-horror game in Unreal Engine 5.",
+  "title": "Patrick Barnhardt — Web & Software Developer",
+  "tagline": "Web applications and a horror game",
+  "description": "Patrick Barnhardt is a software developer in Charlotte, North Carolina — web applications and internal tools, Salesforce development, and integration work, plus One Man's Poison, a survival-horror game in Unreal Engine 5.",
   "email": "contact@patrickbarnhardt.info",
   "locale": "en",
   "copyrightStartYear": 2016,
+  "careerStartYear": 2013,
+  "availability": {
+    "headline": "What I'm looking for",
+    "detail": "A full-time web development role, primarily. I also take on freelance projects alongside it, and I'm glad to talk to anyone building games, whether or not there's a job attached to it."
+  },
   "nav": [
     {
       "label": "About",
