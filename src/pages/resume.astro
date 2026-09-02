@@ -2,23 +2,27 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
 import site from '../data/site.json';
-import { formatMonth, hasExpired } from '../lib/dates';
-import { resumeHistory } from '../lib/content';
+import { formatYearOnly, hasExpired } from '../lib/dates';
+import { highlightsFor, resumeHistory } from '../lib/content';
 
 const byOrder = (a: { data: { order: number } }, b: { data: { order: number } }) =>
   a.data.order - b.data.order;
 
 const [about] = await getCollection('pages', (entry) => entry.id === 'about');
 const { Content: Bio } = about ? await render(about) : { Content: null };
+const profile = about?.data.summary;
 
 // Roles that belong on a printed resumé, trimmed to a sensible history window.
+// `printable` is applied *after* the window is chosen: suppressing a role should
+// shorten the printed history, not quietly pull an older role in to replace it.
 const experience = resumeHistory(
   (await getCollection('experience')).filter((entry) => entry.data.technical),
   site.resume
-);
+).filter((entry) => entry.data.printable);
 // Same `technical` filter as the roles above: a high-school diploma is not
 // something a resumé lists once there is a degree above it.
 const education = (await getCollection('education'))
+  .filter((entry) => entry.data.technical && entry.data.printable)
   .sort(byOrder);
 const certifications = (await getCollection('certifications')).sort(byOrder);
 const awards = (await getCollection('awards')).sort(byOrder);
@@ -40,10 +44,12 @@ const skills = (await getCollection('skills')).sort(byOrder);
       </p>
     </header>
 
-    {Bio && (
+    {(profile || Bio) && (
       <section class="bio">
         <h2>Profile</h2>
-        <Bio />
+        {/* The full About body runs four paragraphs, which is right on the
+            homepage and long on a printed page. `summary` wins where it exists. */}
+        {profile ? <p>{profile}</p> : <Bio />}
       </section>
     )}
 
@@ -52,11 +58,13 @@ const skills = (await getCollection('skills')).sort(byOrder);
       {experience.map((entry) => (
         <div class="entry">
           <h3>{entry.data.title}</h3>
-          <p class="meta">{entry.data.organization} <span aria-hidden="true">·</span> {entry.data.period}</p>
-          {entry.data.summary && <p>{entry.data.summary}</p>}
-          {entry.data.highlights.length > 0 && (
+          <p class="meta">{entry.data.organization} <span aria-hidden="true">·</span> {entry.data.printPeriod ?? entry.data.period}</p>
+          {entry.data.summary && highlightsFor(entry.data.highlights, 'print').length === 0 && (
+            <p>{entry.data.summary}</p>
+          )}
+          {highlightsFor(entry.data.highlights, 'print').length > 0 && (
             <ul class="points">
-              {entry.data.highlights.map((point) => <li>{point}</li>)}
+              {highlightsFor(entry.data.highlights, 'print').map((point) => <li>{point}</li>)}
             </ul>
           )}
         </div>
@@ -81,7 +89,7 @@ const skills = (await getCollection('skills')).sort(byOrder);
           <li>
             {entry.data.title}
             {entry.data.issuer && <span class="meta"> — {entry.data.issuer}</span>}
-            <span class="meta"> ({formatMonth(entry.data.issued)}{entry.data.expires && `, ${hasExpired(entry.data.expires) ? 'expired' : 'expires'} ${formatMonth(entry.data.expires)}`})</span>
+            <span class="meta"> ({formatYearOnly(entry.data.issued)}{entry.data.expires && `, ${hasExpired(entry.data.expires) ? 'expired' : 'expires'} ${formatYearOnly(entry.data.expires)}`})</span>
           </li>
         ))}
       </ul>
@@ -94,7 +102,7 @@ const skills = (await getCollection('skills')).sort(byOrder);
           <li>
             {entry.data.title}
             <span class="meta"> — {entry.data.issuer}</span>
-            {entry.data.issued && <span class="meta"> ({formatMonth(entry.data.issued)})</span>}
+            {entry.data.issued && <span class="meta"> ({formatYearOnly(entry.data.issued)})</span>}
           </li>
         ))}
       </ul>
@@ -103,7 +111,7 @@ const skills = (await getCollection('skills')).sort(byOrder);
     <section>
       <h2>Skills</h2>
       {skills.map((group) => (
-        <p class="skills"><strong>{group.data.label}:</strong> {group.data.items.join(', ')}</p>
+        <p class="skills"><strong>{group.data.label}:</strong> {(group.data.printItems ?? group.data.items).join(', ')}</p>
       ))}
     </section>
 
@@ -156,7 +164,15 @@ const skills = (await getCollection('skills')).sort(byOrder);
 
   .entry p:last-child { margin-top: 0.4rem; font-size: 0.95rem; }
 
-  .plain { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; }
+  .plain {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+    gap: 0.4rem 1.75rem;
+    align-content: start;
+  }
 
   .points {
     margin: 0.4rem 0 0;
@@ -173,10 +189,29 @@ const skills = (await getCollection('skills')).sort(byOrder);
   @media print {
     :global(header.bar), :global(.footer), :global(.skip) { display: none !important; }
     :global(main.has-chrome) { padding-top: 0 !important; }
-    .sheet { padding: 0; gap: 1.5rem; max-width: none; }
+    .sheet { padding: 0; gap: 0.7rem; max-width: none; }
     .print-hint { display: none; }
-    h2 { color: #000; }
-    header { border-bottom-color: #000; }
+    h2 { color: #000; margin-bottom: 0.45rem; padding-bottom: 0.2rem; }
+    header { border-bottom-color: #000; padding-bottom: 0.45rem; }
     a { color: #000; text-decoration: none; }
+
+    /* Type stays at a readable ~10pt; the space between things is what gives.
+       Shrinking the font is the tempting lever and the wrong one — a resumé
+       nobody can read at arm's length has not been simplified. */
+    h1 { font-size: 1.45rem; }
+    .bio :global(p), .entry p, .points, .plain, .skills { font-size: 0.8rem; }
+    .bio :global(p), .entry p { line-height: 1.35; }
+    .entry + .entry { margin-top: 0.55rem; }
+    h3 { font-size: 0.9rem; }
+    .meta { font-size: 0.74rem; }
+    .points { gap: 0.05rem; line-height: 1.28; margin-top: 0.2rem; }
+    .plain { gap: 0.18rem 1.5rem; }
+    .skills + .skills { margin-top: 0.25rem; }
+    .skills { line-height: 1.35; }
+
+    /* Never strand a role's heading at the foot of a page. */
+    .entry { break-inside: avoid; }
+    h2 { break-after: avoid; }
+    h3 { break-after: avoid; }
   }
 </style>

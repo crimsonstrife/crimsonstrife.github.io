@@ -1,11 +1,13 @@
 ---
+import { highlightsFor, type Highlight } from '../lib/content';
+
 interface Entry {
   id: string;
   title: string;
   organization: string;
   period: string;
   summary: string;
-  highlights: string[];
+  highlights: Highlight[];
 }
 interface Props {
   entries: Entry[];
@@ -21,9 +23,9 @@ const { entries } = Astro.props;
         <p class="meta">{entry.organization}</p>
         <p class="meta">{entry.period}</p>
         {entry.summary && <p class="body">{entry.summary}</p>}
-        {entry.highlights.length > 0 && (
+        {highlightsFor(entry.highlights, 'site').length > 0 && (
           <ul class="points">
-            {entry.highlights.map((point) => <li>{point}</li>)}
+            {highlightsFor(entry.highlights, 'site').map((point) => <li>{point}</li>)}
           </ul>
         )}
       </div>

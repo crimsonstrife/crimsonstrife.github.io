@@ -1,5 +1,11 @@
 ---
 title: "About Patrick"
+summary: >-
+  Software developer in Charlotte, North Carolina, working in internal web
+  applications, Salesforce development and systems integration, with over a
+  decade of IT and end-user support underneath it. Outside that I run
+  CrimsonStrife Games and build One Man's Poison, a survival-horror game in
+  Unreal Engine 5.
 ---
 
 I like knowing how a thing works all the way down. Most of what I do starts the

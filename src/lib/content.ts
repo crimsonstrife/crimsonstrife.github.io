@@ -16,6 +16,19 @@ export function hasWriteup(body?: string): boolean {
   return Boolean(body && stripComments(body).trim());
 }
 
+export type Highlight = string | { text: string; print: boolean };
+
+/**
+ * The bullets one medium should show. The site shows every bullet; the printed
+ * resumé drops the ones marked `print: false`. Both read the same list, so
+ * editing a bullet can never leave a stale copy behind on the other surface.
+ */
+export function highlightsFor(highlights: Highlight[], medium: 'site' | 'print'): string[] {
+  return highlights
+    .filter((point) => typeof point === 'string' || medium === 'site' || point.print)
+    .map((point) => (typeof point === 'string' ? point : point.text));
+}
+
 /** Drafts are visible in `astro dev` but never in a production build. */
 export const includeDrafts = import.meta.env.DEV;
 

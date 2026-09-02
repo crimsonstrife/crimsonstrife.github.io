@@ -19,6 +19,21 @@
       "Requirements Gathering",
       "Technical Documentation",
       "Twitch API Integration"
+    ],
+    "printItems": [
+      "Java",
+      "C++",
+      "PHP",
+      "JavaScript",
+      "MySQL",
+      "Laravel",
+      "Git",
+      "GitHub",
+      "Perforce",
+      "Object-Oriented Programming (OOP)",
+      "Software Development Life Cycle (SDLC)",
+      "Requirements Gathering",
+      "Technical Documentation"
     ]
   },
   {
@@ -45,6 +60,23 @@
       "Redis / Valkey",
       "TLS Configuration",
       "Localization (i18n)"
+    ],
+    "printItems": [
+      "Web Development",
+      "Front-End Development",
+      "Responsive Web Design",
+      "HTML",
+      "CSS",
+      "jQuery",
+      "Astro",
+      "Static Site Generators",
+      "WordPress",
+      "CI/CD (GitHub Actions)",
+      "DigitalOcean",
+      "Redis / Valkey",
+      "TLS Configuration",
+      "Localization (i18n)",
+      "Search Engine Optimization (SEO)"
     ]
   },
   {
@@ -74,6 +106,13 @@
       "Social Media",
       "Brand Identity Design",
       "Streaming Production (OBS)"
+    ],
+    "printItems": [
+      "User Experience (UX)",
+      "User Interface Design",
+      "Adobe XD",
+      "Photoshop",
+      "Brand Identity Design"
     ]
   },
   {
@@ -98,6 +137,17 @@
       "Gameplay Systems Design",
       "Character Rigging",
       "Steam Deck / Linux Porting"
+    ],
+    "printItems": [
+      "Unreal Engine 5",
+      "Unreal Engine 4",
+      "Blueprint (UE4)",
+      "Gameplay Systems Design",
+      "Game Design",
+      "Maya",
+      "3D Modeling & Animation",
+      "Character Rigging",
+      "Steam Deck / Linux Porting"
     ]
   },
   {
@@ -116,6 +166,11 @@
       "Microsoft Word",
       "Microsoft Excel",
       "Android"
+    ],
+    "printItems": [
+      "Technical Support",
+      "Troubleshooting",
+      "Computer Hardware"
     ]
   },
   {

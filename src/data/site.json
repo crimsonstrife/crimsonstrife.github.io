@@ -35,18 +35,15 @@
     }
   ],
   "contact": {
-    "//": "The Cloudflare Worker validates and emails static-site form submissions to the public contact address.",
     "endpoint": "https://contact.patrickbarnhardt.info/",
     "turnstileSiteKey": "0x4AAAAAAEj6m5GJ-ihp4ZZA",
     "successPath": "/contact/thanks/"
   },
   "analytics": {
-    "//": "Google Analytics 4. Clear measurementId to remove the tag from every page. The tag only renders in production builds.",
     "measurementId": "G-ZM3RJY4E8Q"
   },
   "resume": {
-    "//": "Printable resume history window. Shows at least minEntries roles, and keeps going until the printed history spans minYears. Conventional guidance is 10-15 years.",
-    "minEntries": 5,
+    "minEntries": 4,
     "minYears": 10
   }
 }

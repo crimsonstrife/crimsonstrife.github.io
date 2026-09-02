@@ -11,6 +11,12 @@ export function formatMonth(value?: string): string {
   });
 }
 
+/** Year alone. The printed resumé lists credentials by year — the month adds
+ *  a line-wrap per entry and nothing a reader of a resumé is looking for. */
+export function formatYearOnly(value?: string): string {
+  return value ? value.slice(0, 4) : '';
+}
+
 /** True once the whole expiry month has passed. */
 export function hasExpired(expires?: string, now: Date = new Date()): boolean {
   if (!expires) return false;

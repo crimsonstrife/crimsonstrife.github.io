@@ -31,7 +31,8 @@
       "Wrote the technical knowledge-base articles, including two printer service-code guides on Experts Exchange that have each passed 40,000 views.",
       "Supported the specialty software customers depended on, mostly AutoStore document capture."
     ],
-    "technical": true
+    "technical": true,
+    "printPeriod": "July 2018 - March 2023"
   },
   {
     "id": "it-support-technician-modern-impressions",
@@ -47,7 +48,8 @@
       "Handled general IT support for managed-services customers.",
       "Supported the specialty software customers depended on, mostly AutoStore document capture."
     ],
-    "technical": true
+    "technical": true,
+    "printable": false
   },
   {
     "id": "gis-technician-qc-data",
@@ -79,7 +81,10 @@
     "summary": "An indie studio I founded and ran for five years, leading the projects and doing the modeling and animation myself.",
     "highlights": [
       "Led and designed DIVERSE, the studio's main project. We shut development down before release because we couldn't cover the cost.",
-      "Did not, with hindsight, have anything like enough experience to be running this at the time."
+      {
+        "text": "Did not, with hindsight, have anything like enough experience to be running this at the time.",
+        "print": false
+      }
     ],
     "technical": true
   },

@@ -188,10 +188,31 @@ const pages = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/pages' }),
   schema: z.object({
     title: z.string(),
+    /**
+     * A resumé-length version of the page body. about.md renders in full in the
+     * homepage About section, where four paragraphs are right; the printable
+     * resumé uses this instead, where they are not. Omitted, /resume falls back
+     * to the full body.
+     */
+    summary: z.string().optional(),
   }),
 });
 
 /** Shared shape for the two resumé timelines. */
+/**
+ * A bullet point. A bare string appears everywhere. The object form exists for
+ * lines that belong on the site but not on paper — an honest aside reads as
+ * candour on a page someone chose to visit, and as an argument against yourself
+ * in a stack of forty resumés.
+ */
+const highlight = z.union([
+  z.string(),
+  z.object({
+    text: z.string(),
+    print: z.boolean().default(true),
+  }),
+]);
+
 const timelineEntry = z.object({
   id: z.string(),
   order: z.number().int().positive(),
@@ -208,7 +229,7 @@ const timelineEntry = z.object({
   end: z.string().regex(/^\d{4}(-\d{2})?$/, 'Expected YYYY or YYYY-MM').optional(),
   summary: z.string().default(''),
   /** Bullet points, where the role has them. */
-  highlights: z.array(z.string()).default([]),
+  highlights: z.array(highlight).default([]),
   credentialId: z.string().optional(),
   credentialUrl: z.url().optional(),
   /**
@@ -217,6 +238,20 @@ const timelineEntry = z.object({
    * shows only the entries flagged here.
    */
   technical: z.boolean().default(false),
+  /**
+   * Editorial suppression for the printed resumé, and deliberately a separate
+   * question from `technical`: that one asks what a role *is*, this one asks
+   * whether you want it on paper. Applied after the history window is worked
+   * out, so hiding an entry removes it rather than pulling an older one in to
+   * take its place.
+   */
+  printable: z.boolean().default(true),
+  /**
+   * Replaces `period` on the printed resumé only. Lets one entry cover the span
+   * that two entries describe on the site — a promotion inside the same company
+   * is worth two rows on a timeline and one row on a resumé.
+   */
+  printPeriod: z.string().optional(),
 });
 
 const experience = defineCollection({
@@ -271,6 +306,13 @@ const skills = defineCollection({
     order: z.number().int().positive(),
     label: z.string(),
     items: z.array(z.string()).min(1),
+    /**
+     * The subset to print at /resume. A printed resumé is read in about six
+     * seconds, so it wants the relevant dozen rather than the honest seventy —
+     * but the site keeps the full list, because the full list is true. Omit
+     * this and the group prints every item in `items`.
+     */
+    printItems: z.array(z.string()).optional(),
   }),
 });
 

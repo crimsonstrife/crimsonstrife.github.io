@@ -23,7 +23,8 @@
     "end": "2013",
     "summary": "Started the program in 2012 and didn't finish it.",
     "highlights": [],
-    "technical": true
+    "technical": true,
+    "printable": false
   },
   {
     "id": "aas-simulation-game-design-scc",
