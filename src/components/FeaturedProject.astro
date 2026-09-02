@@ -2,11 +2,11 @@
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
-import { hasWriteup } from '../lib/content';
+import { byRecency, hasWriteup } from '../lib/content';
 
 const featured = (await getCollection('projects'))
   .filter((project) => project.data.featured)
-  .sort((a, b) => a.data.order - b.data.order)[0];
+  .sort(byRecency)[0];
 
 const media = featured?.data.media;
 const artwork = media?.type === 'image' ? (media.full ?? media.thumbnail) : undefined;

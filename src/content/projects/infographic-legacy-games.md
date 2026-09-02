@@ -2,7 +2,9 @@
 title: "Infographic: Legacy Games"
 category: "branding"
 summary: "An infographic explaining what the studio was and where it meant to go, from back when it was still called Legacy Games — before the rebrand to Helical Games."
-order: 42
+track: "independent"
+year: 2012
+yearApprox: true
 media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/72158_10151254894948948_816512030_n.jpg"

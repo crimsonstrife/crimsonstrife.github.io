@@ -2,6 +2,8 @@
 title: "Crucible SCM"
 category: "web"
 summary: "A self-hosted Git platform built for game teams — LFS with pluggable backends, file locking, engine-aware policies, and an Unreal Engine plugin that puts it in the editor's revision control menu."
+track: "independent"
+year: 2025
 order: 5
 media:
   type: "image"

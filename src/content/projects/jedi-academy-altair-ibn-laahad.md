@@ -2,7 +2,9 @@
 title: "Jedi Academy Mod: Altaïr Ibn-La'Ahad"
 category: "3d"
 summary: "A complete Jedi Academy player-model mod translating Assassin's Creed's Altaïr into Raven's character pipeline, with a custom mesh, textures, rigging, props, and game-ready packaging."
-order: 56
+track: "mods"
+year: 2012
+yearApprox: true
 media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/jedi-academy-altair-1.png"

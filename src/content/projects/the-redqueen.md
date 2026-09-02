@@ -2,7 +2,8 @@
 title: "The RedQueen"
 category: "3d"
 summary: "The Red Queen, Nero's sword from Devil May Cry. Another early piece from my 3D modeling classes."
-order: 26
+track: "education"
+year: 2009
 media:
   type: "sketchfab"
   modelId: "c06a388657cb48ab8ba7c63ac5ce4065"

@@ -1,8 +1,10 @@
 ---
 title: "Marketing: Album Cover"
 category: "branding"
-summary: "An album cover done as part of a marketing campaign for a local band."
-order: 44
+summary: "An album cover done as part of a marketing campaign for a local band. This was part of my graduation project for High School."
+track: "education"
+year: 2009
+yearApprox: true
 media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/4266_77239448947_7056003_n.jpg"

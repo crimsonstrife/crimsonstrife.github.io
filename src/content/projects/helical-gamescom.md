@@ -2,7 +2,8 @@
 title: "Helical Games.com"
 category: "web"
 summary: "The first Helical Games site, built in 2012. I scrapped it in early 2016 — it wasn’t especially responsive or engaging, and on a phone it fell apart."
-order: 14
+track: "independent"
+year: 2012
 media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/helicalgamescom-thumb.png"

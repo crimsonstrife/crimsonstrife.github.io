@@ -2,7 +2,9 @@
 title: "Can We Shoot Something? [Keep Talking And Nobody Explodes]"
 category: "video"
 summary: ""
-order: 47
+track: "content"
+year: 2015
+yearApprox: true
 media:
   type: "youtube"
   videoId: "EPFFcSpHRr8"

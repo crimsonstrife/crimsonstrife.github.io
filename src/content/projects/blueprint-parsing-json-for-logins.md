@@ -2,7 +2,9 @@
 title: "Blueprint: Parsing JSON for logins"
 category: "blueprints"
 summary: "Pulling JSON out of a WordPress site and parsing it in Blueprint, so the game could sign players in against accounts that already existed on the web. Unreal Engine 4."
-order: 32
+track: "independent"
+year: 2016
+yearApprox: true
 media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/qR8vNTr.png"

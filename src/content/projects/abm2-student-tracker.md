@@ -2,6 +2,8 @@
 title: "Student Tracker (ABM2)"
 category: "tools"
 summary: "A native Android student portal for managing academic terms, courses, assessments and mentors, with local persistence, date reminders, sharing and responsive phone layouts."
+track: "education"
+year: 2023
 order: 8
 caseStudy: true
 media:

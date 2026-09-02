@@ -78,3 +78,33 @@ function coversMinimum(picked: { data: { start: string } }[], minYears: number, 
     .sort((a, b) => a.valueOf() - b.valueOf())[0];
   return oldest ? yearsSince(oldest, now) >= minYears : false;
 }
+
+interface ArchiveEntry {
+  id: string;
+  data: { year: number; order?: number };
+}
+
+/**
+ * Archive order: newest year first, then any explicit pin, then id.
+ *
+ * `order` is a pin *within* a year, not a global sequence, so two projects
+ * sharing a value in different years never interact — which is what the old
+ * single global integer could not express. Unpinned entries sort after pinned
+ * ones in the same year, and the id tiebreak keeps the sequence stable across
+ * builds.
+ */
+export function byRecency(a: ArchiveEntry, b: ArchiveEntry): number {
+  if (a.data.year !== b.data.year) return b.data.year - a.data.year;
+  const pinA = a.data.order ?? Number.MAX_SAFE_INTEGER;
+  const pinB = b.data.order ?? Number.MAX_SAFE_INTEGER;
+  if (pinA !== pinB) return pinA - pinB;
+  return a.id.localeCompare(b.id);
+}
+
+/**
+ * A year for display. Estimated dates are marked rather than presented as
+ * sourced ones — see the `yearApprox` note in the content config.
+ */
+export function formatYear(year: number, approx = false): string {
+  return approx ? `c. ${year}` : String(year);
+}

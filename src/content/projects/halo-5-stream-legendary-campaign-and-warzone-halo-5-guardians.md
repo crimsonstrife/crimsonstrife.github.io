@@ -2,7 +2,9 @@
 title: "Halo 5 Stream: Legendary Campaign and Warzone [Halo 5: Guardians]"
 category: "video"
 summary: ""
-order: 53
+track: "content"
+year: 2015
+yearApprox: true
 media:
   type: "youtube"
   videoId: "WWk-BygCUWY"

@@ -2,6 +2,8 @@
 title: "Klip-Stitcher"
 category: "tools"
 summary: "A desktop app that stitches a folder of sequentially-named recording clips back into one continuous file — built after OBS quietly split a three-hour stream into hundreds of thirty-second fragments."
+track: "independent"
+year: 2026
 order: 6
 media:
   type: "image"

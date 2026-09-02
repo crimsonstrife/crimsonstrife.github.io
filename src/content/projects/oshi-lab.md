@@ -2,6 +2,8 @@
 title: "Oshi Lab"
 category: "web"
 summary: "A browser-based theme editor for MyOshi profiles. Lets you write Custom CSS and HTML against a realistic demo profile, preview it safely, and export only your own code."
+track: "independent"
+year: 2026
 order: 2
 media:
   type: "image"

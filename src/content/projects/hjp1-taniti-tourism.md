@@ -2,6 +2,8 @@
 title: "Taniti Tourism Website (HJP1)"
 category: "uxui"
 summary: "A research-led website mockup for a fictional island destination, developed from persona and information architecture through a nine-screen InVision prototype and remote usability testing."
+track: "education"
+year: 2020
 order: 8
 caseStudy: true
 media:

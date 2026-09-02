@@ -2,7 +2,9 @@
 title: "Logo: Crimsonstrife Gaming Channel"
 category: "branding"
 summary: "A logo for my gaming YouTube channel."
-order: 36
+track: "content"
+year: 2014
+yearApprox: true
 media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/main_photo-138.png"

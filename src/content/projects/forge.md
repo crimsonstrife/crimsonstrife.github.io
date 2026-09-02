@@ -2,6 +2,8 @@
 title: "Forge"
 category: "web"
 summary: "A Laravel 12 work platform that folds project planning, issue tracking, a support desk and feedback boards into one application instead of four subscriptions."
+track: "independent"
+year: 2024
 order: 3
 media:
   type: "image"

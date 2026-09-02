@@ -29,6 +29,21 @@ const CATEGORIES = [
   'video',
 ] as const;
 
+/**
+ * The context a project was made in — a different question from the discipline
+ * `category` records, so the two are separate axes rather than one flattened
+ * list. Mods are deliberately their own value rather than folded into game or
+ * art work: they ship into someone else's game and community, and that is what
+ * distinguishes them, not their craft.
+ */
+const TRACKS = [
+  'professional',
+  'independent',
+  'mods',
+  'education',
+  'content',
+] as const;
+
 const links = z
   .object({
     repo: z.url().optional(),
@@ -51,8 +66,26 @@ const projects = defineCollection({
       title: z.string(),
       category: z.enum(CATEGORIES),
       summary: z.string().default(''),
-      /** Ascending. 0 pins a project to the front of the gallery. */
-      order: z.number().int().nonnegative(),
+      /**
+       * The year the work shipped, or was last substantially worked on. This
+       * is the archive's primary sort key and what its era grouping reads.
+       */
+      year: z.number().int().min(1990).max(2100),
+      /**
+       * True when `year` is a best estimate rather than a sourced date, and
+       * renders as "c. 2015". Much of the pre-2017 work predates any record
+       * that survives; saying so is better than implying a precision we don't
+       * have. Evidence for every date is in scripts/project-dating.json.
+       */
+      yearApprox: z.boolean().default(false),
+      /** The context the work was made in. See TRACKS above. */
+      track: z.enum(TRACKS),
+      /**
+       * Optional pin, ascending, applied only within a year. Most projects
+       * don't need one — `year` and then title order is enough. Set it to
+       * force a specific project to the head of its year.
+       */
+      order: z.number().int().nonnegative().optional(),
       /**
        * Marks the project for the full-width feature panel above the gallery —
        * the 2017 site's "showbox". Only the first featured project renders.
@@ -260,6 +293,16 @@ const categories = defineCollection({
   }),
 });
 
+const tracks = defineCollection({
+  loader: file('src/data/tracks.json'),
+  schema: z.object({
+    id: z.enum(TRACKS),
+    order: z.number().int().positive(),
+    label: z.string(),
+    blurb: z.string(),
+  }),
+});
+
 const social = defineCollection({
   loader: file('src/data/social.json'),
   schema: z.object({
@@ -291,5 +334,6 @@ export const collections = {
   skills,
   interests,
   categories,
+  tracks,
   social,
 };

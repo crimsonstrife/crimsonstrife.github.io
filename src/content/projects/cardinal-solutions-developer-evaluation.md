@@ -2,7 +2,8 @@
 title: "Cardinal Solutions Developer Evaluation"
 category: "web"
 summary: "A hiring evaluation: turn a flat image mockup into a responsive site in HTML and CSS3, and make it survive the versions of Internet Explorer that were still around at the time."
-order: 11
+track: "professional"
+year: 2018
 media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/spu-ea68c8-ogi2-3cwn3bmfojjlb56e-thumb.jpg"

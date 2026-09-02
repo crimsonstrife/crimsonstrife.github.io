@@ -2,7 +2,9 @@
 title: "Don't C**K It Up [Keep Talking And Nobody Explodes]"
 category: "video"
 summary: ""
-order: 46
+track: "content"
+year: 2015
+yearApprox: true
 media:
   type: "youtube"
   videoId: "IMwydO05Qk8"

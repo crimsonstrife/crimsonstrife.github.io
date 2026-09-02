@@ -2,7 +2,9 @@
 title: "Design: Overlay for Charity Stream"
 category: "branding"
 summary: "A broadcast overlay built for a charity gaming stream."
-order: 41
+track: "content"
+year: 2015
+yearApprox: true
 media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/W0IzVkG.png"

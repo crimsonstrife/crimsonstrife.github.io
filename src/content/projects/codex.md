@@ -2,6 +2,8 @@
 title: "Codex"
 category: "web"
 summary: "A Confluence-style documentation platform and the sister application to Forge — nested page trees, revision history, native diagrams and full-text search."
+track: "independent"
+year: 2026
 order: 4
 media:
   type: "image"

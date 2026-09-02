@@ -2,7 +2,9 @@
 title: "Flawless Year 1 [Destiny] - feat. J3wandowski"
 category: "video"
 summary: ""
-order: 45
+track: "content"
+year: 2015
+yearApprox: true
 media:
   type: "youtube"
   videoId: "xdpIi999DmU"

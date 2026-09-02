@@ -2,7 +2,9 @@
 title: "Blueprint: Player Controls"
 category: "blueprints"
 summary: "A sample of the player control and ability Blueprints from an Unreal Engine 4 project."
-order: 40
+track: "independent"
+year: 2016
+yearApprox: true
 media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/cDjddyB.png"

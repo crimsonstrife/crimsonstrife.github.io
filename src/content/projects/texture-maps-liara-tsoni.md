@@ -2,7 +2,9 @@
 title: "Texture Maps: Liara T'Soni"
 category: "textures"
 summary: "Texture maps for my Liara T'Soni model, painted from scratch — some in Photoshop, some directly onto the mesh in Mudbox."
-order: 31
+track: "education"
+year: 2012
+yearApprox: true
 media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/d5onpc7.jpg"

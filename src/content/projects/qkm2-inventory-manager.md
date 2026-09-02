@@ -2,6 +2,9 @@
 title: "Inventory Manager (QKM2)"
 category: "tools"
 summary: "A JavaFX inventory application for maintaining in-house and outsourced parts, assembling products from those parts, and enforcing stock constraints."
+track: "education"
+year: 2022
+yearApprox: true
 order: 8
 tags: ["Java", "JavaFX", "FXML", "Gradle", "Object-Oriented Design"]
 links:

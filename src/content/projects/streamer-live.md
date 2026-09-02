@@ -2,6 +2,8 @@
 title: "streamer.live"
 category: "web"
 summary: "A self-hosted Laravel CMS for streamers and creator communities — a page builder, Twitch and Discord automation, Fourthwall merch, analytics, and moderation in one platform."
+track: "independent"
+year: 2025
 order: 5
 media:
   type: "image"

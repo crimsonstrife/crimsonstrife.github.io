@@ -4,18 +4,25 @@ import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
 import SectionHeader from './SectionHeader.astro';
 import GitHubActivity from './GitHubActivity.astro';
-import { hasWriteup } from '../lib/content';
+import { byRecency, formatYear, hasWriteup } from '../lib/content';
 
 // The featured project receives a full case-study treatment immediately above
 // this archive, so it does not need a duplicate tile here.
 const projects = (await getCollection('projects'))
   .filter((project) => !project.data.featured)
-  .sort((a, b) => a.data.order - b.data.order);
+  .sort(byRecency);
+
+// Two independent axes: what discipline the work belongs to, and the context
+// it was made in. They combine as AND, so "3D Modeling" + "Mods" is a real
+// slice rather than a choice between the two.
 const allCategories = (await getCollection('categories')).sort((a, b) => a.data.order - b.data.order);
+const allTracks = (await getCollection('tracks')).sort((a, b) => a.data.order - b.data.order);
 
 // Only offer filters that actually have work behind them.
-const used = new Set(projects.map((p) => p.data.category));
-const categories = allCategories.filter((c) => used.has(c.data.id));
+const usedCategories = new Set(projects.map((p) => p.data.category));
+const usedTracks = new Set(projects.map((p) => p.data.track));
+const categories = allCategories.filter((c) => usedCategories.has(c.data.id));
+const tracks = allTracks.filter((t) => usedTracks.has(t.data.id));
 const ARCHIVE_BATCH_SIZE = 8;
 
 /**
@@ -60,14 +67,44 @@ const tiles = await Promise.all(
   <SectionHeader eyebrow="Everything else" title="Project archive" />
 
   <div class="filters">
-    <ul role="list">
+    <ul role="list" aria-label="Filter by discipline">
       <li>
-        <button type="button" class="chip" data-filter="all" aria-pressed="true">Show all</button>
+        <button type="button" class="chip" data-filter-group="category" data-filter="all" aria-pressed="true">
+          All disciplines
+        </button>
       </li>
       {categories.map((category) => (
         <li>
-          <button type="button" class="chip" data-filter={category.data.id} aria-pressed="false">
+          <button
+            type="button"
+            class="chip"
+            data-filter-group="category"
+            data-filter={category.data.id}
+            aria-pressed="false"
+          >
             {category.data.label}
+          </button>
+        </li>
+      ))}
+    </ul>
+
+    <ul role="list" class="track-filters" aria-label="Filter by context">
+      <li>
+        <button type="button" class="chip" data-filter-group="track" data-filter="all" aria-pressed="true">
+          All contexts
+        </button>
+      </li>
+      {tracks.map((track) => (
+        <li>
+          <button
+            type="button"
+            class="chip"
+            data-filter-group="track"
+            data-filter={track.data.id}
+            aria-pressed="false"
+            title={track.data.blurb}
+          >
+            {track.data.label}
           </button>
         </li>
       ))}
@@ -81,7 +118,12 @@ const tiles = await Promise.all(
       const Tag = href ? 'a' : kind === 'none' ? 'div' : 'button';
       const interactive = Boolean(href) || kind !== 'none';
       return (
-      <li class="cell" data-category={project.data.category} hidden={index >= ARCHIVE_BATCH_SIZE}>
+      <li
+        class="cell"
+        data-category={project.data.category}
+        data-track={project.data.track}
+        hidden={index >= ARCHIVE_BATCH_SIZE}
+      >
         <Tag
           class:list={['tile', { inert: !interactive }]}
           href={href}
@@ -132,6 +174,7 @@ const tiles = await Promise.all(
 
           <span class="overlay">
             <span class="title">{project.data.title}</span>
+            <span class="year">{formatYear(project.data.year, project.data.yearApprox)}</span>
             {project.data.summary && <span class="summary">{project.data.summary}</span>}
             <span class="cue">
               {href
@@ -151,7 +194,7 @@ const tiles = await Promise.all(
     })}
   </ul>
 
-  <p class="empty" hidden>Nothing in that category yet.</p>
+  <p class="empty" hidden>Nothing matches both of those filters yet.</p>
 
   <div class="archive-controls" data-batch-size={ARCHIVE_BATCH_SIZE}>
     <p class="archive-count" aria-live="polite">
@@ -180,6 +223,24 @@ const tiles = await Promise.all(
   }
 
   /* --- Filter bar ------------------------------------------------- */
+
+  /* Second axis sits under the first, a step quieter so the disciplines stay
+     the primary control. */
+  .filters .track-filters {
+    margin-top: 0.5rem;
+  }
+
+  .filters .track-filters .chip {
+    font-size: 0.78rem;
+    opacity: 0.85;
+  }
+
+  .overlay .year {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
 
   .filters ul {
     list-style: none;
@@ -409,12 +470,15 @@ const tiles = await Promise.all(
   const archiveCount = document.querySelector<HTMLParagraphElement>('.archive-count');
   const loadMore = document.querySelector<HTMLButtonElement>('.load-more');
   const batchSize = Number(archiveControls?.dataset.batchSize ?? 8);
-  let activeFilter = 'all';
+  // One active value per axis; 'all' opts that axis out of filtering.
+  const active: Record<string, string> = { category: 'all', track: 'all' };
   let visibleLimit = batchSize;
 
   function renderArchive() {
     const matching = cells.filter(
-      (cell) => activeFilter === 'all' || cell.dataset.category === activeFilter
+      (cell) =>
+        (active.category === 'all' || cell.dataset.category === active.category) &&
+        (active.track === 'all' || cell.dataset.track === active.track)
     );
 
     cells.forEach((cell) => { cell.hidden = true; });
@@ -426,7 +490,7 @@ const tiles = await Promise.all(
     if (archiveCount) {
       archiveCount.textContent = matching.length > 0
         ? `Showing ${visible} of ${matching.length} projects`
-        : 'No projects in this category';
+        : 'No projects match those filters';
     }
     if (loadMore) {
       loadMore.hidden = remaining === 0;
@@ -437,9 +501,15 @@ const tiles = await Promise.all(
 
   chips.forEach((chip) => {
     chip.addEventListener('click', () => {
-      activeFilter = chip.dataset.filter ?? 'all';
+      const group = chip.dataset.filterGroup;
+      if (!group) return;
+      active[group] = chip.dataset.filter ?? 'all';
       visibleLimit = batchSize;
-      chips.forEach((c) => c.setAttribute('aria-pressed', String(c === chip)));
+      // Pressed state is per-axis, so choosing a discipline doesn't clear the
+      // context chip and vice versa.
+      document
+        .querySelectorAll<HTMLButtonElement>(`.chip[data-filter-group="${group}"]`)
+        .forEach((c) => c.setAttribute('aria-pressed', String(c === chip)));
       renderArchive();
     });
   });

@@ -2,7 +2,8 @@
 title: "Jedi Academy Mod: Emperor Kisu"
 category: "3d"
 summary: "A Guild Wars character rebuilt as a game-ready Jedi Academy player model, with custom geometry, detailed clothing textures, rigging, shader work, and bot and NPC support."
-order: 57
+track: "mods"
+year: 2008
 media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/jedi-academy-emperor-kisu.jpg"

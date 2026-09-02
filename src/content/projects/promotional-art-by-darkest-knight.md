@@ -2,7 +2,9 @@
 title: "Promotional Art: By Darkest Knight"
 category: "branding"
 summary: "A promotional mockup for By Darkest Knight, an indie hack-and-slash that never shipped."
-order: 29
+track: "independent"
+year: 2014
+yearApprox: true
 media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/d4vdvbe.png"

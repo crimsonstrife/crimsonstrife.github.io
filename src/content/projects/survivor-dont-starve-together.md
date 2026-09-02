@@ -2,7 +2,9 @@
 title: "SURVIVOR [Don't Starve Together]"
 category: "video"
 summary: ""
-order: 49
+track: "content"
+year: 2015
+yearApprox: true
 media:
   type: "youtube"
   videoId: "VnrZJmhuTeM"

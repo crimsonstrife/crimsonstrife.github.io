@@ -2,6 +2,9 @@
 title: "Modern Impressions Website"
 category: "web"
 summary: "Five years as webmaster for a Charlotte office-technology dealer, building onto a bought theme: a live Net Promoter Score dashboard wired to a third-party API, a branching support triage flow, and a knowledge base I wrote most of."
+track: "professional"
+year: 2023
+yearApprox: true
 order: 8
 caseStudy: true
 media:

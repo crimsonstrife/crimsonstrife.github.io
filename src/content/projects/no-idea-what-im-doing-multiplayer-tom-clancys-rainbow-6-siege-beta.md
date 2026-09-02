@@ -2,7 +2,9 @@
 title: "No Idea What I'm Doing \"Multiplayer\" [Tom Clancy's Rainbow 6 Siege : BETA]"
 category: "video"
 summary: ""
-order: 50
+track: "content"
+year: 2015
+yearApprox: true
 media:
   type: "youtube"
   videoId: "YC3viBtYeKs"

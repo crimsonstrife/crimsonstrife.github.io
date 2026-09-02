@@ -2,7 +2,9 @@
 title: "Blueprint: Checking Local OS for Loggedin User"
 category: "blueprints"
 summary: "The fallback for my Steam ID reader. If nobody is logged into Steam, this reads the local Windows account instead and feeds that in as the in-game user ID. Unreal Engine 4."
-order: 34
+track: "independent"
+year: 2016
+yearApprox: true
 media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/sRc5KKQ.png"

@@ -2,7 +2,8 @@
 title: "Jedi Academy Mod: Ember McLain"
 category: "3d"
 summary: "An early Jedi Academy character and shader study using a custom Ember McLain model, cel shading, outline work, and pulsing emissive effects to create a readable ghost form."
-order: 58
+track: "mods"
+year: 2008
 media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/jedi-academy-ember-mclain.jpg"

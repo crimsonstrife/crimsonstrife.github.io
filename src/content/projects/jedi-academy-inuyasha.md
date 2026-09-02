@@ -2,7 +2,8 @@
 title: "Jedi Academy Mod: Inuyasha"
 category: "3d"
 summary: "My first Jedi Academy character mod: a cel-shaded Inuyasha player model with custom textures, rigging, team variants, shaders, and a modeled Tetsusaiga weapon."
-order: 59
+track: "mods"
+year: 2008
 media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/jedi-academy-inuyasha.jpg"

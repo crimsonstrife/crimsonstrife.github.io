@@ -2,7 +2,9 @@
 title: "[DESTINY] Team STREAMHAÜS - First Trials of Osiris Attempt"
 category: "video"
 summary: ""
-order: 55
+track: "content"
+year: 2015
+yearApprox: true
 media:
   type: "youtube"
   videoId: "G_qIVxKq7aI"

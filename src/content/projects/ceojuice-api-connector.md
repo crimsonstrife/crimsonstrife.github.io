@@ -2,6 +2,9 @@
 title: "CEO Juice API Connector"
 category: "web"
 summary: "A WordPress plugin that lifts the CEO Juice integration out of one company's theme and makes it configurable — settings, credential storage, and a cache so a dealer's Net Promoter Score doesn't cost an API call on every page view."
+track: "professional"
+year: 2022
+yearApprox: true
 order: 9
 tags: ["WordPress", "PHP 7.3+", "Plugin", "REST API", "PHPFastCache", "GPL-3.0"]
 links:

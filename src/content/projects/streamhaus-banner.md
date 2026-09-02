@@ -2,7 +2,9 @@
 title: "STREAMHAÜS Banner"
 category: "branding"
 summary: "A splash screen and promotional wallpaper for the game streaming group STREAMHAÜS."
-order: 15
+track: "content"
+year: 2015
+yearApprox: true
 media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/sh-banner.png"

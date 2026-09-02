@@ -2,7 +2,8 @@
 title: "This website: patrickbarnhardt.info (old)"
 category: "web"
 summary: "The version of this portfolio that ran from around 2017 until the current rebuild. Static HTML and CSS, responsive for its day, and then left untouched for about eight years."
-order: 13
+track: "independent"
+year: 2017
 media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/pbarnhardtinfo-thumb.png"

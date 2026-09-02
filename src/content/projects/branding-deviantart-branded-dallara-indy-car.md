@@ -2,7 +2,9 @@
 title: "Branding: DeviantArt branded Dallara Indy Car"
 category: "branding"
 summary: "A livery for the Dallara Indycar model, done as a follow-on exercise. The QR code on it is real, and it still points at the page where the work was originally posted."
-order: 30
+track: "education"
+year: 2011
+yearApprox: true
 media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/d4ew62s.png"

@@ -2,6 +2,9 @@
 title: "One Man's Poison"
 category: "games"
 summary: "A solo-developed third-person survival-horror game in Unreal Engine 5, turning a missing-person case into a focused vertical slice built around investigation, scarcity, and systemic threat."
+track: "independent"
+year: 2026
+yearApprox: true
 order: 0
 featured: true
 caseStudy: true

@@ -2,7 +2,8 @@
 title: "ClapTrap"
 category: "3d"
 summary: "Claptrap, from the Borderlands series, modeled for a 3D class at Stanly Community College. The brief was a single texture map for the entire model."
-order: 18
+track: "education"
+year: 2012
 media:
   type: "sketchfab"
   modelId: "3dkuGVmKZdnC0RzsNKp2bfv0JI0"

@@ -2,6 +2,8 @@
 title: "Appointment Scheduler (QAM2)"
 category: "tools"
 summary: "A JavaFX and MySQL desktop scheduler with localized login, customer and appointment management, time-zone-aware validation, reminders and operational reports."
+track: "education"
+year: 2022
 order: 8
 tags: ["Java 17", "JavaFX 11", "FXML", "MySQL", "JDBC", "Localization"]
 links:

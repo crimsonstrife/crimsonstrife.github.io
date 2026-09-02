@@ -2,7 +2,8 @@
 title: "emptyskies"
 category: "3d"
 summary: "A low-poly model of Empty Skies, Tri-Edge's dagger from the .hack series, made for one of my early 3D modeling classes."
-order: 27
+track: "education"
+year: 2009
 media:
   type: "sketchfab"
   modelId: "0fd0ecd809964811984f67d5b04ba0d5"

@@ -2,6 +2,8 @@
 title: "TalentFlow (RYM2)"
 category: "web"
 summary: "My WGU software capstone — a college recruitment platform written in plain PHP with no framework, because the assignment wouldn't let me reach for one."
+track: "education"
+year: 2024
 order: 7
 media:
   type: "image"

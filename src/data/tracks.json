@@ -1,0 +1,7 @@
+[
+  { "id": "professional", "order": 1, "label": "Professional", "blurb": "Built for an employer or a client." },
+  { "id": "independent",  "order": 2, "label": "Independent",  "blurb": "My own studios, products and side work." },
+  { "id": "mods",         "order": 3, "label": "Mods",         "blurb": "Released into another game's community." },
+  { "id": "education",    "order": 4, "label": "Coursework",   "blurb": "Built for a class or a degree program." },
+  { "id": "content",      "order": 5, "label": "Streaming",    "blurb": "Streaming and creator media." }
+]
