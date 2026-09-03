@@ -30,6 +30,7 @@ body {
 #main {
   width: 100%;
   flex: 1 0 auto;
+  background: var(--color-surface-sunk);
 }
 
 h1, h2, h3, h4, h5, h6 {
