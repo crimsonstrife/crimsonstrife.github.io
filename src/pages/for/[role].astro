@@ -1,0 +1,205 @@
+---
+import type { InferGetStaticPropsType } from 'astro';
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import site from '../../data/site.json';
+import { projectYear, hasWriteup } from '../../lib/content';
+
+export const getStaticPaths = async () => {
+  const roles = await getCollection('roles');
+  const projects = await getCollection('projects');
+  const byId = new Map(projects.map((project) => [project.id, project]));
+
+  return roles.map((entry) => ({
+    params: { role: entry.id },
+    props: {
+      entry,
+      // Resolved here so a typo in a project id is a build failure rather than
+      // a silently missing row on a page someone is about to read.
+      domains: entry.data.domains.map((domain) => ({
+        ...domain,
+        items: domain.projects.map((id) => {
+          const project = byId.get(id);
+          if (!project) {
+            throw new Error(
+              `Role "${entry.id}" lists unknown project "${id}" under "${domain.label}".`
+            );
+          }
+          return project;
+        }),
+      })),
+    },
+  }));
+};
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { entry, domains } = Astro.props;
+const { Content } = await render(entry);
+
+const tagSlug = new Map(
+  (await getCollection('tags')).map((tag) => [tag.data.label, tag.data.id])
+);
+---
+
+<BaseLayout
+  title={`${entry.data.headline} | ${site.name}`}
+  description={entry.data.description}
+  ogType="profile"
+>
+  <div class="wrap">
+    <SectionHeader eyebrow={`Written for ${entry.data.role} roles`} title={entry.data.headline} />
+    <p class="intro">{entry.data.intro}</p>
+
+    {domains.map((domain, index) => (
+      <section class="domain">
+        <h2>
+          <span class="num">{String(index + 1).padStart(2, '0')}</span>
+          {domain.label}
+        </h2>
+        <p class="note">{domain.note}</p>
+
+        <ul class="items" role="list">
+          {domain.items.map((project) => {
+            const href = hasWriteup(project.body) ? `/projects/${project.id}/` : undefined;
+            return (
+              <li>
+                <h3>
+                  {href ? <a href={href}>{project.data.title}</a> : project.data.title}
+                  <span class="year">{projectYear(project.data)}</span>
+                </h3>
+                <p>{project.data.summary}</p>
+                <ul class="tags" role="list">
+                  {project.data.tags.map((tag) => (
+                    <li><a href={`/projects/tag/${tagSlug.get(tag)}/`}>{tag}</a></li>
+                  ))}
+                </ul>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    ))}
+
+    {entry.data.gaps.length > 0 && (
+      <section class="gaps">
+        <h2>What I can't claim</h2>
+        <ul role="list">
+          {entry.data.gaps.map((gap) => <li>{gap}</li>)}
+        </ul>
+      </section>
+    )}
+
+    <div class="outro">
+      <Content />
+    </div>
+
+    <p class="back"><a href="/">← patrickbarnhardt.info</a></p>
+  </div>
+</BaseLayout>
+
+<style>
+  .wrap {
+    max-width: 48rem;
+    margin-inline: auto;
+    padding: 0 clamp(1rem, 4vw, 2.25rem) var(--section-padding-y);
+  }
+
+  .intro {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--color-muted);
+    margin-bottom: clamp(2.5rem, 6vw, 4rem);
+    padding-bottom: clamp(2rem, 4vw, 2.75rem);
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .domain { margin-bottom: clamp(2.5rem, 5vw, 3.5rem); }
+
+  .domain h2 {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+    text-transform: uppercase;
+  }
+
+  .num {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--color-crimson);
+  }
+
+  .note { margin-top: 0.75rem; color: var(--color-muted); line-height: 1.7; }
+
+  .items { list-style: none; margin: 1.5rem 0 0; padding: 0; display: grid; gap: 1.25rem; }
+
+  .items > li {
+    border-left: 3px solid var(--color-rule);
+    padding: 0.15rem 0 0.15rem 1.15rem;
+  }
+
+  .items h3 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.6rem;
+    font-size: 1.02rem;
+  }
+
+  .items h3 a { color: var(--color-ink); text-decoration: none; }
+  .items h3 a:hover, .items h3 a:focus-visible { color: var(--color-crimson); }
+
+  .year {
+    font-family: var(--font-display);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-label);
+    color: var(--color-muted);
+  }
+
+  .items > li > p { margin-top: 0.35rem; color: var(--color-muted); font-size: 0.92rem; line-height: 1.6; }
+
+  .tags { list-style: none; margin: 0.6rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.3rem; }
+  .tags li { display: flex; }
+
+  .tags a {
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    color: var(--color-muted);
+    border: 1px solid var(--color-rule);
+    padding: 0.1rem 0.4rem;
+    text-decoration: none;
+  }
+
+  .tags a:hover, .tags a:focus-visible { color: var(--color-ink); border-color: var(--color-crimson); }
+
+  .gaps {
+    margin-top: clamp(2.5rem, 5vw, 3.5rem);
+    padding: clamp(1.5rem, 3vw, 2rem);
+    background: var(--color-surface-sunk);
+    border-left: 3px solid var(--color-accent-warm);
+  }
+
+  .gaps h2 { font-size: 1.05rem; text-transform: uppercase; }
+  .gaps ul { margin: 1rem 0 0; padding-left: 1.15rem; display: grid; gap: 0.7rem; }
+  .gaps li { color: var(--color-muted); line-height: 1.65; }
+
+  .outro { margin-top: clamp(2rem, 4vw, 3rem); color: var(--color-muted); line-height: 1.7; }
+  .outro :global(a) { color: var(--color-crimson); }
+  .outro :global(p + p) { margin-top: 0.8rem; }
+
+  .back { margin-top: 2.5rem; }
+  .back a {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-crimson);
+  }
+</style>

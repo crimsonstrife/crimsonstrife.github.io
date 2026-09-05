@@ -1,0 +1,477 @@
+[
+  {
+    "id": "adobe-indesign",
+    "label": "Adobe InDesign",
+    "kind": "tech"
+  },
+  {
+    "id": "adobe-photoshop",
+    "label": "Adobe Photoshop",
+    "kind": "tech"
+  },
+  {
+    "id": "alpine-js",
+    "label": "Alpine.js",
+    "kind": "tech"
+  },
+  {
+    "id": "android",
+    "label": "Android",
+    "kind": "tech"
+  },
+  {
+    "id": "astro",
+    "label": "Astro",
+    "kind": "tech"
+  },
+  {
+    "id": "authorize-net",
+    "label": "Authorize.Net",
+    "kind": "tech"
+  },
+  {
+    "id": "blueprint",
+    "label": "Blueprint",
+    "kind": "tech"
+  },
+  {
+    "id": "bootstrap",
+    "label": "Bootstrap",
+    "kind": "tech"
+  },
+  {
+    "id": "cpp",
+    "label": "C++",
+    "kind": "tech"
+  },
+  {
+    "id": "cel-shading",
+    "label": "Cel Shading",
+    "kind": "tech"
+  },
+  {
+    "id": "chaos-physics",
+    "label": "Chaos Physics",
+    "kind": "tech"
+  },
+  {
+    "id": "chart-js",
+    "label": "Chart.js",
+    "kind": "tech"
+  },
+  {
+    "id": "cloudflare-workers",
+    "label": "Cloudflare Workers",
+    "kind": "tech"
+  },
+  {
+    "id": "content-collections",
+    "label": "Content Collections",
+    "kind": "tech"
+  },
+  {
+    "id": "d3-js",
+    "label": "D3.js",
+    "kind": "tech"
+  },
+  {
+    "id": "discord-api",
+    "label": "Discord API",
+    "kind": "tech"
+  },
+  {
+    "id": "electron",
+    "label": "Electron",
+    "kind": "tech"
+  },
+  {
+    "id": "ffmpeg",
+    "label": "FFmpeg",
+    "kind": "tech"
+  },
+  {
+    "id": "filament",
+    "label": "Filament",
+    "kind": "tech"
+  },
+  {
+    "id": "fourthwall-api",
+    "label": "Fourthwall API",
+    "kind": "tech"
+  },
+  {
+    "id": "fxml",
+    "label": "FXML",
+    "kind": "tech"
+  },
+  {
+    "id": "git",
+    "label": "Git",
+    "kind": "tech"
+  },
+  {
+    "id": "git-lfs",
+    "label": "Git LFS",
+    "kind": "tech"
+  },
+  {
+    "id": "github-pages",
+    "label": "GitHub Pages",
+    "kind": "tech"
+  },
+  {
+    "id": "gradle",
+    "label": "Gradle",
+    "kind": "tech"
+  },
+  {
+    "id": "gsap",
+    "label": "GSAP",
+    "kind": "tech"
+  },
+  {
+    "id": "invision",
+    "label": "InVision",
+    "kind": "tech"
+  },
+  {
+    "id": "java",
+    "label": "Java",
+    "kind": "tech"
+  },
+  {
+    "id": "javafx",
+    "label": "JavaFX",
+    "kind": "tech"
+  },
+  {
+    "id": "jdbc",
+    "label": "JDBC",
+    "kind": "tech"
+  },
+  {
+    "id": "jquery",
+    "label": "jQuery",
+    "kind": "tech"
+  },
+  {
+    "id": "laravel",
+    "label": "Laravel",
+    "kind": "tech"
+  },
+  {
+    "id": "laravel-scout",
+    "label": "Laravel Scout",
+    "kind": "tech"
+  },
+  {
+    "id": "leaflet",
+    "label": "Leaflet",
+    "kind": "tech"
+  },
+  {
+    "id": "less",
+    "label": "Less",
+    "kind": "tech"
+  },
+  {
+    "id": "livewire",
+    "label": "Livewire",
+    "kind": "tech"
+  },
+  {
+    "id": "material-design",
+    "label": "Material Design",
+    "kind": "tech"
+  },
+  {
+    "id": "mdx",
+    "label": "MDX",
+    "kind": "tech"
+  },
+  {
+    "id": "mermaid",
+    "label": "Mermaid",
+    "kind": "tech"
+  },
+  {
+    "id": "mysql",
+    "label": "MySQL",
+    "kind": "tech"
+  },
+  {
+    "id": "pagefind",
+    "label": "Pagefind",
+    "kind": "tech"
+  },
+  {
+    "id": "php",
+    "label": "PHP",
+    "kind": "tech"
+  },
+  {
+    "id": "phpfastcache",
+    "label": "PHPFastCache",
+    "kind": "tech"
+  },
+  {
+    "id": "phpunit",
+    "label": "PHPUnit",
+    "kind": "tech"
+  },
+  {
+    "id": "preact",
+    "label": "Preact",
+    "kind": "tech"
+  },
+  {
+    "id": "react",
+    "label": "React",
+    "kind": "tech"
+  },
+  {
+    "id": "regex",
+    "label": "Regex",
+    "kind": "tech"
+  },
+  {
+    "id": "rest-api",
+    "label": "REST API",
+    "kind": "tech"
+  },
+  {
+    "id": "room",
+    "label": "Room",
+    "kind": "tech"
+  },
+  {
+    "id": "shaders",
+    "label": "Shaders",
+    "kind": "tech"
+  },
+  {
+    "id": "slate",
+    "label": "Slate",
+    "kind": "tech"
+  },
+  {
+    "id": "sqlite",
+    "label": "SQLite",
+    "kind": "tech"
+  },
+  {
+    "id": "tailwind-css",
+    "label": "Tailwind CSS",
+    "kind": "tech"
+  },
+  {
+    "id": "twitch-api",
+    "label": "Twitch API",
+    "kind": "tech"
+  },
+  {
+    "id": "typescript",
+    "label": "TypeScript",
+    "kind": "tech"
+  },
+  {
+    "id": "umg",
+    "label": "UMG",
+    "kind": "tech"
+  },
+  {
+    "id": "unreal-engine",
+    "label": "Unreal Engine",
+    "kind": "tech"
+  },
+  {
+    "id": "v-hacd",
+    "label": "V-HACD",
+    "kind": "tech"
+  },
+  {
+    "id": "vbscript",
+    "label": "VBScript",
+    "kind": "tech"
+  },
+  {
+    "id": "view-binding",
+    "label": "View Binding",
+    "kind": "tech"
+  },
+  {
+    "id": "vite",
+    "label": "Vite",
+    "kind": "tech"
+  },
+  {
+    "id": "vue-js",
+    "label": "Vue.js",
+    "kind": "tech"
+  },
+  {
+    "id": "woocommerce",
+    "label": "WooCommerce",
+    "kind": "tech"
+  },
+  {
+    "id": "wordpress",
+    "label": "WordPress",
+    "kind": "tech"
+  },
+  {
+    "id": "accessibility",
+    "label": "Accessibility",
+    "kind": "discipline"
+  },
+  {
+    "id": "character-modeling",
+    "label": "Character Modeling",
+    "kind": "discipline"
+  },
+  {
+    "id": "editor-tooling",
+    "label": "Editor Tooling",
+    "kind": "discipline"
+  },
+  {
+    "id": "game-design",
+    "label": "Game Design",
+    "kind": "discipline"
+  },
+  {
+    "id": "game-modding",
+    "label": "Game Modding",
+    "kind": "discipline"
+  },
+  {
+    "id": "information-architecture",
+    "label": "Information Architecture",
+    "kind": "discipline"
+  },
+  {
+    "id": "localization",
+    "label": "Localization",
+    "kind": "discipline"
+  },
+  {
+    "id": "object-oriented-design",
+    "label": "Object-Oriented Design",
+    "kind": "discipline"
+  },
+  {
+    "id": "project-management",
+    "label": "Project Management",
+    "kind": "discipline"
+  },
+  {
+    "id": "responsive-design",
+    "label": "Responsive Design",
+    "kind": "discipline"
+  },
+  {
+    "id": "rigging",
+    "label": "Rigging",
+    "kind": "discipline"
+  },
+  {
+    "id": "systems-design",
+    "label": "Systems Design",
+    "kind": "discipline"
+  },
+  {
+    "id": "technical-direction",
+    "label": "Technical Direction",
+    "kind": "discipline"
+  },
+  {
+    "id": "texture-art",
+    "label": "Texture Art",
+    "kind": "discipline"
+  },
+  {
+    "id": "usability-testing",
+    "label": "Usability Testing",
+    "kind": "discipline"
+  },
+  {
+    "id": "ux-research",
+    "label": "UX Research",
+    "kind": "discipline"
+  },
+  {
+    "id": "web-design",
+    "label": "Web Design",
+    "kind": "discipline"
+  },
+  {
+    "id": "wireframing",
+    "label": "Wireframing",
+    "kind": "discipline"
+  },
+  {
+    "id": "assassin-s-creed",
+    "label": "Assassin's Creed",
+    "kind": "subject"
+  },
+  {
+    "id": "autostore",
+    "label": "AutoStore",
+    "kind": "subject"
+  },
+  {
+    "id": "channel-points",
+    "label": "Channel Points",
+    "kind": "subject"
+  },
+  {
+    "id": "desktop-app",
+    "label": "Desktop App",
+    "kind": "subject"
+  },
+  {
+    "id": "document-capture",
+    "label": "Document Capture",
+    "kind": "subject"
+  },
+  {
+    "id": "game-assets",
+    "label": "Game Assets",
+    "kind": "subject"
+  },
+  {
+    "id": "guild-wars",
+    "label": "Guild Wars",
+    "kind": "subject"
+  },
+  {
+    "id": "jedi-academy",
+    "label": "Jedi Academy",
+    "kind": "subject"
+  },
+  {
+    "id": "logistics",
+    "label": "Logistics",
+    "kind": "subject"
+  },
+  {
+    "id": "notifications",
+    "label": "Notifications",
+    "kind": "subject"
+  },
+  {
+    "id": "plugin",
+    "label": "Plugin",
+    "kind": "subject"
+  },
+  {
+    "id": "survival-horror",
+    "label": "Survival Horror",
+    "kind": "subject"
+  },
+  {
+    "id": "web-app",
+    "label": "Web App",
+    "kind": "subject"
+  }
+]

@@ -9,7 +9,7 @@ media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/crucible-thumb.jpg"
   full: "../../assets/images/portfolio/crucible.jpg"
-tags: ["Laravel 12", "PHP 8.3", "Git", "Git LFS", "Unreal Engine", "C++", "Tailwind CSS"]
+tags: ["Laravel", "PHP", "Git", "Git LFS", "Unreal Engine", "C++", "Tailwind CSS"]
 links:
   repo: "https://github.com/crimsonstrife/crucible"
 ---

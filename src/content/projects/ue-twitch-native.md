@@ -4,8 +4,9 @@ category: "tools"
 summary: "An in-progress Unreal Engine 5 runtime plugin that turns Twitch Channel Point redemptions into Blueprint-ready gameplay events and keeps game-owned rewards synchronized through the Helix API."
 track: "independent"
 year: 2026
+ongoing: true
 order: 1
-tags: ["Unreal Engine 5", "C++", "Blueprint", "Twitch SDK", "Twitch Helix API", "Channel Points", "UMG"]
+tags: ["Unreal Engine", "C++", "Blueprint", "Twitch API", "Channel Points", "UMG"]
 links:
   repo: "https://github.com/crimsonstrife/ue-twitch-native"
 ---

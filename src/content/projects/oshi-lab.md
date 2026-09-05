@@ -9,7 +9,7 @@ media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/oshi-lab-thumb.jpg"
   full: "../../assets/images/portfolio/oshi-lab-thumb.jpg"
-tags: ["Astro", "MDX", "Bootstrap 5", "Pagefind", "Web App"]
+tags: ["Astro", "MDX", "Bootstrap", "Pagefind", "Web App"]
 links:
   live: "https://oshi-lab.app"
   repo: "https://github.com/crimsonstrife/oshi-lab"

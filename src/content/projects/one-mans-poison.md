@@ -4,7 +4,7 @@ category: "games"
 summary: "A solo-developed third-person survival-horror game in Unreal Engine 5, turning a missing-person case into a focused vertical slice built around investigation, scarcity, and systemic threat."
 track: "independent"
 year: 2026
-yearApprox: true
+ongoing: true
 order: 0
 featured: true
 caseStudy: true
@@ -12,7 +12,7 @@ media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/one-mans-poison-hero.jpg"
   full: "../../assets/images/portfolio/one-mans-poison-hero.jpg"
-tags: ["Unreal Engine 5", "C++", "Blueprint", "Survival Horror", "Systems Design", "Game Design", "Technical Direction", "Project Management"]
+tags: ["Unreal Engine", "C++", "Blueprint", "Survival Horror", "Systems Design", "Game Design", "Technical Direction", "Project Management"]
 links:
   live: "https://ompgame.com"
 imageCredit:

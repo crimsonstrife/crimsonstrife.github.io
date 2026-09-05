@@ -6,7 +6,7 @@ track: "professional"
 year: 2022
 yearApprox: true
 order: 9
-tags: ["WordPress", "PHP 7.3+", "Plugin", "REST API", "PHPFastCache", "GPL-3.0"]
+tags: ["WordPress", "PHP", "Plugin", "REST API", "PHPFastCache"]
 links:
   repo: "https://github.com/crimsonstrife/wp-ceojuice"
 ---

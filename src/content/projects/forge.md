@@ -9,7 +9,7 @@ media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/forge-thumb.jpg"
   full: "../../assets/images/portfolio/forge.jpg"
-tags: ["Laravel 12", "PHP 8.3", "Livewire 3", "Filament 4", "Tailwind CSS", "Vite"]
+tags: ["Laravel", "PHP", "Livewire", "Filament", "Tailwind CSS", "Vite"]
 links:
   repo: "https://github.com/crimsonstrife/forge"
 ---

@@ -5,7 +5,7 @@ summary: "A JavaFX and MySQL desktop scheduler with localized login, customer an
 track: "education"
 year: 2022
 order: 8
-tags: ["Java 17", "JavaFX 11", "FXML", "MySQL", "JDBC", "Localization"]
+tags: ["Java", "JavaFX", "FXML", "MySQL", "JDBC", "Localization"]
 links:
   repo: "https://github.com/crimsonstrife/qam2-task1"
 ---

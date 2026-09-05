@@ -30,6 +30,14 @@ interface Props {
   /** Article timestamps, only meaningful when ogType is 'article'. */
   publishedTime?: Date;
   modifiedTime?: Date;
+  /**
+   * Keeps a page out of search results. A meta tag is enough here — the
+   * limitation we hit with `.md` mirrors was that GitHub Pages cannot send an
+   * `X-Robots-Tag` HEADER, which only matters for non-HTML files. Nothing sets
+   * this today; if you do, exclude the page from the sitemap too so the two
+   * signals agree.
+   */
+  noindex?: boolean;
 }
 
 const {
@@ -41,6 +49,7 @@ const {
   ogType = 'website',
   publishedTime,
   modifiedTime,
+  noindex = false,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
@@ -67,6 +76,7 @@ const personSchema = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content={site.name} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="alternate icon" href="/favicon.ico" />

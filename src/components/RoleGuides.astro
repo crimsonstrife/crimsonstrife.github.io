@@ -1,0 +1,171 @@
+---
+import { Icon } from 'astro-icon/components';
+import { getCollection } from 'astro:content';
+
+/**
+ * Sits directly after the "at a glance" section, which is the point just before all the work gets thrown at a visitor.
+ * Gives a busy recruiter a quick overview of my work in the context of a particular role.
+ *
+ * The cards are generated from the roles collection, so adding a file to
+ * src/content/roles adds a card here.
+ */
+const roles = (await getCollection('roles')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+{roles.length > 0 && (
+  <section class="guides" aria-labelledby="guides-title">
+    <div class="inner">
+      <div class="lede">
+        <p class="eyebrow">Short on time</p>
+        <h2 id="guides-title">It's a lot to go through</h2>
+        <p>
+          If you are sizing me up against a particular kind of role, these pull
+          the relevant work out of the archive and say plainly what I can and
+          can't claim for it.
+        </p>
+      </div>
+
+      <ul class="cards" role="list">
+        {roles.map((entry) => (
+          <li>
+            <a href={`/for/${entry.id}/`}>
+              <p class="label">For a {entry.data.role} role</p>
+              <h3>{entry.data.headline}</h3>
+              <p class="blurb">{entry.data.blurb}</p>
+              <span class="cue">
+                See the work <Icon name="fa6-solid:arrow-right" aria-hidden="true" />
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <div class="lede">
+        <p>If you're not sure which role you're looking for, check out the <a href="#work">work archive</a>.</p>
+      </div>
+      <a class="scroll" href="#capabilities">
+        <span>Otherwise, let's keep going!</span>
+        <Icon name="fa6-solid:arrow-down" aria-hidden="true" />
+      </a>
+    </div>
+  </section>
+)}
+
+<style>
+  .guides {
+    padding: var(--section-padding-y) 0;
+    background: var(--color-surface);
+  }
+
+  .inner {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--content-gutter);
+  }
+
+  .lede { max-width: 42rem; margin-bottom: clamp(1.75rem, 4vw, 2.75rem); }
+
+  .eyebrow {
+    color: var(--color-accent);
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    margin-top: 0.6rem;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    line-height: 1.08;
+  }
+
+  .lede > p:last-child { margin-top: 0.9rem; color: var(--color-muted); line-height: 1.7; }
+
+  .cards {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    gap: clamp(0.85rem, 2vw, 1.35rem);
+  }
+
+  .cards a {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: clamp(1.35rem, 2.5vw, 1.85rem);
+    background: var(--color-surface-raised);
+    border: 1px solid var(--color-rule);
+    color: var(--color-ink);
+    text-decoration: none;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 0.9rem), calc(100% - 0.9rem) 100%, 0 100%);
+    transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+  }
+
+  .cards a::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 0.22rem;
+    background: var(--color-accent);
+  }
+
+  .cards li:nth-child(even) a::before { background: var(--color-accent-warm); }
+
+  .cards a:hover, .cards a:focus-visible {
+    background: var(--color-surface-sunk);
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+
+  .label {
+    color: var(--color-muted);
+    font-family: var(--font-display);
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    margin-top: 0.45rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+    line-height: 1.15;
+  }
+
+  .blurb {
+    margin-top: 0.6rem;
+    color: var(--color-muted);
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .cue {
+    margin-top: auto;
+    padding-top: 1.15rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--color-accent);
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .cards a:hover .cue, .cards a:focus-visible .cue { color: var(--color-ink); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cards a { transition: none; }
+    .cards a:hover, .cards a:focus-visible { transform: none; }
+  }
+</style>

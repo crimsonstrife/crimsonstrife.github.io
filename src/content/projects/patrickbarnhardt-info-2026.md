@@ -9,7 +9,7 @@ media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/patrickbarnhardt-info-2026.png"
   full: "../../assets/images/portfolio/patrickbarnhardt-info-2026.png"
-tags: ["Astro 7", "TypeScript", "Responsive Design", "Accessibility", "GitHub Pages", "Cloudflare Workers"]
+tags: ["Astro", "TypeScript", "Responsive Design", "Accessibility", "GitHub Pages", "Cloudflare Workers"]
 links:
   live: "https://patrickbarnhardt.info/"
   repo: "https://github.com/crimsonstrife/crimsonstrife.github.io"

@@ -27,6 +27,11 @@ const { Content, headings } = await render(project);
 
 const categories = await getCollection('categories');
 const category = categories.find((c) => c.data.id === project.data.category);
+
+// Frontmatter carries tag labels; the registry knows their URL slugs.
+const tagSlug = new Map(
+  (await getCollection('tags')).map((tag) => [tag.data.label, tag.data.id])
+);
 const { media, caseStudy, gallery } = project.data;
 
 /**
@@ -140,7 +145,9 @@ const showToc = caseStudy && contents.length >= 3;
 
       {project.data.tags.length > 0 && (
         <ul class="tags" role="list">
-          {project.data.tags.map((tag) => <li>{tag}</li>)}
+          {project.data.tags.map((tag) => (
+            <li><a href={`/projects/tag/${tagSlug.get(tag)}/`}>{tag}</a></li>
+          ))}
         </ul>
       )}
 
@@ -257,13 +264,22 @@ const showToc = caseStudy && contents.length >= 3;
 
   .tags { list-style: none; margin: 2.25rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
 
-  .tags li {
+  .tags li { display: flex; }
+
+  .tags a {
     font-family: var(--font-ui);
     font-size: 0.78rem;
     color: var(--color-muted);
     background: var(--color-surface-sunk);
     border: 1px solid var(--color-rule);
     padding: 0.2rem 0.55rem;
+    text-decoration: none;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .tags a:hover, .tags a:focus-visible {
+    color: var(--color-ink);
+    border-color: var(--color-crimson);
   }
 
   .back { margin-top: 2.5rem; }

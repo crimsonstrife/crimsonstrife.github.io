@@ -4,7 +4,7 @@ category: "tools"
 summary: "VBScript for a document-capture server that turns one long scanner run into correctly separated files — splitting on barcode prefixes for one workflow and on check numbers for another."
 track: "professional"
 year: 2018
-tags: ["VBScript", "AutoStore", "Document Capture", "Regex", "Logistics", "GPL-3.0"]
+tags: ["VBScript", "AutoStore", "Document Capture", "Regex", "Logistics"]
 links:
   repo: "https://github.com/crimsonstrife/Cardinal-AutoStoreSplitScripts"
 ---

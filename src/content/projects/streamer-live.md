@@ -18,7 +18,7 @@ gallery:
     - image: "../../assets/images/portfolio/streamer-live-store.png"
       alt: "A streamer.live storefront with collection and product filters beside a grid of Fourthwall merchandise"
       caption: "The Fourthwall-powered storefront exposes collections, product metadata, filters, and external checkout without maintaining a second catalog."
-tags: ["Laravel 11", "PHP", "Filament", "Livewire", "Alpine.js", "Twitch API", "Discord API", "Fourthwall API"]
+tags: ["Laravel", "PHP", "Filament", "Livewire", "Alpine.js", "Twitch API", "Discord API", "Fourthwall API"]
 links:
   repo: "https://github.com/crimsonstrife/streamer.live"
   docs: "https://getstreamer.live/"

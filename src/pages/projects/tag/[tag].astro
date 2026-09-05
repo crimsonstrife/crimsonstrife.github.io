@@ -1,0 +1,141 @@
+---
+import type { InferGetStaticPropsType } from 'astro';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import site from '../../../data/site.json';
+import { byRecency, projectYear, hasWriteup } from '../../../lib/content';
+
+/**
+ * One page per tag, instead of a filter control on the archive. These pages cost nothing to
+ * render, are linked from the work they describe, and each one is a URL that can
+ * be sent to someone or indexed on its own.
+ *
+ * Only tags with work behind them get a page — the registry is allowed to run
+ * ahead of the projects.
+ */
+export const getStaticPaths = async () => {
+  const projects = await getCollection('projects');
+  const registry = await getCollection('tags');
+
+  return registry
+    .map((tag) => {
+      const tagged = projects
+        .filter((project) => project.data.tags.includes(tag.data.label))
+        .sort(byRecency);
+      return { tag: tag.data, tagged };
+    })
+    .filter(({ tagged }) => tagged.length > 0)
+    .map(({ tag, tagged }) => ({
+      params: { tag: tag.id },
+      props: { tag, projects: tagged },
+    }));
+};
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { tag, projects } = Astro.props;
+
+const KIND_NOTE: Record<string, string> = {
+  tech: 'A technology used in the work below.',
+  discipline: 'A kind of work, rather than a tool used to do it.',
+  subject: 'What the work was about.',
+};
+---
+
+<BaseLayout
+  title={`${tag.label} projects | ${site.name}`}
+  description={`Portfolio projects by Patrick Barnhardt involving ${tag.label} — ${projects.length} ${projects.length === 1 ? 'project' : 'projects'}.`}
+>
+  <div class="wrap">
+    <SectionHeader eyebrow="Tagged" title={tag.label} />
+    <p class="count">
+      {projects.length} {projects.length === 1 ? 'project' : 'projects'}
+      <span aria-hidden="true">·</span>
+      {KIND_NOTE[tag.kind]}
+    </p>
+
+    <ul class="items" role="list">
+      {projects.map((project) => {
+        const href = hasWriteup(project.body) ? `/projects/${project.id}/` : undefined;
+        return (
+          <li>
+            <p class="year">{projectYear(project.data)}</p>
+            <h2>
+              {href ? <a href={href}>{project.data.title}</a> : project.data.title}
+            </h2>
+            {project.data.summary && <p class="summary">{project.data.summary}</p>}
+            <ul class="also" role="list">
+              {project.data.tags
+                .filter((other) => other !== tag.label)
+                .map((other) => <li>{other}</li>)}
+            </ul>
+          </li>
+        );
+      })}
+    </ul>
+
+    <p class="back"><a href="/#work">← All work</a></p>
+  </div>
+</BaseLayout>
+
+<style>
+  .wrap {
+    max-width: 46rem;
+    margin-inline: auto;
+    padding: 0 clamp(1rem, 4vw, 2.25rem) var(--section-padding-y);
+  }
+
+  .count {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: 2.5rem;
+  }
+
+  .count span { color: var(--color-crimson); padding-inline: 0.4rem; }
+
+  .items { list-style: none; margin: 0; padding: 0; display: grid; gap: 2rem; }
+
+  .items > li { border-bottom: 1px solid var(--color-rule); padding-bottom: 2rem; }
+  .items > li:last-child { border-bottom: 0; }
+
+  .year {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  h2 { font-size: 1.3rem; text-transform: uppercase; margin: 0.5rem 0; }
+  h2 a { color: var(--color-ink); text-decoration: none; }
+  h2 a:hover, h2 a:focus-visible { color: var(--color-crimson); }
+
+  .summary { color: var(--color-muted); }
+
+  .also { list-style: none; margin: 0.9rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+
+  .also li {
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    color: var(--color-muted);
+    border: 1px solid var(--color-rule);
+    padding: 0.15rem 0.45rem;
+  }
+
+  .back { margin-top: 2.5rem; }
+  .back a {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-crimson);
+  }
+</style>

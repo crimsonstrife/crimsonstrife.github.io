@@ -4,7 +4,7 @@ import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
 import SectionHeader from './SectionHeader.astro';
 import GitHubActivity from './GitHubActivity.astro';
-import { byRecency, formatYear, hasWriteup } from '../lib/content';
+import { byRecency, projectYear, hasWriteup } from '../lib/content';
 
 // The featured project receives a full case-study treatment immediately above
 // this archive, so it does not need a duplicate tile here.
@@ -174,7 +174,7 @@ const tiles = await Promise.all(
 
           <span class="overlay">
             <span class="title">{project.data.title}</span>
-            <span class="year">{formatYear(project.data.year, project.data.yearApprox)}</span>
+            <span class="year">{projectYear(project.data)}</span>
             {project.data.summary && <span class="summary">{project.data.summary}</span>}
             <span class="cue">
               {href

@@ -9,7 +9,7 @@ media:
   type: "image"
   thumbnail: "../../assets/images/portfolio/rym2-talentflow-thumb.jpg"
   full: "../../assets/images/portfolio/rym2-talentflow.jpg"
-tags: ["PHP 8.1", "MySQL", "Bootstrap 5", "jQuery", "Chart.js", "Leaflet", "PHPUnit"]
+tags: ["PHP", "MySQL", "Bootstrap", "jQuery", "Chart.js", "Leaflet", "PHPUnit"]
 links:
   repo: "https://github.com/crimsonstrife/rym2"
 ---

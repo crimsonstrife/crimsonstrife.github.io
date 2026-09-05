@@ -4,8 +4,9 @@ category: "tools"
 summary: "An in-progress Unreal Engine 5.6 editor plugin that turns manual prop placement into an undoable physics-assisted workflow using the editor world's Chaos scene."
 track: "independent"
 year: 2026
+ongoing: true
 order: 6
-tags: ["Unreal Engine 5.6", "C++", "Chaos Physics", "Editor Tooling", "Slate", "V-HACD"]
+tags: ["Unreal Engine", "C++", "Chaos Physics", "Editor Tooling", "Slate", "V-HACD"]
 links:
   repo: "https://github.com/crimsonstrife/ue-physics-placement-assist"
 ---

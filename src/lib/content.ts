@@ -121,3 +121,16 @@ export function byRecency(a: ArchiveEntry, b: ArchiveEntry): number {
 export function formatYear(year: number, approx = false): string {
   return approx ? `c. ${year}` : String(year);
 }
+
+/**
+ * The date label for a project tile or listing. Every surface goes through
+ * this so an unfinished project cannot read as finished on one page and
+ * unfinished on another.
+ */
+export function projectYear(data: {
+  year: number;
+  yearApprox?: boolean;
+  ongoing?: boolean;
+}): string {
+  return data.ongoing ? 'In development' : formatYear(data.year, data.yearApprox);
+}

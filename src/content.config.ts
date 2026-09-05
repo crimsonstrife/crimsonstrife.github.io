@@ -1,6 +1,20 @@
 import { defineCollection } from 'astro:content';
 import { file, glob } from 'astro/loaders';
 import { z } from 'astro/zod';
+import tagRegistry from './data/tags.json';
+
+/**
+ * Project tags are a controlled vocabulary, not free text. They were free text
+ * until Sept 2026 and drifted to 110 labels across 68 projects — `PHP 8.3`,
+ * `PHP 8.1`, `PHP 7.3+` and `PHP` were four separate tags, so a reader looking
+ * for PHP work found a third of it. Validating against the registry means a
+ * typo or a new spelling fails the build instead of silently becoming tag 111.
+ *
+ * Frontmatter carries the human-readable LABEL ("C++"); `src/data/tags.json`
+ * maps that to the URL slug. Adding a tag means adding a row there first.
+ */
+const TAG_LABELS = tagRegistry.map((tag) => tag.label) as [string, ...string[]];
+const TAG_KINDS = ['tech', 'discipline', 'subject'] as const;
 
 /**
  * Every repeatable list on the site is a collection with a Zod schema, so a
@@ -107,8 +121,17 @@ const projects = defineCollection({
        * Everything else about the entry is unchanged; this only affects how
        * the detail page is presented.
        */
+      /**
+       * Still being built. `year` stays for sorting; the label reads "In
+       * development" instead. `yearApprox` says "I am unsure which year this
+       * was", which is a different claim from "this is not finished" — an
+       * unreleased game printed as "c. 2026" reads as a guess about the past
+       * rather than work in progress.
+       */
+      ongoing: z.boolean().default(false),
       caseStudy: z.boolean().default(false),
-      tags: z.array(z.string()).default([]),
+      /** Must exist in src/data/tags.json. See TAG_LABELS above. */
+      tags: z.array(z.enum(TAG_LABELS)).default([]),
       /**
        * Attribution for artwork that isn't Patrick's. Rendered wherever the
        * image is shown, so a commissioned piece can headline a project without
@@ -326,6 +349,71 @@ const interests = defineCollection({
   }),
 });
 
+/**
+ * A page written for one kind of job application, at /for/<id>/.
+ *
+ * Job postings for engineering roles tend to ask for depth in a handful of
+ * named domains rather than everything at once. The archive answers "what has
+ * he made"; this answers "does the work map onto what we asked for", which is
+ * a different question and one a reader should not have to do themselves.
+ *
+ * These began as unlisted application links and are now public: they are linked
+ * from the homepage after the archive, indexed, and in the sitemap. Write them
+ * for a stranger who arrived from a search, not for one named employer.
+ */
+const roles = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/roles' }),
+  schema: z.object({
+    /** The role as postings name it, e.g. "Game Systems Engineer". */
+    role: z.string(),
+    headline: z.string(),
+    /** One line for the card that links here from the homepage. */
+    blurb: z.string(),
+    /**
+     * The meta description. Deliberately separate from `intro`: the intro
+     * addresses someone already on the page, a meta description has to say
+     * whose page it is and what is on it to a stranger reading a search result.
+     */
+    description: z.string(),
+    intro: z.string(),
+    /** Lower sorts first in the homepage list. */
+    order: z.number().int().positive(),
+    domains: z
+      .array(
+        z.object({
+          label: z.string(),
+          /** One sentence on what the work below actually demonstrates. */
+          note: z.string(),
+          /** Project ids, i.e. the filename stem in src/content/projects. */
+          projects: z.array(z.string()).min(1),
+        })
+      )
+      .min(1),
+    /**
+     * What he cannot claim for this role. Kept as data rather than prose so it
+     * is a deliberate list someone has to edit, not a paragraph that quietly
+     * rots as the gaps close.
+     */
+    gaps: z.array(z.string()).default([]),
+  }),
+});
+
+const tags = defineCollection({
+  loader: file('src/data/tags.json'),
+  schema: z.object({
+    /** URL slug, used as /work/tag/<id>/. */
+    id: z.string(),
+    label: z.string(),
+    /**
+     * `tech` is anything you would list as a technology; `discipline` is what
+     * he did; `subject` is what the work was about. The split lets a page about
+     * engineering capability show the first two and leave the franchise names
+     * out of it.
+     */
+    kind: z.enum(TAG_KINDS),
+  }),
+});
+
 const categories = defineCollection({
   loader: file('src/data/categories.json'),
   schema: z.object({
@@ -375,6 +463,8 @@ export const collections = {
   awards,
   skills,
   interests,
+  roles,
+  tags,
   categories,
   tracks,
   social,
