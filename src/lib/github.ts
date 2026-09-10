@@ -58,7 +58,7 @@ export interface ContributionDay {
 
 export interface Activity {
   repos: Repo[];
-  /** Most common primary language across owned repos, as the 2017 card showed. */
+  /** Most common primary languages across every repository the token can access. */
   languages: string[];
 }
 
@@ -97,25 +97,26 @@ async function request(url: string, init: RequestInit = {}): Promise<Response | 
 }
 
 /**
- * Public owned repositories feed the language tally. Explicitly selected
- * private projects join the recent list, sorted by their latest push.
+ * Card selection and language statistics deliberately use separate inputs:
+ * only public owned and allowlisted private projects can become cards, while
+ * every accessible repository contributes its primary language to the tally.
  */
 export async function fetchActivity(limit = 8): Promise<Activity> {
   const empty: Activity = { repos: [], languages: [] };
 
-  const [response, privateRepos] = await Promise.all([
-    request(`https://api.github.com/users/${USER}/repos?sort=pushed&per_page=100&type=owner`),
+  const [publicRaw, accessible, privateRepos] = await Promise.all([
+    listRepositories(`/users/${USER}/repos?sort=pushed&type=owner`),
+    token ? listRepositories('/user/repos?sort=full_name&direction=asc&visibility=all') : null,
     fetchPrivateRepos(),
   ]);
   const fallback: Activity = { ...empty, repos: privateRepos.slice(0, limit) };
-  if (!response) return fallback;
 
   try {
-    const raw = (await response.json()) as any[];
-    const owned = raw.filter((repo) => repo.private === false && !repo.fork && !repo.archived);
+    const publicOnly = (publicRaw ?? []).filter((repo) => repo.private === false);
+    const owned = publicOnly.filter((repo) => !repo.fork && !repo.archived);
 
     const tally = new Map<string, number>();
-    for (const repo of owned) {
+    for (const repo of accessible ?? publicOnly) {
       if (!repo.language) continue;
       tally.set(repo.language, (tally.get(repo.language) ?? 0) + 1);
     }
@@ -149,6 +150,89 @@ export async function fetchActivity(limit = 8): Promise<Activity> {
     console.warn('[github] could not parse repos:', (error as Error).message);
     return fallback;
   }
+}
+
+/** Fetch every page; never present an incomplete page set as an all-repo tally. */
+async function listRepositories(path: string): Promise<any[] | null> {
+  const repos = new Map<number | string, any>();
+  for (let page = 1; ; page++) {
+    const response = await request(`https://api.github.com${path}&per_page=100&page=${page}`);
+    if (!response) return null;
+    try {
+      const batch = await response.json();
+      if (!Array.isArray(batch)) return null;
+      for (const repo of batch) repos.set(repo.id ?? repo.full_name, repo);
+      if (!response.headers.get('link')?.includes('rel="next"')) return [...repos.values()];
+    } catch {
+      console.warn('[github] could not parse repository page');
+      return null;
+    }
+  }
+}
+
+export interface Sponsorship {
+  login: string;
+  name: string;
+  url: string;
+  avatarUrl: string;
+}
+
+const SPONSORSHIPS_QUERY = `
+  query Sponsorships($login: String!, $after: String) {
+    user(login: $login) {
+      sponsorshipsAsSponsor(first: 100, after: $after, activeOnly: true) {
+        pageInfo { hasNextPage endCursor }
+        nodes {
+          privacyLevel
+          sponsorable {
+            ... on User { login name url avatarUrl }
+            ... on Organization { login name url avatarUrl }
+          }
+        }
+      }
+    }
+  }
+`;
+
+/** Public, active sponsorships only. Never request tiers or payment amounts. */
+export async function fetchSponsorships(): Promise<Sponsorship[]> {
+  if (!token) return [];
+  const sponsors = new Map<string, Sponsorship>();
+  let after: string | null = null;
+  do {
+    const response = await request('https://api.github.com/graphql', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query: SPONSORSHIPS_QUERY, variables: { login: USER, after } }),
+    });
+    if (!response) return [];
+    try {
+      const payload = await response.json();
+      if (payload.errors?.length) {
+        console.warn('[github] sponsorship query failed:', payload.errors[0]?.message);
+        return [];
+      }
+      const connection = payload.data?.user?.sponsorshipsAsSponsor;
+      if (!Array.isArray(connection?.nodes)) return [];
+      for (const node of connection.nodes) {
+        const account = node?.sponsorable;
+        if (node?.privacyLevel !== 'PUBLIC' || !account?.login) continue;
+        sponsors.set(account.login, {
+          login: account.login,
+          name: account.name || account.login,
+          url: `https://github.com/${encodeURIComponent(account.login)}`,
+          avatarUrl: `https://github.com/${encodeURIComponent(account.login)}.png?size=96`,
+        });
+      }
+      const next = connection.pageInfo?.hasNextPage ? connection.pageInfo.endCursor : null;
+      if (connection.pageInfo?.hasNextPage && (!next || next === after)) return [];
+      after = next;
+    } catch {
+      console.warn('[github] could not parse sponsorships');
+      return [];
+    }
+  } while (after);
+  return [...sponsors.values()].sort((a, b) => a.login.localeCompare(b.login));
 }
 
 async function fetchPrivateRepos(): Promise<Repo[]> {

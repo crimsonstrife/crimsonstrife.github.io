@@ -12,7 +12,8 @@
     "dev": "astro dev",
     "start": "astro dev",
     "check": "astro check",
-    "build": "astro check && astro build",
+    "build": "astro check && npm run test:github && astro build",
+    "test:github": "vitest run src/lib/github.test.ts src/lib/github-achievements.test.ts",
     "preview": "astro preview",
     "astro": "astro",
     "contact:types": "wrangler types --config workers/contact/wrangler.jsonc workers/contact/worker-configuration.d.ts",
@@ -30,7 +31,8 @@
     "@iconify-json/fa6-brands": "^1.2.6",
     "@iconify-json/fa6-solid": "^1.2.4",
     "astro": "^7.3.2",
-    "astro-icon": "^1.2.0"
+    "astro-icon": "^1.2.0",
+    "linkedom": "^0.18.13"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",

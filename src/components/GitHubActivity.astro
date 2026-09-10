@@ -1,8 +1,11 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { fetchActivity, fetchContributions } from '../lib/github';
+import { fetchActivity, fetchContributions, fetchSponsorships } from '../lib/github';
+import { fetchAchievements } from '../lib/github-achievements';
 
-const [activity, contributions] = await Promise.all([fetchActivity(9), fetchContributions()]);
+const [activity, contributions, sponsorships, achievements] = await Promise.all([
+  fetchActivity(9), fetchContributions(), fetchSponsorships(), fetchAchievements(),
+]);
 const { repos, languages } = activity;
 
 const CELL = 11;
@@ -35,7 +38,7 @@ weeks.forEach((week, index) => {
 const dayFormatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', timeZone: 'UTC' });
 ---
 
-{(repos.length > 0 || contributions) && (
+{(repos.length > 0 || languages.length > 0 || contributions || sponsorships.length > 0 || achievements.length > 0) && (
   <section class="activity" aria-labelledby="github-title">
     <div class="activity-inner">
       <header class="activity-head">
@@ -57,6 +60,7 @@ const dayFormatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', tim
               <span class="overview-icon"><Icon name="fa6-solid:code" aria-hidden="true" /></span>
               <p class="label">Most-used languages</p>
               <p class="language-list">{languages.map((language) => <span>{language}</span>)}</p>
+              <p class="language-note">Ranked by repository primary language.</p>
             </div>
           )}
 
@@ -142,6 +146,45 @@ const dayFormatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', tim
               );
             })}
           </ul>
+        </div>
+      )}
+
+      {(sponsorships.length > 0 || achievements.length > 0) && (
+        <div class="profile-extras">
+          {sponsorships.length > 0 && (
+            <div class="sponsorship-block">
+              <h4>Open source I support</h4>
+              <ul class="sponsorships" role="list">
+                {sponsorships.map((sponsor) => (
+                  <li>
+                    <a href={sponsor.url} rel="noopener">
+                      <img src={sponsor.avatarUrl} alt="" width="48" height="48" loading="lazy" />
+                      <span><strong>{sponsor.name}</strong><span class="sponsor-login">@{sponsor.login}</span></span>
+                      <Icon class="sponsor-heart" name="fa6-solid:heart" aria-hidden="true" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {achievements.length > 0 && (
+            <div class="achievement-block">
+              <h4>GitHub achievements</h4>
+              <ul class="achievements" role="list">
+                {achievements.map((achievement) => (
+                  <li>
+                    <a href={achievement.url} rel="noopener">
+                      <span class="badge-image">
+                        <img src={achievement.image} alt="" width="72" height="72" loading="lazy" />
+                        {achievement.tier > 1 && <span class="badge-tier">×{achievement.tier}</span>}
+                      </span>
+                      <span>{achievement.name}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       )}
     </div>
@@ -257,7 +300,8 @@ const dayFormatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', tim
 
   .languages .label,
   .calendar figcaption span,
-  .repository-block h4 {
+  .repository-block h4,
+  .profile-extras h4 {
     color: rgb(255 255 255 / 0.55);
     font-family: var(--font-display);
     font-size: 0.65rem;
@@ -281,6 +325,8 @@ const dayFormatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', tim
     font-size: 0.72rem;
     font-weight: 700;
   }
+
+  .language-note { color: rgb(255 255 255 / 0.6); font-size: 0.72rem; line-height: 1.5; }
 
   /* --- Calendar --------------------------------------------------- */
 
@@ -433,6 +479,23 @@ const dayFormatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', tim
 
   .stars { display: inline-flex; align-items: center; gap: 0.25rem; }
 
+  .profile-extras { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 2rem; }
+  .profile-extras > :only-child { grid-column: 1 / -1; }
+  .profile-extras h4 { margin-bottom: 1rem; }
+  .sponsorships, .achievements { list-style: none; padding: 0; margin: 0; }
+  .sponsorships { display: grid; gap: 0.75rem; }
+  .sponsorships a { display: flex; align-items: center; gap: 0.85rem; padding: 1rem; border: 1px solid rgb(255 255 255 / 0.18); border-radius: 0.75rem; color: #fff; text-decoration: none; }
+  .sponsorships img { border-radius: 50%; flex: none; }
+  .sponsorships strong { font-size: 0.9rem; }
+  .sponsor-login { display: block; color: rgb(255 255 255 / 0.62); font-size: 0.75rem; overflow-wrap: anywhere; }
+  .sponsor-heart { margin-left: auto; flex: none; color: #e9a3bd; }
+  .achievements { display: grid; grid-template-columns: repeat(auto-fit, minmax(5.5rem, 1fr)); gap: 0.75rem; }
+  .achievements a { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; height: 100%; color: rgb(255 255 255 / 0.8); font-size: 0.7rem; text-align: center; text-decoration: none; border-radius: 0.5rem; }
+  .badge-image { position: relative; }
+  .badge-image img { display: block; }
+  .badge-tier { position: absolute; right: -0.2rem; bottom: 0; border-radius: 999px; padding: 0.1rem 0.4rem; background: #9fd1cf; color: var(--color-dark); font-weight: 700; }
+  .profile-extras a:hover, .profile-extras a:focus-visible { background: rgb(255 255 255 / 0.08); }
+
   @media (max-width: 62rem) {
     .repos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
@@ -440,6 +503,7 @@ const dayFormatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', tim
   @media (max-width: 46rem) {
     .activity-head { align-items: flex-start; flex-direction: column; }
     .overview { grid-template-columns: 1fr; }
+    .profile-extras { grid-template-columns: 1fr; }
     .calendar figcaption { align-items: flex-start; flex-direction: column; gap: 0.25rem; }
   }
 

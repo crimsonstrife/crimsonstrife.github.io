@@ -54,10 +54,10 @@ src/styles/      tokens.css defines the whole visual system
 
 ## GitHub activity
 
-The repository list and the contribution calendar in the Work section are
-fetched at **build time**, not in the browser — no rate limit spent on
-visitors, no loading spinner, nothing to break when GitHub changes its
-markup.
+The repository list, language summary, contribution calendar, sponsorships,
+and achievements in the Work section are fetched at **build time**, not in
+the browser. Visitors do not make API calls. Badge images and sponsor avatars
+load from GitHub; the token is never included in the page.
 
 The contribution graph is only available through GitHub's GraphQL API,
 which requires authentication:
@@ -73,8 +73,20 @@ see `src/lib/github.ts`, where every network call fails soft.
 ### Selected private repositories
 
 `PRIVATE_REPOS` in `src/lib/github.ts` explicitly allows specified private repos to appear alongside public updated repos. It renders as a
-non-clickable card with a **Private** badge. Other private repositories are
-never fetched or included. The language summary still uses public repositories.
+non-clickable card with a **Private** badge. The nine most recently pushed
+eligible projects are displayed; public forks and archived projects remain
+excluded from the cards.
+
+The language summary is independent of that display filter. With a token it
+paginates `/user/repos` and counts the primary language of **every repository
+the token can access**, including private, organization/collaborator, forked,
+and archived repositories. It shows the top six languages by repository count,
+with alphabetical tie-breaking, rather than measuring lines or bytes of code.
+Repositories with no primary language are ignored. Private repositories outside
+the allowlist contribute only to the aggregate tally and never become cards.
+The token needs **Metadata: Read-only** access to all repositories to be counted.
+If the authenticated list is unavailable or incomplete, languages fall back to
+the complete public repository list instead of using partial private results.
 
 The build publishes only the curated display name and description plus the
 primary language; the last push timestamp determines ordering. Private URLs,
@@ -82,6 +94,26 @@ API descriptions, source code, and commit messages are never rendered. Adding
 another private project requires an explicit entry with public-safe copy.
 Without a token, repository access, or a successful API response, the private
 card is omitted and public activity still works.
+
+### Sponsorships and achievements
+
+“Open source I support” uses GitHub GraphQL `sponsorshipsAsSponsor` to show
+active sponsorships with `privacyLevel: PUBLIC`. Recipients may be people or
+organizations (currently Yarn Spinner). Payment amounts and tiers are not
+requested. Missing authentication or API errors omit this block.
+
+Achievements are extracted from the public GitHub achievements page with
+`linkedom`, following the approach demonstrated by
+[wangrunlin/github-achievements-api](https://github.com/wangrunlin/github-achievements-api).
+No Worker deployment, hosted demo, or authentication is needed. This is HTML
+scraping, not an official API: a rate limit, missing badges, or changed markup
+omits the badges without breaking the build. Names and tier labels are parsed
+as text; only GitHub asset URLs are accepted for images. Raw HTML is never
+embedded. Keep the selectors in `src/lib/github-achievements.ts` in sync if
+GitHub changes the page.
+
+Run `npm run test:github` for pagination, privacy, and parser tests. The regular
+build also runs these checks.
 
 A nightly workflow run at 07:00 UTC rebuilds the site so this data stays
 current between pushes.
