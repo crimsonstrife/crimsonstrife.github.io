@@ -70,6 +70,19 @@ which requires authentication:
 Without the token the calendar is skipped and the build still succeeds —
 see `src/lib/github.ts`, where every network call fails soft.
 
+### Selected private repositories
+
+`PRIVATE_REPOS` in `src/lib/github.ts` explicitly allows specified private repos to appear alongside public updated repos. It renders as a
+non-clickable card with a **Private** badge. Other private repositories are
+never fetched or included. The language summary still uses public repositories.
+
+The build publishes only the curated display name and description plus the
+primary language; the last push timestamp determines ordering. Private URLs,
+API descriptions, source code, and commit messages are never rendered. Adding
+another private project requires an explicit entry with public-safe copy.
+Without a token, repository access, or a successful API response, the private
+card is omitted and public activity still works.
+
 A nightly workflow run at 07:00 UTC rebuilds the site so this data stays
 current between pushes.
 

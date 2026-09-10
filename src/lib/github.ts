@@ -13,6 +13,26 @@
 const USER = 'crimsonstrife';
 const TIMEOUT_MS = 10_000;
 
+// Only these private projects may appear publicly. Keep their display copy
+// curated here rather than publishing descriptions from private repositories.
+const PRIVATE_REPOS = [
+  {
+    fullName: 'crimsonstrife/One-Mans-Poison',
+    name: "One Man's Poison",
+    description: 'A solo-developed survival-horror game in Unreal Engine 5. This repo also hosts the code for the ompgame.com Astro website.',
+  },
+  {
+    fullName: 'crimsonstrife/crimsonstrife.live',
+    name: "CrimsonStrife.live Website",
+    description: 'A laravel-based web-app that runs my streaming/content creator site and custom CMS.',
+  },
+  {
+    fullName: 'crimsonstrife/one-mans-poison-toolkit',
+    name: "One Man's Poison Toolkit",
+    description: "A set of tools for managing, developing and optimizing the One Man's Poison game.",
+  },
+];
+
 /** Set as a repo secret and exposed to the build in deploy.yml. */
 const token =
   import.meta.env.CONTRIBUTIONS_TOKEN ??
@@ -22,7 +42,8 @@ const token =
 export interface Repo {
   name: string;
   description: string | null;
-  url: string;
+  url: string | null;
+  isPrivate: boolean;
   language: string | null;
   stars: number;
   pushedAt: string;
@@ -76,21 +97,22 @@ async function request(url: string, init: RequestInit = {}): Promise<Response | 
 }
 
 /**
- * One request covers both the recent-repo cards and the top-languages line:
- * the full owned-repo list is fetched, the newest few are shown, and every
- * repo's primary language feeds the tally.
+ * Public owned repositories feed the language tally. Explicitly selected
+ * private projects join the recent list, sorted by their latest push.
  */
 export async function fetchActivity(limit = 8): Promise<Activity> {
   const empty: Activity = { repos: [], languages: [] };
 
-  const response = await request(
-    `https://api.github.com/users/${USER}/repos?sort=pushed&per_page=100&type=owner`
-  );
-  if (!response) return empty;
+  const [response, privateRepos] = await Promise.all([
+    request(`https://api.github.com/users/${USER}/repos?sort=pushed&per_page=100&type=owner`),
+    fetchPrivateRepos(),
+  ]);
+  const fallback: Activity = { ...empty, repos: privateRepos.slice(0, limit) };
+  if (!response) return fallback;
 
   try {
     const raw = (await response.json()) as any[];
-    const owned = raw.filter((repo) => !repo.fork && !repo.archived);
+    const owned = raw.filter((repo) => repo.private === false && !repo.fork && !repo.archived);
 
     const tally = new Map<string, number>();
     for (const repo of owned) {
@@ -100,23 +122,66 @@ export async function fetchActivity(limit = 8): Promise<Activity> {
 
     const languages = [...tally.entries()]
       .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
-      .slice(0, 3)
+      .slice(0, 6)
       .map(([name]) => name);
 
-    const repos = owned.slice(0, limit).map((repo) => ({
+    const publicRepos: Repo[] = owned.map((repo) => ({
       name: repo.name,
       description: repo.description ?? null,
       url: repo.html_url,
+      isPrivate: false,
       language: repo.language ?? null,
       stars: repo.stargazers_count ?? 0,
       pushedAt: repo.pushed_at,
     }));
 
+    // A configured project remains unlinked even if its visibility changes.
+    const configured = new Set(PRIVATE_REPOS.map((repo) => repo.fullName.toLowerCase()));
+    const repos = [
+      ...publicRepos.filter((repo) => !configured.has(`${USER}/${repo.name}`.toLowerCase())),
+      ...privateRepos,
+    ]
+      .sort((a, b) => Date.parse(b.pushedAt) - Date.parse(a.pushedAt))
+      .slice(0, limit);
+
     return { repos, languages };
   } catch (error) {
     console.warn('[github] could not parse repos:', (error as Error).message);
-    return empty;
+    return fallback;
   }
+}
+
+async function fetchPrivateRepos(): Promise<Repo[]> {
+  if (!token) return [];
+
+  const repos = await Promise.all(PRIVATE_REPOS.map(async (project): Promise<Repo | null> => {
+    const response = await request(`https://api.github.com/repos/${project.fullName}`);
+    if (!response) return null;
+
+    try {
+      const repo = await response.json();
+      if (repo.full_name?.toLowerCase() !== project.fullName.toLowerCase() ||
+          repo.archived || repo.fork || !repo.pushed_at ||
+          !Number.isFinite(Date.parse(repo.pushed_at))) return null;
+
+      // Never pass through a private URL, description, commit, or raw payload.
+      return {
+        name: project.name,
+        description: project.description,
+        url: null,
+        isPrivate: true,
+        language: repo.language ?? null,
+        stars: 0,
+        pushedAt: repo.pushed_at,
+      };
+    } catch {
+      console.warn('[github] could not parse selected private repository');
+      return null;
+    }
+  }));
+
+  return repos.filter((repo): repo is Repo => repo !== null)
+    .sort((a, b) => Date.parse(b.pushedAt) - Date.parse(a.pushedAt));
 }
 
 const CONTRIBUTIONS_QUERY = `

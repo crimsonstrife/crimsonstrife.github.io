@@ -35,9 +35,9 @@ jobs:
       - name: Build site
         uses: withastro/action@v6
         env:
-          # Fine-grained PAT with read access to your profile's contribution
-          # data. Without it the calendar is skipped and the build still
-          # succeeds — see src/lib/github.ts.
+          # Also grant this PAT access to One-Mans-Poison with Metadata: read
+          # to show its curated private card. Missing access skips that card;
+          # a missing token also skips the calendar. See src/lib/github.ts.
           CONTRIBUTIONS_TOKEN: ${{ secrets.CONTRIBUTIONS_TOKEN }}
 
   contact-worker-check:

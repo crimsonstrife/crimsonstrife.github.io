@@ -2,7 +2,7 @@
 import { Icon } from 'astro-icon/components';
 import { fetchActivity, fetchContributions } from '../lib/github';
 
-const [activity, contributions] = await Promise.all([fetchActivity(6), fetchContributions()]);
+const [activity, contributions] = await Promise.all([fetchActivity(9), fetchContributions()]);
 const { repos, languages } = activity;
 
 const CELL = 11;
@@ -40,9 +40,9 @@ const dayFormatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', tim
     <div class="activity-inner">
       <header class="activity-head">
         <div>
-          <p class="eyebrow">What is public</p>
+          <p class="eyebrow">What I'm building</p>
           <h3 id="github-title">Recent GitHub activity</h3>
-          <p class="intro">Public repositories and experiments. Some of these are finished; most of them are not.</p>
+          <p class="intro">Project repositories, and experiments. Some of these are finished; most of them are not.</p>
         </div>
         <a class="profile" href="https://github.com/crimsonstrife" rel="noopener">
           View GitHub profile
@@ -112,15 +112,21 @@ const dayFormatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', tim
         <div class="repository-block">
           <h4>Recently updated repositories</h4>
           <ul class="repos" role="list">
-            {repos.map((repo) => (
+            {repos.map((repo) => {
+              const Card = repo.url ? 'a' : 'div';
+              return (
               <li>
-                <a href={repo.url} rel="noopener">
+                <Card class="repo-card" href={repo.url ?? undefined} rel={repo.url ? 'noopener' : undefined}>
                   <span class="repo-head">
                     <span class="name">
                       <Icon name="fa6-brands:github" aria-hidden="true" />
                       {repo.name}
                     </span>
-                    <Icon class="arrow" name="fa6-solid:arrow-up-right-from-square" aria-hidden="true" />
+                    {repo.isPrivate ? (
+                      <span class="private-badge"><Icon name="fa6-solid:lock" aria-hidden="true" /> Private</span>
+                    ) : (
+                      <Icon class="arrow" name="fa6-solid:arrow-up-right-from-square" aria-hidden="true" />
+                    )}
                   </span>
                   {repo.description && <span class="desc">{repo.description}</span>}
                   <span class="meta">
@@ -131,9 +137,10 @@ const dayFormatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', tim
                       </span>
                     )}
                   </span>
-                </a>
+                </Card>
               </li>
-            ))}
+              );
+            })}
           </ul>
         </div>
       )}
@@ -362,7 +369,7 @@ const dayFormatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', tim
     gap: 1rem;
   }
 
-  .repos a {
+  .repo-card {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -401,6 +408,18 @@ const dayFormatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', tim
   }
 
   .arrow { color: rgb(255 255 255 / 0.4); flex: none; margin-top: 0.2rem; }
+
+  .private-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    flex: none;
+    border: 1px solid rgb(255 255 255 / 0.25);
+    border-radius: 999px;
+    padding: 0.2rem 0.45rem;
+    font-size: 0.65rem;
+    color: rgb(255 255 255 / 0.7);
+  }
 
   .desc { font-size: 0.85rem; line-height: 1.5; color: rgb(255 255 255 / 0.62); flex: 1; }
 
