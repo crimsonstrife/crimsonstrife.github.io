@@ -473,5 +473,35 @@
     "id": "web-app",
     "label": "Web App",
     "kind": "subject"
+  },
+  {
+    "id": "gameplay-systems",
+    "label": "Gameplay Systems",
+    "kind": "discipline"
+  },
+  {
+    "id": "editor-tools",
+    "label": "Editor Tools",
+    "kind": "discipline"
+  },
+  {
+    "id": "animation-programming",
+    "label": "Animation Programming",
+    "kind": "discipline"
+  },
+  {
+    "id": "ui-engineering",
+    "label": "UI Engineering",
+    "kind": "discipline"
+  },
+  {
+    "id": "online-services",
+    "label": "Online Services",
+    "kind": "discipline"
+  },
+  {
+    "id": "multi-platform",
+    "label": "Multi-Platform",
+    "kind": "discipline"
   }
 ]
