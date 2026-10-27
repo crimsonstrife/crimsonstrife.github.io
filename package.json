@@ -43,7 +43,7 @@
   },
   "allowScripts": {
     "esbuild@0.28.2": true,
-    "workerd@1.20261019.1": true,
-    "fsevents@2.3.3": true
+    "fsevents@2.3.3": true,
+    "workerd@1.20261023.1": true
   }
 }
